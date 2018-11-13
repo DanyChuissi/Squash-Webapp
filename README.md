@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Infos for Deverloper
+In dem Ordner UI Elemente hinzufügen, die in mehreren Componenten genutzt werden. Bei jedem öffnen des Programms in Webstorm pullen und bei jedem beenden von Webstorm pushen.
 ## Available Scripts
 
 In the project directory, you can run:
