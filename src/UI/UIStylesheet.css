@@ -1,0 +1,32 @@
+.textInput {
+    width: 250px;
+    height: 40px;
+    border-color: lightgrey;
+    text-align: center;
+    font-size: medium;
+    min-height: 10px;
+    min-width: 30px;
+    margin-bottom: 10px;
+}
+
+.textInput:focus, textarea:focus {
+    border-color: black;
+}
+
+.standardLabel {
+    font-size: 20px;
+    font-family: "-apple-system";
+}
+
+.confirmButton {
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    font-family: "-apple-system";
+    width: 75px;
+    height: 30px;
+}
+
+.confirmButton:focus, textarea:focus {
+    border-color: black;
+}
