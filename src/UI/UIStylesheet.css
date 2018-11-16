@@ -10,7 +10,7 @@
 }
 
 .textInput:focus, textarea:focus {
-    border-color: black;
+    background-color: #fff3a6;
 }
 
 .standardLabel {
@@ -19,14 +19,18 @@
 }
 
 .confirmButton {
-    color: black;
+    display: inline-block;
     background-color: white;
-    font-size: 15px;
-    font-family: "-apple-system";
-    width: 75px;
-    height: 30px;
+    border-radius: 20px;
+    border:none;
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
 }
 
-.confirmButton:focus, textarea:focus {
-    border-color: black;
-}
+
