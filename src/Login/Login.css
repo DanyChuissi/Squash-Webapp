@@ -1,4 +1,37 @@
-.loginForm{
 
+.loginForm{
+    position: relative;
+    left: 400px;
+    padding: 10px;
+
+}
+
+.loginForm label {
+    font-size: small;
+}
+
+.i1 {
+    position: relative;
+    right: 190px;
+}
+
+.i2 {
+    position: relative;
+    top: 60px;
+    right: 444px;
+
+}
+
+.i3 {
+    position: relative;
+    top: 90px;
+    right: 600px;
+
+}
+
+.i4{
+   position: relative;
+    top: 110px;
+    right: 400px;
 
 }

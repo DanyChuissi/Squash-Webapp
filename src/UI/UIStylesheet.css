@@ -1,36 +1,69 @@
-.textInput {
+/**
+ * This File holds all css rules of standard UI Elements
+ * @visibleNamen UIStylesheet
+ */
+
+
+/**
+ * @author Daniela
+ * Standart rules for Text Input
+ */
+Input{
     width: 250px;
     height: 40px;
-    border-color: lightgrey;
+    border-color: orange;
     text-align: center;
     font-size: medium;
     min-height: 10px;
     min-width: 30px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: white;
 }
 
-.textInput:focus, textarea:focus {
+Input:focus, .confirmButton:focus {
     background-color: #fff3a6;
+    border-radius: 20px;
+
+    outline: none;
+
 }
 
 .standardLabel {
-    font-size: 20px;
-    font-family: "-apple-system";
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
+
+/**
+ * @author Daniela
+ * Standart rules for Confirmbutton
+ */
 .confirmButton {
-    display: inline-block;
+
     background-color: white;
     border-radius: 20px;
     border:none;
     color: black;
     text-align: center;
-    font-size: 24px;
+    font-size: medium;
     padding: 20px;
-    width: 150px;
+    width: 110px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
+
 }
 
+/**
+ * @author Daniela
+ * Rules for Standard Footer
+ */
+.footer{
+    position: absolute;
+    bottom: 5px;
+    left: 44%;
+    font-size: small;
+}
 

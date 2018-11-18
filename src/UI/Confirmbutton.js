@@ -1,15 +1,18 @@
 import React from 'react'
-
+/**
+ * @author Daniela
+ * This File represents the standard ConfirmButton.
+ * @visibleName Confirmbutton
+ */
 class Confirmbutton extends React.Component {
     render() {
-        const { onClick, disabled} = this.props
+        const { onClick} = this.props
 
         return (
             <button
                 className="confirmButton"
                 type="button"
                 onClick={onClick}
-                disabled={disabled}
             >
                 {this.props.children}
             </button>
