@@ -26,7 +26,7 @@ class LoginView extends Component{
 
         }=this.props
         return(
-            <React.Fragment>
+            <React.Fragment classname={"LoginView"}>
 
                     <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel" />
 

@@ -1,49 +1,38 @@
+.LoginView {
 
-img{
+}
+
+img {
     margin-top: 20px;
 }
-.loginForm{
-    position: relative;
-    left: 400px;
-    padding: 10px;
 
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    padding: 10px;
 }
 
 .loginForm label {
     font-size: small;
 }
 
-.i1 {
-    position: relative;
-    right: 190px;
-}
-
-.i2 {
-    position: relative;
-    top: 60px;
-    right: 444px;
-
-}
-
 .i3 {
     border: none;
     background-color: #f19a29;
-    position: relative;
-    top: 90px;
-    right: 600px;
 
 }
 
-.i3:focus{
+.i3:focus {
     outline: none;
 }
-.i3:hover{
+
+.i3:hover {
     color: snow;
 }
 
-.i4{
-   position: relative;
-    top: 110px;
-    right: 400px;
+.i4 {
+    margin-top: 2.5%;
 
 }
