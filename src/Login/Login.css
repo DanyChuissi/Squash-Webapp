@@ -1,4 +1,7 @@
 
+img{
+    margin-top: 20px;
+}
 .loginForm{
     position: relative;
     left: 400px;
@@ -23,10 +26,19 @@
 }
 
 .i3 {
+    border: none;
+    background-color: #f19a29;
     position: relative;
     top: 90px;
     right: 600px;
 
+}
+
+.i3:focus{
+    outline: none;
+}
+.i3:hover{
+    color: snow;
 }
 
 .i4{

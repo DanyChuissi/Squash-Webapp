@@ -1,7 +1,6 @@
 .App {
     text-align: center;
     background-color: #f19a29;
-
     min-width:700px; /* Suppose you want minimum width of 1000px */
     width: auto !important; /* Firefox will set width as auto */
     width: 700px;
@@ -10,6 +9,9 @@
 
 .App-logo {
     height: 40vmin;
+    width: 40vmin;
+    justify-content: center;
+    align-items: center;
 }
 
 .App-header {

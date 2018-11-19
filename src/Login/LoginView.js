@@ -21,24 +21,21 @@ class LoginView extends Component{
             passwort,
 
             submitLogin,
-            shouldDisableSubmit,
+            changePW,
 
 
         }=this.props
         return(
             <React.Fragment>
-                <header>
+
                     <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel" />
-                </header>
-
-
 
                 <form className={"loginForm"}>
 
                     <Input classname={"i1"} placeholder={"Benutzernamen eintragen"} value={name} onChange={setName}/>
                     <Input classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
 
-                    <label className={"i3"}>Benutzerdaten vergessen?</label>
+                    <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
                     <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
 
                 </form>

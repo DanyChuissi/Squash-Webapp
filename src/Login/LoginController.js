@@ -33,6 +33,10 @@ class LoginController extends Component {
 
     }
 
+    changeData=()=>{
+        this.setState({showComponent: true});
+    }
+
     //TODO Post Data Methode für Microservice schreiben
     postData = () => {
 
@@ -52,7 +56,7 @@ class LoginController extends Component {
                            setPassword={this.setPassword}
                            name={this.state.name}
                            password={this.state.password}
-                           submitLogin={this.submitLogin}
+                           changePW={this.submitLogin}
                 />
 
 

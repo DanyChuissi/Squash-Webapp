@@ -8,12 +8,12 @@ import React from 'react'
 
 class Footer extends React.Component {
     render() {
-        return(
-       <div className={"footer"}>
-           Impressum
-           ||
-           Datenschutz
-       </div>
+        return (
+            <div className={"footer"}>
+                <a href={"https://www.fh-dortmund.de"}>Impressum </a>
+                 ||
+                <a href={"https://www.fh-dortmund.de"}> Datenschutz</a>
+            </div>
         )
     }
 }
