@@ -1,0 +1,81 @@
+#root {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.header{
+    border: 1px white;
+    background-color: orange;
+    padding: 1em;
+    text-align: center;
+
+}
+/* Box mit Text Eingabefeld udn Button*/
+.box{
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    align-items: center;
+    background-color: orange;
+}
+
+/* Mittlere Bereich*/
+main{
+    background-color: orange;
+    padding-top: 50px;
+    padding-bottom: 103px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+}
+
+/* Untere Bereich*/
+footer {
+    flex-direction: row;
+    background-color: orange;
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logo{
+    height: 30vmin;
+    width: 30vmin;
+    justify-content: center;
+    align-items: center;
+}
+/* Row Flexbox für die Buttons*/
+.button{
+    flex-direction: row;
+    width: 400px;
+    height: 30px;
+    display: flex;
+    padding: 10px;
+    justify-content:center;
+    background-color: orange;
+}
+
+#myDIV {
+    background-color: lightblue;
+
+}
+
+.email-input::placeholder {
+    font-family: Arial;
+    padding: 15px;
+    height: 20px;
+    width: 300px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+#container { display: flex; }
+main { flex: 3 60%; }
