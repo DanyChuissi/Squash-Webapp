@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d39ac18-a35f-4876-a258-b669433b30b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ProfileTable/ProfileTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProfileTable/ProfileTableController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProfileTable/ProfileTableView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/LoginView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/UIStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/UIStylesheet.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -78,8 +76,8 @@
     <session id="-868857322">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="22" />
-          <entry key="js" value="25" />
+          <entry key="css" value="23" />
+          <entry key="js" value="28" />
           <entry key="json" value="1" />
           <entry key="md" value="1" />
           <entry key="png" value="2" />
@@ -87,27 +85,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="22" />
+          <entry key="CSS" value="23" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="25" />
+          <entry key="JavaScript" value="28" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1557" />
-          <entry key="js" value="1362" />
+          <entry key="css" value="1579" />
+          <entry key="js" value="1408" />
           <entry key="json" value="2" />
-          <entry key="txt" value="44" />
+          <entry key="txt" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1557" />
+          <entry key="CSS" value="1579" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="1362" />
-          <entry key="PLAIN_TEXT" value="44" />
+          <entry key="JavaScript" value="1408" />
+          <entry key="PLAIN_TEXT" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -125,6 +123,7 @@
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
+          <entry key="git.branch.create.new" value="1" />
           <entry key="git.branch.merge" value="4" />
         </counts>
       </usages-collector>
@@ -145,28 +144,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Login/LoginController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="719">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Login/Login.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/UIStylesheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+            <state relative-caret-position="424">
+              <caret line="73" selection-start-line="73" selection-end-line="75" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -174,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Login/LoginView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="37" column="74" lean-forward="true" selection-start-line="37" selection-start-column="74" selection-end-line="37" selection-end-column="74" />
+            <state relative-caret-position="360">
+              <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -183,13 +164,37 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Login/LoginController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTableView.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTableController.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTable.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -204,7 +209,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="FirstCommit" />
       </map>
     </option>
   </component>
@@ -226,7 +231,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/UI/Input.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Login/LoginController.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/ResetLoginData/ResetLoginData.css" />
         <option value="$PROJECT_DIR$/src/ResetLoginData/ResetLoginDataView.js" />
@@ -234,8 +238,12 @@
         <option value="$PROJECT_DIR$/src/UI/Confirmbutton.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/UI/UIStylesheet.css" />
-        <option value="$PROJECT_DIR$/src/Login/LoginView.js" />
         <option value="$PROJECT_DIR$/src/Login/Login.css" />
+        <option value="$PROJECT_DIR$/src/Login/LoginView.js" />
+        <option value="$PROJECT_DIR$/src/Login/LoginController.js" />
+        <option value="$PROJECT_DIR$/src/ProfileTable/ProfileTableView.js" />
+        <option value="$PROJECT_DIR$/src/ProfileTable/ProfileTableController.js" />
+        <option value="$PROJECT_DIR$/src/ProfileTable/ProfileTable.css" />
       </list>
     </option>
   </component>
@@ -285,25 +293,7 @@
               <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ResetLoginData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="ProfileTable" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -541,11 +531,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542627561160</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="LoginView + LoginController fertig">
+      <created>1542630736025</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542630736025</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40401000" />
+    <option name="totallyTimeSpent" value="40794000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -610,7 +607,8 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="Erste Ordnerstruktur für Anforderung Login und Spielerprofil" />
     <MESSAGE value="Verbindung Login und Benutzerdaten ändern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verbindung Login und Benutzerdaten ändern" />
+    <MESSAGE value="LoginView + LoginController fertig" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginView + LoginController fertig" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/EditPlayerProfile/EditPlayerProfile.css">
@@ -757,36 +755,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/LoginController.js">
+    <entry file="file://$PROJECT_DIR$/src/UI/UIStylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="719">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        <state relative-caret-position="424">
+          <caret line="73" selection-start-line="73" selection-end-line="75" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/UIStylesheet.css">
+    <entry file="file://$PROJECT_DIR$/src/Login/Login.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+        <state relative-caret-position="488">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Login/LoginView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="37" column="74" lean-forward="true" selection-start-line="37" selection-start-column="74" selection-end-line="37" selection-end-column="74" />
+        <state relative-caret-position="360">
+          <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/Login.css">
+    <entry file="file://$PROJECT_DIR$/src/Login/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state relative-caret-position="139">
+          <caret line="40" column="22" lean-forward="true" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTableView.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTableController.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProfileTable/ProfileTable.css">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
