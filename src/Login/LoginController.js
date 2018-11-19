@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import LoginView from "./LoginView";
+import ResetLoginDataView from "../ResetLoginData/ResetLoginDataView";
 
 /**
  * @author Daniela
@@ -12,7 +13,10 @@ class LoginController extends Component {
     state = {
         name: '',
         password: '',
+        showComponent: false,
     }
+
+
     setName = (e) => {
         this.setState({name: e.target.value})
     }
@@ -22,23 +26,36 @@ class LoginController extends Component {
     }
 
     submitLogin = () => {
+
+        this.setState({showComponent: true});
+
         alert("Benutzer eingeloggt " + this.state.name);
+
     }
 
     //TODO Post Data Methode für Microservice schreiben
-    postData=()=>{
+    postData = () => {
+
+    }
+
+    getData = () => {
 
     }
 
     render() {
         return (
-            <LoginView className="View"
-                       setName={this.setName}
-                       setPassword={this.setPassword}
-                       name={this.state.name}
-                       password={this.state.password}
-                       submitLogin={this.submitLogin}
-            />
+            this.state.showComponent ?
+                <ResetLoginDataView/>
+                :
+                <LoginView className="View"
+                           setName={this.setName}
+                           setPassword={this.setPassword}
+                           name={this.state.name}
+                           password={this.state.password}
+                           submitLogin={this.submitLogin}
+                />
+
+
         );
     }
 }

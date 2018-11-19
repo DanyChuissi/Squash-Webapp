@@ -5,7 +5,7 @@
 }
 .header{
     border: 1px white;
-    background-color: orange;
+    background-color: #f19a29;
     padding: 1em;
     text-align: center;
 
@@ -16,12 +16,12 @@
     justify-content: center;
     width: 400px;
     align-items: center;
-    background-color: orange;
+    background-color: #f19a29;
 }
 
 /* Mittlere Bereich*/
 main{
-    background-color: orange;
+    background-color: #f19a29;
     padding-top: 50px;
     padding-bottom: 103px;
     text-align: center;
@@ -34,7 +34,7 @@ main{
 /* Untere Bereich*/
 footer {
     flex-direction: row;
-    background-color: orange;
+    background-color: #f19a29;
     padding: 2em;
     text-align: center;
     text-decoration: none;
@@ -54,7 +54,7 @@ footer {
     display: flex;
     padding: 10px;
     justify-content:center;
-    background-color: orange;
+    background-color: #f19a29;
 }
 
 #myDIV {

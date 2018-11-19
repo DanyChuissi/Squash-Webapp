@@ -31,7 +31,7 @@ class LoginView extends Component{
                     <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel" />
                 </header>
 
-                <main id={"viewL"}>
+
 
                 <form className={"loginForm"}>
 
@@ -43,7 +43,7 @@ class LoginView extends Component{
 
                 </form>
 
-                </main>
+
 
                 <footer>
                     <Footer/>

@@ -7,7 +7,6 @@ import React from 'react'
 class Confirmbutton extends React.Component {
     render() {
         const { onClick} = this.props
-
         return (
             <button
                 className="confirmButton"

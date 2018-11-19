@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ResetLoginData.css';
 import logo from './LogoKreis.png'
+import Confirmbutton from "../UI/Confirmbutton";
 
 
 class ResetLoginDataView extends Component{
@@ -80,16 +81,16 @@ class ResetLoginDataView extends Component{
                             </div>
                             
                             <div  className= "button">
-                                <button style={{cursor: 'pointer',marginRight: '10px'}}
+                                <Confirmbutton style={{cursor: 'pointer',marginRight: '10px'}}
                                         type= "button"
                                         onClick={this.publish}>
                                     Email Senden
-                                </button>
+                                </Confirmbutton>
 
-                                <button style={{cursor: 'pointer', marginLeft: '10px'}}
+                                <Confirmbutton style={{cursor: 'pointer', marginLeft: '10px'}}
                                         type= "button">
                                     Abbrechen
-                                </button>
+                                </Confirmbutton>
                             </div>
                         </div>
                     </main>
