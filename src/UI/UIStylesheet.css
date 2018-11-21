@@ -52,6 +52,8 @@ Input:focus, .confirmButton:focus {
     padding: 20px;
     transition: all 0.5s;
     cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
 
 }
 
