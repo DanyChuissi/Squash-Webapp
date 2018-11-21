@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d39ac18-a35f-4876-a258-b669433b30b3" name="Default Changelist" comment="Erste Ordnerstruktur für Anforderung Login und Spielerprofil">
-      <change afterPath="$PROJECT_DIR$/src/Datenschutzerklaerung/Datenschutzerklaerung.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Datenschutzerklaerung/DatenschutzerklaerungController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Datenschutzerklaerung/DatenschutzerklaerungView.js" afterDir="false" />
+    <list default="true" id="4d39ac18-a35f-4876-a258-b669433b30b3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/faviconSquirrel.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ResetLoginData/ResetLoginData.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ResetLoginData/ResetLoginData.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ResetLoginData/ResetLoginDataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ResetLoginData/ResetLoginDataView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Confirmbutton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Confirmbutton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/UIStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/UIStylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -136,37 +129,46 @@
     <session id="909026373">
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="3" />
+          <entry key="ESLintLanguageService" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="30" />
+          <entry key="html" value="16" />
+          <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="30" />
+          <entry key="HTML" value="16" />
+          <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
+          <entry key="html" value="1" />
+          <entry key="ico" value="2" />
           <entry key="js" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="2" />
           <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -177,27 +179,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/Footer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Login/LoginView.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -206,13 +187,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ResetLoginData/ResetLoginData.css">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="21" selection-start-line="20" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="153">
+              <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/faviconSquirrel.ico">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -283,6 +274,7 @@
     <option name="PATH_TO_GIT" value="C:\Program Files\Git\cmd\git.exe" />
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Dany Chuissi &lt;dachu001@fh-dortmund.de&gt;" />
         <option value="Daniela &lt;daniela.preis002@stud.fh-dortmund.de&gt;" />
       </list>
     </option>
@@ -323,6 +315,7 @@
         <option value="$PROJECT_DIR$/src/ResetLoginData/ResetLoginData.css" />
         <option value="$PROJECT_DIR$/src/UI/UIStylesheet.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -362,6 +355,11 @@
             <path>
               <item name="Spuirel WebApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="Spuirel WebApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Spuirel WebApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spuirel WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Spuirel WebApp" type="b2602c69:ProjectViewProjectNode" />
@@ -421,7 +419,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.App.js">
+  <component name="RunManager" selected="npm.start">
     <configuration name="App.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -467,7 +465,8 @@
       <workItem from="1542446347146" duration="7180000" />
       <workItem from="1542535712878" duration="14215000" />
       <workItem from="1542799927487" duration="947000" />
-      <workItem from="1542802378286" duration="258000" />
+      <workItem from="1542802378286" duration="1033000" />
+      <workItem from="1542806118992" duration="2246000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1542128220500</created>
@@ -511,11 +510,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542627561160</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Login und ResetLoginData">
+      <created>1542802726603</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542802726603</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43126000" />
+    <option name="totallyTimeSpent" value="46147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,10 +534,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76258993" visible="true" weight="0.15997024" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76019186" visible="true" weight="0.15997024" />
       <window_info id="Structure" order="1" sideWeight="0.50080776" side_tool="true" weight="0.24973656" />
-      <window_info active="true" id="npm" order="2" sideWeight="0.23741007" side_tool="true" visible="true" weight="0.15997024" />
+      <window_info id="npm" order="2" sideWeight="0.23980816" side_tool="true" visible="true" weight="0.15997024" />
       <window_info id="Favorites" order="3" sideWeight="0.50080776" side_tool="true" weight="0.24973656" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
@@ -579,7 +586,8 @@
     <MESSAGE value="First Commit" />
     <MESSAGE value="Erste Ordnerstruktur für Anforderung Login und Spielerprofil" />
     <MESSAGE value="Verbindung Login und Benutzerdaten ändern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verbindung Login und Benutzerdaten ändern" />
+    <MESSAGE value="Login und ResetLoginData" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login und ResetLoginData" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/EditPlayerProfile/EditPlayerProfile.css">
@@ -675,9 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/Label.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ResetLoginData/ResetLoginDataView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -747,10 +745,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Label.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/faviconSquirrel.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
         </state>
       </provider>
     </entry>
