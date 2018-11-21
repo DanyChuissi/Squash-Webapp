@@ -22,7 +22,7 @@
 /* Mittlere Bereich*/
 main{
     background-color: #f19a29;
-    padding-top: 50px;
+    /*padding-top: 0px;*/
     padding-bottom: 103px;
     text-align: center;
     justify-content: center;
@@ -41,12 +41,12 @@ footer {
 }
 
 .logo{
-    height: 30vmin;
-    width: 30vmin;
+    height: 40vmin;
+    width: 40vmin;
     justify-content: center;
     align-items: center;
 }
-/* Row Flexbox für die Buttons*/
+/* Row Flexbox für die Buttons
 .button{
     flex-direction: row;
     width: 400px;
@@ -55,25 +55,37 @@ footer {
     padding: 10px;
     justify-content:center;
     background-color: #f19a29;
+}*/
+
+
+/*
+.button{
+    background-color: white;
+    border-radius: 20px;
+    border:none;
+    color: black;
+    text-align: center;
+    font-size: medium;
+    padding: 20px;
+    width: 110px;
+    transition: all 0.5s;
+    cursor: pointer;
+    justify-content: space-between;
 }
+*/
 
-#myDIV {
-    background-color: lightblue;
-
-}
-
-.email-input::placeholder {
+/*.email-input::placeholder {
     font-family: Arial;
-    padding: 15px;
+    padding: 10px;
     height: 20px;
     width: 300px;
-}
+}*/
 
 .input {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 1px;
+    margin-bottom: 20px;
 }
 
 

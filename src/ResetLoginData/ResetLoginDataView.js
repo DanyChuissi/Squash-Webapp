@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './ResetLoginData.css';
-import logo from './LogoKreis.png'
+import logo from  "../Graphics/Logo_kreis.png";
 import Confirmbutton from "../UI/Confirmbutton";
+import Footer from "../UI/Footer";
 
 
 class ResetLoginDataView extends Component{
@@ -67,11 +68,11 @@ class ResetLoginDataView extends Component{
                                 <img src={logo} className="logo" alt="logo" />
                             </div>
 
-                            <label>
+                            <label style={{marginBottom: '10px'}}>
                                 Bitte gibt deine E-mail-Adresse oder Benutzername ein,
                                 <br />um dein Passwort zurüchzuzetzen
                             </label>
-                            <div className="input">
+                            <div>
                                 <input
                                     type="text"
                                     name="email"
@@ -80,14 +81,14 @@ class ResetLoginDataView extends Component{
                                     onChange={ this.handleChange }/>
                             </div>
                             
-                            <div  className= "button">
-                                <Confirmbutton style={{cursor: 'pointer',marginRight: '10px'}}
+                            <div style={{marginTop: '10px', justifyContent: 'space-between'}} >
+                                <Confirmbutton style={{marginRight: '40px'}}
                                         type= "button"
                                         onClick={this.publish}>
                                     Email Senden
                                 </Confirmbutton>
 
-                                <Confirmbutton style={{cursor: 'pointer', marginLeft: '10px'}}
+                                <Confirmbutton style={{marginLeft: '40px'}}
                                         type= "button">
                                     Abbrechen
                                 </Confirmbutton>
@@ -97,18 +98,7 @@ class ResetLoginDataView extends Component{
 
                 </div>
                 <footer>
-                    <a
-                        href="https://www.fh-dortmund.de"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        Impresum   |
-                    </a>
-                    <a
-                        href="https://www.fh-dortmund.de"
-                        target="_blank"
-                        rel="noopener">
-                        Datenschutzerklärung
-                    </a>
+                    <Footer/>
                 </footer>
             </div>
         );
