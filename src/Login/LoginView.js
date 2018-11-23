@@ -26,25 +26,28 @@ class LoginView extends Component{
 
         }=this.props
         return(
-            <React.Fragment classname={"LoginView"}>
-
+            <React.Fragment >
+                <div id="Login">
                     <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel" />
 
-                <form className={"loginForm"}>
+                    <form className={"loginForm"}>
 
-                    <Input classname={"i1"} placeholder={"Benutzernamen eintragen"} value={name} onChange={setName}/>
-                    <Input classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
+                        <Input classname={"i1"} placeholder={"Benutzernamen eintragen"} value={name} onChange={setName}/>
+                        <Input classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
 
-                    <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
-                    <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
+                        <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
+                        <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
 
-                </form>
+                    </form>
 
 
 
-                <footer>
-                    <Footer/>
-                </footer>
+                    <footer>
+                        <Footer/>
+                    </footer>
+
+                </div>
+
 
 
             </React.Fragment>

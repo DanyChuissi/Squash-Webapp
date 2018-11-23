@@ -38,7 +38,7 @@ class ResetLoginDataView extends Component{
         }
         return <div style={{color: 'black'}}>
             Email wurde gesendet an ....,
-            <br />offne deine Email Adresse, um dein Passwort zurückzusetzten
+            <br />öffne dein Email Postfach, um dein Passwort zurückzusetzten
         </div>
     }
 
@@ -69,8 +69,8 @@ class ResetLoginDataView extends Component{
                             </div>
 
                             <label style={{marginBottom: '10px'}}>
-                                Bitte gibt deine E-mail-Adresse oder Benutzername ein,
-                                <br />um dein Passwort zurüchzuzetzen
+                                Bitte gibt deine E-mail-Adresse oder Benutzernamen ein,
+                                <br />um dein Passwort zurüchzusetzen
                             </label>
                             <div>
                                 <input
