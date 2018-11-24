@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import LoginController from "./Login/LoginController";
+
+import PlayerProfileView from "./PlayerProfile/PlayerProfileView";
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-       <LoginController/>
+       <PlayerProfileView/>
       </div>
     );
   }

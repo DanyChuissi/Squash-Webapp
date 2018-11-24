@@ -1,10 +1,13 @@
+/**
+ * @author Daniela
+ * This is a Stylesheet for the editable table of the profile data.
+ */
 body {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 50px 0;
 }
 
 .editProfile {
-    background-color: white;
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
@@ -14,61 +17,92 @@ body {
     box-sizing: border-box;
 }
 
-.flex-outer {
-    list-style-type: none;
-    padding: 0;
-}
-
-.flex-outer {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.flex-outer li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.flex-outer > li:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-.flex-outer > li > label,
-.flex-outer li p {
-    flex: 1 0 120px;
-    max-width: 220px;
-}
-
-.flex-outer > li > label {
-    flex: 1 0 220px;
-}
-
-.flex-outer li input:not([type='checkbox']),
-.flex-outer li textarea {
-    padding: 15px;
-
-}
-
-.flex-outer li button {
-    margin-left: auto;
-    padding: 8px 16px;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
-}
-
-.checkActive{
-    margin-right: auto;
-    padding: 8px 16px;;
-}
-
-header Label{
+header Label {
     text-decoration: underline black;
     text-align: center;
 }
 
-header{
+header {
     margin-bottom: 7.5%;
 }
+ /** Every second row, the head and editable data is displayed in a different color. **/
+tr:nth-child(even) td {
+    background-color: #ffd533;
+}
+
+tr:nth-child(even) th {
+    background-color: #f19a29;
+}
+
+tr:nth-child(odd) td {
+    background-color: #ffa436;
+}
+
+tr:nth-child(odd) th {
+    background-color: #ff792a;
+}
+
+/** The font is set to Calibri 12pt **/
+table, th, td {
+    font-size: 12pt;
+    font-family: Calibri;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    width: 40%;
+    min-width: 100px;
+    max-width: 200px;
+}
+
+td {
+    width: 40%;
+    min-width: 100px;
+}
+
+td > select {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    font-family: Calibri;
+    font-size: 12pt;
+}
+td > input {
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    border: none;
+    font-family: Calibri;
+    font-size: 12pt;
+}
+td > input[type=date] {
+    margin: 0;
+    padding: 0;
+    background-color:transparent;
+    border: none;
+    font-family: Calibri;
+    font-size: 12pt;
+}
+
+td > input:focus {
+    background-color: transparent; font-family: Calibri;
+    font-size: 12pt;
+
+}
+
+/** This code is necessary to hide the up and down elements of the date input and change its highlighted color. The Error can be ignored, the Code works properly**/
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+    background-color: #ffd533;
+    color: white;
+    outline: none;
+}
+

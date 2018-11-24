@@ -70,7 +70,7 @@ class ResetLoginDataView extends Component{
 
                             <label style={{marginBottom: '10px'}}>
                                 Bitte gibt deine E-mail-Adresse oder Benutzernamen ein,
-                                <br />um dein Passwort zurüchzusetzen
+                                <br />um dein Passwort zurückzusetzen
                             </label>
                             <div>
                                 <input

@@ -1,11 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import '../App.css';
 import Label from "../UI/Label";
-import Input from "../UI/Input";
-import CheckBox from "../UI/CheckBox"
-import SaveButton from "../UI/SaveButton";
 import './EditPlayerProfile.css';
 
+/**
+ * @author Daniela
+ * This is a table, which holds the Data of an athlet. If a authorized Person clicks on the edit Button, this View displays. Most of the cells are editable. The cell for the Birthdate is an date Input. The cell for the national Assosiation is an dropdown Input.
+ * @visibleName EditProfileView
+ */
 class EditProfileView extends Component {
 
     render() {
@@ -22,6 +24,9 @@ class EditProfileView extends Component {
             setSquad,
             setSPin,
             setStatus,
+            setMobileNumber,
+            setLandlaneNumber,
+            setNationalAssosiation,
 
             name,
             surname,
@@ -34,6 +39,10 @@ class EditProfileView extends Component {
             squad,
             sPin,
             status,
+            mobileNumber,
+            landlaneNumber,
+            agegroup,
+            nationalAssosiation,
 
             onCancel,
             onConfirm,
@@ -46,61 +55,96 @@ class EditProfileView extends Component {
                     <header>
                         <Label value={name + "bearbeiten"} classname={"title"}>Spieler A bearbeiten</Label>
                     </header>
-                    <form className={"EditProfileForm"}>
-                        <ul className={"flex-outer"}>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Name:</th>
+                            <td value={name}
+                                onChange={setName} placeholder={"Namen eintragen"} contentEditable="true" required/>
+                        </tr>
+                        <tr>
+                            <th>Nachname:</th>
+                            <td placeholder={"Nachnamen eintragen"} id={"surnameL"} value={surname}
+                                onChange={setSurName} contentEditable="true" required/>
+                        </tr>
+                        <tr>
+                            <th>Geburtsdatum:</th>
+                            <td><input type='date'input="date"placeholder={"Geburtsdatum eintragen"} id={"birthdateL"} value={birthdate}
+                                       onChange={setBrithdate} contentEditable="true" required/> </td>
+                        </tr>
+                        <tr>
+                            <th>Kader:</th>
+                            <td placeholder={"Kader eintragen"} contentEditable="true" id={"squadL"} value={squad}
+                                onChange={setSquad} required/>
+                        </tr>
+                        <tr>
+                            <th>Altersklasse:</th>
+                            <td value={agegroup} required/>
+                        </tr>
+                        <tr>
+                            <th>SPin:</th>
+                            <td placeholder={"SPin eintragen"} contentEditable="true" id={"sPinL"} value={sPin}
+                                onChange={setSPin} required/>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td placeholder={"Email eintragen"} id={"mailL"} value={mail}
+                                onChange={setMail} contentEditable="true" required/>
+                        </tr>
 
-                            <li>
-                                <Label for={"nameL"}>Name: </Label>
-                                <Input placeholder={"Namen eintragen"} id={"nameL"} value={name}
-                                       onChange={setName} required></Input></li>
+                        <tr>
+                            <th>Stadt:</th>
+                            <td placeholder={"Geburtsdatum eintragen"} id={"birthdateL"} value={birthdate}
+                                onChange={setBrithdate} contentEditable="true" required/>
+                        </tr>
+                        <tr>
+                            <th>Postleitzahl:</th>
+                            <td placeholder={"Postleitzahl eintragen"} contentEditable="true" id={"zipL"} value={zip}
+                                onChange={setZIP} required/>
+                        </tr>
+                        <tr>
+                            <th>Straße:</th>
+                            <td placeholder={"Straße eintragen"} contentEditable="true" id={"streetL"} value={street}
+                                onChange={setStreet} required/>
+                        </tr>
+                        <tr>
+                            <th>Hausnummer:</th>
+                            <td placeholder={"Hausnummer eintragen"} contentEditable="true" id={"housenmbr"}
+                                value={houseNbr}
+                                onChange={setHouseNbr} required></td>
+                        </tr>
+                        <tr>
+                            <th>Festnetznummer:</th>
+                            <td value={landlaneNumber}
+                                onChange={setLandlaneNumber} contentEditable="true" required/>
+                        </tr>
+                        <tr>
+                            <th>Mobilfunknummer:</th>
+                            <td value={mobileNumber}
+                                onChange={setMobileNumber} contentEditable="true" required/>
+                        </tr>
+                        <tr>
+                            <th>Landesverband:</th>
+                            <td><select name="nationalAssosiation" onChange={setNationalAssosiation} value={landlaneNumber}>
+                                <option value="saar"> Saar Squash Racket Verband (Abkürzung Saarland)</option>
+                                <option value="bayern"> Squash in Bayern</option>
+                                <option value="badenW"> Squash Rackets Landesverband Baden-Württemberg e.V.</option>
+                                <option value="berlin"> Squash Verband Berlin Brandenburg e.V.</option>
+                                <option value="bremen"> Squash Rackets Verband Bremen e.V.</option>
+                                <option value="hamburg"> Hamburger Squash</option>
+                                <option value="hessen">Verband e.V.Hessischer Squash Verband e.V.</option>
+                                <option value="niedSach"> Squash Verband NiedersachsenSquash</option>
+                                <option value="reinPf">Squashverbund Rheinland-Pfalz-Saar(Rheinland-Pfalz)</option>
+                                <option value="nordrheinWest">Landesverband Nordrhein-Westfalen</option>
+                                <option value="sachsen"> Squash Landesverband Sachsen</option>
+                                <option value="schleswigHolst"> Squash Landesverband Schleswig-Holstein</option>
+                            </select></td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-                            <li><Label for={"surnameL"}>Nachname: </Label>
-                                <Input placeholder={"Nachnamen eintragen"} id={"surnameL"} value={surname}
-                                       onChange={setSurName} required></Input></li>
-
-                            <li><Label for={"mailL"}>Email: </Label>
-                                <Input placeholder={"Email eintragen"} id={"mailL"} value={mail}
-                                       onChange={setMail} required></Input></li>
-
-                            <li><Label for={"birthdateL"}>Geburtsdatum: </Label>
-                                <Input placeholder={"Geburtsdatum eintragen"} id={"birthdateL"} value={birthdate}
-                                       onChange={setBrithdate} required></Input></li>
-
-                            <li><Label for={"cityL"}>Stadt: </Label>
-                                <Input placeholder={"Stadt eintragen"} id={"cityL"} value={city}
-                                       onChange={setCity} required></Input></li>
-
-                            <li><Label for={"zipL"}>Postleitzahl: </Label>
-                                <Input placeholder={"Postleitzahl eintragen"} id={"zipL"} value={zip}
-                                       onChange={setZIP} required></Input></li>
-
-                            <li><Label for={"streetL"}>Straße: </Label>
-                                <Input placeholder={"Straße eintragen"} id={"streetL"} value={street}
-                                       onChange={setStreet} required></Input></li>
-
-                            <li><Label for={"housenmbrL"}>Hausnummer: </Label>
-                                <Input placeholder={"Hausnummer eintragen"} id={"housenmbr"} value={houseNbr}
-                                       onChange={setHouseNbr} required></Input></li>
-
-                            <li><Label for={"squadL"}>Kader: </Label>
-                                <Input placeholder={"Kader eintragen"} id={"squadL"} value={squad}
-                                       onChange={setSquad} required></Input></li>
-
-                            <li><Label for={"sPinL"}>SPin: </Label>
-                                <Input placeholder={"SPin eintragen"} id={"sPinL"} value={sPin}
-                                       onChange={setSPin} required></Input></li>
-                            <li>
-                                <Label for={"active"}>Aktiv: </Label>
-                                <CheckBox classname={"checkActive"} id={"active"} value={status} onChange={setStatus}/>
-                            </li>
-
-                            <li>
-                                <SaveButton onClick={onConfirm}/>
-                            </li>
-
-                        </ul>
-                    </form>
                 </div>
+
             </Fragment>
 
         );

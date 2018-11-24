@@ -17,14 +17,12 @@ Input{
     min-height: 10px;
     min-width: 30px;
     margin-top: 20px;
-    border-radius: 20px;
+
     background-color: white;
 }
 
 Input:focus, .confirmButton:focus {
     background-color: #fff3a6;
-    border-radius: 20px;
-
     outline: none;
 
 }
@@ -43,9 +41,9 @@ Input:focus, .confirmButton:focus {
  */
 .confirmButton {
 
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 20px;
-    border:none;
+    border-color:#f19a29;
     color: black;
     text-align: center;
     font-size: medium;
@@ -74,5 +72,5 @@ Input:focus, .confirmButton:focus {
 
 }
 .footer a:hover{
-    color: snow;
+    color: #f19a29;
 }

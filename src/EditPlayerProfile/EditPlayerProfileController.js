@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import EditProfileView from "./EditProfileView";
 
 
+/**
+ * @author Daniela
+ * This file holds the foldlogic of the editable Profile Data Table. It sends Data to the Microservice, if it was changed. It also manages, which cells are editable, based on the user role.
+ * @visibleName EditPlayerProfileController
+ */
 class EditPlayerProfileController extends Component {
 //TODO EditProfileView importieren, alle Properties übertragen und Methoden für den Formularübergabe an Microservice schreiben
 
@@ -16,6 +21,9 @@ class EditPlayerProfileController extends Component {
         houseNbr: '',
         squad: '',
         sPin: '',
+        mobileNumber: '',
+        landlaneNumber:'',
+        nationalAssosiation:'',
     }
 
     getData = () => {
@@ -65,6 +73,16 @@ class EditPlayerProfileController extends Component {
     setSPin = (e) => {
         this.setState({sPin: e.target.value})
     }
+    setLandlaneNumber = (e) => {
+        this.setState({landlaneNumber: e.target.value})
+    }
+    setMobileNumber = (e) => {
+        this.setState({mobileNumber: e.target.value})
+    }
+    setNationalAssosiation = (e) => {
+        this.setState({nationalAssosiation: e.target.value})
+    }
+
 
     confirmChanges = () => {
         this.postData();
@@ -84,6 +102,9 @@ class EditPlayerProfileController extends Component {
                 setSquad={this.setSquad}
                 setSPin={this.setSPin}
                 setStatus={this.status}
+                setLandlaneNumber={this.setLandlaneNumber}
+                setMobileNumber={this.setMobileNumber}
+                setNationalAssosiation={this.setNationalAssosiation}
                 onConfirm={this.confirmChanges}
             />
 
