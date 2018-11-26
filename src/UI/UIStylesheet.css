@@ -9,16 +9,16 @@
  * Standart rules for Text Input
  */
 Input{
-    width: 250px;
+    width: 250px ;
     height: 40px;
     border-color: #f19a29;
     text-align: center;
     font-size: medium;
-    min-height: 10px;
-    min-width: 30px;
+    min-height: auto;
+    min-width: auto;
     margin-top: 20px;
-
-    background-color: white;
+    margin-left: 5%;
+    background-color: whitesmoke;
 }
 
 Input:focus, .confirmButton:focus {
@@ -50,6 +50,7 @@ Input:focus, .confirmButton:focus {
     padding: 20px;
     transition: all 0.5s;
     cursor: pointer;
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
 
@@ -73,4 +74,15 @@ Input:focus, .confirmButton:focus {
 }
 .footer a:hover{
     color: #f19a29;
+}
+
+/**
+ * @author Daniela
+ * Rules for Standard Checkbox
+ */
+.checkbox{
+    min-width: 20px;
+    min-height: 20px;
+    width: 10%;
+    height: 10%;
 }

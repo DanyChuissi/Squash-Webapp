@@ -52,29 +52,27 @@ class EditProfileView extends Component {
         return (
             <Fragment>
                 <div className={"editProfile"}>
-                    <header>
-                        <Label value={name + "bearbeiten"} classname={"title"}>Spieler A bearbeiten</Label>
-                    </header>
                     <table>
                         <tbody>
                         <tr>
                             <th>Name:</th>
                             <td value={name}
-                                onChange={setName} placeholder={"Namen eintragen"} contentEditable="true" required/>
+                                onChange={setName} placeholder={"Namen eintragen"} contentEditable="false" required/>
                         </tr>
                         <tr>
                             <th>Nachname:</th>
                             <td placeholder={"Nachnamen eintragen"} id={"surnameL"} value={surname}
-                                onChange={setSurName} contentEditable="true" required/>
+                                onChange={setSurName} contentEditable="false" required/>
                         </tr>
                         <tr>
                             <th>Geburtsdatum:</th>
-                            <td><input type='date'input="date"placeholder={"Geburtsdatum eintragen"} id={"birthdateL"} value={birthdate}
-                                       onChange={setBrithdate} contentEditable="true" required/> </td>
+                            <td><input type='date' input="date" placeholder={"Geburtsdatum eintragen"} id={"birthdateL"}
+                                       value={birthdate}
+                                       onChange={setBrithdate} contentEditable="false" min="1960-01-01" max="2018-12-31" required/></td>
                         </tr>
                         <tr>
                             <th>Kader:</th>
-                            <td placeholder={"Kader eintragen"} contentEditable="true" id={"squadL"} value={squad}
+                            <td placeholder={"Kader eintragen"} contentEditable="false" id={"squadL"} value={squad}
                                 onChange={setSquad} required/>
                         </tr>
                         <tr>
@@ -83,49 +81,50 @@ class EditProfileView extends Component {
                         </tr>
                         <tr>
                             <th>SPin:</th>
-                            <td placeholder={"SPin eintragen"} contentEditable="true" id={"sPinL"} value={sPin}
+                            <td placeholder={"SPin eintragen"} contentEditable="false" id={"sPinL"} value={sPin}
                                 onChange={setSPin} required/>
                         </tr>
                         <tr>
                             <th>Email:</th>
                             <td placeholder={"Email eintragen"} id={"mailL"} value={mail}
-                                onChange={setMail} contentEditable="true" required/>
+                                onChange={setMail} contentEditable="false" required/>
                         </tr>
 
                         <tr>
                             <th>Stadt:</th>
-                            <td placeholder={"Geburtsdatum eintragen"} id={"birthdateL"} value={birthdate}
-                                onChange={setBrithdate} contentEditable="true" required/>
+                            <td placeholder={"Stadt eintragen"} id={"cityL"} value={city}
+                                onChange={setCity} contentEditable="false" required/>
                         </tr>
                         <tr>
                             <th>Postleitzahl:</th>
-                            <td placeholder={"Postleitzahl eintragen"} contentEditable="true" id={"zipL"} value={zip}
+                            <td placeholder={"Postleitzahl eintragen"} contentEditable="false" id={"zipL"} value={zip}
                                 onChange={setZIP} required/>
                         </tr>
                         <tr>
                             <th>Straße:</th>
-                            <td placeholder={"Straße eintragen"} contentEditable="true" id={"streetL"} value={street}
+                            <td placeholder={"Straße eintragen"} contentEditable="false" id={"streetL"} value={street}
                                 onChange={setStreet} required/>
                         </tr>
                         <tr>
                             <th>Hausnummer:</th>
-                            <td placeholder={"Hausnummer eintragen"} contentEditable="true" id={"housenmbr"}
+                            <td placeholder={"Hausnummer eintragen"} contentEditable="false" id={"housenmbr"}
                                 value={houseNbr}
                                 onChange={setHouseNbr} required></td>
                         </tr>
                         <tr>
                             <th>Festnetznummer:</th>
                             <td value={landlaneNumber}
-                                onChange={setLandlaneNumber} contentEditable="true" required/>
+                                onChange={setLandlaneNumber} contentEditable="false" required/>
                         </tr>
                         <tr>
                             <th>Mobilfunknummer:</th>
                             <td value={mobileNumber}
-                                onChange={setMobileNumber} contentEditable="true" required/>
+                                onChange={setMobileNumber} contentEditable="false" required/>
                         </tr>
                         <tr>
                             <th>Landesverband:</th>
-                            <td><select name="nationalAssosiation" onChange={setNationalAssosiation} value={landlaneNumber}>
+                            <td><select name="nationalAssosiation" onChange={setNationalAssosiation}
+                                        value={nationalAssosiation} contentEditable={false}>
                                 <option value="saar"> Saar Squash Racket Verband (Abkürzung Saarland)</option>
                                 <option value="bayern"> Squash in Bayern</option>
                                 <option value="badenW"> Squash Rackets Landesverband Baden-Württemberg e.V.</option>

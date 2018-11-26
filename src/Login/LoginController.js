@@ -33,7 +33,7 @@ class LoginController extends Component {
 
     }
 
-    changeData=()=>{
+    changeData = () => {
         this.setState({showComponent: true});
     }
 
