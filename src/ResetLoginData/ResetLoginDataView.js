@@ -42,7 +42,6 @@ class ResetLoginDataView extends Component{
         </div>
     }
 
-
     handleChange({ target }) {
         this.setState({
             [target.name]: target.value
