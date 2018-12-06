@@ -1,0 +1,59 @@
+
+#container1 {
+    background-color: #f19a29;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 5%;
+    align-items: center;
+}
+
+#container1 Label {
+    font-size: 16pt;
+}
+
+#subcontainer1 {
+    display: grid;
+    grid-template-areas: "area1 area2" "area3 area4";
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 50% 50% ;
+}
+
+#roleLabel {
+    grid-area: area1;
+    text-align: match-parent;
+}
+
+#role {
+    grid-area: area2;
+}
+
+
+#eMailLabel, #roleLabel{
+    position: relative;
+    height: 100%;
+    width: 60%;
+}
+
+#eMailLabel label {
+    position: absolute;
+    bottom: 0px;
+
+}
+
+#eMail {
+    grid-area: area4;
+}
+
+Dropdown {
+    background-color: #fff3a6;
+    width: 100% !important;
+    height: 40px !important;
+}
+
+Input {
+    width: 100%;
+    height: 30px;
+}

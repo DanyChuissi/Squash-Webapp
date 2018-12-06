@@ -16,7 +16,7 @@ Input{
     font-size: medium;
     min-height: 10px;
     min-width: 30px;
-    /*margin-top: 20px; */
+    margin-bottom: 2%;
     border-radius: 20px;
     background-color: white;
 }
@@ -43,15 +43,16 @@ Input:focus, .confirmButton:focus {
  */
 .confirmButton {
 
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 20px;
-    border:none;
+    border-color:#f19a29;
     color: black;
     text-align: center;
     font-size: medium;
     padding: 20px;
     transition: all 0.5s;
     cursor: pointer;
+    margin-top: 20px;
     margin-left: 10px;
     margin-right: 10px;
 
@@ -64,8 +65,13 @@ Input:focus, .confirmButton:focus {
 .footer{
     position: absolute;
     bottom: 5px;
-    left: 44%;
+    left: 48%;
     font-size: small;
+    flex-direction: row;
+
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
 }
 
 .footer a{
@@ -163,3 +169,14 @@ Input:focus, .confirmButton:focus {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+/**
+ * @author Daniela
+ * Rules for Standard Checkbox
+ */
+.checkbox{
+    min-width: 20px;
+    min-height: 20px;
+    width: 10%;
+    height: 10%;
+}

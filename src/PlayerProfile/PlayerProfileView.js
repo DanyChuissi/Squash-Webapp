@@ -1,61 +1,154 @@
-import React, { Component } from 'react';
-import './PlayerProfile.css'
-import HeaderProfilView from "../UI/HeaderProfilView";
-import Label from '../UI/Label';
+/* eslint-disable no-restricted-globals */
+import React, {Component, Fragment} from 'react';
+import '../App.css';
+import EditPlayerProfileController from "../EditPlayerProfile/EditPlayerProfileController";
+import Checkbox from "../UI/Checkbox";
+import "./PlayerProfile.css";
+import Confirmbutton from "../UI/Confirmbutton";
+import logo from "../Graphics/Logo_quadratisch.png";
+import Footer from "../UI/Footer";
 import Input from "../UI/Input";
-import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
-import {myFunction} from '../UI/HeaderProfilController';
-import {onLogoCenterClick} from '../UI/HeaderProfilController';
- import {onLogoMenuClick} from '../UI/HeaderProfilController';
+import EditProfileView from "../EditPlayerProfile/EditProfileView";
 
-/**
- * @author Dany
- *
- * @visibleName PlayerProfilView
- */
-class PlayerProfileView extends Component{
+class PlayerProfileView extends Component {
 
-    render(){
+    render() {
         const {
-            suchBegriff,
-            options,
-            email,
-            setSuchBegriff,
-            getList,
-        }=this.props
-            const defaultOption = options[0];
-        return <React.Fragment>
-            <div>
-                <HeaderProfilView email = {email} myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
-                    <HeaderProfilView/>
-                </HeaderProfilView>
-                <div className="nav" style={{color: 'black', fontFamily: 'Arial Rounded MT Bold', fontSize: 30}}>
-                    Athleten
-                </div>
-                <div className="haupt">
-                    <div className="boxx">
 
-                        <div className="box1">
-                            <div className="box11">
-                                <div><Label style={{color: 'white'}}>Einträge pro zeite: </Label></div>
-                                <div><Dropdown placeholderClassName={""} className="auswahl" options={options}
-                                               onChange={this._onSelect} value={defaultOption} placeholder=""/></div>
-                            </div>
-                            <div className="box11">
-                                <Label className="standardLabel" style={{color: 'white'}}> Suchbegriff:</Label>
-                                <div><Input classname={""} placeholder={"Suchen"} value={suchBegriff}
-                                            onChange={setSuchBegriff}/></div>
-                            </div>
+            setName,
+            setSurName,
+            setMail,
+            setBirthdate,
+            setCity,
+            setZIP,
+            setStreet,
+            setHouseNbr,
+            setSquad,
+            setSPin,
+            setStatus,
+            setMobileNumber,
+            setLandlaneNumber,
+            setNationalAssosiation,
 
+            name,
+            surname,
+            mail,
+            birthdate,
+            city,
+            zip,
+            street,
+            houseNbr,
+            squad,
+            sPin,
+            status,
+            mobileNumber,
+            landlaneNumber,
+            agegroup,
+            nationalAssosiation,
+
+            onDelete,
+            onEdit,
+            onCompare,
+
+      
+        } = this.props;
+
+        function openTab(event, ldg) {
+            return undefined;
+        }
+
+        return (
+
+            <Fragment>
+                <main>
+                    <div id="left">
+                        <div id="leftTop">
+                            <div id="leftTopLeft">
+                                <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
+                                <div id={"checkbox"}>Aktiv: <Checkbox/></div>
+                            </div>
+                            <div id={"leftTopCenter"}>
+                                <Confirmbutton id="edit" onClick={onEdit}>Bearbeiten</Confirmbutton>
+                                <Confirmbutton id={"delete"} onClick={onDelete}>Löschen</Confirmbutton>
+                            </div>
+                            <div id="leftTopRight">
+                                <Input placeholder="Athleten vergleichen"/>
+                                <Confirmbutton id="compare" onClick={onCompare}>Vergleichen</Confirmbutton>
+                            </div>
                         </div>
-                        <div className="box2">
-                            {getList}
+                        <div id="leftBottom">
+                            <div id={"profileDataTitle"}>Profildaten</div>
+                            <EditProfileView id={"profileDataTable"}
+                                             setName={setName}
+                                             setSurName={setSurName}
+                                             setMail={setMail}
+                                             setBrithdate={setBirthdate}
+                                             setCity={setCity}
+                                             setZIP={setZIP}
+                                             setStreet={setStreet}
+                                             setHouseNbr={setHouseNbr}
+                                             setSquad={setSquad}
+                                             setSPin={setSPin}
+                                             setLandlaneNumber={setLandlaneNumber}
+                                             setMobileNumber={setMobileNumber}
+                                             setNationalAssosiation={setNationalAssosiation}
+                                         />
                         </div>
                     </div>
-                </div>
-            </div>
-        </React.Fragment>;
+                    <div id="right">
+                        <div className="tab">
+                            <button className="tablinks" onClick={openTab(event, 'ldg')}>Leistungsdiagnostik</button>
+                            <button className="tablinks" onClick={openTab(event, 'curve')}>Kurve</button>
+                            <button className="tablinks" onClick={openTab(event, 'diary')}>Trainingstagebuch</button>
+                            <button className="tablinks" onClick={openTab(event, 'tplan')}>Trainingsplan</button>
+                            <button className="tablinks" onClick={openTab(event, 'jtp')}>JTP</button>
+                            <button className="tablinks" onClick={openTab(event, 'maz')}>MAZ</button>
+                            <button className="tablinks" onClick={openTab(event, 'weekpl')}>Wochenplan</button>
+                            <button className="tablinks" onClick={openTab(event, 'competition')}>Wettkampfplan</button>
+                        </div>
+
+                        <div id="ldg" className="tabcontent">
+                            <h3>Leistungsdiagnostik</h3>
+
+                        </div>
+
+                        <div id="curve" className="tabcontent">
+                            <h3>Kurve</h3>
+                        </div>
+
+                        <div id="diary" className="tabcontent">
+                            <h3>Trainingstagebuch</h3>
+                        </div>
+                        <div id="tplan" className="tabcontent">
+                            <h3>Trainingsplan</h3>
+
+                        </div>
+
+                        <div id="jtp" className="tabcontent">
+                            <h3>JTP</h3>
+                        </div>
+
+                        <div id="maz" className="tabcontent">
+                            <h3>MAZ</h3>
+                        </div>
+
+                        <div id="weekpl" className="tabcontent">
+                            <h3>Wochenplan</h3>
+                        </div>
+
+                        <div id="competition" className="tabcontent">
+                            <h3>Wettkampfplan</h3>
+                        </div>
+
+                    </div>
+                </main>
+                <footer>
+                    <Footer/>
+                </footer>
+            </Fragment>
+
+
+        );
     }
 }
 
