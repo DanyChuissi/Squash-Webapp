@@ -8,6 +8,7 @@ import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/Logo_quadratisch.png";
 import Footer from "../UI/Footer";
 import Input from "../UI/Input";
+import EditProfileView from "../EditPlayerProfile/EditProfileView";
 
 class PlayerProfileView extends Component {
 
@@ -17,7 +18,7 @@ class PlayerProfileView extends Component {
             setName,
             setSurName,
             setMail,
-            setBrithdate,
+            setBirthdate,
             setCity,
             setZIP,
             setStreet,
@@ -77,7 +78,21 @@ class PlayerProfileView extends Component {
                         </div>
                         <div id="leftBottom">
                             <div id={"profileDataTitle"}>Profildaten</div>
-                            <EditPlayerProfileController id={"profileDataTable"}/>
+                            <EditProfileView id={"profileDataTable"}
+                                             setName={setName}
+                                             setSurName={setSurName}
+                                             setMail={setMail}
+                                             setBrithdate={setBirthdate}
+                                             setCity={setCity}
+                                             setZIP={setZIP}
+                                             setStreet={setStreet}
+                                             setHouseNbr={setHouseNbr}
+                                             setSquad={setSquad}
+                                             setSPin={setSPin}
+                                             setLandlaneNumber={setLandlaneNumber}
+                                             setMobileNumber={setMobileNumber}
+                                             setNationalAssosiation={setNationalAssosiation}
+                                         />
                         </div>
                     </div>
                     <div id="right">

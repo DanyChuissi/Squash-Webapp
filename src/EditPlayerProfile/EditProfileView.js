@@ -77,7 +77,7 @@ class EditProfileView extends Component {
                         </tr>
                         <tr>
                             <th>Altersklasse:</th>
-                            <td value={agegroup} required/>
+                            <td value={agegroup}contentEditable="false"  required/>
                         </tr>
                         <tr>
                             <th>SPin:</th>

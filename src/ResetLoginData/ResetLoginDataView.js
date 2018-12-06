@@ -38,10 +38,9 @@ class ResetLoginDataView extends Component{
         }
         return <div style={{color: 'black'}}>
             Email wurde gesendet an ....,
-            <br />öffne dein Email Postfach, um dein Passwort zurückzusetzten
+            <br />offne deine Email Adresse, um dein Passwort zurückzusetzten
         </div>
     }
-
 
     handleChange({ target }) {
         this.setState({
@@ -69,8 +68,8 @@ class ResetLoginDataView extends Component{
                             </div>
 
                             <label style={{marginBottom: '10px'}}>
-                                Bitte gibt deine E-mail-Adresse oder Benutzernamen ein,
-                                <br />um dein Passwort zurückzusetzen
+                                Bitte gibt deine E-mail-Adresse oder Benutzername ein,
+                                <br />um dein Passwort zurüchzuzetzen
                             </label>
                             <div>
                                 <input

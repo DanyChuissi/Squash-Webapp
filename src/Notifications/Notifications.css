@@ -1,0 +1,9 @@
+.notif  {
+    border: 2px solid black;
+    margin:1px;
+    /* min-height: 333px;*/
+    background-color: beige;
+     height: fit-content;
+    width: fit-content;
+    padding: 2vmin;
+}

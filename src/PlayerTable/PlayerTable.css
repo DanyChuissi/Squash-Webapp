@@ -1,0 +1,115 @@
+#root {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.nav{
+    background-color: whitesmoke;
+    /*padding: 1em;*/
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+}
+.haupt{
+    display: flex;
+    background-color: whitesmoke;
+    justify-content: center;
+    height: calc(100vh - 155px);
+}
+
+/*.suche {*/
+    /*!*border: 1px solid orange;*!*/
+    /*background-color: blue;*/
+    /*!*padding: 1em;*!*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
+/*}*/
+/*.nebennavigation {
+    flex-direction: column;
+    !*border: 1px solid #f19a29;*!
+    border-right: 3px solid beige;
+    background-color: beige;
+    padding: 1em;
+    text-align: center;
+    justify-content: center;
+    height: auto;
+    width: 150px;
+}*/
+
+.boxx  {
+    background-color: whitesmoke;
+    flex-direction: column;
+    display: flex;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin: 5px;
+    align-content: center;
+    width: 100%;
+    height: calc(100vh - 165px);
+    overflow: auto;
+}
+
+/*.main  {
+    !*border: 1px solid orange;*!
+    background-color: beige;
+    !*padding: 1em;*!
+    text-align: center;
+    min-height: 400px;
+    height: auto;
+}*/
+
+/*.menuleiste  {
+    !*border: 1px solid orange;*!
+    background-color: beige;
+    padding: 1em;
+    text-align: center;
+}*/
+
+
+.box1  {
+    border: 2px solid black;
+    background-color: #f19a29;
+    margin:1px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 5px;
+}
+
+.box11  {
+    display: grid;
+    background-color: #f19a29;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    justify-content: center;
+}
+
+.box11 > div {
+    background-color: #f19a29;
+    margin: 5px;
+}
+.box11 >Label {
+    background-color: #f19a29;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.box2  {
+    border: 2px solid black;
+    margin:1px;
+    /* min-height: 333px;*/
+    background-color: beige;
+    height: calc(100vh - 250px);
+}
+/*.list {*/
+    /*margin: 2px;*/
+/*}*/
+/*.auswahl{*/
+    /*width: 35px;*/
+    /*padding: 3px;*/
+/*}*/

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import EditProfileView from "./EditProfileView";
-
-
+import '../App.css';
 /**
  * @author Daniela
  * This file holds the foldlogic of the editable Profile Data Table. It sends Data to the Microservice, if it was changed. It also manages, which cells are editable, based on the user role.

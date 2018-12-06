@@ -1,5 +1,5 @@
 #Login {
-background-color: #f19a29;
+    background-color: #f19a29;
 }
 
 img {
@@ -8,6 +8,7 @@ img {
 }
 
 .loginForm {
+    margin-top: 5%;
     background-color: #f19a29;
     display: flex;
     flex-direction: column;
@@ -37,4 +38,8 @@ img {
 .i4 {
     margin-top: 2.5%;
 
+}
+
+Footer{
+    background-color: #f19a29;
 }

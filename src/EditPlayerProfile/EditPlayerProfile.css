@@ -25,7 +25,7 @@ header Label {
 header {
     margin-bottom: 7.5%;
 }
- /** Every second row, the head and editable data is displayed in a different color. **/
+/** Every second row, the head and editable data is displayed in a different color. **/
 tr:nth-child(even) td {
     background-color: #ffd533;
 }
