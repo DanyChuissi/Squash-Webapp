@@ -1,13 +1,23 @@
 
+*{
+    background-color: whitesmoke;
+}
+main *{
+    background-color: #f19a29;
+}
 #container1 {
+    margin-top: 10%;
     background-color: #f19a29;
     display: flex;
     flex-direction: column;
-    width: auto;
+    width:calc(100vh - 250px);
     margin-left: 30%;
     margin-right: 30%;
     padding: 5%;
     align-items: center;
+    border-style: solid;
+    border-color: black;
+
 }
 
 #container1 Label {
@@ -15,45 +25,57 @@
 }
 
 #subcontainer1 {
+    width: 100%;
     display: grid;
+
     grid-template-areas: "area1 area2" "area3 area4";
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50% ;
 }
 
 #roleLabel {
     grid-area: area1;
-    text-align: match-parent;
+
 }
 
 #role {
     grid-area: area2;
+    margin-bottom: 10%;
+    width: 100%;
 }
 
 
 #eMailLabel, #roleLabel{
+    text-align: center;
     position: relative;
-    height: 100%;
-    width: 60%;
 }
 
 #eMailLabel label {
     position: absolute;
     bottom: 0px;
+}
+
+#eMailLabel{
+    grid-area: 3;
 
 }
 
 #eMail {
     grid-area: area4;
+    width: 100%;
+    height: 40px;
 }
 
 Dropdown {
     background-color: #fff3a6;
     width: 100% !important;
+    align-self: end;
     height: 40px !important;
+    border-radius: 20px;
 }
 
-Input {
+input {
+    margin-right: 20%;
     width: 100%;
     height: 30px;
 }

@@ -19,24 +19,29 @@ class InviteUserView extends Component {
         ]
         const defaultOption = options[0]
         return (
-            <div id={"container1"}>
-                <h1>Nutzer einladen</h1>
-                <div id={"subcontainer1"}>
-                    <div id="roleLabel">
-                        <label >Rolle:</label>
+            <main>
+                <div id={"container1"}>
+                    <h1>Nutzer einladen</h1>
+                    <div id={"subcontainer1"}>
+                        <div id="roleLabel">
+                            <label>Rolle:</label>
+                        </div>
+
+                        <div  id={"role"}>
+                            <Dropdown options={options} onChange={this._onSelect} value={defaultOption}
+                                      placeholder="Select an option"/></div>
+
+
+                        <div id="eMailLabel"><label>Email:</label></div>
+
+                        <input id={"eMail"} placeholder={"Email eingeben"}/>
                     </div>
 
 
-                    <Dropdown id={"role"} options={options} onChange={this._onSelect} value={defaultOption}
-                              placeholder="Select an option"/>
-
-                   <div id="eMailLabel"><label >Email:</label></div>
-                    <Input id={"eMail"} placeholder={"Email eingeben"}/>
+                    <Confirmbutton>Einladen</Confirmbutton>
                 </div>
 
-
-                <Confirmbutton>Einladen</Confirmbutton>
-            </div>
+            </main>
 
 
         );

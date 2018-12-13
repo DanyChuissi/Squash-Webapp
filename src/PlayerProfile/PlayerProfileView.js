@@ -6,9 +6,11 @@ import Checkbox from "../UI/Checkbox";
 import "./PlayerProfile.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/Logo_quadratisch.png";
-import Footer from "../UI/Footer";
 import Input from "../UI/Input";
 import EditProfileView from "../EditPlayerProfile/EditProfileView";
+import KalendarView from "../Trainingdiary/KalendarView";
+import Tabs from "react-bootstrap/es/Tabs";
+import Tab from "react-bootstrap/es/Tab";
 
 class PlayerProfileView extends Component {
 
@@ -45,27 +47,32 @@ class PlayerProfileView extends Component {
             landlaneNumber,
             agegroup,
             nationalAssosiation,
+            active,
+            nationalAssosiationhidden,
+            nationalAssosiationdropdownhidden,
 
             onDelete,
             onEdit,
             onCompare,
 
-      
-        } = this.props;
 
-        function openTab(event, ldg) {
-            return undefined;
-        }
+        } = this.props;
 
         return (
 
             <Fragment>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                      crossOrigin="anonymous"/>
+
                 <main>
                     <div id="left">
                         <div id="leftTop">
                             <div id="leftTopLeft">
                                 <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
-                                <div id={"checkbox"}>Aktiv: <Checkbox/></div>
+                                <div id={"checkbox"}>
+                                    Aktiv: <Checkbox defaultChecked={active} onChanged={setStatus}/>
+                                </div>
                             </div>
                             <div id={"leftTopCenter"}>
                                 <Confirmbutton id="edit" onClick={onEdit}>Bearbeiten</Confirmbutton>
@@ -92,59 +99,57 @@ class PlayerProfileView extends Component {
                                              setLandlaneNumber={setLandlaneNumber}
                                              setMobileNumber={setMobileNumber}
                                              setNationalAssosiation={setNationalAssosiation}
-                                         />
+
+                                             name={name}
+                                             surname={surname}
+                                             mail={mail}
+                                             birthdate={birthdate}
+                                             city={city}
+                                             zip={zip}
+                                             street={street}
+                                             houseNbr={houseNbr}
+                                             squad={squad}
+                                             sPin={sPin}
+                                             status={status}
+                                             mobileNumber={mobileNumber}
+                                             landlaneNumber={landlaneNumber}
+                                             agegroup={agegroup}
+                                             nationalAssosiation={nationalAssosiation}
+                                             nationalAssosiationhidden={nationalAssosiationhidden}
+                                             nationalAssosiationdropdownhidden={nationalAssosiationdropdownhidden}
+                            />
                         </div>
                     </div>
                     <div id="right">
-                        <div className="tab">
-                            <button className="tablinks" onClick={openTab(event, 'ldg')}>Leistungsdiagnostik</button>
-                            <button className="tablinks" onClick={openTab(event, 'curve')}>Kurve</button>
-                            <button className="tablinks" onClick={openTab(event, 'diary')}>Trainingstagebuch</button>
-                            <button className="tablinks" onClick={openTab(event, 'tplan')}>Trainingsplan</button>
-                            <button className="tablinks" onClick={openTab(event, 'jtp')}>JTP</button>
-                            <button className="tablinks" onClick={openTab(event, 'maz')}>MAZ</button>
-                            <button className="tablinks" onClick={openTab(event, 'weekpl')}>Wochenplan</button>
-                            <button className="tablinks" onClick={openTab(event, 'competition')}>Wettkampfplan</button>
-                        </div>
-
-                        <div id="ldg" className="tabcontent">
-                            <h3>Leistungsdiagnostik</h3>
-
-                        </div>
-
-                        <div id="curve" className="tabcontent">
-                            <h3>Kurve</h3>
-                        </div>
-
-                        <div id="diary" className="tabcontent">
-                            <h3>Trainingstagebuch</h3>
-                        </div>
-                        <div id="tplan" className="tabcontent">
-                            <h3>Trainingsplan</h3>
-
-                        </div>
-
-                        <div id="jtp" className="tabcontent">
-                            <h3>JTP</h3>
-                        </div>
-
-                        <div id="maz" className="tabcontent">
-                            <h3>MAZ</h3>
-                        </div>
-
-                        <div id="weekpl" className="tabcontent">
-                            <h3>Wochenplan</h3>
-                        </div>
-
-                        <div id="competition" className="tabcontent">
-                            <h3>Wettkampfplan</h3>
-                        </div>
-
+                        <Tabs defaultActiveKey={1} id="tabs">
+                            <Tab eventKey={1} title="Leistungsdiagnostik">
+                                Leistungsdiagnostik
+                            </Tab>
+                            <Tab eventKey={2} title="Kurve">
+                                Kurve
+                            </Tab>
+                            <Tab eventKey={3} title="Trainingstagebuch">
+                                <KalendarView/>
+                            </Tab>
+                            <Tab eventKey={4} title="JTP">
+                                JTP
+                            </Tab>
+                            <Tab eventKey={5} title="Trainingsplan">
+                                Trainingsplan
+                            </Tab>
+                            <Tab eventKey={6} title="MAZ">
+                                MAZ
+                            </Tab>
+                            <Tab eventKey={7} title="Wochenplan">
+                                Wochenplan
+                            </Tab>
+                            <Tab eventKey={8} title="Wettkampfplan">
+                                Wettkampfplan
+                            </Tab>
+                        </Tabs>;
                     </div>
                 </main>
-                <footer>
-                    <Footer/>
-                </footer>
+
             </Fragment>
 
 

@@ -1,0 +1,77 @@
+/**EditRights**/
+.EditRights {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+@media screen and (max-width: 480px) {
+    .EditRights {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #roleList {
+
+        width: auto;
+        font-size: small;
+    }
+}
+
+#rights {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5%;
+
+}
+
+#specificRights {
+    padding: 1%;
+    min-width: 400px;
+    width: auto;
+    margin-bottom: 2.5%;
+}
+#groupRights{
+    padding: 1%;
+    min-width: 400px;
+    width: 100%;
+    margin-bottom: 2.5%;
+}
+
+#roleList {
+    margin: 2.5%;
+    width: 50%;
+}
+
+/** CoachList**/
+#CoachListTop {
+    height: 80px;
+    width: 100%;
+    background-color: #f19a29;
+}
+
+#CoachListBottom {
+    height: 80px;
+    width: 100%;
+    background-color: #f19a29;
+}
+
+/** SpecificRights & GroupRightsTable**/
+
+#specificRightsTable, #groupRightsTable {
+    border-collapse: collapse;
+    border: 2px solid #282c34;
+    width: 100%;
+}
+
+#specificRightsTable td, #specificRightsTable th, #groupRightsTable td, #groupRightsTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#specificRightsTable th, #groupRightsTable th  {
+    background-color: rgba(12, 12, 12, 0.37);
+}
+
+#specificRightsTable tr:nth-child(even), #groupRightsTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}

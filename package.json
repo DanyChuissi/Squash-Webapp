@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "latest",
     "bootstrap": "^3.3.7",
+    "globalize": "^1.4.0",
+    "moment": "^2.22.2",
     "react": "^16.6.3",
+    "react-big-calendar": "^0.20.2",
+    "react-bootstrap": "^0.32.4",
     "react-css-grid": "^2.0.0-0",
     "react-data-grid": "^4.0.9",
     "react-dom": "^16.6.3",

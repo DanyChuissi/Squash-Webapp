@@ -63,15 +63,13 @@ Input:focus, .confirmButton:focus {
  * Rules for Standard Footer
  */
 .footer{
-    position: absolute;
     bottom: 5px;
     left: 48%;
     font-size: small;
     flex-direction: row;
-
-    padding: 2em;
     text-align: center;
     text-decoration: none;
+    background-color: whitesmoke;
 }
 
 .footer a{

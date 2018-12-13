@@ -7,10 +7,10 @@ import './UIStylesheet.css'
  */
 class Checkbox extends React.Component {
     render() {
-        const { onChange, classname } = this.props
+        const { onChange, classname, active} = this.props
 
         return (
-            <input type="checkbox" className="checkbox" value="Bike" onChange={onChange}/>
+            <input type="checkbox" className="checkbox" value="Bike" defaultChecked={active} onChange={onChange}/>
 
         )
     }
