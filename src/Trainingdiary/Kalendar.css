@@ -2,3 +2,11 @@
     height: calc(100vh - 100px);
     width: calc(100vh + 400px);
 }
+
+@media screen and (max-width: 480px) {
+    #cal {
+        height: calc(100vh - 100px);
+        width: calc(100vh - 130px);
+    }
+
+}

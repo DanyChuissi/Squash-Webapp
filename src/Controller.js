@@ -20,6 +20,10 @@ class Controller extends Component {
 
     state = {
         person: [],
+        nationalAssosiationdropdownhidden: true,
+        nationalAssosiationhidden: false,
+        edithidden: false,
+        savehidden: true,
     }
 
     componentDidMount() {
@@ -93,12 +97,14 @@ class Controller extends Component {
     confirmChanges = () => {
         this.postData();
     }
-    nationalAssosiationdropdownhidden: boolean;
-    nationalAssosiationhidden: boolean;
 
     onEdit = () => {
-        this.nationalAssosiationhidden = true;
-        this.nationalAssosiationdropdownhidden = false;
+        this.setState({
+            nationalAssosiationhidden: true,
+            nationalAssosiationdropdownhidden: false,
+            savehidden: false,
+            edithidden: true
+        })
         var editable_elements = document.querySelectorAll("[contentEditable=false]");
         editable_elements[0].setAttribute("contentEditable", true);
         editable_elements[1].setAttribute("contentEditable", true);
@@ -113,9 +119,7 @@ class Controller extends Component {
         editable_elements[10].setAttribute("contentEditable", true);
         editable_elements[11].setAttribute("contentEditable", true);
         editable_elements[12].setAttribute("contentEditable", true);
-
     }
-
     onDelete = () => {
         //TODO Benutzer löschen
     }
@@ -123,11 +127,33 @@ class Controller extends Component {
     onCompare = () => {
         //TODO Athleten löschen
     }
+    onSave = () => {
+        this.setState({
+            nationalAssosiationhidden: false,
+            nationalAssosiationdropdownhidden: true,
+            savehidden: true,
+            edithidden: false
+        })
+        axios.put("http://localhost:8080/player?email="+this.state.person.email,this.state.person)
+        var editable_elements = document.querySelectorAll("[contentEditable=true]");
+        editable_elements[0].setAttribute("contentEditable", false);
+        editable_elements[1].setAttribute("contentEditable", false);
+        editable_elements[2].setAttribute("contentEditable", false);
+        editable_elements[3].setAttribute("contentEditable", false);
+        editable_elements[4].setAttribute("contentEditable", false);
+        editable_elements[5].setAttribute("contentEditable", false);
+        editable_elements[6].setAttribute("contentEditable", false);
+        editable_elements[7].setAttribute("contentEditable", false);
+        editable_elements[8].setAttribute("contentEditable", false);
+        editable_elements[9].setAttribute("contentEditable", false);
+        editable_elements[10].setAttribute("contentEditable", false);
+        editable_elements[11].setAttribute("contentEditable", false);
+        editable_elements[12].setAttribute("contentEditable", false);
 
-
+    }
 
     render() {
-        this.nationalAssosiationdropdownhidden= true;
+
         return (
             <PlayerProfileView
                 setName={this.setName}
@@ -147,7 +173,7 @@ class Controller extends Component {
                 onDelete={this.onDelete}
                 onEdit={this.onEdit}
                 onCompare={this.onCompare}
-
+                onSave={this.onSave}
                 name={this.state.person.name}
                 surname={this.state.person.surname}
                 mail={this.state.person.email}
@@ -163,9 +189,13 @@ class Controller extends Component {
                 landlaneNumber={this.state.person.landlinenumber}
                 agegroup={this.state.person.agegroup}
                 nationalAssosiation={this.state.person.regonid}
-                active ={this.state.person.active}
-                nationalAssosiationhidden={this.nationalAssosiationhidden}
-                nationalAssosiationdropdownhidden={this.nationalAssosiationdropdownhidden}
+                active={this.state.person.active}
+
+                nationalAssosiationhidden={this.state.nationalAssosiationhidden}
+                nationalAssosiationdropdownhidden={this.state.nationalAssosiationdropdownhidden}
+                edithidden={this.state.edithidden}
+                savehidden={this.state.savehidden}
+
             />
         );
     }

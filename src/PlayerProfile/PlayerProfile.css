@@ -133,7 +133,8 @@ Tab {
 
 @media screen and (max-width: 480px) {
     #right {
-        height: 600px;
+        height: calc(100vh + 20px);
+
     }
 
     #profileDataTitle {
@@ -142,6 +143,11 @@ Tab {
 
     #leftBottom {
         align-items: center;
+    }
+
+    #tabs{
+        width: 650px;
+        height: calc(100vh - 0px);
     }
 
 }

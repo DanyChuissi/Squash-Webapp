@@ -6,12 +6,13 @@ import React from 'react'
  */
 class Confirmbutton extends React.Component {
     render() {
-        const { onClick, myWidth} = this.props
+        const { onClick, myWidth, hidden} = this.props
         return (
             <button style={{width: 'myWith'}}
                 className="confirmButton"
                 type="button"
                 onClick={onClick}
+                    hidden={hidden}
             >
                 {this.props.children}
             </button>

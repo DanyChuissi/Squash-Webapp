@@ -51,8 +51,11 @@ class PlayerProfileView extends Component {
             nationalAssosiationhidden,
             nationalAssosiationdropdownhidden,
 
+            edithidden,
+            savehidden,
             onDelete,
             onEdit,
+            onSave,
             onCompare,
 
 
@@ -75,7 +78,10 @@ class PlayerProfileView extends Component {
                                 </div>
                             </div>
                             <div id={"leftTopCenter"}>
-                                <Confirmbutton id="edit" onClick={onEdit}>Bearbeiten</Confirmbutton>
+                                <div>
+                                    <Confirmbutton id="edit" onClick={onEdit} hidden={edithidden}>Bearbeiten</Confirmbutton>
+                                    <Confirmbutton id={"save"} onClick={onSave} hidden={savehidden}>Speichern</Confirmbutton>
+                                </div>
                                 <Confirmbutton id={"delete"} onClick={onDelete}>Löschen</Confirmbutton>
                             </div>
                             <div id="leftTopRight">

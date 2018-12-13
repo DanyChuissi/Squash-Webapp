@@ -10,7 +10,7 @@ import './EditPlayerProfile.css';
  */
 class EditProfileView extends Component {
     state = {
-        nationalAssosiationdropdownhidden: true,
+showComponent:false,
     }
     nationalAssosiationLong: string;
 
@@ -48,6 +48,7 @@ class EditProfileView extends Component {
             agegroup,
             nationalAssosiation,
 
+            nationalAssosiationdropdownhidden,
             nationalAssosiationhidden,
 
             onCancel,
@@ -172,10 +173,10 @@ class EditProfileView extends Component {
                         <tr>
                             <th>Landesverband:</th>
                             <td>
-                                this.state.nationalAssosiationdropdownhidden ?
+
                                 <select name="nationalAssosiation" onChange={setNationalAssosiation}
                                         value={nationalAssosiation} contentEditable={false}
-                                        hidden={this.state.nationalAssosiationdropdownhidden}>
+                                        hidden={nationalAssosiationdropdownhidden}>
                                     <option value="saar"> Saar Squash Racket Verband (Abkürzung Saarland)</option>
                                     <option value="bayern"> Squash in Bayern</option>
                                     <option value="badenW"> Squash Rackets Landesverband Baden-Württemberg e.V.</option>
@@ -189,8 +190,8 @@ class EditProfileView extends Component {
                                     <option value="sachsen"> Squash Landesverband Sachsen</option>
                                     <option value="schleswigHolst"> Squash Landesverband Schleswig-Holstein</option>
                                 </select>
-                                :
-                                <div>{this.nationalAssosiationLong}</div></td>
+
+                                <div hidden={nationalAssosiationhidden}>{this.nationalAssosiationLong}</div></td>
                         </tr>
                         </tbody>
                     </table>
