@@ -32,6 +32,7 @@ main {
 
 }
 
+
 #leftTopLeft {
     font-size: 14pt;
 }
@@ -39,6 +40,20 @@ main {
 #leftTopCenter {
     padding: 2%;
     margin: 2%;
+}
+
+.box1  {
+    border: 2px solid black;
+    background-color: #f19a29;
+    margin:1px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 5px;
+
 }
 
 #leftTopRight {
@@ -64,6 +79,9 @@ main {
     border: 2px solid black;
     background-color: #f19a29;
     margin-bottom: 2%;
+    margin-top: 10px;
+    margin-right: 20px;
+    color: white;
 }
 
 #profileDataTitle {

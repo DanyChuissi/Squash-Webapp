@@ -1,6 +1,8 @@
 import React from 'react'
 import HeaderProfilView from "./HeaderProfilView";
 import NotificationsView from "../Notifications/NotificationsView";
+import LoginView from "../Login/LoginView";
+import PlayerListView from "../PlayerList/PlayerListView";
 
 /**
  * @author Dany
@@ -15,7 +17,8 @@ export function onLogoCenter() {
 export const onLogoMenuClick = () => {
     alert("On MenuLogomenu gecklick ");
     return(
-        <div> <NotificationsView/></div>
+
+        <div>{this.state.Children.setStaten()}</div>
     );
 }
 
@@ -30,12 +33,16 @@ export const onLogoCenterClick = () => {
 }
 class HeaderProfilController extends React.Component{
 
-    state ={
-        email:'',
+    constructor(){
+        super();
+        this.state = {
+            email: ''}
     }
-    setEmail = (e) => {
+
+    setEmail =(e)=>{
         this.setState({email: e.target.value})
     }
+
     render(){
         return(
             <HeaderProfilView   className = "View"
@@ -43,8 +50,8 @@ class HeaderProfilController extends React.Component{
                                 setEmail = {this.setEmail()}
                                 onLogoCenterClick={onLogoCenterClick}
                                 onLogoMenuClick = {onLogoMenuClick()}
-                                onLogoCenter ={this.onLogoCenter()}
                                 myFunction={myFunction()}
+
             />
         );
     }

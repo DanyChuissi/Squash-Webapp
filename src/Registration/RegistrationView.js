@@ -14,6 +14,7 @@ import Label from "../UI/Label";
  */
 
 class RegistrationView extends React.Component{
+
     render () {
         const  {
             email,
@@ -28,9 +29,9 @@ class RegistrationView extends React.Component{
             setPassword_control,
             setNutzungbedingungen_lesen,
             submitData,
+
             setNutzungbedingungen_akzeptiert,
         }=this.props;
-
         return (
             <React.Fragment>
                 <div className="headerR">
@@ -50,7 +51,13 @@ class RegistrationView extends React.Component{
                             <Label>*Password Wiederholen: </Label>
                             <Input placeholder={"Password Wiederholen"} value={password_2} onChange={setPassword_2}/>
                      </div>
+
                     <div style={{paddingBottom: '10px'}}>
+                        <input className="input_chekbox"
+                            name="nutzung_akzeptiert"
+                            type="checkbox"
+                            checked={nutzungbedingungen_akzeptiert}
+                            onChange={setNutzungbedingungen_akzeptiert} />
                         Ich habe die
                         <a  style={{textDecoration: 'none'}} href= {"Datenschutz"} rel = "noopener noreferrer"  target="_blank" > Nutzungbedingungen </a>
                         gelesen und akzeptiere sie,

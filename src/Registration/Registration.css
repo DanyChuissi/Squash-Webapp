@@ -1,8 +1,4 @@
-#root {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-}
+
 .headerR{
     background-color: #f19a29;
     padding: 10px;
@@ -27,11 +23,6 @@
     text-align: center;
     font-size: 36px;
     padding-top: 20px;
-}
-.footerR {
-    background-color: #f19a29;
-    padding: 1em;
-    text-align: center;
 }
 .boxRR {
     display: flex;
