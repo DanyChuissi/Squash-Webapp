@@ -1,0 +1,60 @@
+
+.detail_main {
+    display: flex;;
+    flex-direction: row;
+    margin: 15px;
+    align-content: center;
+    height: calc(100vh - 100px);
+    justify-content: space-around;
+}
+.detail_daten_column{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 2px solid black;
+    height: calc(100vh - 118px);
+
+
+}
+.detail_daten {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 118px);
+}
+.detai_daten_row1 {
+    height: 28px;
+    max-height: 28px;
+    justify-content: start;
+    align-content: start;
+    background-color: #dddddd;
+}
+.detai_daten_row2 {
+    height: 28px;
+    max-height: 28px;
+    justify-content: start;
+    background-color: #f19a29;
+
+}
+.diagramm {
+    border: 2px solid black;
+    height: calc(100vh - 118px);
+    width: calc(100vh - 118px);
+}
+.detail_grig{
+    display: grid;
+    /* Zwei Spalten mit folgenden Breiten definieren:
+    Erste Spalte: 100px, Zweite Spalte: Automatische Breite */
+    grid-template-columns: 100px auto;
+    /* Drei Zeilen mit folgenden Höhen definieren:
+    Erste Zeile: Automatische Höhe, Zweite Zeile: 50%,
+    Dritte Zeile: 30px */
+    grid-template-rows: auto 50% 30px;
+    background-color: darkorange;
+    padding: 10px;
+    margin: 5px;
+    height: 200px;
+}
+.detail_grig> div {
+    border: 2px solid;
+    background-color: orange;
+}
