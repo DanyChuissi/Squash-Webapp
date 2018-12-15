@@ -4,13 +4,25 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import '../App.css';
 import moment from "moment";
 import 'moment/locale/de';
-import './Kalendar.css'
+import './Kalendar.css';
+import {BrowserRouter, Route, Switch,Link} from 'react-router-dom'
+import DetailsAnsichtView from "../Trainingstagebuch/DetailsAnsichtView";
+import Popup from "reactjs-popup";
+
 
 class KalendarView extends Component {
 
-    state = {culture: 'de'}
+    state = {culture: 'de',
+        trigger:false,
+    }
+
+    displayEvent = (evnt, SyntheticEvent) => {
+        this.setState({trigger: true})
+    }
 
     render() {
+
+
         const myEventsList = [
             {
                 id: 0,
@@ -137,9 +149,33 @@ class KalendarView extends Component {
         return (
             <div className="App">
 
+                <Popup open={this.state.trigger} position="right center">
+                    <div><DetailsAnsichtView datum={"12-02-2018"}
+                                             schwerpunkt={"Technik(Ausdauer)"}
+                                             dauer={"120"}
+                                             intensitaet={"4"}
+                                             uebungen={"A B C D"}
+                                             mentale_Ersch={"4"}
+                                             bemerkung={"Alles gut"}
+                                             koerperliche_Ersch={"5"}
+                                             muskelkarter={"2"}
+                                             puls={"rechts als Diagramm"}
+                                             aenderungswuensche={"keine"}
+                                             schlafdauer={"7 Stunden"}
+                                             gewicht={"70"}
+                                             maximale_herzf={"180"}
+                                             minimale_herzf={"70"}
+                                             durschnittliche_herzf={"100"}
+                                             wegstrecke={"(Ausdauer-Outdoor"}
+                                             geschwindigkeit={"Ausdauer-Outdoor"}
+                                             geaendert_am={"geändert am 26.11.2018"}/></div>
+                </Popup>
                 <div id={"cal"}>
                     <BigCalendar messages={messages}
                                  localizer={localizer}
+                                 selectable={true}
+                                 popup={true}
+                                 onSelectEvent={this.displayEvent}
                                  events={myEventsList}
                                  startAccessor="start"
                                  endAccessor="end"

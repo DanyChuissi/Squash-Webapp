@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import '../App.css';
 import PlayerListView from "./PlayerListView";
 import axios from 'axios';
-import $ from 'jquery';
+// import $ from 'jquery';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 /**
@@ -39,7 +39,7 @@ class PlayerListController extends Component {
         this.setState({trainer: e.target.value})
         this.getList();
     }
-    searchPlayer() {
+   /** searchPlayer() {
      if(this.state.suchen) {
          fetch("http://172.22.24.243:8080/player/name=name=" + this.state.suchBegriff)
              .then(res => res.json())
@@ -121,7 +121,7 @@ class PlayerListController extends Component {
                 console.log('It was in this table instance:', instance)
             }
         }
-    }
+    }*/
 
     // createRows = () => {
     //     let rows = [];

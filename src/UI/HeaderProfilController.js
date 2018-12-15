@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderProfilView from "./HeaderProfilView";
-import NotificationsView from "../Notifications/NotificationsView";
+//import NotificationsView from "../Notifications/NotificationsView";
 import LoginView from "../Login/LoginView";
 import PlayerListView from "../PlayerList/PlayerListView";
 
@@ -11,7 +11,8 @@ import PlayerListView from "../PlayerList/PlayerListView";
  */
 export function onLogoCenter() {
         return (
-            <NotificationsView/>
+            0
+            //<NotificationsView/>
         );
 }
 export const onLogoMenuClick = () => {

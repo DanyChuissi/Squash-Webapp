@@ -70,95 +70,98 @@ class DetailsAnsichtView extends React.Component {
             ]
         };
         return (
-            <div>
-                <div className="nav">
-                    Trainingstagesbuch (Detail Ansicht)
-                </div>
-                <div className="detail_main">
-                    <div className="detail_daten">
-                    <ResponsiveContainer>
-                        <div className="detail_daten_column">
-                            <div className="detai_daten_row1"><a>Datum</a></div>
-                            <div className="detai_daten_row2"><a>Schwerpunkt</a></div>
-                            <div className="detai_daten_row1"><a>Dauer[Minuten]</a></div>
-                            <div className="detai_daten_row2"><a>Intensität/Unfang[1-5]</a></div>
-                            <div className="detai_daten_row1"><a>Übungen</a></div>
-                            <div className="detai_daten_row2"><a>Mentale Erschöpfung</a></div>
-                            <div className="detai_daten_row1"><a>Bemerkung</a></div>
-                            <div className="detai_daten_row2"><a>Körperliche Erschöpfung[1-5]</a></div>
-                            <div className="detai_daten_row1"><a>Muskelkarter[1-5]</a></div>
-                            <div className="detai_daten_row2"><a>Puls</a></div>
-                            <div className="detai_daten_row1"><a>Änderungswünsche</a></div>
-                            <div className="detai_daten_row2"><a>Schlafdauer</a></div>
-                            <div className="detai_daten_row1"><a>Gewicht</a></div>
-                            <div className="detai_daten_row2"><a>Maximale Herzfrequenz</a></div>
-                            <div className="detai_daten_row1"><a>Minimale Herzfrequenz</a></div>
-                            <div className="detai_daten_row2"><a>Durschnittliche Herzfrequenz</a></div>
-                            <div className="detai_daten_row1"><a>Wegstrecke</a></div>
-                            <div className="detai_daten_row2"><a>Geschwindigkeit</a></div>
-                        </div>
-                    </ResponsiveContainer>
-                        <ResponsiveContainer>
-                        <div className="detail_daten_column">
-                            <div className="detai_daten_row1">{datum}</div>
-                            <div className="detai_daten_row2">{schwerpunkt}</div>
-                            <div className="detai_daten_row1">{dauer}</div>
-                            <div className="detai_daten_row2">{intensitaet}</div>
-                            <div className="detai_daten_row1">{uebungen}</div>
-                            <div className="detai_daten_row2">{mentale_Ersch}</div>
-                            <div className="detai_daten_row1">{bemerkung}</div>
-                            <div className="detai_daten_row2">{koerperliche_Ersch}</div>
-                            <div className="detai_daten_row1">{muskelkarter}</div>
-                            <div className="detai_daten_row2">{puls}</div>
-                            <div className="detai_daten_row1">{aenderungswuensche}</div>
-                            <div className="detai_daten_row2">{schlafdauer}</div>
-                            <div className="detai_daten_row1">{gewicht}</div>
-                            <div className="detai_daten_row2">{maximale_herzf}</div>
-                            <div className="detai_daten_row1">{minimale_herzf}</div>
-                            <div className="detai_daten_row2">{durschnittliche_herzf}</div>
-                            <div className="detai_daten_row1">{wegstrecke}</div>
-                            <div className="detai_daten_row2">{geschwindigkeit}</div>
-                        </div>
-                        </ResponsiveContainer>
-                    <ResponsiveContainer>
-                        <div className="detail_daten_column">
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{geaendert_am}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                            <div className="detai_daten_row1">{}</div>
-                            <div className="detai_daten_row2">{}</div>
-                        </div>
-                    </ResponsiveContainer>
+
+                <div >
+                    <div className="nav">
+                        Trainingstagesbuch (Detail Ansicht)
                     </div>
-                    <div className="diagramm">
-                        <ResponsiveContainer>
-                            <LineChart width={500} height={500} data={data}
-                                       margin={{top: 5, right: 5, left: 5, bottom: 5}}>
-                                <XAxis dataKey="name"/>
-                                <YAxis/>
-                                <CartesianGrid strokeDasharray="3 3"/>
-                                <Tooltip/>
-                                <Legend/>
-                                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-                                <Line type="monotone" dataKey="uv" stroke="#82ca9d"/>
-                            </LineChart>
-                        </ResponsiveContainer>
+                    <div className="detail_main">
+                        <div className="detail_daten">
+                            <ResponsiveContainer>
+                                <div className="detail_daten_column">
+                                    <div className="detai_daten_row1"><a>Datum</a></div>
+                                    <div className="detai_daten_row2"><a>Schwerpunkt</a></div>
+                                    <div className="detai_daten_row1"><a>Dauer[Minuten]</a></div>
+                                    <div className="detai_daten_row2"><a>Intensität/Unfang[1-5]</a></div>
+                                    <div className="detai_daten_row1"><a>Übungen</a></div>
+                                    <div className="detai_daten_row2"><a>Mentale Erschöpfung</a></div>
+                                    <div className="detai_daten_row1"><a>Bemerkung</a></div>
+                                    <div className="detai_daten_row2"><a>Körperliche Erschöpfung[1-5]</a></div>
+                                    <div className="detai_daten_row1"><a>Muskelkarter[1-5]</a></div>
+                                    <div className="detai_daten_row2"><a>Puls</a></div>
+                                    <div className="detai_daten_row1"><a>Änderungswünsche</a></div>
+                                    <div className="detai_daten_row2"><a>Schlafdauer</a></div>
+                                    <div className="detai_daten_row1"><a>Gewicht</a></div>
+                                    <div className="detai_daten_row2"><a>Maximale Herzfrequenz</a></div>
+                                    <div className="detai_daten_row1"><a>Minimale Herzfrequenz</a></div>
+                                    <div className="detai_daten_row2"><a>Durschnittliche Herzfrequenz</a></div>
+                                    <div className="detai_daten_row1"><a>Wegstrecke</a></div>
+                                    <div className="detai_daten_row2"><a>Geschwindigkeit</a></div>
+                                </div>
+                            </ResponsiveContainer>
+                            <ResponsiveContainer>
+                                <div className="detail_daten_column">
+                                    <div className="detai_daten_row1">{datum}</div>
+                                    <div className="detai_daten_row2">{schwerpunkt}</div>
+                                    <div className="detai_daten_row1">{dauer}</div>
+                                    <div className="detai_daten_row2">{intensitaet}</div>
+                                    <div className="detai_daten_row1">{uebungen}</div>
+                                    <div className="detai_daten_row2">{mentale_Ersch}</div>
+                                    <div className="detai_daten_row1">{bemerkung}</div>
+                                    <div className="detai_daten_row2">{koerperliche_Ersch}</div>
+                                    <div className="detai_daten_row1">{muskelkarter}</div>
+                                    <div className="detai_daten_row2">{puls}</div>
+                                    <div className="detai_daten_row1">{aenderungswuensche}</div>
+                                    <div className="detai_daten_row2">{schlafdauer}</div>
+                                    <div className="detai_daten_row1">{gewicht}</div>
+                                    <div className="detai_daten_row2">{maximale_herzf}</div>
+                                    <div className="detai_daten_row1">{minimale_herzf}</div>
+                                    <div className="detai_daten_row2">{durschnittliche_herzf}</div>
+                                    <div className="detai_daten_row1">{wegstrecke}</div>
+                                    <div className="detai_daten_row2">{geschwindigkeit}</div>
+                                </div>
+                            </ResponsiveContainer>
+                            <ResponsiveContainer>
+                                <div className="detail_daten_column">
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{geaendert_am}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                    <div className="detai_daten_row1">{}</div>
+                                    <div className="detai_daten_row2">{}</div>
+                                </div>
+                            </ResponsiveContainer>
+                        </div>
+                        <div className="diagramm">
+                            <ResponsiveContainer>
+                                <LineChart width={500} height={500} data={data}
+                                           margin={{top: 5, right: 5, left: 5, bottom: 5}}>
+                                    <XAxis dataKey="name"/>
+                                    <YAxis/>
+                                    <CartesianGrid strokeDasharray="3 3"/>
+                                    <Tooltip/>
+                                    <Legend/>
+                                    <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                                    <Line type="monotone" dataKey="uv" stroke="#82ca9d"/>
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+
         );
 
     }

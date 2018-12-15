@@ -11,25 +11,12 @@ import ResetLoginDataView from "../ResetLoginData/ResetLoginDataView";
 class LoginController extends Component {
 
     state = {
-        name: '',
-        password: '',
         showComponent: false,
     }
 
-
-    setName = (e) => {
-        this.setState({name: e.target.value})
-    }
-
-    setPassword = (e) => {
-        this.setState({password: e.target.value})
-    }
-
-    submitLogin = () => {
+    changePassword = () => {
 
         this.setState({showComponent: true});
-
-        alert("Benutzer eingeloggt " + this.state.name);
 
     }
 
@@ -37,26 +24,25 @@ class LoginController extends Component {
         this.setState({showComponent: true});
     }
 
-    //TODO Post Data Methode für Microservice schreiben
-    postData = () => {
-
-    }
-
-    getData = () => {
-
-    }
-
     render() {
+        const{
+            submitLogin,
+            email,
+            password,
+            setName,
+            setPassword,
+        }=this.props
         return (
             this.state.showComponent ?
                 <ResetLoginDataView/>
                 :
                 <LoginView className="View"
-                           setName={this.setName}
-                           setPassword={this.setPassword}
-                           name={this.state.name}
-                           password={this.state.password}
-                           changePW={this.submitLogin}
+                          setName={setName}
+                           setPasswort={setPassword}
+                           name={email}
+                           passwort={password}
+                           changePW={this.changePassword}
+                           submitLogin={submitLogin}
                 />
 
 

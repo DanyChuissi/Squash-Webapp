@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import '../App.css';
 import Label from "../UI/Label";
 import './EditPlayerProfile.css';
-
 /**
  * @author Daniela
  * This is a table, which holds the Data of an athlet. If a authorized Person clicks on the edit Button, this View displays. Most of the cells are editable. The cell for the Birthdate is an date Input. The cell for the national Assosiation is an dropdown Input.

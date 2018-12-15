@@ -33,6 +33,7 @@ class PlayerListView extends Component{
             trainer,
             setTrainer,
             searchPlayer,
+            onRowClick,
         }=this.props
         function myFunction2 (){
             console.log("test");
@@ -120,7 +121,7 @@ class PlayerListView extends Component{
                             </div>
                         </div>
                         <div className="box2">
-                            <PlayerList trainer={1}/>
+                            <PlayerList trainer={1} players={players} onRowClick={onRowClick}/>
                         </div>
                     </div>
                 </div>

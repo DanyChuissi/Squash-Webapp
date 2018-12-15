@@ -76,7 +76,7 @@ class PlayerList extends Component {
             )
     }
     render(){
-        const {trainer,name} = this.props;
+        const {trainer,name,players,onRowClick} = this.props;
 
        // this.setState({trainer: trainer});
 
@@ -86,7 +86,7 @@ class PlayerList extends Component {
             return (
 
                 <div><ReactTable
-                    data = {this.state.players}
+                    data = {players}
                     columns={[
                         {
                             Header: "Vorname",
@@ -122,7 +122,7 @@ class PlayerList extends Component {
                         },
 
                     ]}
-                    getTdProps={this.onRowClick}
+                    getTdProps={onRowClick}
                     defaultPageSize={5}
                     style={{
                         height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room

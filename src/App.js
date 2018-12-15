@@ -9,7 +9,7 @@ import RegistrationController from './Registration/RegistrationController'
 import RegistrationView from './Registration/RegistrationView'
 import LoginController from "./Login/LoginController";
 import PlayerListController from "./PlayerList/PlayerListController";
-import NotificationsView from "./Notifications/NotificationsView";
+//import NotificationsView from "./Notifications/NotificationsView";
 import PlayerListView from "./PlayerList/PlayerListView";
 import DetailsAnsichtView from "./Trainingstagebuch/DetailsAnsichtView";
 import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
        {
-          <LoginController/>
+          <Controller/>
         }
          {/* {<ResetLoginDataView/>}*/}
        {/*<NotificationsView/>*/}

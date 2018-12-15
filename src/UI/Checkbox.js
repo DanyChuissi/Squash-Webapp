@@ -10,7 +10,7 @@ class Checkbox extends React.Component {
         const { onChange, classname, active} = this.props
 
         return (
-            <input type="checkbox" className="checkbox" value="Bike" defaultChecked={active} onChange={onChange}/>
+            <input type="checkbox" className="checkbox"  defaultChecked={active} onChange={onChange}/>
 
         )
     }

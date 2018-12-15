@@ -3,7 +3,7 @@ import './UIStylesheet.css'
 import logoMenu from  "../Graphics/Logo_Menu.png";
 import logomenuMitte from "../Graphics/Menueleiste_Logo_Name.png";
 import {myFunction2} from "./HeaderProfilController";
-import NotificationsView from "../Notifications/NotificationsView";
+//import NotificationsView from "../Notifications/NotificationsView";
 import LoginView from "../Login/LoginView";
 import PlayerListView from "../PlayerList/PlayerListView";
 
@@ -27,7 +27,7 @@ class HeaderProfilView extends React.Component {
     _renderSubComp() {
         switch (this.state.render) {
             case 'Übersicht':
-                return <NotificationsView/>
+                return <h1>gf</h1>
             case 'Logout' :
                 return <LoginView/>
             case 'Athleten':

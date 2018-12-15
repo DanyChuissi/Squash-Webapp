@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 import '../App.css';
 import EditPlayerProfileController from "../EditPlayerProfile/EditPlayerProfileController";
 import Checkbox from "../UI/Checkbox";
-import "./PlayerProfile.css";
+import "../PlayerList/PlayerList.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/Logo_quadratisch.png";
 import Input from "../UI/Input";
@@ -67,14 +67,13 @@ class PlayerProfileView extends Component {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
-
                 <main>
                     <div id="left">
                         <div id="leftTop">
                             <div id="leftTopLeft">
                                 <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
                                 <div id={"checkbox"}>
-                                    Aktiv: <Checkbox defaultChecked={active} onChanged={setStatus}/>
+                                    Aktiv: <Checkbox active={active} onChange={setStatus}/>
                                 </div>
                             </div>
                             <div id={"leftTopCenter"}>
