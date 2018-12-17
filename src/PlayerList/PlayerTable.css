@@ -90,10 +90,17 @@
     justify-content: center;
 }
 
-.box11 > div {
+/*.box11 > div {
     background-color: #f19a29;
     margin: 5px;
+}*/
+.box11 > Input {
+
+    margin: 5px;
+    padding-top: 5px;
+    height: 30px;
 }
+
 .box11 >Label {
     background-color: #f19a29;
     margin-top: 10px;

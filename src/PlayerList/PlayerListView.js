@@ -1,19 +1,14 @@
 /* eslint-disable no-restricted-globals */
 import React, {Component, Fragment} from 'react';
 import '../App.css';
-import EditPlayerProfileController from "../EditPlayerProfile/EditPlayerProfileController";
-import Checkbox from "../UI/Checkbox";
-import "./PlayerList.css";
-import logo from "../Graphics/Logo_quadratisch.png";
+import "./PlayerTable.css";
 import Input from "../UI/Input";
 import HeaderProfileView from "../UI/HeaderProfilView";
-
 import 'react-dropdown/style.css'
 import {myFunction} from '../UI/HeaderProfilController';
 import {onLogoCenterClick} from '../UI/HeaderProfilController';
 import {onLogoMenuClick} from '../UI/HeaderProfilController';
 import PlayerList from './PlayerList';
-import Confirmbutton from "../UI/Confirmbutton";
 import $ from 'jquery';
 import Label from "../UI/Label";
 /**
@@ -38,7 +33,7 @@ class PlayerListView extends Component{
         function myFunction2 (){
             console.log("test");
         }
-        function myFunction() {
+        function myFunction3() {
 
             var settings = {
                 "async": true,
@@ -115,8 +110,8 @@ class PlayerListView extends Component{
                             </div>
                             <div className="box11">
                                 <Label> Suchbegriff:</Label>
-                                <div><Input classname={""} placeholder={"Suchen"} value={suchBegriff}
-                                            onChange={setSuchBegriff}/></div>
+                               <Input classname={""} placeholder={"Suchen"} value={suchBegriff}
+                                            onChange={setSuchBegriff}/>
 
                             </div>
                         </div>

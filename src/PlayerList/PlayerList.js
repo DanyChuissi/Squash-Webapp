@@ -127,6 +127,13 @@ class PlayerList extends Component {
                     style={{
                         height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
                     }}
+                    previousText={'Zurück'}
+                    nextText={'Nächste'}
+                    loadingText={'Laden...'}
+                    noDataText={'Keine Athlete gefunden'}
+                    pageText={'Seite'}
+                    ofText={'von'}
+                    rowsText={'Zeile'}
                     className="-striped -highlight"
                 />
                 </div>

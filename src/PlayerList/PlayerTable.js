@@ -44,8 +44,8 @@ class PlayerTable extends Component{
                             </div>
                             <div className="box11">
                                 <Label className="standardLabel" style={{color: 'white'}}> Suchbegriff:</Label>
-                                <div><Input classname={""} placeholder={"Suchen"} value={suchBegriff}
-                                            onChange={setSuchBegriff}/></div>
+                                <Input classname={""} placeholder={"Suchen"} value={suchBegriff}
+                                            onChange={setSuchBegriff}/>
                             </div>
 
                         </div>
