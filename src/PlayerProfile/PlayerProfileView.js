@@ -1,9 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import React, {Component, Fragment} from 'react';
-import '../App.css';
-import EditPlayerProfileController from "../EditPlayerProfile/EditPlayerProfileController";
 import Checkbox from "../UI/Checkbox";
-import "../PlayerList/PlayerList.css";
+import "./PlayerList.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/Logo_quadratisch.png";
 import Input from "../UI/Input";
@@ -11,6 +9,8 @@ import EditProfileView from "../EditPlayerProfile/EditProfileView";
 import KalendarView from "../Trainingdiary/KalendarView";
 import Tabs from "react-bootstrap/es/Tabs";
 import Tab from "react-bootstrap/es/Tab";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
 
 class PlayerProfileView extends Component {
 
@@ -50,7 +50,8 @@ class PlayerProfileView extends Component {
             active,
             nationalAssosiationhidden,
             nationalAssosiationdropdownhidden,
-
+            email,
+            emailUser,
             edithidden,
             savehidden,
             onDelete,
@@ -67,7 +68,11 @@ class PlayerProfileView extends Component {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
-                <main>
+
+                    <HeaderProfileView email = {emailUser}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                        <HeaderProfileView/>
+                    </HeaderProfileView>
+                <main id={"mainPP"}>
                     <div id="left">
                         <div id="leftTop">
                             <div id="leftTopLeft">

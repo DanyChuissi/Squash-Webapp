@@ -5,7 +5,7 @@ import axios from 'axios';
 import LoginController from "./Login/LoginController";
 import LoginView from "./Login/LoginView";
 import PlayerListView from "./PlayerList/PlayerListView";
-import PlayerList from "./PlayerList/PlayerList";
+
 
 class Controller extends Component {
     openTab(evt, tabName) {
@@ -185,7 +185,6 @@ class Controller extends Component {
 
     submitLogin = () => {
         if (this.state.userMail === "u" && this.state.password === "3") {
-            alert("Benutzer eingeloggt ");
             this.setState({showComponent: this.state.spielerListCase})
             fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + this.state.trainer)
                 .then(res => res.json())
@@ -261,7 +260,7 @@ class Controller extends Component {
                 this.state.showComponent === this.state.spielerListCase ?
                     <PlayerListView
                         players={this.state.players}
-                        onRowClick={this.onRowClick}/>
+                        onRowClick={this.onRowClick} email={this.state.userMail}/>
                     :
                     this.state.showComponent === this.state.spielerProfilCase ?
                         <PlayerProfileView
@@ -303,6 +302,7 @@ class Controller extends Component {
                             nationalAssosiationdropdownhidden={this.state.nationalAssosiationdropdownhidden}
                             edithidden={this.state.edithidden}
                             savehidden={this.state.savehidden}
+                            emailUser={this.state.userMail}
                         />
                         :
                         <h1>lala</h1>

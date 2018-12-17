@@ -2,15 +2,16 @@
  * @author Daniela
  * This is a Stylesheet for the editable table of the profile data.
  */
-body {
+.editProfile {
     background-color: whitesmoke;
-    padding: 10px 0;
+    padding: 0px 0;
 }
 
 .editProfile {
-    width: 80%;
+    width: auto;
     max-width: 1200px;
-    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .editProfile * {

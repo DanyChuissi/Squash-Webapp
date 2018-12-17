@@ -21,7 +21,31 @@ class KalendarView extends Component {
     }
 
     render() {
-
+const Modal =()=>(
+    <Popup open={this.state.trigger} position={"top left"}>
+        <div style={{width:'1000px'}}>
+            <DetailsAnsichtView datum={"12-02-2018"}
+                                 schwerpunkt={"Technik(Ausdauer)"}
+                                 dauer={"120"}
+                                 intensitaet={"4"}
+                                 uebungen={"A B C D"}
+                                 mentale_Ersch={"4"}
+                                 bemerkung={"Alles gut"}
+                                 koerperliche_Ersch={"5"}
+                                 muskelkarter={"2"}
+                                 puls={"rechts als Diagramm"}
+                                 aenderungswuensche={"keine"}
+                                 schlafdauer={"7 Stunden"}
+                                 gewicht={"70"}
+                                 maximale_herzf={"180"}
+                                 minimale_herzf={"70"}
+                                 durschnittliche_herzf={"100"}
+                                 wegstrecke={"(Ausdauer-Outdoor"}
+                                 geschwindigkeit={"Ausdauer-Outdoor"}
+                                 geaendert_am={"geändert am 26.11.2018"}/>
+        </div>
+    </Popup>
+    )
 
         const myEventsList = [
             {
@@ -149,27 +173,7 @@ class KalendarView extends Component {
         return (
             <div className="App">
 
-                <Popup open={this.state.trigger} position="right center">
-                    <div><DetailsAnsichtView datum={"12-02-2018"}
-                                             schwerpunkt={"Technik(Ausdauer)"}
-                                             dauer={"120"}
-                                             intensitaet={"4"}
-                                             uebungen={"A B C D"}
-                                             mentale_Ersch={"4"}
-                                             bemerkung={"Alles gut"}
-                                             koerperliche_Ersch={"5"}
-                                             muskelkarter={"2"}
-                                             puls={"rechts als Diagramm"}
-                                             aenderungswuensche={"keine"}
-                                             schlafdauer={"7 Stunden"}
-                                             gewicht={"70"}
-                                             maximale_herzf={"180"}
-                                             minimale_herzf={"70"}
-                                             durschnittliche_herzf={"100"}
-                                             wegstrecke={"(Ausdauer-Outdoor"}
-                                             geschwindigkeit={"Ausdauer-Outdoor"}
-                                             geaendert_am={"geändert am 26.11.2018"}/></div>
-                </Popup>
+
                 <div id={"cal"}>
                     <BigCalendar messages={messages}
                                  localizer={localizer}
@@ -182,6 +186,7 @@ class KalendarView extends Component {
                                  culture={this.state.culture}
                     />
                 </div>
+                <Modal/>
             </div>
         );
     }

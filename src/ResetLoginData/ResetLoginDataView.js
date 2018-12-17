@@ -69,7 +69,6 @@ class ResetLoginDataView extends Component{
                     </div>
                 </div>
                 <div id="container">
-                    <main>
                         <div className= "box">
                             <div>
                                 <img src={logo} className="logo" alt="logo" />
@@ -101,8 +100,6 @@ class ResetLoginDataView extends Component{
                                 </Confirmbutton>
                             </div>
                         </div>
-                    </main>
-
                 </div>
                 <footer>
                     <Footer/>

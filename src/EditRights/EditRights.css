@@ -4,7 +4,9 @@
     flex-direction: row;
     
 }
-
+.deleteRightRow{
+    background-color: #2980B9;
+}
 @media screen and (max-width: 480px) {
     .EditRights {
         flex-direction: column;
@@ -53,7 +55,6 @@
 #CoachListBottom {
     height: 80px;
     width: 100%;
-    background-color: #f19a29;
 }
 
 /** SpecificRights & GroupRightsTable**/

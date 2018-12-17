@@ -2,19 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Controller from "./Controller";
-import KalendarView from "./Trainingdiary/KalendarView";
 
-
-import RegistrationController from './Registration/RegistrationController'
-import RegistrationView from './Registration/RegistrationView'
-import LoginController from "./Login/LoginController";
-import PlayerListController from "./PlayerList/PlayerListController";
-//import NotificationsView from "./Notifications/NotificationsView";
-import PlayerListView from "./PlayerList/PlayerListView";
-import DetailsAnsichtView from "./Trainingstagebuch/DetailsAnsichtView";
-import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
-import LoginView from "./Login/LoginView";
-import {getList} from './PlayerList/PlayerListController'
 
 class App extends Component {
   render() {

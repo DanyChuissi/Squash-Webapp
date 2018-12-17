@@ -15,15 +15,14 @@
 }
 
 /* Mittlere Bereich*/
-main{
+#container{
     background-color: #f19a29;
     /*padding-top: 0px;*/
     padding-bottom: 103px;
     text-align: center;
     justify-content: center;
     display: flex;
-    flex-direction: row;
-    width: 55%;
+
 }
 .logo{
     height: 40vmin;

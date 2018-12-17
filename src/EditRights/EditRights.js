@@ -4,13 +4,26 @@ import  "./EditRights.css";
 import SpecificRights from "./SpecificRights";
 import GroupRights from "./GroupRights";
 import CoachList from "./CoachList";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
 
 
 class EditRightsView extends Component {
     render() {
 
+        const {
+            email,
+        }=this.props
+        function myFunction2 (){
+            console.log("test");
+        }
         return (
+            <div>
+            <HeaderProfileView email = {email}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfileView/>
+            </HeaderProfileView>
             <div className="EditRights">
+
                 <div id={"roleList"}>
                     <CoachList/>
                 </div>
@@ -23,8 +36,8 @@ class EditRightsView extends Component {
                    <div id={"groupRights"}>
                        <GroupRights/>
                    </div>
-
                 </div>
+            </div>
             </div>
         );
     }

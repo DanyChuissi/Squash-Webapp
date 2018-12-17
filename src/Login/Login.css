@@ -1,10 +1,13 @@
 #Login {
     background-color: #f19a29;
+
 }
 
-img {
-    margin-top: 20px;
+.App-logo {
+    margin-top: 10px;
     background-color: #f19a29;
+    width: 20%;
+    height: 20%;
 }
 
 .loginForm {
@@ -19,6 +22,11 @@ img {
 
 .loginForm label {
     font-size: small;
+}
+
+.loginForm > Input {
+    width: 250px;
+    height: 40px;
 }
 
 .i3 {
@@ -41,6 +49,6 @@ img {
 }
 
 Footer{
-    padding: 10px;
+    padding: 0px;
     background-color: #f19a29;
 }
