@@ -33,14 +33,12 @@ class LoginView extends Component{
                     <form className={"loginForm"}>
 
                         <Input classname={"i1"} placeholder={"Benutzernamen eintragen"} value={name} onChange={setName}/>
-                        <Input classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
+                        <input type="password" name="password" classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
 
                         <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
                         <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
 
                     </form>
-
-
 
                     <footer>
                         <Footer/>

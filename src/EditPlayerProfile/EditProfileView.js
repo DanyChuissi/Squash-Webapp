@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import '../App.css';
 import Label from "../UI/Label";
 import './EditPlayerProfile.css';
+
 /**
  * @author Daniela
  * This is a table, which holds the Data of an athlet. If a authorized Person clicks on the edit Button, this View displays. Most of the cells are editable. The cell for the Birthdate is an date Input. The cell for the national Assosiation is an dropdown Input.
@@ -9,7 +10,7 @@ import './EditPlayerProfile.css';
  */
 class EditProfileView extends Component {
     state = {
-showComponent:false,
+        showComponent: false,
     }
     nationalAssosiationLong: string;
 
@@ -116,7 +117,10 @@ showComponent:false,
                             <td><input type='date' input="date" placeholder={"Geburtsdatum eintragen"} id={"birthdateL"}
                                        value={birthdate}
                                        onChange={setBrithdate} contentEditable="false" min="1960-01-01" max="2018-12-31"
-                                       required/>{birthdate}</td>
+                                       hidden={nationalAssosiationdropdownhidden}
+                                       required/>
+                                <div hidden={nationalAssosiationhidden}>{birthdate}</div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Kader:</th>
@@ -125,7 +129,7 @@ showComponent:false,
                         </tr>
                         <tr>
                             <th>Altersklasse:</th>
-                            <td value={agegroup} contentEditable="false" required>{agegroup}</td>
+                            <td value={agegroup} contentEditable="false" required>U19</td>
                         </tr>
                         <tr>
                             <th>SPin:</th>
@@ -190,7 +194,8 @@ showComponent:false,
                                     <option value="schleswigHolst"> Squash Landesverband Schleswig-Holstein</option>
                                 </select>
 
-                                <div hidden={nationalAssosiationhidden}>{this.nationalAssosiationLong}</div></td>
+                                <div hidden={nationalAssosiationhidden}>{this.nationalAssosiationLong}</div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

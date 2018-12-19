@@ -106,13 +106,10 @@ class PlayerListView extends Component{
                     <div className="boxx">
 
                         <div className="box1">
-                            <div className="box11"><button onClick={null}>suchen</button>
-                            </div>
                             <div className="box11">
                                 <Label> Suchbegriff:</Label>
                                <Input classname={""} placeholder={"Suchen"} value={suchBegriff}
                                             onChange={setSuchBegriff}/>
-
                             </div>
                         </div>
                         <div className="box2">

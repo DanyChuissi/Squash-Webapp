@@ -9,6 +9,15 @@ import {BrowserRouter, Route, Switch,Link} from 'react-router-dom'
 import DetailsAnsichtView from "../Trainingstagebuch/DetailsAnsichtView";
 import Popup from "reactjs-popup";
 
+const modalStyle = {
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    padding: 30
+};
 
 class KalendarView extends Component {
 
@@ -22,8 +31,8 @@ class KalendarView extends Component {
 
     render() {
 const Modal =()=>(
-    <Popup open={this.state.trigger} position={"top left"}>
-        <div style={{width:'1000px'}}>
+    <Popup open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
+        <div style={modalStyle}>
             <DetailsAnsichtView datum={"12-02-2018"}
                                  schwerpunkt={"Technik(Ausdauer)"}
                                  dauer={"120"}

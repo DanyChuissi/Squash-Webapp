@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 import Checkbox from "../UI/Checkbox";
 import "./PlayerList.css";
 import Confirmbutton from "../UI/Confirmbutton";
-import logo from "../Graphics/Logo_quadratisch.png";
+import logo from "../Graphics/480px-PICA.jpg";
 import Input from "../UI/Input";
 import EditProfileView from "../EditPlayerProfile/EditProfileView";
 import KalendarView from "../Trainingdiary/KalendarView";
@@ -15,6 +15,7 @@ import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfil
 class PlayerProfileView extends Component {
 
     render() {
+
         const {
 
             setName,
@@ -48,8 +49,6 @@ class PlayerProfileView extends Component {
             agegroup,
             nationalAssosiation,
             active,
-            nationalAssosiationhidden,
-            nationalAssosiationdropdownhidden,
             email,
             emailUser,
             edithidden,
@@ -76,7 +75,7 @@ class PlayerProfileView extends Component {
                     <div id="left">
                         <div id="leftTop">
                             <div id="leftTopLeft">
-                                <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
+                                <img src={logo} className="Profil-pic" alt="Logo der Web Applikation Squirrel Von Ahmad - Eigenes Werk, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=28947701" />
                                 <div id={"checkbox"}>
                                     Aktiv: <Checkbox active={active} onChange={setStatus}/>
                                 </div>
@@ -89,7 +88,7 @@ class PlayerProfileView extends Component {
                                 <Confirmbutton id={"delete"} onClick={onDelete}>Löschen</Confirmbutton>
                             </div>
                             <div id="leftTopRight">
-                                <Input placeholder="Athleten vergleichen"/>
+                                <Input id={"AthlethInput"} style={{width: '3000px',heigth: '100px'}} placeholder="Athleten vergleichen"/>
                                 <Confirmbutton id="compare" onClick={onCompare}>Vergleichen</Confirmbutton>
                             </div>
                         </div>
@@ -125,8 +124,8 @@ class PlayerProfileView extends Component {
                                              landlaneNumber={landlaneNumber}
                                              agegroup={agegroup}
                                              nationalAssosiation={nationalAssosiation}
-                                             nationalAssosiationhidden={nationalAssosiationhidden}
-                                             nationalAssosiationdropdownhidden={nationalAssosiationdropdownhidden}
+                                             nationalAssosiationhidden={edithidden}
+                                             nationalAssosiationdropdownhidden={savehidden}
                             />
                         </div>
                     </div>
@@ -156,13 +155,11 @@ class PlayerProfileView extends Component {
                             <Tab eventKey={8} title="Wettkampfplan">
                                 Wettkampfplan
                             </Tab>
-                        </Tabs>;
+                        </Tabs>
                     </div>
                 </main>
 
             </Fragment>
-
-
         );
     }
 }

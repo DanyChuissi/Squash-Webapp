@@ -8,7 +8,7 @@
 }
 
 .editProfile {
-    width: auto;
+    width: 600px;
     max-width: 1200px;
     margin-left: 5%;
     margin-right: 5%;
@@ -49,6 +49,7 @@ table, th, td {
     font-family: Calibri;
     border: 1px solid black;
     border-collapse: collapse;
+    width: 600px;
 }
 
 th {

@@ -21,7 +21,6 @@ class Controller extends Component {
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
     state = {
         /** Viewswitch**/
         loginCase: 0,
@@ -39,8 +38,6 @@ class Controller extends Component {
         /**User Data End**/
         /**Spezific Player**/
         person: [],
-        nationalAssosiationdropdownhidden: true,
-        nationalAssosiationhidden: false,
         edithidden: false,
         savehidden: true,
         /**Spezific Player Ende**/
@@ -67,12 +64,9 @@ class Controller extends Component {
     }
 
     setStatus = (e) => {
+       // axios.put(` http://localhost:8080/player/active?email=jens@test.de&active=`+this.state.person.active);
         alert("Status geändert")
     }
-    postData = () => {
-        //TODO JSON Data übermitteln
-    }
-
     setName = (e) => {
         this.setState({name: e.target.value})
     }
@@ -184,7 +178,7 @@ class Controller extends Component {
     /**Login**/
 
     submitLogin = () => {
-        if (this.state.userMail === "u" && this.state.password === "3") {
+        if (this.state.userMail === "trainer@test.de" && this.state.password === "3") {
             this.setState({showComponent: this.state.spielerListCase})
             fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + this.state.trainer)
                 .then(res => res.json())
@@ -274,7 +268,7 @@ class Controller extends Component {
                             setHouseNbr={this.setHouseNbr}
                             setSquad={this.setSquad}
                             setSPin={this.setSPin}
-                            setStatus={this.status}
+                            setStatus={this.setStatus}
                             setLandlaneNumber={this.setLandlaneNumber}
                             setMobileNumber={this.setMobileNumber}
                             setNationalAssosiation={this.setNationalAssosiation}
@@ -298,8 +292,8 @@ class Controller extends Component {
                             agegroup={this.state.person.agegroup}
                             nationalAssosiation={this.state.person.regonid}
                             active={this.state.person.active}
-                            nationalAssosiationhidden={this.state.nationalAssosiationhidden}
-                            nationalAssosiationdropdownhidden={this.state.nationalAssosiationdropdownhidden}
+                            nationalAssosiationhidden={this.state.edithidden}
+                            nationalAssosiationdropdownhidden={this.state.savehidden}
                             edithidden={this.state.edithidden}
                             savehidden={this.state.savehidden}
                             emailUser={this.state.userMail}
