@@ -45,7 +45,6 @@ class InviteUserView extends Component {
                             <Dropdown options={options} onChange={this._onSelect} value={defaultOption}
                                       placeholder="Select an option"/></div>
 
-
                         <div id="eMailLabel"><label>Email:</label></div>
 
                         <input id={"eMail"} placeholder={"Email eingeben"}/>
