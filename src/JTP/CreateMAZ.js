@@ -9,7 +9,10 @@ import Label from "react-bootstrap/es/Label";
 class CreateMAZ extends Component {
 
     render() {
-
+const{
+    createMAZ,
+    cancelMAZ,
+}=this.props
         return (
             <div id={"createMAZView"}>
 
@@ -62,8 +65,8 @@ class CreateMAZ extends Component {
                     </div>
 
                 <div id={"bottomCreateMAZView"}>
-                    <Confirmbutton id={"addMAZButton"}>Erstellen</Confirmbutton>
-                    <Confirmbutton id={"closeAddMAZView"}>Abbrechen</Confirmbutton>
+                    <Confirmbutton id={"addMAZButton"} onClick={createMAZ}>Erstellen</Confirmbutton>
+                    <Confirmbutton id={"closeAddMAZView"} onClick={cancelMAZ}>Abbrechen</Confirmbutton>
                 </div>
 
             </div>

@@ -9,8 +9,12 @@ import CreateMAZ from "./CreateMAZ";
 import Confirmbutton from "../UI/Confirmbutton";
 import Checkbox from "react-bootstrap/es/Checkbox";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-
-
+import 'react-tabs/style/react-tabs.css';
+import {Dropdown} from "react-simple-dropdown";
+import ReactTable from "react-table";
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+import AddVacationView from "./AddVacationView";
 
 const modalStyle = {
     position: 'fixed',
@@ -22,29 +26,300 @@ const modalStyle = {
     padding: '20%'
 };
 
+
 class JTPCalendarView extends Component {
-    state = {
-        culture: 'de',
-        trigger: false,
+
+    constructor(props) {
+        super(props);
+        this.state = {selected: {}, selectAll: 0, data: makeDataTraining(), comments: makeDataComment()};
     }
 
+    state = {
+        culture: 'de',
+        triggerCreateMAZ: false,
+        triggerCreateVacations:false,
+    }
+
+    createVacation=(e)=>{
+        this.setState({
+            triggerCreateVacations:true,
+        })
+    }
+
+    addVacation=(e)=>{
+        alert("MAZ hinzugefügt");
+        this.setState({
+            triggerCreateVacations:false,
+        })
+    }
+
+    cancelVacation=(e)=>{
+        this.setState({
+            triggerCreateVacations:false,
+        })
+    }
+
+    createMAZ=(e)=>{
+        this.setState({
+            triggerCreateMAZ:true,
+        })
+    }
+
+    addMAZ=(e)=>{
+        alert("MAZ hinzugefügt");
+        this.setState({
+            triggerCreateMAZ:false,
+        })
+    }
+
+    cancelMAZ=(e)=>{
+        this.setState({
+            triggerCreateMAZ:false,
+        })
+    }
 
     render() {
-        const Modal = () => (
-            <Popup open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
+
+        const modifiers = {
+            coordination: {daysOfWeek: [4]},
+            condition: {daysOfWeek: [5]},
+            strength: {daysOfWeek: [3]},
+            speediness: {daysOfWeek: [2]},
+            flexibility: {daysOfWeek: [1]},
+            technique: {daysOfWeek: [6]},
+            mental: {daysOfWeek: [7]},
+            mixTest: new Date(2019, 2, 2),
+            performanceDiagnostics: new Date(2019, 1, 2),
+            coordinationCondition: new Date(2019, 1, 3),
+            coordinationStrength: new Date(2019, 1, 4),
+            coordinationSpeediness: new Date(2019, 1, 5),
+            coordinationFlexibility: new Date(2019, 1, 6),
+            coordinationTechnique: new Date(2019, 1, 7),
+            coordinationMental: new Date(2019, 1, 8),
+            coordinationPerformanceDiagnostics: new Date(2019, 1, 9),
+            conditionStrength: new Date(2019, 1, 10),
+            conditionSpeediness: new Date(2019, 1, 11),
+            conditionFlexibility: new Date(2019, 1, 12),
+            conditionTechnique: new Date(2019, 1, 13),
+            conditionMental: new Date(2019, 1, 14),
+            conditionPerformanceDiagnostics: new Date(2019, 1, 15),
+            strengthFlexibility: new Date(2019, 1, 16),
+            strengthTechnique: new Date(2019, 1, 17),
+            strengthMental: new Date(2019, 1, 18),
+            strengthPerformanceDiagnostics: new Date(2019, 1, 19),
+            speedinessFlexibility: new Date(2019, 1, 20),
+            speedinessTechnique: new Date(2019, 1, 21),
+            speedinessMental: new Date(2019, 1, 22),
+            speedinessPerformanceDiagnostics: new Date(2019, 1, 23),
+            flexibilityTechnique: new Date(2019, 1, 24),
+            flexibilityMental: new Date(2019, 1, 25),
+            flexibilityPerformanceDiagnostics: new Date(2019, 1, 25),
+            techniqueMental: new Date(2019, 1, 26),
+            techniquePerformanceDiagnostics: new Date(2019, 1, 27),
+            mentalPerformanceDiagnostics: new Date(2019, 1, 28),
+            vacation:new Date(2019,4,4),
+            training:new Date(2019,4,5),
+            tourney:new Date(2019,4,6),
+            goal: new Date(2019,4,7),
+        };
+        const modifiersStyles = {
+
+            coordinationCondition: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #7ae7bf 50%)',
+            },
+            coordinationStrength: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #ff887c 50%)',
+            },
+            coordinationSpeediness: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #fbd75b 50%)',
+            },
+            coordinationFlexibility: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #5484ed 50%)',
+            },
+            coordinationTechnique: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #dc2127 50%)',
+            },
+            coordinationMental: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #dbadff 50%)',
+            },
+            coordinationPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #51b749 50%, #bfa473 50%)',
+            },
+            conditionStrength: {
+                backgroundImage: 'linear-gradient(90deg, #7ae7bf 50%, #ff887c 50%)',
+            },
+            conditionSpeediness: {
+                backgroundImage: 'linear-gradient(90deg, #7ae7bf 50%, #fbd75b 50%)',
+            },
+            conditionFlexibility: {
+                backgroundImage: 'linear-gradient(90deg, #7ae7bf 50%, #5484ed 50%)',
+            },
+            conditionTechnique: {
+                backgroundImage: 'linear-gradient(90deg, #7ae7bf 50%, #dc2127 50%)',
+            },
+            conditionMental: {
+                backgroundImage: 'linear-gradient(90deg, #7ae7bf 50%, #dbadff 50%)',
+            },
+            conditionPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg,#7ae7bf 50%, #bfa473 50%)',
+            },
+            strengthFlexibility: {
+                backgroundImage: 'linear-gradient(90deg, #ff887c 50%, #5484ed 50%)',
+            },
+            strengthTechnique: {
+                backgroundImage: 'linear-gradient(90deg, #ff887c 50%, #dc2127 50%)',
+            },
+            strengthMental: {
+                backgroundImage: 'linear-gradient(90deg, #ff887c 50%, #dbadff 50%)',
+            },
+            strengthPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #ff887c 50%, #bfa473 50%)',
+            },
+            speedinessFlexibility: {
+                backgroundImage: 'linear-gradient(90deg, #fbd75b 50%, #5484ed 50%)',
+            },
+            speedinessTechnique: {
+                backgroundImage: 'linear-gradient(90deg, #fbd75b 50%, #dc2127 50%)',
+            },
+            speedinessMental: {
+                backgroundImage: 'linear-gradient(90deg, #fbd75b 50%, #dbadff 50%)',
+            },
+            speedinessPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #fbd75b 50%, #bfa473 50%)',
+            },
+            flexibilityTechnique: {
+                backgroundImage: 'linear-gradient(90deg,#5484ed 50%, #dc2127 50%)',
+            },
+            flexibilityMental: {
+                backgroundImage: 'linear-gradient(90deg, #5484ed 50%, #dbadff 50%)',
+            },
+            flexibilityPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #5484ed 50%, #bfa473 50%)',
+            },
+            techniqueMental: {
+                backgroundImage: 'linear-gradient(90deg, #dc2127 50%, #dbadff 50%)',
+            },
+            techniquePerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #dc2127 50%, #bfa473 50%)',
+            },
+            mentalPerformanceDiagnostics: {
+                backgroundImage: 'linear-gradient(90deg, #dbadff 50%, #bfa473 50%)',
+            },
+
+            condition: {
+                backgroundColor: '#7ae7bf',
+            },
+            strength: {
+                backgroundColor: '#ff887c',
+            },
+            speediness: {
+                backgroundColor: '#fbd75b',
+            },
+            flexibility: {
+                backgroundColor: '#5484ed',
+            },
+            technique: {
+                backgroundColor: '#dc2127',
+            },
+            mental: {
+                backgroundColor: '#dbadff',
+            },
+            performanceDiagnostics: {
+                backgroundColor: '#bfa473',
+            },
+            coordination: {
+                backgroundColor: '#51b749',
+            },
+            training:{
+                backgroundColor: '#4abfe7',
+            },
+            tourney:{backgroundColor: '#4abfe7',},
+            goal: {backgroundColor: '#4abfe7',},
+            vacation:{
+                backgroundColor: '#4abfe7',
+            },
+            outside: {
+                backgroundImage: '#e1e1e1',
+                backgroundColor: '#e1e1e1',
+            },
+        };
+
+        const columnsComments=[
+            {
+                Header: "Kommentar",
+                accessor: "comment",
+                width: 300
+            },
+            {
+                Header: "Autor",
+                accessor: "author",
+                width: 130
+            },
+        ];
+        const columnsMAZ = [
+            {
+                Header: "Trainingseinheit",
+                accessor: "trainingsName",
+                width: 130
+            },
+            {
+                Header: "Wochentag(e)",
+                accessor: "daysOfWeek",
+                width: 120
+            },
+            {
+                Header: "Übungen",
+                accessor: "practise",
+                width: 120
+            },
+            {
+                Header: "Dauer [min]",
+                accessor: "period",
+                width: 100
+            },
+            {
+                Header: "Hinweise",
+                accessor: "notes",
+                width: 130
+            },
+            {
+                Header: "Gesamtdauer",
+                accessor: "holePeriod",
+                width: 130
+            },
+        ];
+
+        const {
+            mazDescription,
+            mazPhase,
+            mazStartDate,
+            mazEndDate,
+            mazEmpfasis,
+            mazNotes,
+        } = this.props;
+
+        const ModalCreateMAZ = () => (
+            <Popup open={this.state.triggerCreateMAZ} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle}>
-                    <CreateMAZ/>
+                    <CreateMAZ createMAZ={this.addMAZ} cancelMAZ={this.cancelMAZ}/>
                 </div>
             </Popup>
         )
+        const ModalCreateVacations=()=>(  <Popup open={this.state.triggerCreateVacations} position={"top left"} closeOnDocumentClick={true}>
+            <div style={modalStyle}>
+                <AddVacationView createMAZ={this.addMAZ} cancelVacation={this.cancelVacation}/>
+            </div>
+        </Popup>
+)
+
 
         return (
             <div id={"jTPView"}>
                 <div id={"jTPTop"}>
                     <div id={"jTPTopLeft"}>
-                        <Confirmbutton>MAZ erstellen</Confirmbutton>
-                        <Confirmbutton>Tuniere</Confirmbutton>
-                        <Confirmbutton>Urlaub</Confirmbutton>
+                        <Confirmbutton onClick={this.createMAZ}>MAZ erstellen</Confirmbutton>
+                        <Confirmbutton>Tuniere erstellen</Confirmbutton>
+                        <Confirmbutton onClick={this.createVacation}>Urlaub erstellen</Confirmbutton>
                         <Confirmbutton>JTP löschen</Confirmbutton>
                     </div>
                     <div id={"jTPTopRight"}>
@@ -54,131 +329,221 @@ class JTPCalendarView extends Component {
                         <Checkbox/> Ziele
                     </div>
                 </div>
+                <DayPicker showWeekNumbers numberOfMonths={12} modifiers={modifiers}
+                           modifiersStyles={modifiersStyles}/>
+                <div id={"legend"}>
+                    <div id={"condition"}>
+                        <h5 >Ausdauer</h5>
+                    </div>
+                   <div id={"strength"}>
+                       <h5 >Stärke</h5>
+                   </div>
+                    <div id={"speediness"}>
+                        <h5 >Geschwindigkeit</h5>
+                    </div>
+                    <div id={"flexibility"}>
+                        <h5 >Flexibilität</h5>
+                    </div>
+                    <div id={"mental"}>
+                        <h5 >Mental</h5>
+                    </div>
+                    <div id={"performanceDiagnostics"}>
+                        <h5 >Leistungsdiagnostik</h5>
+                    </div>
+                    <div  id={"coordination"}>
+                        <h5>Koordination</h5>
+                    </div>
+                    <div id={"technique"}>
+                        <h5 >Technik</h5>
+                    </div>
+                </div>
                 <div id={"jTPBottom"}>
                     <div id={"jTPCenterLeft"}>
                         <Tabs>
                             <TabList>
-                                <Tab>Mario</Tab>
-                                <Tab disabled>Luigi</Tab>
-                                <Tab>Peach</Tab>
-                                <Tab>Yoshi</Tab>
-                                <Tab>Toad</Tab>
+                                <Tab>Detail</Tab>
+                                <Tab>MAZ</Tab>
                             </TabList>
+                            <TabPanel>
+                                <p id={"jTPDetailDayView"}>
+                                    <div>
+                                        <h3>KW 24, Donnerstag 3 Juli 2018</h3>
+                                        <div id={"jTPCenterLeftCenter"}>
+                                            <h5>Trainingsziel: </h5>
+                                            <select>
+                                                <option>
+                                                    Endspiel
+                                                </option>
+                                                <option>
+                                                    Halbfinale
+                                                </option>
+                                                <option>
+                                                    Viertelfinale
+                                                </option>
+                                                <option>
+                                                    Top 16
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div id={"jTPCenterLeftBottom"}>
+                                            <h5>Handlungsziel: </h5>
+                                            <textarea placeholder={"Handlungsziel einfügen"}></textarea>
+                                        </div>
+                                        <Confirmbutton>Bearbeiten</Confirmbutton>
+                                        <Confirmbutton>Speichern</Confirmbutton>
+                                    </div>
+                                    <div id={"jTPCenterLeftRight"}>
+                                        <textarea placeholder={"Details zu Tag"}></textarea>
+                                    </div>
+                                </p>
+                            </TabPanel>
+                            <TabPanel>
+                                <div id={"jtPCenterLeftTopMAZ"}>
+                                    <table id={"jTPCenterLeftMAZTable"}>
+                                        <tr>
+                                            <th>Bezeichnung</th>
+                                            <td>{mazDescription} MAZ 1</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phase</th>
+                                            <td>{mazPhase} Vorbereitungsphase</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Startdatum</th>
+                                            <td>{mazStartDate} 01.02.18</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Enddatum</th>
+                                            <td>{mazEndDate} 01.03.18</td>
+                                        </tr>
+                                    </table>
+                                    <div id={"jtPCenterLeftTopMAZNotes"}>
+                                        <h5>Hinweise zu MAZ</h5>
+                                        <textarea>{mazNotes}</textarea>
+                                    </div>
+                                    <div id={"jtPCenterLeftButtons"}>
+                                        <Confirmbutton>Bearbeiten</Confirmbutton>
+                                        <Confirmbutton>Speichern</Confirmbutton>
+                                        <Confirmbutton>Löschen</Confirmbutton>
+                                    </div>
+                                </div>
 
-                            <TabPanel>
-                                <p>
-                                    <b>Mario</b> (<i>Japanese: マリオ Hepburn: Mario, [ma.ɾʲi.o]</i>) (<i>English:
-                                    /ˈmɑːrioʊ/; Italian: [ˈmaːrjo]</i>) is a fictional character in the Mario video
-                                    game franchise, owned by Nintendo and created by Japanese video game designer
-                                    Shigeru Miyamoto. Serving as the company's mascot and the eponymous protagonist
-                                    of the series, Mario has appeared in over 200 video games since his creation.
-                                    Depicted as a short, pudgy, Italian plumber who resides in the Mushroom
-                                    Kingdom, his adventures generally center upon rescuing Princess Peach from the
-                                    Koopa villain Bowser. His younger brother and sidekick is Luigi.
-                                </p>
-                                <p>
-                                    Source:{' '}
-                                    <a href="https://en.wikipedia.org/wiki/Mario" target="_blank">
-                                        Wikipedia
-                                    </a>
-                                </p>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>
-                                    <b>Luigi</b> (<i>Japanese: ルイージ Hepburn: Ruīji, [ɾɯ.iː.dʑi̥]</i>) (<i>English:
-                                    /luˈiːdʒi/;
-                                    Italian: [luˈiːdʒi]</i>) is a fictional character featured in video games and
-                                    related media
-                                    released by Nintendo. Created by prominent game designer Shigeru Miyamoto, Luigi is
-                                    portrayed
-                                    as the slightly younger but taller fraternal twin brother of Nintendo's mascot
-                                    Mario, and
-                                    appears in many games throughout the Mario franchise, often as a sidekick to his
-                                    brother.
-                                </p>
-                                <p>
-                                    Source:{' '}
-                                    <a href="https://en.wikipedia.org/wiki/Luigi" target="_blank">
-                                        Wikipedia
-                                    </a>
-                                </p>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>
-                                    <b>Princess Peach</b> (<i>Japanese: ピーチ姫 Hepburn: Pīchi-hime, [piː.tɕi̥ çi̥.me]</i>)
-                                    is a character in Nintendo's Mario franchise. Originally created by Shigeru
-                                    Miyamoto,
-                                    Peach is the princess of the fictional Mushroom Kingdom, which is constantly under
-                                    attack by Bowser. She often plays the damsel in distress role within the series and
-                                    is the lead female. She is often portrayed as Mario's love interest and has appeared
-                                    in Super Princess Peach, where she is the main playable character.
-                                </p>
-                                <p>
-                                    Source:{' '}
-                                    <a href="https://en.wikipedia.org/wiki/Princess_Peach" target="_blank">
-                                        Wikipedia
-                                    </a>
-                                </p>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>
-                                    <b>Yoshi</b> (<i>ヨッシー Yosshī, [joɕ.ɕiː]</i>) (<i>English: /ˈjoʊʃi/ or /ˈjɒʃi/</i>),
-                                    once
-                                    romanized as Yossy, is a fictional anthropomorphic dinosaur who appears in
-                                    video games published by Nintendo. Yoshi debuted in Super Mario World (1990) on the
-                                    Super Nintendo Entertainment System as Mario and Luigi's sidekick. Yoshi later
-                                    starred
-                                    in platform and puzzle games, including Super Mario World 2: Yoshi's Island, Yoshi's
-                                    Story
-                                    and Yoshi's Woolly World. Yoshi also appears in many of the Mario spin-off games,
-                                    including
-                                    Mario Party and Mario Kart, various Mario sports games, and Nintendo's crossover
-                                    fighting
-                                    game series Super Smash Bros. Yoshi belongs to the species of the same name, which
-                                    is
-                                    characterized by their variety of colors.
-                                </p>
-                                <p>
-                                    Source:{' '}
-                                    <a href="https://en.wikipedia.org/wiki/Yoshi" target="_blank">
-                                        Wikipedia
-                                    </a>
-                                </p>
-                            </TabPanel>
-                            <TabPanel>
-                                <p>
-                                    <b>Toad</b> (<i>Japanese: キノピオ Hepburn: Kinopio</i>) is a fictional character who
-                                    primarily
-                                    appears in Nintendo's Mario franchise. Created by Japanese video game designer
-                                    Shigeru Miyamoto,
-                                    he is portrayed as a citizen of the Mushroom Kingdom and is one of Princess Peach's
-                                    most loyal
-                                    attendants; constantly working on her behalf. He is usually seen as a non-player
-                                    character (NPC)
-                                    who provides assistance to Mario and his friends in most games, but there are times
-                                    when Toad(s)
-                                    takes center stage and appears as a protagonist, as seen in Super Mario Bros. 2,
-                                    Wario's Woods,
-                                    Super Mario 3D World, and Captain Toad: Treasure Tracker.
-                                </p>
-                                <p>
-                                    Source:{' '}
-                                    <a href="https://en.wikipedia.org/wiki/Toad_(Nintendo)" target="_blank">
-                                        Wikipedia
-                                    </a>
-                                </p>
+                                <ReactTable
+                                    id={"jtpTableMAZ"}
+                                    data={this.state.data}
+                                    columns={columnsMAZ}
+                                    defaultPageSize={3}
+                                    defaultSorted={[{id: "firstName", desc: false}]}
+                                />
+                                <div id={"jTPMAZButtonsBottom"}>
+                                    <Confirmbutton>Trainingseinheit hinzufügen</Confirmbutton>
+                                    <Confirmbutton>Bearbeiten</Confirmbutton>
+                                    <Confirmbutton>Löschen</Confirmbutton>
+                                </div>
                             </TabPanel>
                         </Tabs>
                     </div>
                     <div id={"jTPCenterRight"}>
+                        <h5>Kommentare</h5>
+                        <Tabs>
+                            <TabList>
+                                <Tab>MAZ</Tab>
+                                <Tab>Turnier</Tab>
+                                <Tab>Urlaub</Tab>
+                            </TabList>
+                            <TabPanel id={"panel"}>
+                                <div id={"jTPCenterRightTop"}>
+                                    <textarea placeholder={"Tippe hier deine Nachricht ein"}></textarea>
+                                    <Confirmbutton id={"addCommentButton"}>Hinzufügen</Confirmbutton>
+                                </div>
+                                <ReactTable
+                                    id={"jtpTableCommentsMAZ"}
+                                    data={this.state.comments}
+                                    columns={columnsComments}
+                                    defaultPageSize={5}
+                                    defaultSorted={[{id: "author", desc: false}]}
+                                />
+                            </TabPanel>
+                            <TabPanel >
+                                <div id={"jTPCenterRightTop"}>
+                                    <textarea placeholder={"Tippe hier deine Nachricht ein"}></textarea>
+                                    <Confirmbutton id={"addCommentButton"}>Hinzufügen</Confirmbutton>
+                                </div>
+                                <ReactTable
+                                    id={"jtpTableCommentsTourney"}
+                                    data={this.state.comments}
+                                    columns={columnsComments}
+                                    defaultPageSize={5}
+                                    defaultSorted={[{id: "author", desc: false}]}
+                                />
+                            </TabPanel>
+                            <TabPanel>
+                                <div id={"jTPCenterRightTop"}>
+                                    <textarea placeholder={"Tippe hier deine Nachricht ein"}></textarea>
+                                    <Confirmbutton id={"addCommentButton"}>Hinzufügen</Confirmbutton>
+                                </div>
 
+                                <ReactTable
+                                    id={"jtpTableCommentsVacations"}
+                                    data={this.state.comments}
+                                    columns={columnsComments}
+                                    defaultPageSize={5}
+                                    defaultSorted={[{id: "author", desc: false}]}
+                                />
+                            </TabPanel>
+                        </Tabs>
                     </div>
                 </div>
-                <Modal/>
+                <ModalCreateMAZ/>
+                <ModalCreateVacations/>
             </div>
 
         );
     }
+}
+
+function makeDataTraining() {
+    return [
+
+        {
+            trainingsName: "Laufen",
+            daysOfWeek: "Mo, Mi",
+            practise: 16,
+            period: "30",
+            notes: "Nicht hinfallen",
+            holePeriod: "60",
+        },
+        {
+            trainingsName: "Laufen",
+            daysOfWeek: "Mo, Mi",
+            practise: 16,
+            period: "30",
+            notes: "Nicht hinfallen",
+            holePeriod: "60",
+        },
+        {
+            trainingsName: "Laufen",
+            daysOfWeek: "Mo, Mi",
+            practise: 16,
+            period: "30",
+            notes: "Nicht hinfallen",
+            holePeriod: "60",
+        },]
+}
+
+function makeDataComment(){
+    return [
+        {
+            comment: "Finde ich gut",
+            author: "Sportler 1",
+
+        },
+        {
+            comment: "Steng dich mehr an",
+            author: "Trainer 1",
+
+        },
+      ]
 }
 
 export default JTPCalendarView;

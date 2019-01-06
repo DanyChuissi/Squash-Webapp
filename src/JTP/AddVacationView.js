@@ -32,6 +32,11 @@ class AddVacationView extends Component {
     }
 
     render() {
+        const{
+            cancelVacation,
+            addVacation,
+            deleteVacation,
+        }=this.props
         const columns = [
             {
                 Header: "Von",
@@ -68,19 +73,21 @@ class AddVacationView extends Component {
                         <div id={"descriptionTextAndButton"}>
                             <textarea id="vacationDescription"
                                       placeholder={"Urlaubsbeschreibung hier einfügen"}></textarea>
-                            <button id={"addVacation"}>Hinzufügen</button>
+                            <button id={"addVacation"} onClick={addVacation}>Hinzufügen</button>
                         </div>
 
                     </div>
                 </div>
+                <div id={"vacationList"} >
+                    <ReactTable id={"vacationList"} data={this.state.data}
+                                columns={columns}
+                                defaultPageSize={5}
+                                defaultSorted={[{id: "firstName", desc: false}]}/>
+                </div>
 
-                <ReactTable id={"vacationList"} data={this.state.data}
-                            columns={columns}
-                            defaultPageSize={5}
-                            defaultSorted={[{id: "firstName", desc: false}]}/>
                 <div id={"bottomVacView"}>
-                    <Confirmbutton id={"deleteVacation"}>Löschen</Confirmbutton>
-                    <Confirmbutton id={"closeVacationView"}>Schließen</Confirmbutton>
+                    <Confirmbutton id={"deleteVacation"} onClick={deleteVacation}>Löschen</Confirmbutton>
+                    <Confirmbutton id={"closeVacationView"}onClick={cancelVacation}>Schließen</Confirmbutton>
                 </div>
 
             </div>
