@@ -15,6 +15,7 @@ import ReactTable from "react-table";
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import AddVacationView from "./AddVacationView";
+import AddTourneyView from "../Tourney/AddTourneyView";
 
 const modalStyle = {
     position: 'fixed',
@@ -37,44 +38,60 @@ class JTPCalendarView extends Component {
     state = {
         culture: 'de',
         triggerCreateMAZ: false,
-        triggerCreateVacations:false,
+        triggerCreateVacations: false,
+        triggerCreateTourney:false,
     }
-
-    createVacation=(e)=>{
+    addTourney=(e)=>{
         this.setState({
-            triggerCreateVacations:true,
+            triggerCreateTourney:true,
+        })
+    }
+    cancelTourney=(e)=>{
+        this.setState({
+            triggerCreateTourney:false,
+        })
+    }
+    createTourney=(e)=>{
+        alert("Turnier hinzugefügt")
+        this.setState({
+            triggerCreateTourney:false,
+        })
+    }
+    createVacation = (e) => {
+        this.setState({
+            triggerCreateVacations: true,
         })
     }
 
-    addVacation=(e)=>{
+    addVacation = (e) => {
         alert("MAZ hinzugefügt");
         this.setState({
-            triggerCreateVacations:false,
+            triggerCreateVacations: false,
         })
     }
 
-    cancelVacation=(e)=>{
+    cancelVacation = (e) => {
         this.setState({
-            triggerCreateVacations:false,
+            triggerCreateVacations: false,
         })
     }
 
-    createMAZ=(e)=>{
+    createMAZ = (e) => {
         this.setState({
-            triggerCreateMAZ:true,
+            triggerCreateMAZ: true,
         })
     }
 
-    addMAZ=(e)=>{
+    addMAZ = (e) => {
         alert("MAZ hinzugefügt");
         this.setState({
-            triggerCreateMAZ:false,
+            triggerCreateMAZ: false,
         })
     }
 
-    cancelMAZ=(e)=>{
+    cancelMAZ = (e) => {
         this.setState({
-            triggerCreateMAZ:false,
+            triggerCreateMAZ: false,
         })
     }
 
@@ -117,10 +134,10 @@ class JTPCalendarView extends Component {
             techniqueMental: new Date(2019, 1, 26),
             techniquePerformanceDiagnostics: new Date(2019, 1, 27),
             mentalPerformanceDiagnostics: new Date(2019, 1, 28),
-            vacation:new Date(2019,4,4),
-            training:new Date(2019,4,5),
-            tourney:new Date(2019,4,6),
-            goal: new Date(2019,4,7),
+            vacation: new Date(2019, 4, 4),
+            training: new Date(2019, 4, 5),
+            tourney: new Date(2019, 4, 6),
+            goal: new Date(2019, 4, 7),
         };
         const modifiersStyles = {
 
@@ -230,12 +247,12 @@ class JTPCalendarView extends Component {
             coordination: {
                 backgroundColor: '#51b749',
             },
-            training:{
+            training: {
                 backgroundColor: '#4abfe7',
             },
-            tourney:{backgroundColor: '#4abfe7',},
+            tourney: {backgroundColor: '#4abfe7',},
             goal: {backgroundColor: '#4abfe7',},
-            vacation:{
+            vacation: {
                 backgroundColor: '#4abfe7',
             },
             outside: {
@@ -244,7 +261,7 @@ class JTPCalendarView extends Component {
             },
         };
 
-        const columnsComments=[
+        const columnsComments = [
             {
                 Header: "Kommentar",
                 accessor: "comment",
@@ -305,20 +322,27 @@ class JTPCalendarView extends Component {
                 </div>
             </Popup>
         )
-        const ModalCreateVacations=()=>(  <Popup open={this.state.triggerCreateVacations} position={"top left"} closeOnDocumentClick={true}>
-            <div style={modalStyle}>
-                <AddVacationView createMAZ={this.addMAZ} cancelVacation={this.cancelVacation}/>
-            </div>
-        </Popup>
-)
-
+        const ModalCreateVacations = () => (
+            <Popup open={this.state.triggerCreateVacations} position={"top left"} closeOnDocumentClick={true}>
+                <div style={modalStyle}>
+                    <AddVacationView createMAZ={this.addMAZ} cancelVacation={this.cancelVacation}/>
+                </div>
+            </Popup>
+        )
+        const ModalCreateTourney = () => (
+            <Popup open={this.state.triggerCreateTourney} position={"top left"} closeOnDocumentClick={true}>
+                <div style={modalStyle}>
+                    <AddTourneyView createTourney={this.createTourney} cancelTourney={this.cancelTourney}/>
+                </div>
+            </Popup>
+        )
 
         return (
             <div id={"jTPView"}>
                 <div id={"jTPTop"}>
                     <div id={"jTPTopLeft"}>
                         <Confirmbutton onClick={this.createMAZ}>MAZ erstellen</Confirmbutton>
-                        <Confirmbutton>Tuniere erstellen</Confirmbutton>
+                        <Confirmbutton onClick={this.addTourney}>Tuniere erstellen</Confirmbutton>
                         <Confirmbutton onClick={this.createVacation}>Urlaub erstellen</Confirmbutton>
                         <Confirmbutton>JTP löschen</Confirmbutton>
                     </div>
@@ -333,28 +357,28 @@ class JTPCalendarView extends Component {
                            modifiersStyles={modifiersStyles}/>
                 <div id={"legend"}>
                     <div id={"condition"}>
-                        <h5 >Ausdauer</h5>
+                        <h5>Ausdauer</h5>
                     </div>
-                   <div id={"strength"}>
-                       <h5 >Stärke</h5>
-                   </div>
+                    <div id={"strength"}>
+                        <h5>Stärke</h5>
+                    </div>
                     <div id={"speediness"}>
-                        <h5 >Geschwindigkeit</h5>
+                        <h5>Geschwindigkeit</h5>
                     </div>
                     <div id={"flexibility"}>
-                        <h5 >Flexibilität</h5>
+                        <h5>Flexibilität</h5>
                     </div>
                     <div id={"mental"}>
-                        <h5 >Mental</h5>
+                        <h5>Mental</h5>
                     </div>
                     <div id={"performanceDiagnostics"}>
-                        <h5 >Leistungsdiagnostik</h5>
+                        <h5>Leistungsdiagnostik</h5>
                     </div>
-                    <div  id={"coordination"}>
+                    <div id={"coordination"}>
                         <h5>Koordination</h5>
                     </div>
                     <div id={"technique"}>
-                        <h5 >Technik</h5>
+                        <h5>Technik</h5>
                     </div>
                 </div>
                 <div id={"jTPBottom"}>
@@ -464,7 +488,7 @@ class JTPCalendarView extends Component {
                                     defaultSorted={[{id: "author", desc: false}]}
                                 />
                             </TabPanel>
-                            <TabPanel >
+                            <TabPanel>
                                 <div id={"jTPCenterRightTop"}>
                                     <textarea placeholder={"Tippe hier deine Nachricht ein"}></textarea>
                                     <Confirmbutton id={"addCommentButton"}>Hinzufügen</Confirmbutton>
@@ -531,7 +555,7 @@ function makeDataTraining() {
         },]
 }
 
-function makeDataComment(){
+function makeDataComment() {
     return [
         {
             comment: "Finde ich gut",
@@ -543,7 +567,7 @@ function makeDataComment(){
             author: "Trainer 1",
 
         },
-      ]
+    ]
 }
 
 export default JTPCalendarView;

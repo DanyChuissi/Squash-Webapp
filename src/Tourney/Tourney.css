@@ -1,0 +1,80 @@
+/**Css for TourneyListView**/
+#tourneyListView {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: calc(100vh - 100px);
+    padding: 10px;
+
+}
+
+#tourneyListViewTop {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    background-color: #f19a29;
+    padding-bottom: 1.5%;
+}
+
+#tourneyListViewTop input {
+    margin-top: 5%;
+    height: 50%;
+    width: 200px;
+    margin-right: 2.5%;
+}
+
+#tourneyListViewTop h4 {
+    margin-top: 5%;
+    height: 20%;
+    margin-right: 2.5%;
+}
+
+#tourneyListViewTop button {
+    height: 20%;
+}
+
+#addTourneyAtTourneyView {
+    height: 100%;
+}
+
+#tourneyListViewTopLeft {
+    margin-left: 2.5%;
+    margin-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+}
+/** End TourneyListView**/
+/** Start AddTourneyView**/
+#addTourneyView{
+    background-color: #f19a29;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+#addTourneyView p{
+    margin-left: 5%;
+}
+#addTourneyView h3{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+#createTourneyForm div{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    float: right;
+    margin-top: 1.5%;
+}
+#createTourneyForm{
+    margin-top: 2.5%;
+    margin-left: 25%;
+}
+
+#createTourneyButtons{
+    margin-bottom: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+/** End AddTourneyView**/
