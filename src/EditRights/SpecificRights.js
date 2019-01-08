@@ -3,7 +3,7 @@ import '../App.css';
 import './EditRights.css'
 import ReactTable from "react-table";
 import checkboxHOC from "react-table/lib/hoc/selectTable";
-
+import deleteIcon from "../Graphics/trash_bin_icon-icons.com_67981.png"
 
 class SpecificRights extends Component {
     constructor(props) {
@@ -93,12 +93,12 @@ class SpecificRights extends Component {
                 accessor: "deleteAthletRight",
                 Cell: ({original}) => {
                     return (
-                        <input
-                            type="button"
+                        <button
+                            type="submit"
                             className="deleteRightRow"
-                            checked={this.state.selected[original.firstName] === true}
+                            src="../Graphics/trash_bin_icon-icons.com_67981.png"
                             onChange={onDeleteAthletRights}
-                        />
+                        >       <img src={deleteIcon} alt="Smiley face" height="20px" width="15px"/></button>
                     );
                 },
                 Header: '',

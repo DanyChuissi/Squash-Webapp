@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './EditRights.css'
+import {Button} from "react-bootstrap";
 
 class GroupRights extends Component {
     render() {
@@ -54,7 +55,7 @@ class GroupRights extends Component {
                     </tbody>
                 </table>
                 <div>
-                    <button id={"saveButton"}>Save</button>
+                    <Button id={"saveButton"}>Save</Button>
                 </div>
             </div>
         );

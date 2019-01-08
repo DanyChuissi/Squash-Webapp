@@ -9,7 +9,7 @@ import {myFunction} from '../UI/HeaderProfilController';
 import {onLogoCenterClick} from '../UI/HeaderProfilController';
 import {onLogoMenuClick} from '../UI/HeaderProfilController';
 import PlayerList from './PlayerList';
-import $ from 'jquery';
+
 import Label from "../UI/Label";
 /**
  * @author Dany
@@ -61,9 +61,6 @@ class PlayerListView extends Component{
                     "\n \"trainer_nr\": 1," +
                     "\n}"
         }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-            });
 
             /*var payload = {
                 name: "Paul",

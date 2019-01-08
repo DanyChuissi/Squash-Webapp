@@ -1,0 +1,403 @@
+/**Css for JTP **/
+
+/**Css JTPMainView**/
+#JTPCalendar {
+    height: calc(100vh - 100px);
+    width: calc(100vh + 400px);
+}
+
+@media screen and (max-width: 768px) {
+    #JTPCalendar {
+        height: calc(100vh - 100px);
+        width: calc(100vh - 130px);
+    }
+    #legend  {
+    display: flex;
+        flex-direction: column;
+    }
+}
+
+#jTPTop {
+    border: black 2px solid;
+    background-color: #f19a29;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#jTPTopRight {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10%;
+}
+
+#jTPTopLeft {
+    padding-bottom: 1.5%;
+    width: 100%;
+}
+
+#jTPBottom {
+    border: black 2px solid;
+    background-color: #f19a29;
+    display: flex;
+    flex-direction: row;
+}
+
+#jTPTabs {
+    margin: 1%;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    height: 700px;
+}
+
+#jTPCenterLeft {
+    background-color: whitesmoke;
+    margin: 0.5%;
+    width: 60%;
+}
+
+#jTPDetailDayView {
+    display: flex;
+    flex-direction: row;
+}
+
+#jTPCenterLeftCenter {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-bottom: 2.5%;
+    margin-top: 5%;
+}
+
+#jTPCenterLeftBottom {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+#jTPCenterLeftRight {
+    width: 60%;
+}
+
+#jTPCenterLeftBottom > textarea {
+    margin-left: 2%;
+}
+
+#jTPCenterLeftRight > textarea, #jTPCenterLeftBottom > textarea {
+    width: 80%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#jTPCenterLeftCenter > select {
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: 6.5%;
+}
+
+#jtPCenterLeftTopMAZ {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4%;
+}
+
+#jTPCenterLeftMAZTable {
+    width: 60%;
+}
+
+#jtPCenterLeftButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+#jtPCenterLeftTopMAZNotes > textarea, #panel > textarea {
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#jtpTableMAZ {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+#jTPMAZButtonsBottom {
+    margin-bottom: 2.5%;
+}
+
+/* Change background color of buttons on hover */
+#jTPTabs button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: black;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+Tab {
+    display: flex;
+    align-content: center;
+
+    justify-items: center;
+}
+
+#jTPCenterRight {
+    background-color: whitesmoke;
+    margin: 0.5%;
+    width: 40%;
+}
+
+#jTPCenterRight textarea{
+    width: 60%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#jTPCenterRightTop {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.DayPicker-Weeknumber {
+    color: #282c34;
+    background-color: #282c34;
+}
+
+#legend {
+    display: flex;
+    flex-direction: row;
+}
+
+#legend div {
+    margin-right: 0.5%;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 0.5%;
+}
+#legend{
+
+}
+
+#condition {
+    margin-left: 5%;
+    background-Color: #7ae7bf;
+    width: 10%
+}
+
+#strength{
+    background-Color: #ff887c;
+    width: 10%
+}
+#speediness{
+    background-Color: #fbd75b;
+    width: 15%
+}
+#flexibility {
+    background-Color: #5484ed;
+    width: 10%
+}
+#technique {
+    background-Color: #dc2127;
+    width: 10%
+}
+#mental{
+    background-Color: #dbadff;
+    width: 10%
+}
+#performanceDiagnostics {
+    background-Color: #bfa473;
+    width: 15%
+}
+#coordination{
+    background-Color: #51b749;
+    width: 10%
+}
+
+    /**End JTPMainView **/
+    /**Css for Vacation View **/
+#addVacationView{
+    background-color: #f19a29;
+}
+#vacationList{
+    background-color: whitesmoke;
+}
+#time {
+    margin-top: 5%;
+    margin-left: 16%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#start {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    width: 30%;
+}
+
+#end {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    width: 30%;
+}
+
+#descriptionForm {
+    margin-top: 2.5%;
+    margin-left: 16%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+#descriptionTextAndButton {
+    display: flex;
+    flex-direction: column;
+}
+
+#vacationDescription {
+    margin-left: 5%;
+    width: 160%;
+}
+
+#addVacation {
+    width: 70%;
+    height: 40%;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    border: #f19a29 solid 2px;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 90%;
+}
+
+#topVacView {
+    background-color: #f19a29;
+}
+
+#bottomVacView {
+    background-color: #f19a29;
+    padding-bottom: 2.5%;
+}
+#vacationDescription{
+    width: 200px;
+    height: 100px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+/**End Add Vacation View**/
+
+/**Create MAZ Phase **/
+#createMAZView {
+    background-color: #f19a29;
+}
+
+#mAZPhase {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    margin-left: 5%;
+
+}
+
+#createMAZView {
+    font-size: large;
+    font-weight: bold;
+}
+
+#mAZTime {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+#emphasis {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+#emphasisCheckBoxLeft {
+    margin-left: 15%;
+    margin-right: 10%;
+}
+
+#descriptionFormCreateMAZ {
+    margin-top: 2.5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#MAZDescription {
+    margin-left: 5%;
+    width: 50%;
+}
+
+#bottomCreateMAZView {
+    padding-bottom: 2.5%;
+}
+
+#startMAZ {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    width: 30%;
+}
+
+#endMAZ {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    width: 30%;
+}
+
+#mAZDescription {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+}
+
+#MaZPhaseLabel {
+    margin-right: 2.5%;
+}
+#mAZPhase select{
+    width: 40%;
+    border-radius: 20px;
+}
+#MAZDescription{
+    width: 60%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+/**End Create MAZ Phase **/

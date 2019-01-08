@@ -5,7 +5,6 @@ import '../App.css';
 import moment from "moment";
 import 'moment/locale/de';
 import './Kalendar.css';
-import {BrowserRouter, Route, Switch,Link} from 'react-router-dom'
 import DetailsAnsichtView from "../Trainingstagebuch/DetailsAnsichtView";
 import Popup from "reactjs-popup";
 
