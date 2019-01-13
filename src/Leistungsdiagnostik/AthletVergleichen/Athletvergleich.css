@@ -1,0 +1,37 @@
+.athlet_vergleich_box {
+    display: flex;
+    justify-content: center;
+}
+.athlet_vergleich_box > select {
+    width: 220px;
+    height: 35px;
+    margin-top: 5px;
+    border-radius: 20px;
+    color: black;
+    font-size: 16px;
+}
+
+.head_athletvergleich {
+    font-size: 23px;
+    padding: 15px;
+}
+.close_icon {
+    width: 10px;
+    height: 10px;
+}
+#selectedItem {
+    color: black;
+    justify-content: start;
+    font-size: 12px;
+}
+.selected_item {
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+}
+.selected_item > div {
+    height: 120px;
+    width: auto;
+   justify-content: start;
+    justify-items: start;
+}

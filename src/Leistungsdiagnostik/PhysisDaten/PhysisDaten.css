@@ -1,0 +1,26 @@
+.physisdaten_box {
+    display: flex;
+    justify-content: center;
+    color: black;
+    padding-bottom: 10px;
+}
+.tbody_leistung {
+    color: black;
+    font-size: 16px;
+    padding-top: 10px;
+}
+/*.thead_leistung {
+    height: 30px;
+    width: 300px;
+    font-size: 16px;
+}*/
+.tbody_leistung > tr {
+    height: 10px;
+}
+.tbody_leistung > tr > th {
+    width: 120px;
+    justify-content: start;
+}
+.tbody_leistung > tr > td {
+    width: 250px;
+}

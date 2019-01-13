@@ -1,0 +1,9 @@
+.testbaterie_box {
+
+    flex-direction: column;
+}
+
+.spinediagramm_leisrung {
+    background-color: whitesmoke;
+    height: calc(100vh - 230px);
+}
