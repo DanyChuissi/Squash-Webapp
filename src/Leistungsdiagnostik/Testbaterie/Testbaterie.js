@@ -44,8 +44,9 @@ class Testbaterie extends Component {
         const Modal = () => (
             <Popup onClose={closePopUp} closeOnEscape={true} open={trigger} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle1}>
-                    <NewTestBaterieController/>
+                    <NewTestBaterieController closePopUp={closePopUp}/>
                 </div>
+                <Modal/>
             </Popup>
         )
 
@@ -127,6 +128,5 @@ const modalStyle1 = {
     left: 200,
     right: 200,
     color: 'black',
-    padding: 30
 }
 export default Testbaterie;

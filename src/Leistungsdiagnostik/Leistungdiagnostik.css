@@ -39,13 +39,7 @@
     margin: 1px;
 }
 
-.kommentar_leistung {
-    border: 2px solid black;
-    background-color: #f19a29;
-    /*margin: 1px;*/
-   width: auto;
-    min-height: 100px;
-}
+
 
 .main_leistung {
     margin: 20px;
@@ -58,7 +52,4 @@
     width: calc(100vh - 246px);
     /*padding-bottom: 10px;*/
 
-}
-.tabss {
-    font-size: 11px;
 }

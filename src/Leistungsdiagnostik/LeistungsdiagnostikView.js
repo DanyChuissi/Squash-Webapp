@@ -15,6 +15,9 @@ import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfil
 import "react-tabs/style/react-tabs.css";
 import Popup from "reactjs-popup";
 import NewTestBaterieController from "./NewTestBaterie/NewTestBaterieController";
+import Input from "../UI/Input";
+import {Close} from "react-bytesize-icons";
+import Kommentar from './Kommentare/Komemntar';
 
 class LeistungsdiagnostikView extends React.Component{
     state={
@@ -31,28 +34,8 @@ class LeistungsdiagnostikView extends React.Component{
         checkboxArray: [datum1, datum2, datum3],
         arraykurve: [datum1,datum2, datum3],
         index: 0,
-
     }
 
-
-   /* componentWillMount = () => {
-        let a1 = datum1;
-        let a2 = datum2;
-        let a3 = datum3;
-        this.setState({
-            checkboxArray: this.state.testArrayDatum.slice(),
-
-        })
-    }*/
-   /* setChekbox1= () => {
-        this.setState({datum1Checkbox: !this.state.datum1Checkbox})
-    }
-    setChekbox2= () => {
-        this.setState({datum2Checkbox: !this.state.datumCheckbox})
-    }
-    setChekbox3= () => {
-        this.setState({datum3Checkbox: !this.state.datum3Checkbox})
-    }*/
     setIndex = (e, index) => {
         this.setState({index: index})
         alert(index)
@@ -102,24 +85,24 @@ class LeistungsdiagnostikView extends React.Component{
     refreshDiagramm= () => {
         this.setState({diagramm: null})
     }
-    /*removeTestBaterie(e, index){
-        alert(e)
-        if(typeof index !== "undefined") {
-            var array = [...this.state.anzeigeArray];
-            if (index !== -1) {
-                array.splice(index, 1);
-                this.setState({
-                    anzeigeArray: array,
-                });
-            }
-        }
-    };*/
-    /*addAthlet_zu_vergl (e){
-                this.setState({
-                    anzeigeArray: [...this.state.anzeigeArray, e],
-                })
-    };*/
+    kommentar_posten = () => {
 
+        this.setState({
+            kommentare: [...this.state.kommentare, this.state.kommentar],
+        })
+    }
+    setKommentar = (e) => {
+        let  k =
+        {
+            name: 'trainer',
+            text: e.target.value,
+            datum:  new Date(),
+        }
+
+        this.setState({
+            kommentar: k,
+        })
+    }
 
     render () {
         const {
@@ -147,6 +130,8 @@ class LeistungsdiagnostikView extends React.Component{
             onEdit,
         } = this.props;
         let index = this.state.index;
+
+
 
         return (
             <Fragment>
@@ -280,8 +265,8 @@ class LeistungsdiagnostikView extends React.Component{
                         </div>
 
 
-                    <div className="kommentar_leistung">
-                        Kommentar
+                    <div>
+                      <Kommentar/>
                     </div>
                 </div>
             </Fragment>
