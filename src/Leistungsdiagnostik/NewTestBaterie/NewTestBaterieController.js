@@ -3,17 +3,15 @@ import NewTestBaterieView from "./NewTestBaterieView";
 
 
 class NewTestBaterieController extends Component {
-    state ={
-        trigger : false,
-    }
 
-    closePopup = () =>{
-        this.setState({trigger: false})
-    }
     render () {
+        const {
+            closePopUp,
+            postTestBaterie,
+        } = this.props;
         return (
 
-            <NewTestBaterieView/>
+            <NewTestBaterieView postTestBaterie={postTestBaterie} closePopUp={closePopUp}/>
 
         );
     }

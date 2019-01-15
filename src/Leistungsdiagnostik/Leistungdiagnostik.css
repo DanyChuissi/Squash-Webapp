@@ -1,6 +1,14 @@
 
 .diagramm_leistung {
     background-color: whitesmoke;
+    border: 2px solid black;
+
+    min-width: 60%;
+    max-width: fit-content;
+    margin-left: 20px;
+    min-height: 460px;
+    max-height: 460px;
+
 }
 
 .leistung_main{
@@ -11,11 +19,18 @@
     margin-top: 10px;*/
    /* margin-right: 20px;*/
   /*  color: whitesmoke;*/
+    /* height:  calc(100vh - 155px) ;*/
+
+    /*
     display: flex;
     background-color: whitesmoke;
-   /* height:  calc(100vh - 155px) ;*/
     flex-direction: column;
-    margin: 10px;
+    margin: 10px;*/
+
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background-color: whitesmoke;
 }
 
 /*#tabs_testbaterie {
@@ -23,10 +38,19 @@
 }*/
 .leistung_diag_container {
     display: grid;
-    grid-template-columns: calc(100vh - 240px) calc(100vh + 290px);
-    grid-template-rows: calc(100vh - 400px) auto;
+    grid-template-columns: calc(100vh - 370px)auto;
+    grid-template-rows: calc(100vh - 580px)auto;
     justify-content: center;
 }
+@media only screen and (max-width: 998px) {
+    .leistung_diag_container {
+        display: grid;
+        grid-template-columns: calc(100vh - 380px) calc(100vh + 290px);
+        grid-template-rows: calc(100vh - 500px) auto;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-width: 1300px)  {
     .leistung_diag_container {
         grid-template-columns: calc(100vh - 240px)  calc(100vh + 290px);
@@ -49,7 +73,37 @@
     background-color: dimgray;
     text-align: center;
     font-size: 23px;
-    width: calc(100vh - 246px);
     /*padding-bottom: 10px;*/
 
+}
+
+.leistung_main > div {
+    height: auto;
+    margin: 5px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.orangeContainer {
+    background-color: #f19a29;
+}
+
+.container1 {
+    width: 500px;
+    border: 2px solid black;
+    background-color: #f19a29;
+    min-width: 300px;
+}
+
+.container2{
+    border: 2px solid black;
+    background-color: #f19a29;
+    min-width: 60%;
+    max-width: fit-content;
+    margin-left: 20px;
+
+}
+.kommentar_L {
+    width: 100%;
 }

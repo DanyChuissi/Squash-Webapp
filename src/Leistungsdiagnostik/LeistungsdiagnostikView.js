@@ -16,7 +16,7 @@ import "react-tabs/style/react-tabs.css";
 import Popup from "reactjs-popup";
 import NewTestBaterieController from "./NewTestBaterie/NewTestBaterieController";
 import Input from "../UI/Input";
-import {Close} from "react-bytesize-icons";
+//import {Close} from "react-bytesize-icons";
 import Kommentar from './Kommentare/Komemntar';
 
 class LeistungsdiagnostikView extends React.Component{
@@ -140,8 +140,8 @@ class LeistungsdiagnostikView extends React.Component{
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div className="leistung_main">
-                        <div className="leistung_diag_container">
-                            <div className="myContainer">
+                      <div className="orangeConta">
+                            <div className="container1">
                                <PhysisDatenController groesse={1.80}
                                                 gewicht={80}
                                                 koeperfett={18}
@@ -149,10 +149,12 @@ class LeistungsdiagnostikView extends React.Component{
                                                 beinwinkel={30}
                                />
                             </div>
-                            <div className="myContainer">
+                            <div className="container2">
                                <Athlet_Vergleich/>
                             </div>
-                            <div className= "myContainer">
+                      </div>
+                    <div>
+                            <div className= "container1">
                                 <div className="thead_leistung">
                                     <label className="thead_leistung">Testbaterie</label>
                                 </div>
@@ -164,7 +166,7 @@ class LeistungsdiagnostikView extends React.Component{
                                     <Tab>{this.state.testArrayDatum[2].name}</Tab>
                                     <Tab disabled>{this.state.testArrayDatum[2].name}</Tab>
                                 </TabList>
-                                    <TabPanel  >
+                                    <TabPanel >
                                         {e => this.setIndex(e, 0)}
                                         <TestBaterieController
                                             beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
@@ -262,12 +264,11 @@ class LeistungsdiagnostikView extends React.Component{
                                                         borg={this.state.testArrayDatum[index].borg}
                                                         beep_test={this.state.testArrayDatum[index].beep_test}/>}
                              </div>
-                        </div>
-
-
-                    <div>
-                      <Kommentar/>
                     </div>
+                            <div className="kommentar_L">
+                                <Kommentar/>
+                            </div>
+
                 </div>
             </Fragment>
         );

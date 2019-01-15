@@ -22,7 +22,7 @@ class SpineDiagramm extends Component {
         const data = [
 
 
-            {subject: 'Beweglichkeit', A: beweglichtkeit, fullMark: 150},
+            {subject: 'Beweglichkeit', A: beweglichtkeit, fullMark: 150, domain: 20},
             {subject: 'Reaktion', A: reaction, fullMark: 150},
             {subject: 'Koordination', A: koordination, fullMark: 150},
             {subject: 'Sprint', A: sprint, fullMark: 150},
@@ -38,7 +38,7 @@ class SpineDiagramm extends Component {
             <Fragment>
                 <div className="testbaterie_bo">
                     <div className="spinediagramm_leisrun">
-                        <RadarChart cx={450} cy={170} outerRadius={130} width={680} height={310} data={data}>
+                        <RadarChart cx={350} cy={170} outerRadius={130} width={680} height={310} data={data}>
                             <PolarGrid/>
                             <PolarAngleAxis dataKey="subject"/>
                             <PolarRadiusAxis angle={90} domain={[0, 150]}/>

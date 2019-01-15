@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Testbaterie from './Testbaterie';
-import Popup from 'react-popup';
+//import Popup from 'react-popup';
 import Confirmbutton from "../../UI/Confirmbutton";
 
 class TestBaterieController extends Component {
@@ -90,6 +90,10 @@ class TestBaterieController extends Component {
     closePopup = () =>{
         this.setState({trigger: false})
     }
+    postTestBaterie = () => {
+        alert("TestBaterie gespeichert");
+        this.closePopup();
+    }
 
     render(){
       const {
@@ -118,6 +122,7 @@ class TestBaterieController extends Component {
                         beep_test={beep_test}
                          trigger={this.state.trigger}
 
+                         postTestBaterie={this.postTestBaterie}
                         displayEvent={ this.displayEvent}
                          closePopUp={this.closePopup}
                         hideBearbeiten={this.state.hideBearbeiten}

@@ -1,13 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import "./Athletvergleich.css";
 import Label from "../../UI/Label";
-import { Close } from 'react-bytesize-icons';
+//import { Close } from 'react-bytesize-icons';
 import Confirmbutton from "../../UI/Confirmbutton";
 import $ from 'jquery';
 import { unmountComponentAtNode } from 'react-dom';
 import Popup from "reactjs-popup";
 import DetailsAnsichtView from "../../Trainingstagebuch/DetailsAnsichtView";
 import KurvenDiagramm from "../KurvenDiagramm";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 var a1 = {
     name: "Paul",
@@ -40,10 +42,26 @@ class Athlet_Vergleich extends Component{
             selectet: '',
             index: 0,
             trigger : false,
-            testArrayDatum: [datum1, datum2, datum3]
+            testArrayDatum: [datum1, datum2, datum3],
+            query: '',
         };
         this.removeAthlet_zu_vergl = this.removeAthlet_zu_vergl.bind(this);
         this.addAthlet_zu_vergl = this.addAthlet_zu_vergl.bind(this);
+    }
+    getInfo = () => {
+
+    }
+
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        }, () => {
+            if (this.state.query && this.state.query.length > 1) {
+                if (this.state.query.length % 2 === 0) {
+
+                }
+            }
+        })
     }
    /* componentDidMount = () => {
         fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + 1)
@@ -156,10 +174,8 @@ class Athlet_Vergleich extends Component{
 
         const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
             <li onClick={this.onclicked.bind(this, d.email)} key={d.email} value={d.email}>
-                {d.name}
-                <Close onClick={this.removeAthlet_zu_vergl}
-                     width={12} height={12} color="#ff0000"
-                />
+                    {d.name }{ '      '}
+                    <label style={{color: 'red'}}> X</label>
             </li>);
         let options =this.state.players.map((player) =>
             <option key={player.email} data-key={player.mail} value={player.email}>{player.name} {player.vorname} </option>
@@ -176,6 +192,7 @@ class Athlet_Vergleich extends Component{
                 </div>
 
                 <div className="athlet_vergleich_box">
+
                      <select  onChange={this.setSelected}>
                          {options}
                      </select>

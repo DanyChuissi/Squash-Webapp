@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import "./PhysisDaten.css"
 import Confirmbutton from "../../UI/Confirmbutton";
+import '../../EditPlayerProfile/EditPlayerProfile.css';
 
 
 class PhysisDatenView extends React.Component{

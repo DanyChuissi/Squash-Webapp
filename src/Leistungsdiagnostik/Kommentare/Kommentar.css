@@ -17,15 +17,18 @@
     color: #282c34;
 }
 .alteKommentat > button {
-    height: 20px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
 }
 .kommentar_leistung {
     border: 2px solid black;
     background-color: #f19a29;
-    width: auto;
+    max-width: 100%;
     min-height: 100px;
     padding: 10px;
     margin-top: 3px;
+    width: 96%;
 }
 
 .kommentar_leistung > textarea {
@@ -33,12 +36,10 @@
     width: auto;
     min-height: 50px;
     height: auto;
+    border-radius: 10px;
 }
 .kommentar_leistung > div {
     display: flex;
     flex-direction: column;
 }
 
-.kommentar_leistung > Confirmationbuton {
-
-}

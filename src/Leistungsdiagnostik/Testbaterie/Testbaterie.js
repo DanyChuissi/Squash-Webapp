@@ -37,16 +37,16 @@ class Testbaterie extends Component {
             onEdit,
             onSave,
             trigger,
-        displayEvent,
-        closePopUp,
+             displayEvent,
+              closePopUp,
+            postTestBaterie,
         } = this.props;
 
         const Modal = () => (
-            <Popup onClose={closePopUp} closeOnEscape={true} open={trigger} position={"top left"} closeOnDocumentClick={true}>
+            <Popup onClose={closePopUp} closeOnEscape={true} open={trigger} position={"top left"} closeOnDocumentClick={false}>
                 <div style={modalStyle1}>
-                    <NewTestBaterieController closePopUp={closePopUp}/>
+                    <NewTestBaterieController postTestBaterie={postTestBaterie} closePopUp={closePopUp}/>
                 </div>
-                <Modal/>
             </Popup>
         )
 
