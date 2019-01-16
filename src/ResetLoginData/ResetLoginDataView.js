@@ -4,6 +4,7 @@ import logo from  "../Graphics/Logo_kreis.png";
 import Confirmbutton from "../UI/Confirmbutton";
 import Footer from "../UI/Footer";
 import LoginView from "../Login/LoginView";
+import * as EmailValidator from 'email-validator';
 
 /**
  * @author Dany
@@ -39,6 +40,14 @@ class ResetLoginDataView extends Component{
                erg =  "Email ist leer!"
                 return erg;
         }
+        if(yourEmail.length !== 0){
+            let emailOk = EmailValidator.validate(yourEmail);
+            if(emailOk !== true){
+                erg = "Bitte gültige Email eingeben";
+                return erg;
+            }
+        }
+
         if(yourEmail === "chuissidany@yahoo.fr") {
             erg = "Email wurde gesendet an \"" + yourEmail + "\", offne deine Email Adresse, um dein Passwort zurückzusetzten"
             return erg;

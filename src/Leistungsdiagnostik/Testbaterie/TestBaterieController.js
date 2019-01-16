@@ -3,6 +3,8 @@ import Testbaterie from './Testbaterie';
 //import Popup from 'react-popup';
 import Confirmbutton from "../../UI/Confirmbutton";
 
+
+
 class TestBaterieController extends Component {
     state={
         beweglichtkeit: '',
@@ -108,6 +110,8 @@ class TestBaterieController extends Component {
           borg,
           beep_test
       } = this.props;
+
+
 
         return (
             <Testbaterie beweglichtkeit={beweglichtkeit}

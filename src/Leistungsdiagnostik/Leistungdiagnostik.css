@@ -107,3 +107,17 @@
 .kommentar_L {
     width: 100%;
 }
+
+.kurveCheckbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.kurveCheckbox > Input {
+    margin: 5px;
+}
+
+.kurveCheckbox > div {
+    margin: 5px;
+    margin-bottom: 10px;
+}

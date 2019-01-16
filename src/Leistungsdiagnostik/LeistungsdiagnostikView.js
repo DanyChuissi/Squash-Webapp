@@ -221,25 +221,25 @@ class LeistungsdiagnostikView extends React.Component{
                             </div>
                             <div className="diagramm_leistung">
                                 <div>
-                                    <div style={{color:'black'}}  hidden={this.state.kurvehidden}>
+                                    <div className="kurveCheckbox"  hidden={this.state.kurvehidden}>
                                         <input className="input_chekbox"
                                                name="datum1"
                                                type="checkbox"
                                                defaultChecked={this.state.datum1Checkbox}
                                                onChange={e =>this.habdelchekbox(e, 0)}
-                                        />{this.state.testArrayDatum[0].name}
+                                        /> <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>
                                         <input className="input_chekbox"
                                                name="datum2"
                                                type="checkbox"
                                                defaultChecked={this.state.datum2Checkbox}
                                                onChange={e =>this.habdelchekbox(e, 1)}
-                                           />{this.state.testArrayDatum[1].name}
+                                           /> <div style={{color:'#ff0000'}}>{this.state.testArrayDatum[1].name}</div>
                                         <input className="input_chekbox"
                                                name="datum3"
                                                type="checkbox"
                                                defaultChecked={this.state.datum3Checkbox}
                                                onChange={e =>this.habdelchekbox(e, 2)}
-                                           />{this.state.testArrayDatum[2].name}
+                                           /> <div style={{color:'#2980B9'}}>{this.state.testArrayDatum[2].name}</div>
                                          <input className="input_chekbox"
                                                name="datum4"
                                                type="checkbox"
@@ -280,12 +280,12 @@ var noll = {
 }
 var datum1 = {
     beweglichtkeit: 13,
-    reaction: 17,
+    reaction: 6.5,
     koordination: 2,
     sprint: 5.12,
     JandR: 31.5,
     med_ball: 5.35,
-    stws: 206,
+    stws: 6,
     agilitaet:17,
     borg: 20,
     beep_test: 11.20,
@@ -294,13 +294,13 @@ var datum1 = {
 }
 var datum2 = {
     beweglichtkeit: 19,
-    reaction: 14,
+    reaction: 9,
     koordination: 5,
     sprint: 8.12,
     JandR: 45.5,
-    med_ball: 12.35,
-    stws: 106,
-    agilitaet:23,
+    med_ball: 9.35,
+    stws: 0,
+    agilitaet: 9,
     borg: 14,
     beep_test: 18.20,
     name: '24-12-2018',
@@ -308,13 +308,13 @@ var datum2 = {
 }
 var datum3 = {
     beweglichtkeit: 10,
-    reaction: 24,
+    reaction: 5,
     koordination: 1,
     sprint: 2.12,
     JandR: 20.5,
-    med_ball: 15.35,
-    stws: 156,
-    agilitaet:27,
+    med_ball: 7.35,
+    stws: 0,
+    agilitaet:12,
     borg: 29,
     beep_test: 21.20,
     name: '20-11-2018',

@@ -45,24 +45,23 @@ class RegistrationView extends React.Component{
                     Die mit einem * gekenntzeichneten Felder sind verpflichtend
                     <div className="boxR">
                             <Label>*E-mail-Adresse: </Label>
-                            <Input  placeholder={"automatisch"} value={email} onChange={setEmail}/>
+                            <input type="email"  placeholder={"Email"}  value={email} onChange={setEmail}/>
                             <Label>*Password: </Label>
-                            <Input  placeholder={"Password"} value={password} onChange={setPassword}/>
+                            <input type="password"  placeholder={"Password"} value={password} onChange={setPassword}/>
                             <Label>*Password Wiederholen: </Label>
-                            <Input placeholder={"Password Wiederholen"} value={password_2} onChange={setPassword_2}/>
+                            <input type="password" placeholder={"Password Wiederholen"} value={password_2} onChange={setPassword_2}/>
                      </div>
 
                     <div style={{paddingBottom: '10px'}}>
                         <input className="input_chekbox"
                             name="nutzung_akzeptiert"
                             type="checkbox"
-                            checked={nutzungbedingungen_akzeptiert}
                             onChange={setNutzungbedingungen_akzeptiert} />
                         Ich habe die
                         <a  style={{textDecoration: 'none'}} href= {"Datenschutz"} rel = "noopener noreferrer"  target="_blank" > Nutzungbedingungen </a>
                         gelesen und akzeptiere sie,
                     </div>
-                    <div><ConfirmButton onClick={submitData}>Registrieren</ConfirmButton></div>
+                    <div><ConfirmButton myStyle= {{padding: '13px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}} onClick={submitData}>Registrieren</ConfirmButton></div>
                     </div>
                 </div>
                 <footer>
