@@ -85,6 +85,7 @@ class KurvenDiagramm extends Component {
                 break;
         }
 
+
         let lines = [];
         let l;
 
@@ -94,14 +95,14 @@ class KurvenDiagramm extends Component {
         }
         else if(attribute.length === 2){
                 l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>
-                let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#2980B9" activeDot={{r: 8}}/>
+                let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>
             lines = [...lines, l];
             lines = [...lines, l2];
         }
         else if(attribute.length === 3){
             l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>
-            let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#2980B9" activeDot={{r: 8}}/>
-           let l3 = <Line name={name3} type="monotone" dataKey="a3" stroke="#ff0000" activeDot={{r: 8}}/>
+            let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>
+           let l3 = <Line name={name3} type="monotone" dataKey="a3" stroke="#2980B9" activeDot={{r: 8}}/>
             lines = [...lines, l];
             lines = [...lines, l2];
             lines = [...lines, l3];

@@ -4,16 +4,31 @@ import './Kommentar.css';
 
 class Komemntar extends Component{
     state={
-
         kommentare: [],
         kommentar: 'Kommentar Eingeben',
         id_kommentar: 0,
     }
     kommentar_posten = () => {
-    this.setState({
-        kommentare: [...this.state.kommentare, this.state.kommentar],
-        kommentar: 'Kommentar Eingeben',
-    })
+        let date= new Date().toLocaleString();
+        let  k =
+            {
+                id: this.state.id_kommentar,
+                name: 'trainer',
+                text: this.state.kommentar,
+                datum:  date,
+            };
+        let i = this.state.kommentar + 1;
+        if(this.state.kommentar !== 'Kommentar Eingeben' && this.state.kommentar !== ''){
+            this.setState({
+                kommentare: [...this.state.kommentare, k],
+                kommentar: 'Kommentar Eingeben',
+                id_kommentar: i,
+            })
+        }
+        else{
+            alert("Bitte Kommentar eingeben")
+        }
+
     }
     zeigeKommentar = (id) => {
         let erg : '';
@@ -24,23 +39,13 @@ class Komemntar extends Component{
         });
 
         this.setState({
-            kommentar: erg
+            kommentar: erg.text,
         })
 
     }
     setKommentar = (e) => {
-        let date= new Date().toLocaleString();
-    let  k =
-        {
-            id: this.state.id_kommentar,
-            name: 'trainer',
-            text: e.target.value,
-            datum:  date,
-        }
-    let i = this.state.kommentar + 1;
     this.setState({
-        kommentar: k,
-        id_kommentar: i,
+        kommentar: e.target.value,
     })
    }
 
@@ -62,8 +67,8 @@ class Komemntar extends Component{
                 </div>
 
             </div>
-            <button onClick={this.zeigeKommentar}>
-            edit
+            <button onClick={() =>this.zeigeKommentar(d.id)}>
+              edit
             </button>
             <div>
                 {d.text}

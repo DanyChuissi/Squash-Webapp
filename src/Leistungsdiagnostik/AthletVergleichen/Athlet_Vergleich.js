@@ -1,13 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import "./Athletvergleich.css";
 import Label from "../../UI/Label";
-import { Close } from 'react-bytesize-icons';
+//import { Close } from 'react-bytesize-icons';
 import Confirmbutton from "../../UI/Confirmbutton";
 import $ from 'jquery';
 import { unmountComponentAtNode } from 'react-dom';
 import Popup from "reactjs-popup";
 import DetailsAnsichtView from "../../Trainingstagebuch/DetailsAnsichtView";
 import KurvenDiagramm from "../KurvenDiagramm";
+import PhisisDatenKurve from "./PhisisDatenKurve";
+
 
 var a1 = {
     name: "Paul",
@@ -35,15 +37,33 @@ class Athlet_Vergleich extends Component{
         super();
         this.state = {
             players: [ av,a1, a2, a3],
+            physisDaten: [PDaten1, PDaten2, PDaten3],
+            physisDaten_zu_vergleichen: [],
             athlet_zu_vergl: [],
             hideliste: true,
             selectet: '',
             index: 0,
             trigger : false,
-            testArrayDatum: [datum1, datum2, datum3]
+            testArrayDatum: [datum1, datum2, datum3],
+            query: '',
         };
         this.removeAthlet_zu_vergl = this.removeAthlet_zu_vergl.bind(this);
         this.addAthlet_zu_vergl = this.addAthlet_zu_vergl.bind(this);
+    }
+    getInfo = () => {
+
+    }
+
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        }, () => {
+            if (this.state.query && this.state.query.length > 1) {
+                if (this.state.query.length % 2 === 0) {
+
+                }
+            }
+        })
     }
    /* componentDidMount = () => {
         fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + 1)
@@ -109,6 +129,15 @@ class Athlet_Vergleich extends Component{
        this.removeAthlet_zu_vergl(email);
         this.setState({trigger: false})
     }
+    getPlayerPhysisDaten = (email) => {
+        let erg = null;
+        this.state.physisDaten.map( (daten) => {
+            if(daten.email === email){
+                erg = daten
+            }
+        });
+        return erg;
+    }
     addAthlet_zu_vergl (){
        if(this.state.index !== 0) {
            let pname = this.state.players[this.state.index].name;
@@ -118,8 +147,11 @@ class Athlet_Vergleich extends Component{
            daten.name = pvorname +' '+ pname;
 
            if (this.pruefeVorhanden(pemail) !== true) {
+               let PhysisDaten = this.getPlayerPhysisDaten(pemail);
+               PhysisDaten.name = pname;
                this.setState({
                    athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
+                   physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
                    hideliste: false,
                })
            }
@@ -149,17 +181,19 @@ class Athlet_Vergleich extends Component{
         const Modal = () => (
             <Popup onClose={this.closePopup} closeOnEscape={true} open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle1}>
-                    <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
+                        <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
+                        <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
                 </div>
+
             </Popup>
         )
-
+        {/*<div>
+                        <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
+                    </div>*/}
         const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
             <li onClick={this.onclicked.bind(this, d.email)} key={d.email} value={d.email}>
-                {d.name}
-                <Close onClick={this.removeAthlet_zu_vergl}
-                     width={12} height={12} color="#ff0000"
-                />
+                    {d.name }{ '      '}
+                    <label style={{color: 'red'}}> X</label>
             </li>);
         let options =this.state.players.map((player) =>
             <option key={player.email} data-key={player.mail} value={player.email}>{player.name} {player.vorname} </option>
@@ -176,6 +210,7 @@ class Athlet_Vergleich extends Component{
                 </div>
 
                 <div className="athlet_vergleich_box">
+
                      <select  onChange={this.setSelected}>
                          {options}
                      </select>
@@ -205,11 +240,13 @@ const modalStyle1 = {
     position: 'fixed',
     top: 100,
     bottom: 80,
-    left: 200,
-    right: 200,
+    left: 100,
+    right: 100,
     backgroundColor: 'whitesmoke',
     color: 'black',
-    padding: 30
+    padding: 30,
+    display: 'flex',
+    flexDirection: 'row',
 };
 var datum1 = {
     beweglichtkeit: 13,
@@ -224,7 +261,7 @@ var datum1 = {
     beep_test: 11.20,
     name: '07-01-2019',
     email: 'email1',
-}
+};
 var datum2 = {
     beweglichtkeit: 19,
     reaction: 14,
@@ -238,7 +275,7 @@ var datum2 = {
     beep_test: 18.20,
     name: '24-12-2018',
     email: 'email2',
-}
+};
 var datum3 = {
     beweglichtkeit: 10,
     reaction: 24,
@@ -252,5 +289,33 @@ var datum3 = {
     beep_test: 21.20,
     name: '20-11-2018',
     email: 'email3'
+};
+
+var PDaten1 = {
+    email: 'email1',
+    alter: 29,
+    groesse: 160,
+    gewicht: 0,
+    koerperfett: 6.25,
+    beinlaenge: 60,
+    beinwinkel: 30,
+}
+var PDaten2 = {
+    email: 'email2',
+    alter: 16,
+    groesse: 180,
+    gewicht: 60,
+    koerperfett: 8.75,
+    beinlaenge: 70,
+    beinwinkel: 20,
+}
+var PDaten3 = {
+    email: 'email3',
+    alter: 19,
+    groesse: 150,
+    gewicht: 82,
+    koerperfett: 12.15,
+    beinlaenge: 55,
+    beinwinkel: 40,
 }
 //onChange={this.addAthlet_zu_vergl(this.state.players.email, this.state.players.name, this.state.players.surname)

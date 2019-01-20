@@ -36,6 +36,17 @@
     background-color: #f19a29;
 }
 
+Registragion_input {
+    border-color: #f19a29;
+    text-align: center;
+    font-size: medium;
+    min-height: 10px;
+    min-width: 30px;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    background-color: white;
+}
+
 
 .boxR  {
     display: grid;
@@ -46,8 +57,8 @@
     justify-content: center;
     height: 200px;
 }
-.boxR > Input {
-
+.boxR > input {
+    height: 40px;
     margin: 5px;
     padding-top: 5px;
 }

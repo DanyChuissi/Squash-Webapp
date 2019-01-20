@@ -16,11 +16,14 @@
 }*/
 .tbody_leistung > tr {
     height: 10px;
+    width: 100%;
 }
 .tbody_leistung > tr > th {
-    width: 120px;
+   /* width: 120px;*/
+    width: 30%;
     justify-content: start;
 }
 .tbody_leistung > tr > td {
-    width: 250px;
+    width: 70%;
+   /* width: 250px;*/
 }

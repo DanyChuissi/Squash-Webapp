@@ -1,7 +1,7 @@
 .main_newLeistung {
     color: black;
     background-color: #f19a29;
-    height:calc(100vh - 200px) ;
+    height:calc(100vh - 270px) ;
     width: calc(100vh + 60px) ;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     display: flex;
@@ -22,20 +22,18 @@
     grid-template-rows: 70px 70px 70px 70px 70px;
     justify-content: center;
     align-content: center;
-    height:calc(100vh - 250px);
-    min-width: 300px;
+    height:calc(100vh - 270px);
+    min-width: 350px;
 }
 .box_newtestbaterie > Input {
    min-width: 100px;
-    margin: 5px;
-    padding-top: 5px;
+    margin-top: 10px;
+ margin-left: 5px;
     height: 30px;
 }
 .box_newtestbaterie > Label {
-
-    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: end;
-
 }
 
 .boxRR_newtestbaterie {
@@ -46,8 +44,17 @@
     height:calc(100vh + 20px) ;
     flex-direction: column;
     background-color: whitesmoke;
-
     align-items: center;
+    padding-bottom: 10px;
+}
+
+.boxRR_newtestbaterie > div > Label {
+    padding-right: 20px;
+}
+
+.boxRR_newtestbaterie > Label {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .kommentar_newleistung {
@@ -55,6 +62,6 @@
     width: auto;
     min-height: 80px;
     height: auto;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 10px;
 }

@@ -59,12 +59,22 @@ class NewTestBaterieView extends Component{
     render(){
         const{
             athlet,
-            closePopUp
+            closePopUp,
+            postTestBaterie,
         }= this.props;
+        let datum = new Date().toLocaleDateString();
+
         return (
             <Fragment>
                   <div className="boxRR_newtestbaterie">
+                      <Label> Neue TestBaterie </Label>
+                      <div>
+                          <Label>Datum</Label>
+                          <Label >{datum}</Label>
+                      </div>
+
                       <div className="main_newLeistung">
+
                           <div className="box_newtestbaterie">
                               <Label>Beweglichtkeit: </Label>
                               <Input placeholder={"Beweglichkeit"} value={this.state.beweglichtkeit} onChange={this.setBeweglichtkeit}/>
@@ -94,7 +104,7 @@ class NewTestBaterieView extends Component{
 
                       </textarea>
                       <div className="newTestbaterie_button">
-                          <Confirmbutton myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
+                          <Confirmbutton onClick={postTestBaterie} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
                               Speichern
                           </Confirmbutton>
                           <Confirmbutton onClick={closePopUp}  myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
