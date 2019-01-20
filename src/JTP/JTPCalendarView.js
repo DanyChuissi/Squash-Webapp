@@ -31,7 +31,19 @@ const modalStyle = {
 
 };
 
+const modalStyleTourney = {
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    paddingLeft: '15%',
+    paddingRight:'15%',
+    paddingTop:'10%',
+    paddingBottom:'auto',
 
+};
 class JTPCalendarView extends Component {
 
     constructor(props) {
@@ -344,7 +356,7 @@ class JTPCalendarView extends Component {
         )
         const ModalCreateTourney = () => (
             <Popup open={this.state.triggerCreateTourney} position={"top left"} closeOnDocumentClick={true}>
-                <div style={modalStyle}>
+                <div style={modalStyleTourney}>
                     <AddTourneyView createTourney={this.createTourney} cancelTourney={this.cancelTourney}/>
                 </div>
             </Popup>
@@ -566,6 +578,7 @@ class JTPCalendarView extends Component {
                 </div>
                 <ModalCreateMAZ/>
                 <ModalCreateVacations/>
+                <ModalCreateTourney/>
             </div>
 
         );

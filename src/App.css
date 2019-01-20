@@ -1,10 +1,8 @@
 .App {
     text-align: center;
     background-color: whitesmoke;
-    min-width:700px; /* Suppose you want minimum width of 1000px */
-    width: auto !important; /* Firefox will set width as auto */
-    width: 700px;
-
+    height: 100vh; /* For 100% screen height */
+    width:  100vw; /* For 100% screen width */
 }
 
 

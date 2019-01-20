@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 class ResetLoginDataController extends Component{
 //TODO ResetLoginDataView importieren, alle Properties übertragen und Methoden für den Formularübergabe an Microservice schreiben

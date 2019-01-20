@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DetailsAnsichtView from './DetailsAnsichtView';
-import Modal from 'react-modal';
+
 
 
 class DetailsAnsichtController extends React.Component{

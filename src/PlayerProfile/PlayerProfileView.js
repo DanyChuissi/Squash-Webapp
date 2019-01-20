@@ -4,11 +4,7 @@ import Checkbox from "../UI/Checkbox";
 import "./PlayerList.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/480px-PICA.jpg";
-import Input from "../UI/Input";
 import EditProfileView from "../EditPlayerProfile/EditProfileView";
-import KalendarView from "../Trainingdiary/KalendarView";
-import Tabs from "react-bootstrap/es/Tabs";
-import Tab from "react-bootstrap/es/Tab";
 import HeaderProfileView from "../UI/HeaderProfilView";
 import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
 
@@ -68,93 +64,71 @@ class PlayerProfileView extends Component {
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
 
-                    <HeaderProfileView email = {emailUser}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
-                        <HeaderProfileView/>
-                    </HeaderProfileView>
+                <HeaderProfileView email={emailUser} myFunction={myFunction} onLogoCenterClick={onLogoCenterClick}
+                                   onLogoMenuClick={onLogoMenuClick}>
+                    <HeaderProfileView/>
+                </HeaderProfileView>
                 <main id={"mainPP"}>
-                    <div id="left">
-                        <div id="leftTop">
-                            <div id="leftTopLeft">
-                                <img src={logo} className="Profil-pic" alt="Logo der Web Applikation Squirrel Von Ahmad - Eigenes Werk, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=28947701" />
-                                <div id={"checkbox"}>
-                                    Aktiv: <Checkbox active={active} onChange={setStatus}/>
-                                </div>
-                            </div>
-                            <div id={"leftTopCenter"}>
+                    <div id="pPleft">
+                        <img src={logo} className="Profil-pic"
+                             alt="Logo der Web Applikation Squirrel Von Ahmad - Eigenes Werk, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=28947701"/>
+                        <div id={"checkbox"}>
+                            Aktiv: <Checkbox active={active} onChange={setStatus}/>
+                        </div>
+                    </div>
+                    <div id="pPmiddle">
+                        <div id={"profileDataTitle"}>Profildaten</div>
+                        <EditProfileView id={"profileDataTable"}
+                                         setName={setName}
+                                         setSurName={setSurName}
+                                         setMail={setMail}
+                                         setBrithdate={setBirthdate}
+                                         setCity={setCity}
+                                         setZIP={setZIP}
+                                         setStreet={setStreet}
+                                         setHouseNbr={setHouseNbr}
+                                         setSquad={setSquad}
+                                         setSPin={setSPin}
+                                         setLandlaneNumber={setLandlaneNumber}
+                                         setMobileNumber={setMobileNumber}
+                                         setNationalAssosiation={setNationalAssosiation}
+
+                                         name={name}
+                                         surname={surname}
+                                         mail={mail}
+                                         birthdate={birthdate}
+                                         city={city}
+                                         zip={zip}
+                                         street={street}
+                                         houseNbr={houseNbr}
+                                         squad={squad}
+                                         sPin={sPin}
+                                         status={status}
+                                         mobileNumber={mobileNumber}
+                                         landlaneNumber={landlaneNumber}
+                                         agegroup={agegroup}
+                                         nationalAssosiation={nationalAssosiation}
+                                         nationalAssosiationhidden={edithidden}
+                                         nationalAssosiationdropdownhidden={savehidden}
+                        />
+                    </div>
+                    <div id={"pPright"}>
                                 <div>
-                                    <Confirmbutton id="edit" onClick={onEdit} hidden={edithidden}>Bearbeiten</Confirmbutton>
-                                    <Confirmbutton id={"save"} onClick={onSave} hidden={savehidden}>Speichern</Confirmbutton>
+                                    <Confirmbutton id="edit" onClick={onEdit}
+                                                   hidden={edithidden}>Bearbeiten</Confirmbutton>
+                                    <Confirmbutton id={"save"} onClick={onSave}
+                                                   hidden={savehidden}>Speichern</Confirmbutton>
+
+
+                                    <Confirmbutton id="edit" onClick={onEdit}
+                                                   hidden={edithidden}>Jahrestrainingsplan</Confirmbutton>
+                                    <Confirmbutton id={"save"} onClick={onSave}
+                                                   hidden={savehidden}>Trainingstagebuch</Confirmbutton>
+
                                 </div>
-                                <Confirmbutton id={"delete"} onClick={onDelete}>Löschen</Confirmbutton>
-                            </div>
-                        </div>
-                        <div id="leftBottom">
-                            <div id={"profileDataTitle"}>Profildaten</div>
-                            <EditProfileView id={"profileDataTable"}
-                                             setName={setName}
-                                             setSurName={setSurName}
-                                             setMail={setMail}
-                                             setBrithdate={setBirthdate}
-                                             setCity={setCity}
-                                             setZIP={setZIP}
-                                             setStreet={setStreet}
-                                             setHouseNbr={setHouseNbr}
-                                             setSquad={setSquad}
-                                             setSPin={setSPin}
-                                             setLandlaneNumber={setLandlaneNumber}
-                                             setMobileNumber={setMobileNumber}
-                                             setNationalAssosiation={setNationalAssosiation}
 
-                                             name={name}
-                                             surname={surname}
-                                             mail={mail}
-                                             birthdate={birthdate}
-                                             city={city}
-                                             zip={zip}
-                                             street={street}
-                                             houseNbr={houseNbr}
-                                             squad={squad}
-                                             sPin={sPin}
-                                             status={status}
-                                             mobileNumber={mobileNumber}
-                                             landlaneNumber={landlaneNumber}
-                                             agegroup={agegroup}
-                                             nationalAssosiation={nationalAssosiation}
-                                             nationalAssosiationhidden={edithidden}
-                                             nationalAssosiationdropdownhidden={savehidden}
-                            />
-                        </div>
                     </div>
-                    <div id="right">
-                        <Tabs defaultActiveKey={1} id="tabs">
-                            <Tab eventKey={1} title="Leistungsdiagnostik">
-                                Leistungsdiagnostik
-                            </Tab>
-                            <Tab eventKey={2} title="Kurve">
-                                Kurve
-                            </Tab>
-                            <Tab eventKey={3} title="Trainingstagebuch">
-                                <KalendarView/>
-                            </Tab>
-                            <Tab eventKey={4} title="JTP">
-                                JTP
-                            </Tab>
-                            <Tab eventKey={5} title="Trainingsplan">
-                                Trainingsplan
-                            </Tab>
-                            <Tab eventKey={6} title="MAZ">
-                                MAZ
-                            </Tab>
-                            <Tab eventKey={7} title="Wochenplan">
-                                Wochenplan
-                            </Tab>
-                            <Tab eventKey={8} title="Wettkampfplan">
-                                Wettkampfplan
-                            </Tab>
-                        </Tabs>
-                    </div>
-                </main>
-
+            </main>
             </Fragment>
         );
     }

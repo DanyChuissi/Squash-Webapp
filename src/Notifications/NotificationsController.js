@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NotificationsView from "./NotificationsView";
+
 
 
 class NotificationsController extends React.Component{
@@ -12,9 +12,9 @@ class NotificationsController extends React.Component{
 
     render()  {
         return (
-            <NotificationsView
-
-            />
+           <div>
+               Nachrichten
+           </div>
         );
     }
 

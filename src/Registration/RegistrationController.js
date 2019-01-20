@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RegistrationView from "./RegistrationView";
-import * as EmailValidator from 'email-validator';
+
 import DatenschutzerklaerungView from "../Datenschutzerklaerung/DatenschutzerklaerungView";
 /**
  * @author Dany
@@ -53,28 +53,28 @@ class RegistrationController extends Component {
            return erg;
        }
        if(this.state.email.length !== 0){
-           let emailOk = EmailValidator.validate(this.state.email);
+       /*    let emailOk = EmailValidator.validate(this.state.email);
            if(emailOk !== true){
                this.setShowAlert();
                erg = "Bitte gültige Email eingeben";
                return erg;
-           }
+           }*/
        }
        if(!this.state.nutzungbedingungen_akzeptiert){
            this.setShowAlert();
-           erg = "Bitte NützungBedingungen akzeptieren!";
+           erg = "Bitte Nutzer Bedingungen akzeptieren!";
            return erg;
        }
        if(this.state.password !== '' && this.state.password_2 !== ''){
            if(this.state.password !== this.state.password_2){
                this.setShowAlert();
-               erg = "Passwörte müssen gleich sein!";
+               erg = "Passwörter müssen gleich sein!";
                return erg;
            }
        }
        else{
            this.setShowAlert();
-           erg = "Passwörte dürfen nicht leer sein!";
+           erg = "Passwörter dürfen nicht leer sein!";
            return erg;
        }
 
