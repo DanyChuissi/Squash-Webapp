@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Input from "../UI/Input";
 import ConfirmButton from "../UI/Confirmbutton";
 import "./Login.css";
-import logo from  "../Graphics/Logo_kreis.png";
+import logo from "../Graphics/Logo_kreis.png";
 import Footer from "../UI/Footer";
+
 /**
  * @author Daniela
  * This File represents the View of the Login. It shows the logo of Squirrel, two Input Fields and a ConfirmButton.
  * @visibleName LoginView
  */
-class LoginView extends Component{
+class LoginView extends Component {
 
-    render(){
-        const{
+    render() {
+        const {
 
             setName,
             setPasswort,
@@ -24,16 +25,18 @@ class LoginView extends Component{
             changePW,
 
 
-        }=this.props
-        return(
-            <React.Fragment >
+        } = this.props
+        return (
+            <React.Fragment>
                 <div id="Login">
-                    <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel" />
+                    <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
 
                     <form className={"loginForm"}>
 
-                        <Input classname={"i1"} placeholder={"Benutzernamen eintragen"} value={name} onChange={setName}/>
-                        <input type="password" name="password" classname={"i2"} placeholder={"Passwort eintragen"}value={passwort} onChange={setPasswort}/>
+                        <Input className={"i1"} placeholder={"Benutzernamen eintragen"} value={name}
+                               onChange={setName}/>
+                        <input type="password" name="password" className={"i2"} placeholder={"Passwort eintragen"}
+                               value={passwort} onChange={setPasswort}/>
 
                         <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
                         <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
@@ -45,7 +48,6 @@ class LoginView extends Component{
                     </footer>
 
                 </div>
-
 
 
             </React.Fragment>

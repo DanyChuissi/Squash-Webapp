@@ -24,7 +24,11 @@ const modalStyle = {
     left: 0,
     right: 0,
     backgroundColor: 'rgba(0,0,0,0.3)',
-    padding: '20%'
+    paddingLeft: '10%',
+    paddingRight:'10%',
+    paddingTop:'auto',
+    paddingBottom:'auto',
+
 };
 
 
@@ -32,7 +36,7 @@ class JTPCalendarView extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: {}, selectAll: 0, data: makeDataTraining(), comments: makeDataComment()};
+        this.state = {selected: {}, selectAll: 0, data: makeDataTraining(), comments: makeDataComment(),};
     }
 
     state = {
@@ -273,6 +277,15 @@ class JTPCalendarView extends Component {
                 width: 130
             },
         ];
+
+        const columnsDayDetails = [
+            {
+                Header: "Termin",
+                accessor: "appointment",
+                width: 300
+            },
+        ];
+
         const columnsMAZ = [
             {
                 Header: "Trainingseinheit",
@@ -342,14 +355,14 @@ class JTPCalendarView extends Component {
                 <div id={"jTPTop"}>
                     <div id={"jTPTopLeft"}>
                         <Confirmbutton onClick={this.createMAZ}>MAZ erstellen</Confirmbutton>
-                        <Confirmbutton onClick={this.addTourney}>Tuniere erstellen</Confirmbutton>
+                        <Confirmbutton onClick={this.addTourney}>Turniere erstellen</Confirmbutton>
                         <Confirmbutton onClick={this.createVacation}>Urlaub erstellen</Confirmbutton>
                         <Confirmbutton>JTP löschen</Confirmbutton>
                     </div>
                     <div id={"jTPTopRight"}>
                         <Checkbox/> Urlaubstage
                         <Checkbox/> Trainingstage
-                        <Checkbox/> Tuniertage
+                        <Checkbox/> Turniertage
                         <Checkbox/> Ziele
                     </div>
                 </div>
@@ -417,7 +430,7 @@ class JTPCalendarView extends Component {
                                         <Confirmbutton>Speichern</Confirmbutton>
                                     </div>
                                     <div id={"jTPCenterLeftRight"}>
-                                        <textarea placeholder={"Details zu Tag"}></textarea>
+                                       <h5>Infos zum Tag</h5>
                                     </div>
                                 </p>
                             </TabPanel>
@@ -486,6 +499,16 @@ class JTPCalendarView extends Component {
                                     columns={columnsComments}
                                     defaultPageSize={5}
                                     defaultSorted={[{id: "author", desc: false}]}
+                                    style={{
+                                        height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                                    }}
+                                    previousText={'Zurück'}
+                                    nextText={'Nächste'}
+                                    loadingText={'Laden...'}
+                                    noDataText={'Keine Athlete gefunden'}
+                                    pageText={'Seite'}
+                                    ofText={'von'}
+                                    rowsText={'Zeile'}
                                 />
                             </TabPanel>
                             <TabPanel>
@@ -495,10 +518,20 @@ class JTPCalendarView extends Component {
                                 </div>
                                 <ReactTable
                                     id={"jtpTableCommentsTourney"}
+                                    style={{
+                                        height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                                    }}/>
                                     data={this.state.comments}
                                     columns={columnsComments}
                                     defaultPageSize={5}
                                     defaultSorted={[{id: "author", desc: false}]}
+                                previousText={'Zurück'}
+                                nextText={'Nächste'}
+                                loadingText={'Laden...'}
+                                noDataText={'Keine Athlete gefunden'}
+                                pageText={'Seite'}
+                                ofText={'von'}
+                                rowsText={'Zeile'}
                                 />
                             </TabPanel>
                             <TabPanel>
@@ -508,10 +541,23 @@ class JTPCalendarView extends Component {
                                 </div>
 
                                 <ReactTable
+                                    style={{
+                                        height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                                    }}/>
                                     id={"jtpTableCommentsVacations"}
                                     data={this.state.comments}
                                     columns={columnsComments}
                                     defaultPageSize={5}
+                                style={{
+                                height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                            }}
+                                previousText={'Zurück'}
+                                nextText={'Nächste'}
+                                loadingText={'Laden...'}
+                                noDataText={'Keine Athlete gefunden'}
+                                pageText={'Seite'}
+                                ofText={'von'}
+                                rowsText={'Zeile'}
                                     defaultSorted={[{id: "author", desc: false}]}
                                 />
                             </TabPanel>
@@ -569,6 +615,7 @@ function makeDataComment() {
         },
     ]
 }
+
 
 export default JTPCalendarView;
 

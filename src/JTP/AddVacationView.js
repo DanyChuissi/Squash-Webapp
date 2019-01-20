@@ -9,14 +9,11 @@ function makeData() {
             from: "judge",
             to: "March",
             description: "Test3",
-
-
         },
         {
             from: "quarter",
             to: "March",
             description: "Test2",
-
         },
         {
             from: "division",

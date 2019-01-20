@@ -26,13 +26,13 @@ class AddTourneyView extends Component {
                    </div>      <br/>
                    <div>
                        <h5>*Startdatum</h5>
-                       <input type="date" id="start" name="trip-start"
+                       <input type="date" id="tourney-start" name="trip-start"
                               value="2018-07-22"
                               min="2018-01-01" max="2018-12-31"/>
                    </div>      <br/>
                   <div>
                       <h5>*Enddatum</h5>
-                      <input type="date" id="end" name="trip-start"
+                      <input type="date" id="tourney-end" name="trip-start"
                              value="2018-07-22"
                              min="2018-01-01" max="2018-12-31"/>
                   </div>      <br/>

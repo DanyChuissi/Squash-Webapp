@@ -40,13 +40,18 @@ const modalStyle = {
     left: 0,
     right: 0,
     backgroundColor: 'rgba(0,0,0,0.3)',
-    padding: '20%'
+    paddingTop: '10%',
+    paddingBottom:'10%',
+    paddingLeft:'20%',
+    paddingRight:'20%',
 };
+
+
 
 class TourneyListView extends Component {
     constructor(props) {
         super(props);
-        this.state = {selected: {}, selectAll: 0, data: makeData()};
+        this.state = {selected: {}, selectAll: 0, data: makeData(), rowInfos: [],};
     }
     state = {
         triggerCreateTourney: false,
@@ -84,6 +89,22 @@ class TourneyListView extends Component {
             triggerEditTourney:false,
         })
     }
+
+    onRowClick = (state, rowInfo, column, instance) => {
+        return {
+            onDoubleClick: e => {
+                console.log('A Td Element was clicked!')
+                console.log('it produced this event:', e)
+                console.log('It was in this column:', column)
+                console.log('It was in this row:', rowInfo)
+                console.log('It was in this table instance:', instance)
+                this.setState({rowInfos: rowInfo})
+                console.log('Index Row', rowInfo.index)
+                console.log('Index email', rowInfo.original.email)
+            }
+        }
+    }
+
     render() {
         const ModalCreateTourney=()=>(  <Popup open={this.state.triggerCreateTourney} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle}>
@@ -139,6 +160,7 @@ class TourneyListView extends Component {
                                    min="2018-01-01" max="2018-12-31"/>
                         </div>
                         <div id={"addTourneyAtTourneyView"}>
+                            <Confirmbutton>In Zeitraum suchen</Confirmbutton>
                             <Confirmbutton onClick={this.addTourney} >Turnier hinzufügen</Confirmbutton></div>
                     </div>
                     <div id={"time"}>
@@ -149,7 +171,17 @@ class TourneyListView extends Component {
                                     previousText={'Zurück'}
                                     nextText={'Nächste'}
                                     loadingText={'Laden...'}
-                                    getTdProps={this.onRowClick}/>
+                                    getTdProps={this.onRowClick}
+                                    previousText={'Zurück'}
+                                    nextText={'Nächste'}
+                                    loadingText={'Laden...'}
+                                    noDataText={'Keine Athlete gefunden'}
+                                    pageText={'Seite'}
+                                    ofText={'von'}
+                                    rowsText={'Zeile'}
+                                    style={{
+                                        height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                                    }}/>
                     </div>
                     <ModalCreateTourney/>
                 </div>
