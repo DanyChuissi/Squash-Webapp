@@ -55,13 +55,15 @@ class HeaderProfilView extends React.Component {
                 <div className="dropdown">
                     <img src={logoMenu} onClick={myFunction} className="dropbtn"/>
                     <div id="myDropdown" className="dropdown-content">
-                        <a href="Uebersicht" onClick={myFunction2}>Übersicht</a>
-                        <a href="Mein-profil">Mein Profil</a>
-                        <a href="Athleten-List" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
-                        <a href="Nutzerverwaltung">Nutzerverwaltung</a>
-                        <a href="Nutzer-Einladen">Nutzer Einladen</a>
-                        <a href="Leistungsdiagnostik">Leistungsdiagnostik</a>
-                        <a style={{borderTop: '2px solid grey'}} href="#" onClick={this.handleClick.bind(this, "Logout")}>Logout</a>
+                        <a href="benachrichtigungen" onClick={myFunction2}>Home</a>
+                        <a href="trainerProfile">Mein Profil</a>
+                        <a href="playerList" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
+                        <a href="editRights">Nutzerverwaltung</a>
+                        <a href="inviteUser">Nutzer Einladen</a>
+                        <a href="leistungsdiagnostik">Leistungsdiagnostik</a>
+                        <a href="leistungsdiagnostik">Trainingsplan</a>
+                        <a href="leistungsdiagnostik">Spieler Vergleichen</a>
+                        <a style={{borderTop: '2px solid grey'}} href="login" >Logout</a>
 
                     </div>
                 </div>

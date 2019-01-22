@@ -16,6 +16,7 @@ import TourneyListView from "./Tourney/TourneyListView";
 import TrainerProfileView from "./TrainerProfile/TrainerProfileView";
 import KalendarView from "./Trainingdiary/KalendarView";
 import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtController";
+import PlayerListView from "./PlayerList/PlayerListView";
 
 
 function Navigator() {
@@ -61,7 +62,7 @@ function PlayerprofileRoute() {
 function PlayerListRoute() {
     return (
         <div>
-            <PlayerList/>
+            <PlayerListView/>
         </div>
     );
 }

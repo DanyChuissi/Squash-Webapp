@@ -39,23 +39,23 @@ class PhysisDatenView extends React.Component{
                 <table style={{marginBotton: '20px'}}>
 
                     <tbody className= "tbody_leistung">
-                    <tr>
+                    <tr id={"table_css"}>
                          <th >Größe</th>
                          <td style={Style} placeholder={"No Data Found"} onChange={setGroesse} contentEditable={contentEditable} required>{groesse}</td>
                     </tr>
-                    <tr >
+                    <tr  id={"table_css"}>
                         <th>Gewicht</th>
                         <td style={Style} placeholder={"No Data Found"} onChange={setGewicht} contentEditable={contentEditable} required>{gewicht}</td>
                     </tr>
-                    <tr >
+                    <tr  id={"table_css"}>
                         <th>Körperfett</th>
                         <td style={Style} placeholder={"No Data Found"} onChange={setKoerperfett} contentEditable={contentEditable} required>{koeperfett}</td>
                     </tr>
-                    <tr >
+                    <tr  id={"table_css"}>
                         <th>Beinlänge</th>
                         <td style={Style} placeholder={"No Data Found"} onChange={setBeinlaenge} contentEditable={contentEditable} required>{beinlaenge}</td>
                     </tr>
-                    <tr>
+                    <tr id={"table_css"}>
                         <th >Beinwinkel</th>
                         <td style={Style} placeholder={"No Data Found"}  onChange={setBeinwinkel} contentEditable={contentEditable} required>{beinwinkel}</td>
                     </tr>

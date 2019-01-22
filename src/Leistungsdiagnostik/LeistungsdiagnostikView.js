@@ -1,8 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import '../App.css'
-import PhysisDatenView from "./PhysisDaten/PhysisDatenView";
 import Athlet_Vergleich from "./AthletVergleichen/Athlet_Vergleich";
-import Testbaterie from "./Testbaterie/Testbaterie";
 import KurvenDiagramm from "./KurvenDiagramm";
 import Confirmbutton from "../UI/Confirmbutton";
 import SpineDiagramm from "./SpineDiagramm";
@@ -14,9 +11,6 @@ import HeaderProfileView from "../UI/HeaderProfilView";
 import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
 import "react-tabs/style/react-tabs.css";
 import Popup from "reactjs-popup";
-import NewTestBaterieController from "./NewTestBaterie/NewTestBaterieController";
-import Input from "../UI/Input";
-//import {Close} from "react-bytesize-icons";
 import Kommentar from './Kommentare/Komemntar';
 import { GoInfo } from "react-icons/go";
 import TestBaterieInfoPopup from "./Testbaterie/TestBaterieInfoPopup";

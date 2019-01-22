@@ -65,10 +65,15 @@ class Testbaterie extends Component {
             Infonummer,
         } = this.props;
 
+        let Style = {};
+        if(hideBearbeiten){
+            Style = bearbeitbarStyle
+        }
+
         const Modal = () => (
             <Popup onClose={closePopUp} closeOnEscape={true} open={trigger} position={"top left"} closeOnDocumentClick={false}>
                 <div style={modalStyle1}>
-                    <NewTestBaterieController postTestBaterie={postTestBaterie} closePopUp={closePopUp}/>
+                    <NewTestBaterieController  postTestBaterie={postTestBaterie} closePopUp={closePopUp}/>
                 </div>
             </Popup>
         )
@@ -84,10 +89,10 @@ class Testbaterie extends Component {
 
         return (
             <Fragment>
-                <div  className="testbaterie_box">
+                <div  className="table_css">
                     <table>
                         <tbody className= "tbody_leistung">
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">
                                 Beweglichkeit[cm]
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
@@ -95,81 +100,81 @@ class Testbaterie extends Component {
                                 </IconContext.Provider>
 
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setBeweglichtkeit} contentEditable={contentEditable} >{beweglichtkeit}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setBeweglichtkeit} contentEditable={contentEditable} >{beweglichtkeit}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">
                                 Reaktion[cm]
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(2)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setReaktion} contentEditable={contentEditable} >{reaction}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setReaktion} contentEditable={contentEditable} >{reaction}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">
                                 Koordination
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(3)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setKoordination} contentEditable={contentEditable} >{koordination}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setKoordination} contentEditable={contentEditable} >{koordination}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">Sprint[sec]
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(4)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setSprint} contentEditable={contentEditable} >{sprint}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setSprint} contentEditable={contentEditable} >{sprint}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">J & R
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(5)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setJandR} contentEditable={contentEditable} >{JandR}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setJandR} contentEditable={contentEditable} >{JandR}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">Med Ball
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(6)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setMedBall} contentEditable={contentEditable} >{med_ball}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setMedBall} contentEditable={contentEditable} >{med_ball}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">StWS
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(7)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setStWS} contentEditable={contentEditable} >{stws}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setStWS} contentEditable={contentEditable} >{stws}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">Agilität
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(8)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setAgilitaet} contentEditable={contentEditable} >{agilitaet}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setAgilitaet} contentEditable={contentEditable} >{agilitaet}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">BORG Test
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(9)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setBorg} contentEditable={contentEditable} >{borg}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setBorg} contentEditable={contentEditable} >{borg}</td>
                         </tr>
-                        <tr>
+                        <tr id={"table_css"}>
                             <th className="testName">Beep Test
                                 <IconContext.Provider value={{ color: "", size: '0.7em' }}>
                                     <h3 onClick={e =>displayEventInfo(10)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td placeholder={"No Data Found"} onChange={setBeepTest} contentEditable={contentEditable} >{beep_test}</td>
+                            <td style={Style}  placeholder={"No Data Found"} onChange={setBeepTest} contentEditable={contentEditable} >{beep_test}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -197,6 +202,11 @@ class Testbaterie extends Component {
         );
     }
 }
+
+const bearbeitbarStyle = {
+    color: '#2980B9',
+    opacity: '0.9'
+};
 const modalStyle1 = {
     position: 'fixed',
     top: 0,

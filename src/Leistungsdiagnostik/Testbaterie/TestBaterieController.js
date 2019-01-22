@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Testbaterie from './Testbaterie';
-//import Popup from 'react-popup';
-import Confirmbutton from "../../UI/Confirmbutton";
+
 
 
 
@@ -90,7 +89,6 @@ class TestBaterieController extends Component {
     }
     displayEvent = (evnt, SyntheticEvent) => {
         this.setState({trigger: true})
-        alert(evnt.target.value)
     }
     closePopup = () =>{
         this.setState({trigger: false})
@@ -107,8 +105,8 @@ class TestBaterieController extends Component {
         })
     }
     postTestBaterie = () => {
-        alert("TestBaterie gespeichert");
-        this.closePopup();
+            alert("TestBaterie gespeichert");
+            this.closePopup();
     }
 
     render(){
@@ -161,6 +159,7 @@ class TestBaterieController extends Component {
                          contentEditable={this.state.contenEditable}
                          onEdit={this.onEdit}
                          onSave={this.onSave}
+
     />
 
         );

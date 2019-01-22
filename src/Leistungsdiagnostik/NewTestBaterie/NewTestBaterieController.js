@@ -4,14 +4,22 @@ import NewTestBaterieView from "./NewTestBaterieView";
 
 class NewTestBaterieController extends Component {
 
+    constructor(props){
+        super(props)
+    }
+
+
     render () {
         const {
-            closePopUp,
+
             postTestBaterie,
+            closePopUp,
         } = this.props;
         return (
 
-            <NewTestBaterieView postTestBaterie={postTestBaterie} closePopUp={closePopUp}/>
+            <NewTestBaterieView
+                                postTestBaterie={postTestBaterie}
+                                closePopUp={ closePopUp}/>
 
         );
     }

@@ -37,3 +37,22 @@
 .textBold{
     font-weight: bold;
 }
+
+.table_css {
+
+}
+#table_css:nth-child(even) td {
+    background-color: #ffd533;
+}
+
+#table_css:nth-child(even) th {
+    background-color: #f19a29;
+}
+
+#table_css:nth-child(odd) td {
+    background-color: #ffa436;
+}
+
+#table_css:nth-child(odd) th {
+    background-color: #ff792a;
+}
