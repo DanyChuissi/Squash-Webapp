@@ -21,7 +21,6 @@ class PhisisDatenKurve extends Component {
             attribute,
         } = this.props;
         const length = attribute.length;
-        alert(length)
         var data;
         let name1 ='';
         let name2 = '';
@@ -30,17 +29,17 @@ class PhisisDatenKurve extends Component {
         let name5 = '';
         switch (length) {
             case 1:
-                name1 = attribute[0].alter;
+                    name1 = attribute[0].alter;
 
-               data = [
-                    {name: 'Alter', a1: attribute[0].alter},
-                    {name: 'Größe', a1: attribute[0].groesse},
-                    {name: 'Gewicht', a1: attribute[0].gewicht},
-                    {name: 'Korperfett', a1: attribute[0].koerperfett},
-                    {name: 'Beinlänge', a1: attribute[0].beinlaenge},
-                    {name: 'Beinwinckel', a1: attribute[0].beinwinkel},
-                ];
-                break;
+                    data = [
+                        {name: 'Alter', a1: attribute[0].alter},
+                        {name: 'Größe', a1: attribute[0].groesse},
+                        {name: 'Gewicht', a1: attribute[0].gewicht},
+                        {name: 'Korperfett', a1: attribute[0].koerperfett},
+                        {name: 'Beinlänge', a1: attribute[0].beinlaenge},
+                        {name: 'Beinwinckel', a1: attribute[0].beinwinkel},
+                    ];
+                    break;
 
             case 2:
                 name1 = attribute[0].name;

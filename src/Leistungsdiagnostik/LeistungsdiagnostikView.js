@@ -18,6 +18,9 @@ import NewTestBaterieController from "./NewTestBaterie/NewTestBaterieController"
 import Input from "../UI/Input";
 //import {Close} from "react-bytesize-icons";
 import Kommentar from './Kommentare/Komemntar';
+import { GoInfo } from "react-icons/go";
+import TestBaterieInfoPopup from "./Testbaterie/TestBaterieInfoPopup";
+
 
 class LeistungsdiagnostikView extends React.Component{
     state={
@@ -34,8 +37,17 @@ class LeistungsdiagnostikView extends React.Component{
         checkboxArray: [datum1, datum2, datum3],
         arraykurve: [datum1,datum2, datum3],
         index: 0,
+        trigger : false,
     }
 
+    displayEvent = (evnt, SyntheticEvent) => {
+
+            this.setState({trigger: true})
+    }
+
+    closePopup = () =>{
+        this.setState({trigger: false})
+    }
     setIndex = (e, index) => {
         this.setState({index: index})
         alert(index)
@@ -131,10 +143,19 @@ class LeistungsdiagnostikView extends React.Component{
         } = this.props;
         let index = this.state.index;
 
+        const Modal = () => (
+            <Popup onClose={this.closePopup} closeOnEscape={true} open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
+                <div className="scroll" style={modalStyle1}>
+                   <TestBaterieInfoPopup InfoNummer={0}/>
+                </div>
+
+            </Popup>
+        )
 
 
         return (
             <Fragment>
+                <div className="gesamteleistung">
 
                 <HeaderProfileView email = {"test"}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
                     <HeaderProfileView/>
@@ -156,7 +177,10 @@ class LeistungsdiagnostikView extends React.Component{
                     <div>
                             <div className= "container1">
                                 <div className="thead_leistung">
-                                    <label className="thead_leistung">Testbaterie</label>
+                                    <label className="thead_leistung">
+                                        Testbaterie
+                                        <h3 onClick={this.displayEvent} style={{marginTop: '3px', marginLeft: '40px', color: 'white'}}> <GoInfo/></h3>
+                                    </label>
                                 </div>
 
                                 <Tabs>
@@ -270,6 +294,8 @@ class LeistungsdiagnostikView extends React.Component{
                             </div>
 
                 </div>
+                <Modal/>
+                </div>
             </Fragment>
         );
         
@@ -277,6 +303,18 @@ class LeistungsdiagnostikView extends React.Component{
 }
 var noll = {
     name: '0000',
+}
+
+const modalStyle1 = {
+    position: 'fixed',
+    top: 20,
+    bottom: 0,
+    left: 200,
+    right: 200,
+    color: 'black',
+    overflow: 'scroll',
+    height: '700px',
+
 }
 var datum1 = {
     beweglichtkeit: 13,

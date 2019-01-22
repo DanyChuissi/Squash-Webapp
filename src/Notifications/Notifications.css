@@ -1,9 +1,39 @@
 .notif  {
     border: 2px solid black;
-    margin:1px;
-    /* min-height: 333px;*/
-    background-color: beige;
-     height: fit-content;
-    width: fit-content;
-    padding: 2vmin;
+    /*min-height: 333px;*/
+    height: auto;
+    margin: 100px;
 }
+
+.notif_1 {
+    display: grid;
+    grid-template-columns: 20% 80%  ;
+    grid-template-rows:  auto;
+    justify-content: start;
+    min-height: 50px;
+
+}
+
+.notif_1 > div {
+    border: 1px solid black;
+
+}
+
+.notif_1 :hover {
+    background-color: #cccccc;
+}
+
+.notif_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.head_Notif {
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+

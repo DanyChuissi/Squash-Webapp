@@ -8,6 +8,7 @@
     justify-content: space-around;
     background-color: white;
     padding-bottom: 50px;
+    color: black;
 }
 .detail_daten {
     display: flex;
@@ -45,6 +46,18 @@
 .detail_grig> div {
     border: 2px solid;
     background-color: orange;
+}
+
+.detail_main > tr {
+    border-right: #7ae7bf;
+}
+
+.detail_main > tr > td {
+
+}
+
+.detail_main > tr > th {
+
 }
 .th {
     /* width: 40%;

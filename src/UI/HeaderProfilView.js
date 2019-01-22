@@ -24,16 +24,11 @@ class HeaderProfilView extends React.Component {
         console.log(compName);
         this.setState({render:compName});
     }
-    _renderSubComp() {
-        switch (this.state.render) {
-            case 'Übersicht':
-                return <h1>gf</h1>
-            case 'Logout' :
-                return <LoginView/>
-            case 'Athleten':
+   /* _renderSubComp() {
+
                 return <PlayerListView/>
-        }
-    }
+
+    }*/
     render() {
         const {email,
                onLogoCenterClick,
@@ -60,12 +55,12 @@ class HeaderProfilView extends React.Component {
                 <div className="dropdown">
                     <img src={logoMenu} onClick={myFunction} className="dropbtn"/>
                     <div id="myDropdown" className="dropdown-content">
-                        <a href="#" onClick={myFunction2}>Übersicht</a>
-                        <a href="#">Mein Profil</a>
-                        <a href="#" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
-                        <a href="#">Nutzerverwaltung</a>
-                        <a href="#">Nutzer Einladen</a>
-                        <a href="#">Statistik</a>
+                        <a href="Uebersicht" onClick={myFunction2}>Übersicht</a>
+                        <a href="Mein-profil">Mein Profil</a>
+                        <a href="Athleten-List" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
+                        <a href="Nutzerverwaltung">Nutzerverwaltung</a>
+                        <a href="Nutzer-Einladen">Nutzer Einladen</a>
+                        <a href="Leistungsdiagnostik">Leistungsdiagnostik</a>
                         <a style={{borderTop: '2px solid grey'}} href="#" onClick={this.handleClick.bind(this, "Logout")}>Logout</a>
 
                     </div>
@@ -74,7 +69,7 @@ class HeaderProfilView extends React.Component {
                 <div style={{padding: '10px',color: 'white', cursor: 'pointer'}} onChange={setEmail}>
                     {email}
                 </div>
-                {this._renderSubComp()}
+
             </div>
         )
 

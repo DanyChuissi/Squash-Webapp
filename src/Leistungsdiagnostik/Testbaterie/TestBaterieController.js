@@ -21,6 +21,8 @@ class TestBaterieController extends Component {
         hideSpeichern: true,
         contenEditable: false,
         trigger : false,
+        triggerInfo: false,
+        Infonummer: '',
     }
 
     componentdidMount = () => {
@@ -88,9 +90,21 @@ class TestBaterieController extends Component {
     }
     displayEvent = (evnt, SyntheticEvent) => {
         this.setState({trigger: true})
+        alert(evnt.target.value)
     }
     closePopup = () =>{
         this.setState({trigger: false})
+    }
+    displayEventInfo = ( Infonummer) => {
+        this.setState({
+            triggerInfo: true,
+            Infonummer: Infonummer,
+        })
+    }
+    closePopupInfo = (e) =>{
+        this.setState({
+            triggerInfo: false,
+        })
     }
     postTestBaterie = () => {
         alert("TestBaterie gespeichert");
@@ -125,10 +139,13 @@ class TestBaterieController extends Component {
                         borg={borg}
                         beep_test={beep_test}
                          trigger={this.state.trigger}
-
+                         triggerInfo={this.state.triggerInfo}
+                            Infonummer={ this.state.Infonummer}
                          postTestBaterie={this.postTestBaterie}
                         displayEvent={ this.displayEvent}
                          closePopUp={this.closePopup}
+                         displayEventInfo={ this.displayEventInfo}
+                         closePopUpInfo={this.closePopupInfo}
                         hideBearbeiten={this.state.hideBearbeiten}
                         hideSpeichern={this.state.hideSpeichern}
                          setBeweglichtkeit={this.setBeweglichtkeit}

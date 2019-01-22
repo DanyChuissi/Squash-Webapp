@@ -7,3 +7,33 @@
     background-color: whitesmoke;
     height: calc(100vh - 230px);
 }
+
+.popupInfo {
+    background-color: whitesmoke;
+
+
+}
+.popupInfo >h2{
+    justify-content: start;
+    color: rebeccapurple;
+    font-size: 24px;
+}
+.popupInfo > text {
+    align-items: flex-start;
+    font-size: 20px;
+
+}
+.testName{
+   display: flex;
+   width: 200px;
+   justify-content: space-around;
+    height: 30px;
+}
+.testName > h3 {
+    margin-left: 30px;
+
+}
+
+.textBold{
+    font-weight: bold;
+}

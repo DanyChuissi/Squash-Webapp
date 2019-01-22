@@ -24,6 +24,7 @@ class KurvenDiagramm extends Component {
             attribute,
         } = this.props;
         const length = attribute.length;
+
         var data;
         let name1 ='';
         let name2 = '';
@@ -86,23 +87,26 @@ class KurvenDiagramm extends Component {
         }
 
 
+
         let lines = [];
         let l;
+        let l2;
+        let l3;
 
         if(attribute.length === 1){
-          l = <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>
+          l = <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
             lines = [...lines, l];
         }
         else if(attribute.length === 2){
-                l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>
-                let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>
+                l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
+                l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>;
             lines = [...lines, l];
             lines = [...lines, l2];
         }
         else if(attribute.length === 3){
-            l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>
-            let l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>
-           let l3 = <Line name={name3} type="monotone" dataKey="a3" stroke="#2980B9" activeDot={{r: 8}}/>
+                 l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
+            l2 =  <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>;
+             l3 =  <Line name={name3} type="monotone" dataKey="a3" stroke="#2980B9" activeDot={{r: 8}}/>;
             lines = [...lines, l];
             lines = [...lines, l2];
             lines = [...lines, l3];

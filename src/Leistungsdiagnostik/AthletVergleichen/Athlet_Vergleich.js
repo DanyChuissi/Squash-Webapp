@@ -1,12 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import "./Athletvergleich.css";
-import Label from "../../UI/Label";
-//import { Close } from 'react-bytesize-icons';
 import Confirmbutton from "../../UI/Confirmbutton";
-import $ from 'jquery';
-import { unmountComponentAtNode } from 'react-dom';
 import Popup from "reactjs-popup";
-import DetailsAnsichtView from "../../Trainingstagebuch/DetailsAnsichtView";
 import KurvenDiagramm from "../KurvenDiagramm";
 import PhisisDatenKurve from "./PhisisDatenKurve";
 
@@ -38,8 +33,8 @@ class Athlet_Vergleich extends Component{
         this.state = {
             players: [ av,a1, a2, a3],
             physisDaten: [PDaten1, PDaten2, PDaten3],
-            physisDaten_zu_vergleichen: [],
-            athlet_zu_vergl: [],
+            physisDaten_zu_vergleichen: [PDaten1],
+            athlet_zu_vergl: [a1],
             hideliste: true,
             selectet: '',
             index: 0,
@@ -85,7 +80,13 @@ class Athlet_Vergleich extends Component{
             )
     };*/
     displayEvent = (evnt, SyntheticEvent) => {
-        this.setState({trigger: true})
+        if(this.state.physisDaten_zu_vergleichen.length > 1){
+            this.setState({trigger: true})
+        }
+        else{
+            alert("mindestens 2 Althleten wählen")
+        }
+
     }
    pruefeVorhanden = (email) =>{
        let erg = false;
@@ -148,7 +149,7 @@ class Athlet_Vergleich extends Component{
 
            if (this.pruefeVorhanden(pemail) !== true) {
                let PhysisDaten = this.getPlayerPhysisDaten(pemail);
-               PhysisDaten.name = pname;
+               PhysisDaten.name = pvorname + ' ' + pname;
                this.setState({
                    athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
                    physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
@@ -187,9 +188,7 @@ class Athlet_Vergleich extends Component{
 
             </Popup>
         )
-        {/*<div>
-                        <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
-                    </div>*/}
+
         const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
             <li onClick={this.onclicked.bind(this, d.email)} key={d.email} value={d.email}>
                     {d.name }{ '      '}
@@ -199,10 +198,7 @@ class Athlet_Vergleich extends Component{
             <option key={player.email} data-key={player.mail} value={player.email}>{player.name} {player.vorname} </option>
         );
 
-       /*const playerlistItems =
-            <option name="ssss" key={this.state.players.email} value={this.state.players[0].vorname} onChange={this.addAthlet_zu_vergl}>
-                {this.state.players[0].name}
-            </option>;*/
+
         return (
             <Fragment>
                 <div className="head_athletvergleich">

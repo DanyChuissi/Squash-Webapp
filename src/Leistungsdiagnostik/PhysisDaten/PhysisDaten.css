@@ -20,10 +20,10 @@
 }
 .tbody_leistung > tr > th {
    /* width: 120px;*/
-    width: 30%;
-    justify-content: start;
+   /* width: 30%;*/
+    justify-content: space-between;
 }
 .tbody_leistung > tr > td {
-    width: 70%;
+    width: 60%;
    /* width: 250px;*/
 }

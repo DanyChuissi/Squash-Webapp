@@ -44,6 +44,9 @@ class HeaderProfilController extends React.Component{
         this.setState({email: e.target.value})
     }
 
+
+
+
     render(){
         return(
             <HeaderProfilView   className = "View"
