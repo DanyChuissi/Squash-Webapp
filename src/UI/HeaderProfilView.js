@@ -10,7 +10,7 @@ import PlayerListView from "../PlayerList/PlayerListView";
 
 /**
  * @author Dany
- *
+ * Algemeine 
  * @visibleName HeaderProfilView
  */
 class HeaderProfilView extends React.Component {
@@ -60,9 +60,14 @@ class HeaderProfilView extends React.Component {
                         <a href="playerList" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
                         <a href="editRights">Nutzerverwaltung</a>
                         <a href="inviteUser">Nutzer Einladen</a>
+                        <a href="dataPrivacyStatement">Data Pricavy</a>
+                        <a href="jTP">Jahre trainingsplan</a>
+                        <a href="tourneyList">Tourney List</a>
                         <a href="leistungsdiagnostik">Leistungsdiagnostik</a>
-                        <a href="leistungsdiagnostik">Trainingsplan</a>
-                        <a href="leistungsdiagnostik">Spieler Vergleichen</a>
+                        <a href="trainingsdiary">Training Diary</a>
+                        <a href="resetLoginData">ResetLoginData</a>
+                        <a href="registration">Registration</a>
+
                         <a style={{borderTop: '2px solid grey'}} href="login" >Logout</a>
 
                     </div>

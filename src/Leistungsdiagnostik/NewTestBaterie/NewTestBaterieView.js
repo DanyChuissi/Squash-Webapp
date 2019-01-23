@@ -21,39 +21,50 @@ class NewTestBaterieView extends Component {
     }
     setBeweglichtkeit = (e) => {
         this.setState({beweglichtkeit: e.target.value})
+        this.pruefeFelder();
     }
     setReaction = (e) => {
         this.setState({reaction: e.target.value})
+        this.pruefeFelder();
     }
 
     setKoordination = (e) => {
         this.setState({koordination: e.target.value})
+        this.pruefeFelder();
     }
 
     setSprint = (e) => {
         this.setState({sprint: e.target.value})
+        this.pruefeFelder();
     }
     setJandR = (e) => {
         this.setState({JandR: e.target.value})
+        this.pruefeFelder();
     }
 
     setMedBall = (e) => {
         this.setState({med_ball: e.target.value})
+        this.pruefeFelder();
     }
     setStWS = (e) => {
         this.setState({stws: e.target.value})
+        this.pruefeFelder();
     }
 
     setAgilitaet = (e) => {
         this.setState({agilitaet: e.target.value})
+        this.pruefeFelder();
     }
     setBorg = (e) => {
         this.setState({borg: e.target.value})
+        this.pruefeFelder();
     }
 
     setBeepTest = (e) => {
         this.setState({beep_test: e.target.value})
+        this.pruefeFelder();
     }
+
 
 
     pruefeFelder = () => {
@@ -64,9 +75,11 @@ class NewTestBaterieView extends Component {
                 pruefe_Felder: true,
             })
 
-        } else {
+
+        } /*else {
             alert("Alle Felder nicht Ausfefühlt, Schreiben sie im Kommentar warum");
-        }
+        }*/
+
     }
 
 
@@ -125,14 +138,13 @@ class NewTestBaterieView extends Component {
 
                       </textarea>
                         <div className="newTestbaterie_button">
-                            <Confirmbutton onClick={postTestBaterie} myStyle={{
+                            <Confirmbutton onClick={() => postTestBaterie(this.state.pruefe_Felder)} myStyle={{
                                 padding: '9px',
                                 marginTop: '8px',
                                 paddingRight: '15px',
                                 paddingLeft: '15px'
                             }}>
                                 Speichern
-                                {this.state.pruefeFelder ? postTestBaterie : null}
                             </Confirmbutton>
                             <Confirmbutton onClick={closePopUp} myStyle={{
                                 padding: '9px',

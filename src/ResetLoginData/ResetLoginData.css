@@ -1,3 +1,10 @@
+/**
+* @author Dany
+*  Die Klasse definiert den Style für die ResetLogin Seite
+* @visibleName ResetLogingData.css
+*/
+
+
 .header{
     border: 1px white;
     background-color: #f19a29;
@@ -28,7 +35,7 @@
     height: 40vmin;
     width: 40vmin;
     justify-content: center;
-    align-items: center;
+
 }
 .input_chekbox{
     height: 15px;
@@ -36,40 +43,7 @@
     background-color: blue;
 
 }
-/* Row Flexbox für die Buttons
-.button{
-    flex-direction: row;
-    width: 400px;
-    height: 30px;
-    display: flex;
-    padding: 10px;
-    justify-content:center;
-    background-color: #f19a29;
-}*/
 
-
-/*
-.button{
-    background-color: white;
-    border-radius: 20px;
-    border:none;
-    color: black;
-    text-align: center;
-    font-size: medium;
-    padding: 20px;
-    width: 110px;
-    transition: all 0.5s;
-    cursor: pointer;
-    justify-content: space-between;
-}
-*/
-
-/*.email-input::placeholder {
-    font-family: Arial;
-    padding: 10px;
-    height: 20px;
-    width: 300px;
-}*/
 
 .input {
     display: flex;

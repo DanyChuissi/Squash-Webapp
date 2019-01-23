@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import DetailsAnsichtView from './DetailsAnsichtView';
 
-
+/**
+* @author Dany
+*  Controller Klasse für die DetailAnsichtView
+* @visibleName DetailsAnsichtController
+*/
 
 class DetailsAnsichtController extends React.Component{
     constructor(prosp){
-        super()
+        super();
         this.state={
             datum: '',
             schwerpunkt: '',

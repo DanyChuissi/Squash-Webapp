@@ -4,6 +4,7 @@ import Confirmbutton from "../../UI/Confirmbutton";
 import Popup from "reactjs-popup";
 import KurvenDiagramm from "../KurvenDiagramm";
 import PhisisDatenKurve from "./PhisisDatenKurve";
+import Input from "../../UI/Input";
 
 
 var a1 = {
@@ -34,13 +35,13 @@ class Athlet_Vergleich extends Component{
             players: [ av,a1, a2, a3],
             physisDaten: [PDaten1, PDaten2, PDaten3],
             physisDaten_zu_vergleichen: [PDaten1],
-            athlet_zu_vergl: [a1],
+            athlet_zu_vergl: [],
             hideliste: true,
             selectet: '',
             index: 0,
             trigger : false,
             testArrayDatum: [datum1, datum2, datum3],
-            query: '',
+            input: '',
         };
         this.removeAthlet_zu_vergl = this.removeAthlet_zu_vergl.bind(this);
         this.addAthlet_zu_vergl = this.addAthlet_zu_vergl.bind(this);
@@ -207,7 +208,7 @@ class Athlet_Vergleich extends Component{
 
                 <div className="athlet_vergleich_box">
 
-                     <select  onChange={this.setSelected}>
+                     <select onChange={this.setSelected} >
                          {options}
                      </select>
                     <Confirmbutton onClick={this.addAthlet_zu_vergl} myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >

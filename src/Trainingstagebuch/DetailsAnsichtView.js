@@ -5,6 +5,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 're
 import ResponsiveContainer from "recharts/es6/component/ResponsiveContainer";
 import ReactTable from "react-table";
 
+/**
+ * @author Dany
+ *  Die Klasse definiert die Tabelle für mit alle details über Trainingsdaten des Spieler
+ *  sowie eien Kurve Diagramm mit der Änderung der Herzfrequenz
+ * @visibleName DetailsAnsichtView
+ */
+
 class DetailsAnsichtView extends React.Component {
 
     render() {

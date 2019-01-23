@@ -68,7 +68,14 @@ class Testbaterie extends Component {
         let Style = {};
         if(hideBearbeiten){
             Style = bearbeitbarStyle
+            window.addEventListener("beforeunload", (ev) => {
+
+                ev.preventDefault();
+                return ev.returnValue = 'Are you sure you want to close?';
+
+            });
         }
+
 
         const Modal = () => (
             <Popup onClose={closePopUp} closeOnEscape={true} open={trigger} position={"top left"} closeOnDocumentClick={false}>

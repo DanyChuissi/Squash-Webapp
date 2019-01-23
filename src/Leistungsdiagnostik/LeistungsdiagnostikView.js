@@ -110,6 +110,7 @@ class LeistungsdiagnostikView extends React.Component{
         })
     }
 
+
     render () {
         const {
             groesse,

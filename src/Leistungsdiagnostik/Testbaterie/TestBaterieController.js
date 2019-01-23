@@ -104,9 +104,16 @@ class TestBaterieController extends Component {
             triggerInfo: false,
         })
     }
-    postTestBaterie = () => {
+    postTestBaterie = (pruefe_felder) => {
+        if(pruefe_felder){
             alert("TestBaterie gespeichert");
             this.closePopup();
+        }
+        else{
+            alert("Alle Felder nicht Ausfefühlt, Schreiben sie im Kommentar warum");
+        }
+
+
     }
 
     render(){
