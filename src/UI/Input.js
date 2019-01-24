@@ -7,12 +7,13 @@ import './UIStylesheet.css'
  */
 class Input extends React.Component {
     render() {
-        const { placeholder, value, onChange, classname,width,heigth ,style} = this.props
-
+        const { placeholder, value, onChange, classname,width,heigth ,style, type} = this.props
+         let inputTyp = 'text';
+            inputTyp = type;
         return (
             <input
                 className={classname}
-                type="text"
+                type={inputTyp}
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}

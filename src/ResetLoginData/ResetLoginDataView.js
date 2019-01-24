@@ -6,6 +6,7 @@ import Footer from "../UI/Footer";
 import LoginView from "../Login/LoginView";
 import * as EmailValidator from 'email-validator';
 
+
 /**
  * @author Dany
  * this component gives the possibility to the user to reset his passwort.
@@ -110,7 +111,7 @@ class ResetLoginDataView extends Component{
                             </div>
                         </div>
                 </div>
-                <footer>
+                <footer className="myFooter">
                     <Footer/>
                 </footer>
             </div>

@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import HeaderProfilView from "../../UI/HeaderProfilView";
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../../UI/HeaderProfilController";
+import {myFunction} from "../../UI/HeaderProfilController";
 import HeaderProfileView from "../../UI/HeaderProfilView";
 import Confirmbutton from "../../UI/Confirmbutton";
 import PhisisDatenKurve from "./PhisisDatenKurve";
@@ -178,7 +178,7 @@ class VergleichDaten extends Component{
 
         return (
            <div>
-                <HeaderProfileView email = {"test"}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfileView email = {"test"}  myFunction={myFunction} >
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div>

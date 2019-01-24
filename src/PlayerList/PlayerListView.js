@@ -6,8 +6,6 @@ import Input from "../UI/Input";
 import HeaderProfileView from "../UI/HeaderProfilView";
 import 'react-dropdown/style.css'
 import {myFunction} from '../UI/HeaderProfilController';
-import {onLogoCenterClick} from '../UI/HeaderProfilController';
-import {onLogoMenuClick} from '../UI/HeaderProfilController';
 import PlayerList from './PlayerList';
 
 import Label from "../UI/Label";
@@ -93,7 +91,7 @@ class PlayerListView extends Component{
         return (
             <React.Fragment>
             <div>
-                <HeaderProfileView email = {email} myFunction2={myFunction2} myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfileView email = {email} myFunction={myFunction} >
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div className="nav" style={{color: 'black', fontFamily: 'Arial Rounded MT Bold', fontSize: 30}}>

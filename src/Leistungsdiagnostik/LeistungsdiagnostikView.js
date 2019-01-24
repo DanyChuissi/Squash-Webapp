@@ -8,7 +8,7 @@ import './Leistungdiagnostik.css';
 import PhysisDatenController from "./PhysisDaten/PhysisDatenController";
 import TestBaterieController from "./Testbaterie/TestBaterieController";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
+import {myFunction} from "../UI/HeaderProfilController";
 import "react-tabs/style/react-tabs.css";
 import Popup from "reactjs-popup";
 import Kommentar from './Kommentare/Komemntar';
@@ -152,7 +152,7 @@ class LeistungsdiagnostikView extends React.Component{
             <Fragment>
                 <div className="gesamteleistung">
 
-                <HeaderProfileView email = {"test"}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfileView email = {"test"}  myFunction={myFunction}>
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div className="leistung_main">

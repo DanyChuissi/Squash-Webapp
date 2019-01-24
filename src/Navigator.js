@@ -17,6 +17,7 @@ import TrainerProfileView from "./TrainerProfile/TrainerProfileView";
 import KalendarView from "./Trainingdiary/KalendarView";
 import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtController";
 import PlayerListView from "./PlayerList/PlayerListView";
+import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
 
 
 function Navigator() {
@@ -52,7 +53,7 @@ function LoginRoute() {
     );
 }
 
-function PlayerprofileRoute() {
+function PlayerprofileRoute(name) {
     return (
         <div>
             <PlayerProfileView/>
@@ -125,7 +126,7 @@ function notificationRoute(){
 function resetLoginDataRoute(){
     return (
         <div>
-            <ResetLoginDataController/>
+            <ResetLoginDataView/>
         </div>
     );
 }

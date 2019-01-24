@@ -15,7 +15,8 @@ const modalStyle = {
     left: 0,
     right: 0,
     backgroundColor: 'rgba(0,0,0,0.3)',
-    padding: 30
+    padding: 30,
+    justifyContent: 'fitcontent',
 };
 
 class KalendarView extends Component {

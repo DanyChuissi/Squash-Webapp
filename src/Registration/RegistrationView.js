@@ -34,6 +34,7 @@ class RegistrationView extends React.Component{
         }=this.props;
         return (
             <React.Fragment>
+                <div style={{height: '100vh', width: '100vw'}}>
                 <div className="headerR">
                     <img src={logomenuMitte} style={{ height: '18vmin', width: '25vmin'}}/>
                 </div>
@@ -52,22 +53,24 @@ class RegistrationView extends React.Component{
                             <input type="password" placeholder={"Password Wiederholen"} value={password_2} onChange={setPassword_2}/>
                      </div>
 
-                    <div style={{paddingBottom: '10px'}}>
+                    <div style={{paddingBottom: '10px',}}>
                         <input className="input_chekbox"
                             name="nutzung_akzeptiert"
                             type="checkbox"
                             onChange={setNutzungbedingungen_akzeptiert} />
                         Ich habe die
-                        <a  style={{textDecoration: 'none'}} href= {"Datenschutz"} rel = "noopener noreferrer"  target="_blank" > Nutzungbedingungen </a>
+                        <a  style={{textDecoration: 'none'}} href= "dataPrivacyStatement" rel = "noopener noreferrer"  target="_blank" > Nutzungbedingungen </a>
                         gelesen und akzeptiere sie,
                     </div>
                     <div><ConfirmButton myStyle= {{padding: '13px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}} onClick={submitData}>Registrieren</ConfirmButton></div>
                     </div>
                 </div>
-                <footer>
-                    <Footer/>
-                </footer>
 
+                        <footer className="myFooter">
+                            <Footer/>
+                        </footer>
+
+            </div>
             </React.Fragment>
         );
     }

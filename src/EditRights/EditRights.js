@@ -5,7 +5,7 @@ import SpecificRights from "./SpecificRights";
 import GroupRights from "./GroupRights";
 import CoachList from "./CoachList";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
+import {myFunction} from "../UI/HeaderProfilController";
 
 
 class EditRightsView extends Component {
@@ -19,7 +19,7 @@ class EditRightsView extends Component {
         }
         return (
             <div>
-            <HeaderProfileView email = {email}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+            <HeaderProfileView email = {email}  myFunction={myFunction} >
                 <HeaderProfileView/>
             </HeaderProfileView>
             <div className="EditRights">

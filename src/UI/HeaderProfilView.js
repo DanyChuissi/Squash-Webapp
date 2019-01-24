@@ -2,7 +2,7 @@ import React from 'react'
 import './UIStylesheet.css'
 import logoMenu from  "../Graphics/Logo_Menu.png";
 import logomenuMitte from "../Graphics/Menueleiste_Logo_Name.png";
-import {myFunction2} from "./HeaderProfilController";
+//import {myFunction2} from "./HeaderProfilController";
 //import NotificationsView from "../Notifications/NotificationsView";
 import LoginView from "../Login/LoginView";
 import PlayerListView from "../PlayerList/PlayerListView";
@@ -34,7 +34,7 @@ class HeaderProfilView extends React.Component {
                onLogoCenterClick,
                setEmail,
                myFunction,
-               myFunction2} = this.props
+               } = this.props
 
         // Close the dropdown menu if the user clicks outside of it
         window.onclick = function(event) {
@@ -55,7 +55,7 @@ class HeaderProfilView extends React.Component {
                 <div className="dropdown">
                     <img src={logoMenu} onClick={myFunction} className="dropbtn"/>
                     <div id="myDropdown" className="dropdown-content">
-                        <a href="benachrichtigungen" onClick={myFunction2}>Home</a>
+                        <a href="benachrichtigungen" >Home</a>
                         <a href="trainerProfile">Mein Profil</a>
                         <a href="playerList" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
                         <a href="editRights">Nutzerverwaltung</a>
@@ -63,6 +63,7 @@ class HeaderProfilView extends React.Component {
                         <a href="dataPrivacyStatement">Data Pricavy</a>
                         <a href="jTP">Jahre trainingsplan</a>
                         <a href="tourneyList">Tourney List</a>
+                        <a href="playerprofile">Playerprofil</a>
                         <a href="leistungsdiagnostik">Leistungsdiagnostik</a>
                         <a href="trainingsdiary">Training Diary</a>
                         <a href="resetLoginData">ResetLoginData</a>
@@ -72,7 +73,9 @@ class HeaderProfilView extends React.Component {
 
                     </div>
                 </div>
-                <img src={logomenuMitte} className="logomenu1" onClick={myFunction2}/>
+                <a href="benachrichtigungen" >
+                <img src={logomenuMitte} className="logomenu1"/>
+                </a>
                 <div style={{padding: '10px',color: 'white', cursor: 'pointer'}} onChange={setEmail}>
                     {email}
                 </div>

@@ -107,7 +107,7 @@ class Testbaterie extends Component {
                                 </IconContext.Provider>
 
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setBeweglichtkeit} contentEditable={contentEditable} >{beweglichtkeit}</td>
+                            <td style={Style}   placeholder={"No Data Found"} onChange={setBeweglichtkeit} contentEditable={contentEditable} >{beweglichtkeit}</td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">

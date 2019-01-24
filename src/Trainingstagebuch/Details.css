@@ -10,17 +10,20 @@
     flex-direction: row;
     margin: 15px;
     align-content: center;
-    height: calc(100vh - 100px);
+
     justify-content: space-around;
     background-color: white;
     padding-bottom: 50px;
     color: black;
 }
 .detail_daten {
-    display: flex;
+    /*display: flex;
     flex-direction: row;
     height: calc(100vh - 118px);
-    width: calc(100vh - 80px);
+    width: calc(100vh - 80px);*/
+    width: 50%;
+    height: 100%;
+    margin-right: 10px;
 }
 
 .detail_row{
@@ -28,11 +31,9 @@
     height: 20px;
     width: 200px;
 }
-
 .diagramm {
     border: 2px solid black;
-    height: calc(100vh - 118px);
-    width: calc(100vh - 90px);
+    width: 50%;
 
 }
 .detail_grig{

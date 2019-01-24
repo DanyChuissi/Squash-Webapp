@@ -5,6 +5,7 @@
 */
 
 
+
 .header{
     border: 1px white;
     background-color: #f19a29;
@@ -25,10 +26,11 @@
 #container{
     background-color: #f19a29;
     /*padding-top: 0px;*/
-    padding-bottom: 103px;
+
     text-align: center;
     justify-content: center;
     display: flex;
+    padding-bottom: 13%;
 
 }
 .logo{
@@ -52,6 +54,10 @@
     margin-bottom: 20px;
 }
 
+.myFooter {
+    height: 6%;
+    padding-bottom: 5px;
+}
 
 #container { display: flex; }
 main { flex: 3 60%; }

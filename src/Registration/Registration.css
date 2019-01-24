@@ -1,22 +1,26 @@
 
 .headerR{
     background-color: #f19a29;
-    padding: 10px;
+    /*padding: 10px;*/
+
     align-items: center;
     /*padding-bottom: 20px;*/
-    height: 60px;
+    height: 8%;
     display: flex;
     justify-content: center;
 }
 
 .mainR  {
     background-color: whitesmoke;
-    height: calc(100vh - 200px);
+    /*height: calc(100vh - 200px);*/
      justify-content: center;
     display: flex;
     /*flex-direction: column;*/
     /*align-content: space-around;*/
-    color: white;
+   height: 78%;
+    text-align: center;
+    align-items: center;
+    color: black;
 }
 .navR  {
     background-color: whitesmoke;
@@ -28,14 +32,15 @@
     display: flex;
     border: 2px solid gray();
     justify-content: center;
-    width: calc(100vh - 50px);
-    height:calc(100vh - 210px) ;
+    width: calc(100vh - 70px);
+    height:calc(100vh - 250px) ;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     flex-direction: column;
     margin-top: 5px;
     background-color: #f19a29;
 }
 
+/*
 Registragion_input {
     border-color: #f19a29;
     text-align: center;
@@ -46,6 +51,7 @@ Registragion_input {
     border-radius: 20px;
     background-color: white;
 }
+*/
 
 
 .boxR  {
@@ -77,6 +83,9 @@ Registragion_input {
     flex-direction: row;
     justify-content: space-around;
     padding-bottom: 5px;
+}
+.myFooter {
+    height: 6%;
 }
 
 #container { display: flex; }

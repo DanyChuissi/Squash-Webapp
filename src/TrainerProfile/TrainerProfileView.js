@@ -4,7 +4,7 @@ import "./TrainerProfile.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/480px-PICA.jpg";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
+import {myFunction} from "../UI/HeaderProfilController";
 import EditTrainerProfileView from "./EditTrainerProfileView";
 
 class TrainerProfileView extends Component {
@@ -56,7 +56,7 @@ class TrainerProfileView extends Component {
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
 
-                <HeaderProfileView email = {emailUser}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfileView email = {emailUser}  myFunction={myFunction} >
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <main id={"mainTP"}>

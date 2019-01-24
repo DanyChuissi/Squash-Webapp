@@ -18,51 +18,106 @@ class NewTestBaterieView extends Component {
         beep_test: '',
         trigger: false,
         pruefe_Felder: false,
+        kommentar: '',
     }
+
+    /**
+     * Kommentar für alle setMethode der Klasse.
+     * die SetMethode pruefen zuerst  die Richtigkeit der eingegeben Werte und setzt die State Attribute nur wenn die Werte
+     * richtig sind. Gleichzeitig wird  den Attribute pruefe_numerisch um 1 erhoert (damit wird die Anzahl der richtigen Felder gezaehlt
+     * @param e
+     */
     setBeweglichtkeit = (e) => {
-        this.setState({beweglichtkeit: e.target.value})
-        this.pruefeFelder();
+        if(e.target.validity.valid) {
+            this.setState({
+                beweglichtkeit: e.target.value,
+            })
+            this.pruefeFelder();
+        }
+        alert(this.state.pruefe_numerisch)
     }
     setReaction = (e) => {
-        this.setState({reaction: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            reaction: e.target.value,
+        })
         this.pruefeFelder();
+        }
+    }
+
+    setKommentar = (e) => {
+        this.setState({
+            kommentar: e.target.value,
+        })
     }
 
     setKoordination = (e) => {
-        this.setState({koordination: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            koordination: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
 
     setSprint = (e) => {
-        this.setState({sprint: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            sprint: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
     setJandR = (e) => {
-        this.setState({JandR: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            JandR: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
 
     setMedBall = (e) => {
-        this.setState({med_ball: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            med_ball: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
     setStWS = (e) => {
-        this.setState({stws: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            stws: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
 
     setAgilitaet = (e) => {
-        this.setState({agilitaet: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            agilitaet: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
     setBorg = (e) => {
-        this.setState({borg: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            borg: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
 
     setBeepTest = (e) => {
-        this.setState({beep_test: e.target.value})
+        if(e.target.validity.valid) {
+        this.setState({
+            beep_test: e.target.value,
+        })
         this.pruefeFelder();
+        }
     }
 
 
@@ -106,39 +161,39 @@ class NewTestBaterieView extends Component {
 
                             <div className="box_newtestbaterie">
                                 <Label>Beweglichtkeit: </Label>
-                                <Input placeholder={"Beweglichkeit"} value={this.state.beweglichtkeit}
+                                <Input type='number' placeholder={"Beweglichkeit"} value={this.state.beweglichtkeit}
                                        onChange={this.setBeweglichtkeit}/>
                                 <Label>Reaction: </Label>
-                                <Input placeholder={"Reaction"} value={this.state.reaction}
+                                <Input type='number' placeholder={"Reaction"} value={this.state.reaction}
                                        onChange={this.setReaction}/>
                                 <Label> Koordination: </Label>
-                                <Input placeholder={"Koordination"} value={this.state.koordination}
+                                <Input type='number' placeholder={"Koordination"} value={this.state.koordination}
                                        onChange={this.setKoordination}/>
                                 <Label>Sprint: </Label>
-                                <Input placeholder={"Sprint"} value={this.state.sprint} onChange={this.setSprint}/>
+                                <Input type='number' placeholder={"Sprint"} value={this.state.sprint} onChange={this.setSprint}/>
                                 <Label>J and R: </Label>
-                                <Input placeholder={"J and R"} value={this.state.JandR} onChange={this.setJandR}/>
+                                <Input type='number' placeholder={"J and R"} value={this.state.JandR} onChange={this.setJandR}/>
                             </div>
                             <div className="box_newtestbaterie">
                                 <Label>Med_Ball: </Label>
-                                <Input placeholder={"Med Ball"} value={this.state.med_ball} onChange={this.setMedBall}/>
+                                <Input type='number' placeholder={"Med Ball"} value={this.state.med_ball} onChange={this.setMedBall}/>
                                 <Label>StWS:</Label>
-                                <Input placeholder={"StWS"} value={this.state.stws} onChange={this.setStWS}/>
+                                <Input type='number' placeholder={"StWS"} value={this.state.stws} onChange={this.setStWS}/>
                                 <Label>Agitlität: </Label>
-                                <Input placeholder={"Agilität"} value={this.state.agilitaet}
+                                <Input type='number' placeholder={"Agilität"} value={this.state.agilitaet}
                                        onChange={this.setAgilitaet}/>
                                 <Label>BORG Test: </Label>
-                                <Input placeholder={"BORG Test"} value={this.state.borg} onChange={this.setBorg}/>
+                                <Input type='number' placeholder={"BORG Test"} value={this.state.borg} onChange={this.setBorg}/>
                                 <Label>Beep Test: </Label>
-                                <Input placeholder={"Beep Test"} value={this.state.beep_test}
+                                <Input type='number' placeholder={"Beep Test"} value={this.state.beep_test}
                                        onChange={this.setBeepTest}/>
                             </div>
                         </div>
-                        <textarea placeholder=" Kommentar eingeben" className="kommentar_newleistung">
+                        <textarea onChange={this.setKommentar} placeholder=" Kommentar eingeben" className="kommentar_newleistung">
 
                       </textarea>
                         <div className="newTestbaterie_button">
-                            <Confirmbutton onClick={() => postTestBaterie(this.state.pruefe_Felder)} myStyle={{
+                            <Confirmbutton onClick={() => postTestBaterie(this.state.pruefe_Felder, this.state.kommentar)} myStyle={{
                                 padding: '9px',
                                 marginTop: '8px',
                                 paddingRight: '15px',

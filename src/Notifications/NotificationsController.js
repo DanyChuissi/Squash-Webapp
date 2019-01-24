@@ -1,13 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import './Notifications.css';
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
+import {myFunction} from "../UI/HeaderProfilController";
 import HeaderProfilView from "../UI/HeaderProfilView";
 import Confirmbutton from "../UI/Confirmbutton";
+import EditRightsView from "../EditRights/EditRights";
 
 class NotificationsController extends React.Component{
 
     state = {
         notifications: [n1, n2, n3],
+        zugrif: false,
     }
 
     checkNeuerNotification = () => {
@@ -21,6 +23,13 @@ class NotificationsController extends React.Component{
     remoneNotification = (notif) => {
         //TODO gelesenen Notificvation werden als "gelesen markiert" und nicht mehr angezeigt
     }
+    onZugrifrechtgechlickt =  () => {
+        this.setState({
+            zugrif: true,
+        })
+        alert(this.state.zugrif)
+    }
+
 
     render()  {
         const notifications = this.state.notifications.map( (notif) =>
@@ -39,15 +48,18 @@ class NotificationsController extends React.Component{
                             {notif.text}
                         </div>
                         <div>
-                            {notif.notification_art = 1?
-                            <Confirmbutton  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
-                                Spieler Profil
-                            </Confirmbutton>
+                            {notif.notification_art === 1?
+                                <a href="playerprofile">
+                                    <Confirmbutton onClick={this.onZugrifrechtgechlickt}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
+                                        Spieler Profil
+                                    </Confirmbutton>
+                                </a>
                                 :
-                                <Confirmbutton  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
-                                    Zugrifrechte verwalten
-                                </Confirmbutton>}
-
+                                <a href="editRights">
+                                    <Confirmbutton  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
+                                        Zugrifrechte verwalten
+                                    </Confirmbutton>
+                                </a>}
                         </div>
                 </div>
 
@@ -55,7 +67,7 @@ class NotificationsController extends React.Component{
 
         return (
             <Fragment>
-                <HeaderProfilView email = {"test"}  myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfilView email = {"test"}  myFunction={myFunction}  >
                     <HeaderProfilView/>
                 </HeaderProfilView>
                 <div className="head_Notif">
@@ -66,6 +78,7 @@ class NotificationsController extends React.Component{
                         {notifications}
                     </div>
                 </div>
+                {this.state.zugrif? <a href="editRights"></a>: null}
             </Fragment>
         );
     }

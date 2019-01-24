@@ -7,7 +7,7 @@ import Label from "../UI/Label";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction, onLogoCenterClick, onLogoMenuClick} from "../UI/HeaderProfilController";
+import {myFunction} from "../UI/HeaderProfilController";
 
 class InviteUserView extends Component {
 
@@ -30,8 +30,7 @@ class InviteUserView extends Component {
         return (
             <main>
                 <div id={"container1"}>
-                    <HeaderProfileView email={email} myFunction={myFunction} onLogoCenterClick={onLogoCenterClick}
-                                       onLogoMenuClick={onLogoMenuClick}>
+                    <HeaderProfileView email={email} myFunction={myFunction} >
                         <HeaderProfileView/>
                     </HeaderProfileView>
 

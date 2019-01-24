@@ -9,19 +9,19 @@ import PlayerListView from "../PlayerList/PlayerListView";
  *
  * @visibleName HeaderProfilControll
  */
-export function onLogoCenter() {
+/*export function onLogoCenter() {
         return (
             0
             //<NotificationsView/>
         );
-}
-export const onLogoMenuClick = () => {
+}*/
+/*export const onLogoMenuClick = () => {
     alert("On MenuLogomenu gecklick ");
     return(
 
         <div>{this.state.Children.setStaten()}</div>
     );
-}
+}*/
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -29,9 +29,9 @@ export function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-export const onLogoCenterClick = () => {
+/*export const onLogoCenterClick = () => {
     alert("test Click");
-}
+}*/
 class HeaderProfilController extends React.Component{
 
     constructor(){
@@ -52,8 +52,6 @@ class HeaderProfilController extends React.Component{
             <HeaderProfilView   className = "View"
                                 email = {this.state.email}
                                 setEmail = {this.setEmail()}
-                                onLogoCenterClick={onLogoCenterClick}
-                                onLogoMenuClick = {onLogoMenuClick()}
                                 myFunction={myFunction()}
 
             />
