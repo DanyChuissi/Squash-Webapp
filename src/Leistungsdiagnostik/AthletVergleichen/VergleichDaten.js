@@ -56,7 +56,7 @@ class VergleichDaten extends Component{
     }
 
     displayEvent = (evnt, SyntheticEvent) => {
-        if(this.state.physisDaten_zu_vergleichen.length > 1){
+        if(this.state.physisDaten_zu_vergleichen.length > 1 ){
             this.setState({trigger: true})
         }
         else{
@@ -73,11 +73,21 @@ class VergleichDaten extends Component{
         });
         return erg;
     }
-    getIndex = email => {
+    getIndex_Athlet_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.athlet_zu_vergl.map( (player) => {
             if(player.email === email){
                 erg = this.state.athlet_zu_vergl.indexOf(player)
+            }
+        });
+        return erg;
+    }
+
+    getIndex_PhysisDaten_zu_remove_testbaterie = email => {
+        let erg = -1;
+        this.state.physisDaten_zu_vergleichen.map( (player) => {
+            if(player.email === email){
+                erg = this.state.physisDaten_zu_vergleichen.indexOf(player)
             }
         });
         return erg;
@@ -94,7 +104,10 @@ class VergleichDaten extends Component{
     setSelected = (e) =>{
         if( e.target.selectedIndex !== 0)
         {
-            this.setState({selectet: e.target.value, index: e.target.selectedIndex});
+            this.setState({
+                selectet: e.target.value,
+                index: e.target.selectedIndex
+            });
             let index = e.target.selectedIndex;
             let ke = e.target.options[index].getAttribute('value');
         }
@@ -144,22 +157,32 @@ class VergleichDaten extends Component{
 
         if(typeof e !== "undefined") {
             var array = [...this.state.athlet_zu_vergl];
-            var index = this.getIndex(e);
-            if (index !== -1) {
+            var array_PhysisDaten = [... this.state.physisDaten_zu_vergleichen];
+            var index = this.getIndex_Athlet_zu_remove_testbaterie(e);
+            var index_PhysisDaten  = this.getIndex_PhysisDaten_zu_remove_testbaterie(e);
+            if (index !== -1 && index_PhysisDaten !== -1) {
                 array.splice(index, 1);
+                array_PhysisDaten.splice(index_PhysisDaten, 1);
                 this.setState({
                     athlet_zu_vergl: array,
+                    physisDaten_zu_vergleichen: array_PhysisDaten,
                 });
-
-
             }
+
         }
     };
        render(){
 
         let kurve = [];
-        let testKurve =  <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>;
-        let physiskurve = <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>;
+           let testKurve =  <div style={{paddingBottom: '20px'}}>
+                                   <div className="head_athletvergleich">Physis Daten </div>
+                                   <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
+                            </div> ;
+        let physiskurve = <div>
+                                <div className="head_athletvergleich">TestBaterie Daten</div>
+                                <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
+                          </div> ;
+
 
         kurve = [... kurve, testKurve];
         kurve = [... kurve, physiskurve];

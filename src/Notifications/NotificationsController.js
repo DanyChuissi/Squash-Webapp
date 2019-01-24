@@ -9,6 +9,7 @@ class NotificationsController extends React.Component{
 
     state = {
         notifications: [n1, n2, n3],
+        ungeleseneNotifications: '',
         zugrif: false,
     }
 
@@ -23,18 +24,37 @@ class NotificationsController extends React.Component{
     remoneNotification = (notif) => {
         //TODO gelesenen Notificvation werden als "gelesen markiert" und nicht mehr angezeigt
     }
+    componentWillMount(): void {
+        this.state.notifications.map( (notif) => {
+                if (notif.statut_gelesen === false) {
+                    this.setState({
+                        ungeleseneNotifications: [...this.state.ungeleseneNotifications, notif],
+                    })
+                }
+            }
+        )
+    }
+
+    setStatutNotification = (index) => {
+        let array = this.state.ungeleseneNotifications;
+        array[index].statut_gelesen = true;
+
+        this.setState({
+            ungeleseneNotifications: array,
+        })
+    }
+
     onZugrifrechtgechlickt =  () => {
         this.setState({
             zugrif: true,
         })
-        alert(this.state.zugrif)
     }
 
 
     render()  {
         const notifications = this.state.notifications.map( (notif) =>
             <div className="notif_1" key={notif.id}>
-                <div>
+                <div style={{ textAlign: 'center'}}>
                     <div>
                         {notif.name}
                     </div>
@@ -50,13 +70,13 @@ class NotificationsController extends React.Component{
                         <div>
                             {notif.notification_art === 1?
                                 <a href="playerprofile">
-                                    <Confirmbutton onClick={this.onZugrifrechtgechlickt}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
+                                    <Confirmbutton onClick={() => this.setStatutNotification(notif.id)}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
                                         Spieler Profil
                                     </Confirmbutton>
                                 </a>
                                 :
                                 <a href="editRights">
-                                    <Confirmbutton  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
+                                    <Confirmbutton onClick={() => this.setStatutNotification(notif.id)}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
                                         Zugrifrechte verwalten
                                     </Confirmbutton>
                                 </a>}
@@ -88,6 +108,7 @@ export default NotificationsController
 
 var n1 = {
     id: 1,
+    statut_gelesen: false,
     notification_art: 1, // 1 für für alle Nachrichten, die den Von Athlet sind
     person: 'Athlet1',
     datum: '11-01-2029 , 14:50',
@@ -97,6 +118,7 @@ var n1 = {
 
 var n2 = {
     id: 2,
+    statut_gelesen: false,
     notification_art: 1,
     person: 'Athlet2',
     datum: '05-01-2029 , 19:50',
@@ -106,6 +128,7 @@ var n2 = {
 
 var n3 = {
     id: 3,
+    statut_gelesen: false,
     notification_art: 2, // 2 ist für Anfrage vom trainer auf Zugriffrechte
     person: 'Trainer XXX',
     datum: '07-01-2029 , 18:50',

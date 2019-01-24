@@ -18,6 +18,7 @@ import KalendarView from "./Trainingdiary/KalendarView";
 import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtController";
 import PlayerListView from "./PlayerList/PlayerListView";
 import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
+import VergleichDaten from "./Leistungsdiagnostik/AthletVergleichen/VergleichDaten";
 
 
 function Navigator() {
@@ -39,6 +40,7 @@ function Navigator() {
                 <Route path={"/trainerProfile"} component={trainerProfileRoute}/>
                 <Route path={"/trainingsdiary"} component={trainingsdiaryRoute}/>
                 <Route path={"/trainingsdiarydetail"} component={trainingsdiaryDetailRoute}/>
+                <Route path={"/athletVergleich"} component={VergleichRoute}/>
 
             </div>
         </Router>
@@ -53,10 +55,22 @@ function LoginRoute() {
     );
 }
 
-function PlayerprofileRoute(name) {
+function PlayerprofileRoute() {
+    document.title = "PlayerProfil | Squirel";
     return (
         <div>
+
             <PlayerProfileView/>
+        </div>
+    );
+}
+
+function VergleichRoute() {
+    document.title = "Vergleich | Squirel";
+    return (
+        <div>
+
+            <VergleichDaten/>
         </div>
     );
 }
@@ -108,6 +122,7 @@ function JTPRoute(){
 }
 
 function performanceDiagnosticsRoute(){
+    document.title = "Leistungsdiagnostik | Squirel";
     return (
         <div>
             <LeistungsdiagnostikView/>

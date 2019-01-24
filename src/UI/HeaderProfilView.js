@@ -65,9 +65,11 @@ class HeaderProfilView extends React.Component {
                         <a href="tourneyList">Tourney List</a>
                         <a href="playerprofile">Playerprofil</a>
                         <a href="leistungsdiagnostik">Leistungsdiagnostik</a>
+                        <a href="athletVergleich">Athlet Vergleich</a>
                         <a href="trainingsdiary">Training Diary</a>
                         <a href="resetLoginData">ResetLoginData</a>
                         <a href="registration">Registration</a>
+
 
                         <a style={{borderTop: '2px solid grey'}} href="login" >Logout</a>
 

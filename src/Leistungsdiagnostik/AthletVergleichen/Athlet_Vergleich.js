@@ -34,7 +34,7 @@ class Athlet_Vergleich extends Component{
         this.state = {
             players: [ av,a1, a2, a3],
             physisDaten: [PDaten1, PDaten2, PDaten3],
-            physisDaten_zu_vergleichen: [PDaten1],
+            physisDaten_zu_vergleichen: [],
             athlet_zu_vergl: [],
             hideliste: true,
             selectet: '',
@@ -98,15 +98,25 @@ class Athlet_Vergleich extends Component{
        });
        return erg;
    }
-   getIndex = email => {
-       let erg = -1;
-       this.state.athlet_zu_vergl.map( (player) => {
-           if(player.email === email){
-               erg = this.state.athlet_zu_vergl.indexOf(player)
-           }
-       });
-       return erg;
-   }
+    getIndex_Athlet_zu_remove_testbaterie = email => {
+        let erg = -1;
+        this.state.athlet_zu_vergl.map( (player) => {
+            if(player.email === email){
+                erg = this.state.athlet_zu_vergl.indexOf(player)
+            }
+        });
+        return erg;
+    }
+
+    getIndex_PhysisDaten_zu_remove_testbaterie = email => {
+        let erg = -1;
+        this.state.physisDaten_zu_vergleichen.map( (player) => {
+            if(player.email === email){
+                erg = this.state.physisDaten_zu_vergleichen.indexOf(player)
+            }
+        });
+        return erg;
+    }
     getTestdatenvonSelectetAthlet = (email) => {
         let erg = null;
         this.state.testArrayDatum.map( (daten) => {
@@ -168,15 +178,18 @@ class Athlet_Vergleich extends Component{
 
         if(typeof e !== "undefined") {
             var array = [...this.state.athlet_zu_vergl];
-            var index = this.getIndex(e);
-            if (index !== -1) {
+            var array_PhysisDaten = [... this.state.physisDaten_zu_vergleichen];
+            var index = this.getIndex_Athlet_zu_remove_testbaterie(e);
+            var index_PhysisDaten  = this.getIndex_PhysisDaten_zu_remove_testbaterie(e);
+            if (index !== -1 && index_PhysisDaten !== -1) {
                 array.splice(index, 1);
+                array_PhysisDaten.splice(index_PhysisDaten, 1);
                 this.setState({
                     athlet_zu_vergl: array,
+                    physisDaten_zu_vergleichen: array_PhysisDaten,
                 });
-
-
             }
+
         }
     };
     render() {

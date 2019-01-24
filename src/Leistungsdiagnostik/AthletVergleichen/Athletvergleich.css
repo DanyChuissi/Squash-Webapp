@@ -14,6 +14,7 @@
 .head_athletvergleich {
     font-size: 23px;
     padding: 15px;
+    text-align: center;
 }
 .close_icon {
     width: 10px;
@@ -44,4 +45,5 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 250px 250px;
+    text-align: center;
 }
