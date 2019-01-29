@@ -195,9 +195,18 @@ class Athlet_Vergleich extends Component{
     render() {
         const Modal = () => (
             <Popup onClose={this.closePopup} closeOnEscape={true} open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
+                <div>
+                    <label>Testbaterie Daten</label>
+                    <label> Physis Daten</label>
+                </div>
+
                 <div style={modalStyle1}>
+
                         <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
+
                         <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
+
+
                 </div>
 
             </Popup>

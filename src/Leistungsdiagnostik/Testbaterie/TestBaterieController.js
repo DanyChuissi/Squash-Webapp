@@ -134,7 +134,9 @@ class TestBaterieController extends Component {
           stws,
           agilitaet,
           borg,
-          beep_test
+          beep_test,
+          hidde_alte_TestBaterie,
+          setHidde_Alte_Testbaterie,
       } = this.props;
 
 
@@ -173,6 +175,8 @@ class TestBaterieController extends Component {
                          contentEditable={this.state.contenEditable}
                          onEdit={this.onEdit}
                          onSave={this.onSave}
+                         hidde_alte_TestBaterie={hidde_alte_TestBaterie}
+                        setHidde_Alte_Testbaterie={setHidde_Alte_Testbaterie}
 
     />
 

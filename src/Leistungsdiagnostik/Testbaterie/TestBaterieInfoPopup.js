@@ -6,11 +6,11 @@ import './Testbaterie.css';
 * 0 = Allgemeine Info der Testbaterie
 * 1 = Beweglichkeit
 * 2 = Reaktion
-* 3= Koordination
+* 3 = Koordination
 * 4 = Sprint
 * 5 = J & R
 * 6 = Med Ball
-* 7 =StWs
+* 7 = StWs
 * 8 = Agilität
 * 9 = Borg test
 * 10 = Beep test

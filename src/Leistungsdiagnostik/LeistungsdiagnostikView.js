@@ -14,6 +14,10 @@ import Popup from "reactjs-popup";
 import Kommentar from './Kommentare/Komemntar';
 import { GoInfo } from "react-icons/go";
 import TestBaterieInfoPopup from "./Testbaterie/TestBaterieInfoPopup";
+import { GoTriangleDown } from "react-icons/go";
+import { GoTriangleUp } from "react-icons/go";
+import Input from "../UI/Input";
+import AlteTestBaterieView from "./Testbaterie/AlteTestBaterieView";
 
 
 class LeistungsdiagnostikView extends React.Component{
@@ -32,6 +36,7 @@ class LeistungsdiagnostikView extends React.Component{
         arraykurve: [datum1,datum2, datum3],
         index: 0,
         trigger : false,
+        hidde_alte_TestBaterie: true,
     }
 
     displayEvent = (evnt, SyntheticEvent) => {
@@ -42,9 +47,16 @@ class LeistungsdiagnostikView extends React.Component{
     closePopup = () =>{
         this.setState({trigger: false})
     }
-    setIndex = (e, index) => {
-        this.setState({index: index})
-        alert(index)
+    setIndex = (e) => {
+
+        this.setState({index: e})
+
+    }
+
+    setHidde_alte_Testbaterie = () => {
+        this.setState({
+            hidde_alte_TestBaterie: !this.state.hidde_alte_TestBaterie
+        })
     }
 
     habdelchekbox = (event, index) =>{
@@ -178,14 +190,14 @@ class LeistungsdiagnostikView extends React.Component{
                                     </label>
                                 </div>
 
-                                <Tabs>
+                                <Tabs onSelect={this.setIndex}>
                                 <TabList className="tabss">
-                                    <Tab>{this.state.testArrayDatum[0].name}</Tab>
+                                    <Tab >{this.state.testArrayDatum[0].name}</Tab>
                                     <Tab >{this.state.testArrayDatum[1].name}</Tab>
                                     <Tab>{this.state.testArrayDatum[2].name}</Tab>
                                     <Tab disabled>{this.state.testArrayDatum[2].name}</Tab>
                                 </TabList>
-                                    <TabPanel >
+                                    <TabPanel>
                                         {e => this.setIndex(e, 0)}
                                         <TestBaterieController
                                             beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
@@ -198,6 +210,8 @@ class LeistungsdiagnostikView extends React.Component{
                                             agilitaet={this.state.testArrayDatum[0].agilitaet}
                                             borg={this.state.testArrayDatum[0].borg}
                                             beep_test={this.state.testArrayDatum[0].beep_test}
+                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
                                             onEdit={this.onEdit}/>
 
                                     </TabPanel>
@@ -214,6 +228,8 @@ class LeistungsdiagnostikView extends React.Component{
                                             agilitaet={this.state.testArrayDatum[1].agilitaet}
                                             borg={this.state.testArrayDatum[1].borg}
                                             beep_test={this.state.testArrayDatum[1].beep_test}
+                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
                                             onEdit={this.onEdit}/>
 
                                     </TabPanel>
@@ -230,6 +246,8 @@ class LeistungsdiagnostikView extends React.Component{
                                             agilitaet={this.state.testArrayDatum[2].agilitaet}
                                             borg={this.state.testArrayDatum[2].borg}
                                             beep_test={this.state.testArrayDatum[2].beep_test}
+                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
                                             onEdit={this.onEdit}/>
                                     </TabPanel>
                                     <TabPanel>
@@ -263,7 +281,7 @@ class LeistungsdiagnostikView extends React.Component{
                                                name="datum4"
                                                type="checkbox"
                                          />
-                                    <Confirmbutton onClick={this.setDiagramm} myStyle= {{padding: '2px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}}>
+                                    <Confirmbutton onClick={this.setDiagramm}  myStyle= {{padding: '2px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}}>
                                     zum SpinenDiagramm
                                     </Confirmbutton>
                                     </div>
@@ -283,6 +301,34 @@ class LeistungsdiagnostikView extends React.Component{
                                                         borg={this.state.testArrayDatum[index].borg}
                                                         beep_test={this.state.testArrayDatum[index].beep_test}/>}
                              </div>
+                    </div>
+                    <div hidden={this.state.hidde_alte_TestBaterie} className="orangeContainer">
+                        <div className="container_alte_testBaterie">
+                            <div>
+                                <div className='alte_test_Daten'>
+                                    <Input type="date"/>
+                                    <Input type="date"/>
+                                </div>
+                                    <AlteTestBaterieView
+                                        beweglichtkeit={this.state.testArrayDatum[2].beweglichtkeit}
+                                        reaction={this.state.testArrayDatum[2].reaction}
+                                        koordination={this.state.testArrayDatum[2].koordination}
+                                        sprint={this.state.testArrayDatum[2].sprint}
+                                        JandR={this.state.testArrayDatum[2].JandR}
+                                        med_ball={this.state.testArrayDatum[2].med_ball}
+                                        stws={this.state.testArrayDatum[2].stws}
+                                        agilitaet={this.state.testArrayDatum[2].agilitaet}
+                                        borg={this.state.testArrayDatum[2].borg}
+                                        beep_test={this.state.testArrayDatum[2].beep_test}/>
+                            </div>
+
+                            <div className='alte_Test_kurve'>
+                                <KurvenDiagramm attribute={this.state.arraykurve}/>
+                            </div>
+
+
+                        </div>
+
                     </div>
                             <div className="kommentar_L">
                                 <Kommentar/>

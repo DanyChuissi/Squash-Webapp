@@ -34,7 +34,7 @@ class NewTestBaterieView extends Component {
             })
             this.pruefeFelder();
         }
-        alert(this.state.pruefe_numerisch)
+
     }
     setReaction = (e) => {
         if(e.target.validity.valid) {

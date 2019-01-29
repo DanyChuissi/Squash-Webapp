@@ -5,8 +5,9 @@ import './Kommentar.css';
 class Komemntar extends Component{
     state={
         kommentare: [],
-        kommentar: 'Kommentar Eingeben',
+        kommentarPlaceholder: 'Neuer Kommentar eingeben',
         id_kommentar: 0,
+        kommentar: '',
     }
     kommentar_posten = () => {
         let date= new Date().toLocaleString();
@@ -17,11 +18,12 @@ class Komemntar extends Component{
                 text: this.state.kommentar,
                 datum:  date,
             };
-        let i = this.state.kommentar + 1;
-        if(this.state.kommentar !== 'Kommentar Eingeben' && this.state.kommentar !== ''){
+        let i = this.state.id_kommentar + 1;
+        if(this.state.kommentar !== 'Neuer Kommentar eingeben' && this.state.kommentar !== ''){
+
             this.setState({
+                kommentar: '',
                 kommentare: [...this.state.kommentare, k],
-                kommentar: 'Kommentar Eingeben',
                 id_kommentar: i,
             })
         }
@@ -56,7 +58,7 @@ class Komemntar extends Component{
 
         const aktuelle_Kommentar = this.state.kommentar;
 
-        const komment = this.state.kommentare.map((d) =>
+        const komments = this.state.kommentare.map((d) =>
         <div className="alteKommentat" key={d.id}>
             <div>
                 <div>
@@ -73,19 +75,24 @@ class Komemntar extends Component{
             <div>
                 {d.text}
             </div>
-
-
         </div>);
+
+        /*const myTextArea = <textarea placeholder={this.state.kommentarPlaceholder} onChange={this.setKommentar}>
+                                {this.state.kommentar}
+                          </textarea>*/
+
 
         return (
            <Fragment>
                <div className="kommentar_leistung">
                    <div>
-                       {komment}
+                       {komments}
                    </div>
-                   <textarea placeholder={this.state.kommentar} onChange={this.setKommentar}>
+                 {/*  {myTextArea}*/}
+                   <textarea placeholder={this.state.kommentarPlaceholder} onChange={this.setKommentar}>
 
-                        </textarea>
+                          </textarea>
+
                    <Confirmbutton onClick={this.kommentar_posten} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
                        Kommentar senden
                    </Confirmbutton>

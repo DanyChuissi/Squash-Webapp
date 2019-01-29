@@ -6,8 +6,8 @@
     min-width: 60%;
     max-width: fit-content;
     margin-left: 20px;
-    min-height: 460px;
-    max-height: 460px;
+    min-height: 490px;
+    max-height: 490px;
 
 }
 
@@ -107,14 +107,46 @@
     margin-left: 20px;
 
 }
+/*
+css für der DIv der die alte Test Baterie anzeigt
+*/
+.container_alte_testBaterie {
+    width: 100%;
+    border: 2px solid black;
+    background-color: #f19a29;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 500px;
+}
+.container_alte_testBaterie > div {
+    margin: 20px;
+}
+.alte_Test_kurve {
+    display: flex;
+    background-color: whitesmoke;
+    width: 55%;
+    height: 90%;
+
+    border: 2px solid black;
+}
+.alte_test_Daten {
+    display: flex;
+    flex-direction: column;
+    widows: 45%;
+}
+
+/*
+End css Alte Test Baterie
+*/
+
 .kommentar_L {
     width: 100%;
 }
 
 .kurveCheckbox {
     display: flex;
-    flex-direction: row;
-
 }
 
 .kurveCheckbox > Input {

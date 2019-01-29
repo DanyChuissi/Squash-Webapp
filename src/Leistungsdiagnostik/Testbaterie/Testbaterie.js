@@ -9,6 +9,8 @@ import NewTestBaterieController from "../NewTestBaterie/NewTestBaterieController
 import { GoInfo } from "react-icons/go";
 import { IconContext } from "react-icons";
 import TestBaterieInfoPopup from "./TestBaterieInfoPopup";
+import { GoTriangleDown } from "react-icons/go";
+import { GoTriangleUp } from "react-icons/go";
 
 
 /*
@@ -39,6 +41,8 @@ class Testbaterie extends Component {
             agilitaet,
             borg,
             beep_test,
+            hidde_alte_TestBaterie,
+            setHidde_Alte_Testbaterie,
 
             hideBearbeiten,
             hideSpeichern,
@@ -200,6 +204,12 @@ class Testbaterie extends Component {
                         <Confirmbutton onClick={displayEvent} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
                             Neu Test
                         </Confirmbutton>
+                        <IconContext.Provider value={{ size: '1.7em' }}>
+                            <h3 hidden={hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie} style={{paddingLeft: '10%', paddingTop: '2%'}}><GoTriangleDown/></h3>
+                        </IconContext.Provider>
+                        <IconContext.Provider value={{ size: '1.7em' }}>
+                            <h3  hidden={!hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie}  style={{paddingLeft: '10%', paddingTop: '2%'}}><GoTriangleUp/></h3>
+                        </IconContext.Provider>
                     </div>
 
                 </div>
