@@ -77,7 +77,7 @@ class NotificationsController extends React.Component{
                                 :
                                 <a href="editRights">
                                     <Confirmbutton onClick={() => this.setStatutNotification(notif.id)}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
-                                        Zugrifrechte verwalten
+                                        Zugriffsrechte verwalten
                                     </Confirmbutton>
                                 </a>}
                         </div>
@@ -112,7 +112,7 @@ var n1 = {
     notification_art: 1, // 1 für für alle Nachrichten, die den Von Athlet sind
     person: 'Athlet1',
     datum: '11-01-2029 , 14:50',
-    text: 'Athlet xxxx hat eine neue Daten Hochgeladen',
+    text: 'Athlet xxxx hat eine neue Datei hochgeladen',
 
 };
 
@@ -122,7 +122,7 @@ var n2 = {
     notification_art: 1,
     person: 'Athlet2',
     datum: '05-01-2029 , 19:50',
-    text: 'Athlet xxxx hat eine neue Daten Hochgeladen',
+    text: 'Athlet xxxx hat eine neue Datei hochgeladen',
 
 };
 
@@ -132,7 +132,7 @@ var n3 = {
     notification_art: 2, // 2 ist für Anfrage vom trainer auf Zugriffrechte
     person: 'Trainer XXX',
     datum: '07-01-2029 , 18:50',
-    text: 'Trainer xxxx will auf Athleth yyyy zugreifen können',
+    text: 'Trainer xxxx fordert Zugriff auf die Daten des Athlethen yyyy',
 
 };
 

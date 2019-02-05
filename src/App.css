@@ -1,8 +1,7 @@
 .App {
-  /*  text-align: center;*/
     background-color: whitesmoke;
-    height: 100vh; /* For 100% screen height */
-    width:  100vw; /* For 100% screen width */
+   /* height: 100vh; /* For 100% screen height */
+    /*width:  100vw; /* For 100% screen width */
 }
 
 

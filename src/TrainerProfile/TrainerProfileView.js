@@ -6,9 +6,39 @@ import logo from "../Graphics/480px-PICA.jpg";
 import HeaderProfileView from "../UI/HeaderProfilView";
 import {myFunction} from "../UI/HeaderProfilController";
 import EditTrainerProfileView from "./EditTrainerProfileView";
+import Popup from "reactjs-popup";
+import AddTourneyView from "../Tourney/AddTourneyView";
+import EditPasswordModalView from "./EditPasswordModalView";
 
+
+const modalStylePassword = {
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    paddingLeft: '15%',
+    paddingRight:'15%',
+    paddingTop:'10%',
+    paddingBottom:'auto',
+
+};
 class TrainerProfileView extends Component {
 
+    state = {
+        triggerChangePassword: false,
+    }
+    changePassword=(e)=>{
+        this.setState({
+            triggerChangePassword:true,
+        })
+    }
+    cancelPassword=(e)=>{
+        this.setState({
+            triggerChangePassword:false,
+        })
+    }
     render() {
 
         const {
@@ -26,7 +56,9 @@ class TrainerProfileView extends Component {
             setMobileNumber,
             setLandlaneNumber,
             setNationalAssosiation,
+            setPassword,
 
+            password,
             name,
             surname,
             mail,
@@ -47,8 +79,17 @@ class TrainerProfileView extends Component {
             onEdit,
             onSave,
             onCompare,
-        } = this.props;
+            editPassword,
 
+        } = this.props
+
+        const ModalCreateTourney = () => (
+            <Popup open={this.state.triggerChangePassword} position={"top left"} closeOnDocumentClick={true}>
+                <div style={modalStylePassword}>
+                    <EditPasswordModalView createEditPassword={this.confirmEditPassword} cancelEditPassword={this.cancelEditPassword}/>
+                </div>
+            </Popup>
+        )
         return (
 
             <Fragment id={"Trainerprofile"}>
@@ -70,6 +111,7 @@ class TrainerProfileView extends Component {
                             <div id={"ButtonsTrainer"}>
                                 <Confirmbutton className={"editTP"} onClick={onEdit} hidden={edithidden}>Bearbeiten</Confirmbutton>
                                 <Confirmbutton id={"saveTP"} onClick={onSave} hidden={savehidden}>Speichern</Confirmbutton>
+                                <Confirmbutton id={"changePW"} onClick={setPassword}>Passwort ändern</Confirmbutton>
                             </div>
                         </div>
                         <div id="rightTP">

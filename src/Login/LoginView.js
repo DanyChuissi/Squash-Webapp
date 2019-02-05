@@ -29,8 +29,9 @@ class LoginView extends Component {
         return (
             <React.Fragment>
                 <div id="Login">
-                    <img src={logo} className="App-logo" alt="Logo der Web Applikation Squirrel"/>
-
+                    <div id={"headLogin"}>
+                        <img src={logo} id="App-logo" alt="Logo der Web Applikation Squirrel"/>
+                    </div>
                     <form className={"loginForm"}>
 
                         <Input className={"i1"} placeholder={"Benutzernamen eintragen"} value={name}

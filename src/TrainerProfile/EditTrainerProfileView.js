@@ -29,6 +29,7 @@ class EditTrainerProfileView extends Component {
             setLandlaneNumber,
             setNationalAssosiation,
             setTrainertype,
+            setPassword,
 
             name,
             surname,
@@ -43,6 +44,7 @@ class EditTrainerProfileView extends Component {
             agegroup,
             nationalAssosiation,
             trainertype,
+            password,
 
             nationalAssosiationdropdownhidden,
             nationalAssosiationhidden,
@@ -184,6 +186,7 @@ class EditTrainerProfileView extends Component {
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
 
             </Fragment>

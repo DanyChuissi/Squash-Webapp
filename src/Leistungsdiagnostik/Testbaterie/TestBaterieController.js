@@ -85,7 +85,7 @@ class TestBaterieController extends Component {
     onSave = () => {
         this.setContentEditable(false);
         this.setHideButton();
-        alert("Neue Werte Gespeichert");
+        alert("Neue Werte gespeichert");
     }
     displayEvent = (evnt, SyntheticEvent) => {
         this.setState({trigger: true})
@@ -106,15 +106,15 @@ class TestBaterieController extends Component {
     }
     postTestBaterie = (pruefe_felder, kommentar) => {
         if(pruefe_felder){
-            alert("TestBaterie gespeichert");
+            alert("Testbatterie gespeichert");
             this.closePopup();
         }
         else{
             if(!pruefe_felder && kommentar.length === 0) {
-                alert("Alle Felder nicht Ausfefühlt, Schreiben sie im Kommentar warum");
+                alert("Nicht alle Felder wurden ausgefüllt. Bitte Kommentar mit Begründung schreiben");
             }
             else if (!pruefe_felder && kommentar.length > 0) {
-                alert("TestBaterie gespeichert");
+                alert("Testbatterie gespeichert");
                 this.closePopup();
                 //alert("Bitte prueden sie die Richtikeit der Eingabe, Nur nuemerische Werte sind erlaubt!")
             }

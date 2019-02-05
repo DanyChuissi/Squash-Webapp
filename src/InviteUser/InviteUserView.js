@@ -28,13 +28,12 @@ class InviteUserView extends Component {
         ]
         const defaultOption = options[0]
         return (
-            <main>
+            <div id={"inviteUserView"}>
+                <HeaderProfileView email={email} myFunction={myFunction} >
+                    <HeaderProfileView/>
+                </HeaderProfileView>
                 <div id={"container1"}>
-                    <HeaderProfileView email={email} myFunction={myFunction} >
-                        <HeaderProfileView/>
-                    </HeaderProfileView>
-
-                    <h1>Nutzer einladen</h1>
+                    <h2>Nutzer einladen</h2>
                     <div id={"subcontainer1"}>
                         <div id="roleLabel">
                             <label>Rolle:</label>
@@ -44,7 +43,9 @@ class InviteUserView extends Component {
                             <Dropdown options={options} onChange={this._onSelect} value={defaultOption}
                                       placeholder="Select an option"/></div>
 
-                        <div id="eMailLabel"><label>Email:</label></div>
+                        <div id="eMailLabel">
+                            <label>Email:</label>
+                        </div>
 
                         <input id={"eMail"} placeholder={"Email eingeben"}/>
                     </div>
@@ -53,7 +54,7 @@ class InviteUserView extends Component {
                     <Confirmbutton>Einladen</Confirmbutton>
                 </div>
 
-            </main>
+            </div>
 
 
         );

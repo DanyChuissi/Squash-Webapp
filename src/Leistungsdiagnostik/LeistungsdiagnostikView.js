@@ -185,7 +185,7 @@ class LeistungsdiagnostikView extends React.Component{
                             <div className= "container1">
                                 <div className="thead_leistung">
                                     <label className="thead_leistung">
-                                        Testbaterie
+                                        Testbatterie
                                         <h3 onClick={this.displayEvent} style={{marginTop: '3px', marginLeft: '40px', color: 'white'}}> <GoInfo/></h3>
                                     </label>
                                 </div>
@@ -282,11 +282,11 @@ class LeistungsdiagnostikView extends React.Component{
                                                type="checkbox"
                                          />
                                     <Confirmbutton onClick={this.setDiagramm}  myStyle= {{padding: '2px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}}>
-                                    zum SpinenDiagramm
+                                    Zum SpinnenDiagramm
                                     </Confirmbutton>
                                     </div>
                                     <Confirmbutton onClick={this.setDiagramm} hidden={this.state.spineHidden} myStyle= {{padding: '2px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}}>
-                                    zum Kurvendiagramm
+                                    Zum Kurvendiagramm
                                     </Confirmbutton>
                                 </div >
                                     {this.state.diagramm === this.state.kurve? <KurvenDiagramm attribute={this.state.arraykurve}/> :

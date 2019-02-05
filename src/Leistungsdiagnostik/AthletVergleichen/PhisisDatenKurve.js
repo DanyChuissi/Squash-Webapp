@@ -35,9 +35,9 @@ class PhisisDatenKurve extends Component {
                         {name: 'Alter', a1: attribute[0].alter},
                         {name: 'Größe', a1: attribute[0].groesse},
                         {name: 'Gewicht', a1: attribute[0].gewicht},
-                        {name: 'Korperfett', a1: attribute[0].koerperfett},
+                        {name: 'Körperfett', a1: attribute[0].koerperfett},
                         {name: 'Beinlänge', a1: attribute[0].beinlaenge},
-                        {name: 'Beinwinckel', a1: attribute[0].beinwinkel},
+                        {name: 'Beinwinkel', a1: attribute[0].beinwinkel},
                     ];
                     break;
 
@@ -48,9 +48,9 @@ class PhisisDatenKurve extends Component {
                     {name: 'Alter', a1: attribute[0].alter, a2: attribute[1].alter},
                     {name: 'Größe', a1: attribute[0].groesse, a2: attribute[1].groesse},
                     {name: 'Gewicht', a1: attribute[0].gewicht, a2: attribute[1].gewicht},
-                    {name: 'Korperfett', a1: attribute[0].koerperfett, a2: attribute[1].koerperfett},
+                    {name: 'Körperfett', a1: attribute[0].koerperfett, a2: attribute[1].koerperfett},
                     {name: 'Beinlänge', a1: attribute[0].beinlaenge, a2: attribute[1].beinlaenge},
-                    {name: 'Beinwinckel', a1: attribute[0].beinwinkel, a2: attribute[1].beinwinkel},
+                    {name: 'Beinwinkel', a1: attribute[0].beinwinkel, a2: attribute[1].beinwinkel},
                 ];
                 break;
             case 3:
@@ -64,9 +64,9 @@ class PhisisDatenKurve extends Component {
                     {name: 'Alter', a1: attribute[0].alter, a2: attribute[1].alter, a3: attribute[2].alter},
                     {name: 'Größe', a1: attribute[0].groesse, a2: attribute[1].groesse, a3: attribute[2].groesse},
                     {name: 'Gewicht', a1: attribute[0].gewicht, a2: attribute[1].gewicht, a3: attribute[2].gewicht},
-                    {name: 'Korperfett', a1: attribute[0].koerperfett, a2: attribute[1].koerperfett, a3:  attribute[2].koerperfett},
+                    {name: 'Körperfett', a1: attribute[0].koerperfett, a2: attribute[1].koerperfett, a3:  attribute[2].koerperfett},
                     {name: 'Beinlänge', a1: attribute[0].beinlaenge, a2: attribute[1].beinlaenge, a3: attribute[2].beinlaenge},
-                    {name: 'Beinwinckel', a1: attribute[0].beinwinkel, a2: attribute[1].beinwinkel, a3: attribute[2].beinwinkel},
+                    {name: 'Beinwinkel', a1: attribute[0].beinwinkel, a2: attribute[1].beinwinkel, a3: attribute[2].beinwinkel},
                 ];
                 break;
         }

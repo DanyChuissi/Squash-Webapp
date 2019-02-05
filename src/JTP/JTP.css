@@ -113,9 +113,45 @@
 }
 
 #jTPCenterLeftMAZTable {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-top: auto;
+    margin-bottom: auto;
     width: 60%;
 }
+/** Every second row, the head and editable data is displayed in a different color. **/
+#trMAZ:nth-child(even) td {
+    background-color: #ffd533;
+}
 
+#trMAZ:nth-child(even) th {
+    background-color: #f19a29;
+}
+
+#trMAZ:nth-child(odd) td {
+    background-color: #ffa436;
+}
+
+#trMAZ:nth-child(odd) th {
+    background-color: #ff792a;
+}
+
+/** The font is set to Calibri 12pt **/
+#thMAZ {
+    font-size: 12pt;
+    font-family: Calibri;
+    border-collapse: collapse;
+}
+#trMAZ > #editProfilethCity{
+    background-color: #f19a29;
+}
+#trMAZ > #editProfiletdCity{
+    background-color: #ffd533;
+}
+#thMAZ{
+    width: 40%;
+    min-width: 100px;
+}
 #jtPCenterLeftButtons {
     display: flex;
     flex-direction: column;
@@ -245,7 +281,10 @@ Tab {
     background-color: #f19a29;
 }
 #vacationList{
+    margin-left: 0.5%;
+    margin-right: 0.5%;
     background-color: whitesmoke;
+    margin-bottom: 0%;
 }
 #time {
     margin-top: 5%;
@@ -268,7 +307,7 @@ Tab {
 }
 
 #descriptionForm {
-    margin-top: 2.5%;
+    margin-top: 1%;
     margin-left: 16%;
     display: flex;
     flex-direction: row;
@@ -300,10 +339,17 @@ Tab {
 #topVacView {
     background-color: #f19a29;
 }
-
+#topVacView h2{
+    margin-right: auto;
+    margin-left: auto;
+    width: 40px;
+}
 #bottomVacView {
     background-color: #f19a29;
     padding-bottom: 2.5%;
+    margin-right: auto;
+    margin-left: auto;
+width: 30%;
 }
 #vacationDescription{
     width: 200px;
@@ -334,14 +380,14 @@ Tab {
 }
 
 #mAZTime {
-    margin-top: 5%;
+    margin-top: 1%;
     margin-left: 5%;
     display: flex;
     flex-direction: row;
 }
 
 #emphasis {
-    margin-top: 5%;
+    margin-top: 0.5%;
     margin-left: 5%;
     display: flex;
     flex-direction: row;
@@ -366,7 +412,12 @@ Tab {
 }
 
 #bottomCreateMAZView {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
     padding-bottom: 2.5%;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 #startMAZ {

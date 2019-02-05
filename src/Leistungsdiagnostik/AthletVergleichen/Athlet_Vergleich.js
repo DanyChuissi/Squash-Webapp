@@ -85,7 +85,7 @@ class Athlet_Vergleich extends Component{
             this.setState({trigger: true})
         }
         else{
-            alert("mindestens 2 Althleten wählen")
+            alert("Mindestens 2 Althleten wählen")
         }
 
     }

@@ -3,6 +3,7 @@ import '../App.css';
 import 'react-table/react-table.css';
 import ReactTable from "react-table";
 import './EditRights.css'
+import {TabPanel} from "react-tabs";
 
 
 class CoachList extends Component {
@@ -38,7 +39,13 @@ class CoachList extends Component {
                     data={dataCoachList}
                     columns={columnsCoachList}
                     defaultPageSize={10}
-                />
+                    previousText={'Zurück'}
+                    nextText={'Nächste'}
+                    loadingText={'Laden...'}
+                    noDataText={'Keine Athlete gefunden'}
+                    pageText={'Seite'}
+                    ofText={'von'}
+                    rowsText={'Zeilen'} />
                 <div id={"CoachListBottom"}>
 
                 </div>

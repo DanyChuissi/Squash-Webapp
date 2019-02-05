@@ -41,7 +41,6 @@ function Navigator() {
                 <Route path={"/trainingsdiary"} component={trainingsdiaryRoute}/>
                 <Route path={"/trainingsdiarydetail"} component={trainingsdiaryDetailRoute}/>
                 <Route path={"/athletVergleich"} component={VergleichRoute}/>
-
             </div>
         </Router>
     );

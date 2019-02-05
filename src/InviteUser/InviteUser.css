@@ -1,16 +1,19 @@
-
-#container1 *{
-    background-color: whitesmoke;
+#inviteUserView{
+    height:100% ;
 }
+#container1 h2{
+    margin-bottom: 5%;
 
+}
 #container1 {
     margin-top: 10%;
+    margin-bottom: 10%;
     background-color: #f19a29;
     display: flex;
     flex-direction: column;
-    width:calc(100vh - 250px);
-    margin-left: 30%;
-    margin-right: 30%;
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 5%;
     align-items: center;
     border-style: solid;
@@ -27,7 +30,7 @@
     display: grid;
 
     grid-template-areas: "area1 area2" "area3 area4";
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 20% 80%;
     grid-template-rows: 50% 50% ;
 }
 
@@ -48,13 +51,10 @@
     position: relative;
 }
 
-#eMailLabel label {
-    position: absolute;
-    bottom: 0px;
-}
+
 
 #eMailLabel{
-    grid-area: 3;
+    grid-area: area3;
 
 }
 
@@ -72,7 +72,7 @@ Dropdown {
     border-radius: 20px;
 }
 
-input {
+#inviteUserView input {
     margin-right: 20%;
     width: 100%;
     height: 30px;

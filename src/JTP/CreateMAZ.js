@@ -46,7 +46,7 @@ const{
                         <h4>Schwerpunkte</h4>
 
                         <div id={"emphasisCheckBoxLeft"}>
-                            <Checkbox/> Ausdauer
+                            <Checkbox style={{width: '10px'}}/> Ausdauer
                             <Checkbox/> Kraft
                             <Checkbox/> Schnelligkeit
                             <Checkbox/> Beweglichkeit

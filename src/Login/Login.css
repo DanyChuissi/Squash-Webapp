@@ -1,13 +1,14 @@
 #Login {
     background-color: #f19a29;
-
 }
 
-.App-logo {
+#App-logo {
     margin-top: 10px;
     background-color: #f19a29;
     width: 20%;
     height: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
 }
 
 .loginForm {

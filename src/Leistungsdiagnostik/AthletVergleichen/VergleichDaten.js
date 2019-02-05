@@ -232,7 +232,7 @@ class VergleichDaten extends Component{
                     </div>
                     <div className="vergleich">
                         {this.state.trigger?
-                                kurve: "Wählt Bitte 2 bis 5 Athleten"}
+                                kurve: "Bitte 2 bis 5 Athleten auswählen"}
                     </div>
                 </div>
            </div>

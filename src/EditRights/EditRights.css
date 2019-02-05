@@ -1,12 +1,9 @@
 /**EditRights**/
 .EditRights {
-    display: flex;
-    flex-direction: row;
-    
+    display: grid;
+    grid-template-columns: 60% auto;
 }
-.deleteRightRow{
-    background-color: #2980B9;
-}
+
 @media screen and (max-width: 480px) {
     .EditRights {
         flex-direction: column;
@@ -14,7 +11,6 @@
     }
 
     #roleList {
-
         width: auto;
         font-size: small;
     }
@@ -29,20 +25,16 @@
 
 #specificRights {
     padding: 1%;
-    min-width: 400px;
-    width: auto;
+
     margin-bottom: 2.5%;
 }
 #groupRights{
     padding: 1%;
-    min-width: 400px;
-    width: 100%;
     margin-bottom: 2.5%;
 }
 
 #roleList {
     margin: 2.5%;
-    width: 50%;
 }
 
 /** CoachList**/

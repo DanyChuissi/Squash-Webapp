@@ -48,6 +48,9 @@
 #addTourneyView{
     background-color: #f19a29;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
     flex-direction: column;
     align-items: end;
 }
@@ -60,17 +63,26 @@
     width: 500px;
 }
 #createTourneyForm div{
-    display: flex;
+    display: grid;
     flex-direction: row;
     align-items: end;
     float: right;
     margin-top: 1.5%;
 }
+
 #createTourneyForm{
     margin-top: 2.5%;
-    margin-left: 25%;
-}
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto 70%;
+   justify-items: right;
 
+}
+#createTourneyForm input{
+    margin-left: 5px;
+}
 #createTourneyButtons{
     margin-bottom: 2.5%;
     margin-left: auto;

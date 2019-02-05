@@ -16,9 +16,6 @@ class KurvenDiagramm extends Component {
         //TODO fetch leistungdiagnostik from Athlket
     }
 
-
-
-
     render() {
         const {
             attribute,

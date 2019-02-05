@@ -126,15 +126,14 @@ css für der DIv der die alte Test Baterie anzeigt
 .alte_Test_kurve {
     display: flex;
     background-color: whitesmoke;
-    width: 55%;
+    width: 65%;
     height: 90%;
 
     border: 2px solid black;
 }
 .alte_test_Daten {
     display: flex;
-    flex-direction: column;
-    widows: 45%;
+    flex-direction: column
 }
 
 /*

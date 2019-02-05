@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import '../App.css';
 import './EditRights.css'
+
+import 'react-table/react-table.css';
 import ReactTable from "react-table";
-import checkboxHOC from "react-table/lib/hoc/selectTable";
 import deleteIcon from "../Graphics/trash_bin_icon-icons.com_67981.png"
+import {TabPanel} from "react-tabs";
 
 class SpecificRights extends Component {
     constructor(props) {
@@ -116,6 +118,13 @@ class SpecificRights extends Component {
                     columns={columns}
                     defaultPageSize={5}
                     defaultSorted={[{id: "firstName", desc: false}]}
+                    previousText={'Zurück'}
+                    nextText={'Nächste'}
+                    loadingText={'Laden...'}
+                    noDataText={'Keine Athlete gefunden'}
+                    pageText={'Seite'}
+                    ofText={'von'}
+                    rowsText={'Zeilen'}
                 />
             </div>
         );

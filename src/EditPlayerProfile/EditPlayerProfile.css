@@ -40,7 +40,7 @@ header {
 }
 
 /** The font is set to Calibri 12pt **/
-table, #editProfileth, #editProfiletd {
+#editProfileth, #editProfiletd {
     font-size: 12pt;
     font-family: Calibri;
     border-collapse: collapse;

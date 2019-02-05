@@ -16,6 +16,8 @@ import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import AddVacationView from "./AddVacationView";
 import AddTourneyView from "../Tourney/AddTourneyView";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {myFunction} from "../UI/HeaderProfilController";
 
 const modalStyle = {
     position: 'fixed',
@@ -364,6 +366,9 @@ class JTPCalendarView extends Component {
 
         return (
             <div id={"jTPView"}>
+                <HeaderProfileView email = {"test"}  myFunction={myFunction}>
+                    <HeaderProfileView/>
+                </HeaderProfileView>
                 <div id={"jTPTop"}>
                     <div id={"jTPTopLeft"}>
                         <Confirmbutton onClick={this.createMAZ}>MAZ erstellen</Confirmbutton>
@@ -449,21 +454,21 @@ class JTPCalendarView extends Component {
                             <TabPanel>
                                 <div id={"jtPCenterLeftTopMAZ"}>
                                     <table id={"jTPCenterLeftMAZTable"}>
-                                        <tr>
-                                            <th>Bezeichnung</th>
-                                            <td>{mazDescription} MAZ 1</td>
+                                        <tr id={"trMAZ"}>
+                                            <th id={"thMAZ"}>Bezeichnung</th>
+                                            <td id={"tdMAZ"}>{mazDescription} MAZ 1</td>
                                         </tr>
-                                        <tr>
-                                            <th>Phase</th>
-                                            <td>{mazPhase} Vorbereitungsphase</td>
+                                        <tr id={"trMAZ"}>
+                                            <th id={"thMAZ"}>Phase</th>
+                                            <td id={"tdMAZ"}>{mazPhase} Vorbereitungsphase</td>
                                         </tr>
-                                        <tr>
-                                            <th>Startdatum</th>
-                                            <td>{mazStartDate} 01.02.18</td>
+                                        <tr id={"trMAZ"}>
+                                            <th id={"thMAZ"}>Startdatum</th>
+                                            <td id={"tdMAZ"}>{mazStartDate} 01.02.18</td>
                                         </tr>
-                                        <tr>
-                                            <th>Enddatum</th>
-                                            <td>{mazEndDate} 01.03.18</td>
+                                        <tr id={"trMAZ"}>
+                                            <th id={"thMAZ"}>Enddatum</th>
+                                            <td id={"tdMAZ"}>{mazEndDate} 01.03.18</td>
                                         </tr>
                                     </table>
                                     <div id={"jtPCenterLeftTopMAZNotes"}>
@@ -472,7 +477,7 @@ class JTPCalendarView extends Component {
                                     </div>
                                     <div id={"jtPCenterLeftButtons"}>
                                         <Confirmbutton>Bearbeiten</Confirmbutton>
-                                        <Confirmbutton>Speichern</Confirmbutton>
+
                                         <Confirmbutton>Löschen</Confirmbutton>
                                     </div>
                                 </div>
@@ -483,6 +488,13 @@ class JTPCalendarView extends Component {
                                     columns={columnsMAZ}
                                     defaultPageSize={3}
                                     defaultSorted={[{id: "firstName", desc: false}]}
+                                    previousText={'Zurück'}
+                                    nextText={'Nächste'}
+                                    loadingText={'Laden...'}
+                                    noDataText={'Keine Athlete gefunden'}
+                                    pageText={'Seite'}
+                                    ofText={'von'}
+                                    rowsText={'Zeilen'}
                                 />
                                 <div id={"jTPMAZButtonsBottom"}>
                                     <Confirmbutton>Trainingseinheit hinzufügen</Confirmbutton>
@@ -532,12 +544,12 @@ class JTPCalendarView extends Component {
                                     id={"jtpTableCommentsTourney"}
                                     style={{
                                         height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
-                                    }}/>
+                                    }}
                                     data={this.state.comments}
                                     columns={columnsComments}
                                     defaultPageSize={5}
                                     defaultSorted={[{id: "author", desc: false}]}
-                                previousText={'Zurück'}
+                                    previousText={'Zurück'}
                                 nextText={'Nächste'}
                                 loadingText={'Laden...'}
                                 noDataText={'Keine Athlete gefunden'}
@@ -555,13 +567,13 @@ class JTPCalendarView extends Component {
                                 <ReactTable
                                     style={{
                                         height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
-                                    }}/>
-                                    id={"jtpTableCommentsVacations"}
+                                    }}
+                               id={"jtpTableCommentsVacations"}
                                     data={this.state.comments}
                                     columns={columnsComments}
                                     defaultPageSize={5}
                                 style={{
-                                height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room
+                                height: "calc(100vh - 250px)"// This will force the table body to overflow and scroll, since there is not enough room
                             }}
                                 previousText={'Zurück'}
                                 nextText={'Nächste'}

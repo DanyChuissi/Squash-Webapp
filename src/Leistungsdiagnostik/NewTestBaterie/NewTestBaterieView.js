@@ -164,7 +164,7 @@ class NewTestBaterieView extends Component {
                                 <Input type='number' placeholder={"Beweglichkeit"} value={this.state.beweglichtkeit}
                                        onChange={this.setBeweglichtkeit}/>
                                 <Label>Reaction: </Label>
-                                <Input type='number' placeholder={"Reaction"} value={this.state.reaction}
+                                <Input type='number' placeholder={"Reaktion"} value={this.state.reaction}
                                        onChange={this.setReaction}/>
                                 <Label> Koordination: </Label>
                                 <Input type='number' placeholder={"Koordination"} value={this.state.koordination}

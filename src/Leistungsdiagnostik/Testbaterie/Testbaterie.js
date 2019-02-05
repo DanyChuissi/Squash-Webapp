@@ -6,7 +6,7 @@ import Input from "../../UI/Input";
 import Confirmbutton from "../../UI/Confirmbutton";
 import Popup from "reactjs-popup";
 import NewTestBaterieController from "../NewTestBaterie/NewTestBaterieController";
-import { GoInfo } from "react-icons/go";
+import { GoInfo } from "react-icons/all";
 import { IconContext } from "react-icons";
 import TestBaterieInfoPopup from "./TestBaterieInfoPopup";
 import { GoTriangleDown } from "react-icons/go";
@@ -202,7 +202,7 @@ class Testbaterie extends Component {
                             Speichern
                         </Confirmbutton>
                         <Confirmbutton onClick={displayEvent} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
-                            Neu Test
+                            Neuer Test
                         </Confirmbutton>
                         <IconContext.Provider value={{ size: '1.7em' }}>
                             <h3 hidden={hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie} style={{paddingLeft: '10%', paddingTop: '2%'}}><GoTriangleDown/></h3>
