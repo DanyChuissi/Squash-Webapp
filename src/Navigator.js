@@ -23,42 +23,13 @@ import MAZView from "./JTP/MAZView";
 import MAZListView from "./JTP/MAZListView";
 import axios from 'axios';
 
-
-function loadPlayerDataView() {
-    axios.get(`http://172.22.24.243:50594/player/email?email=jens@testmail3.de`)
-        .then(res => {
-            const person = res.data;
-            console.log("Test" + person.dateofbirth);
-        })
-}
-
-function pushPlayer() {
-    fetch('http://172.22.24.243:50594/player', {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        data: "{\n    \"name\": \"Bielefeld\",\n " +
-            "   \"surname\": \"Jens\",\n  " +
-            "\"dateofbirth\": \"1995-05-05\",\n  " +
-            "  \"email\": \"jens@testmail3.de\",\n " +
-            " \"mobilenumber\": \"\",\n  " +
-            "  \"landlinenumber\": \"\",\n   " +
-            " \"streetname\": \"\",\n " +
-            "  \"housenumber\": \"\",\n " +
-            "   \"postalcode\": \"\",\n " +
-            "   \"place\": \"\",\n  " +
-            "\"spin\": 0,\n  " +
-            "  \"squad\": \"\",\n  " +
-            "  \"active\": true,\n  " +
-            "  \"regonid\": 1\n}"
-    }).then(res => res.json())
-        .then((result) => {
-            console.log(result)
-        })
-}
+/**
+ * @author Daniela
+ * This File contains all functions for the Routing of the App.
+ * @visibleName Navigator
+ */
 
 function Navigator() {
-    loadPlayerDataView()
-     pushPlayer()
     return (
         <Router>
             <div>
