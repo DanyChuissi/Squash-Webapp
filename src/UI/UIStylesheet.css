@@ -81,7 +81,7 @@ Input:focus, .confirmButton:focus {
 }
 
 /**
- * @author Dany
+ * @author Dany Chuissi
  * Rules for Standard Header
  */
 .headerProfil  {
@@ -122,8 +122,6 @@ Input:focus, .confirmButton:focus {
  * @author Dany
  * Rules for Dropdown Menu
  */
-
-/* Dropdown Button */
 .dropbtn {
     height: 6vmin;
     width: 6vmin;
@@ -132,18 +130,27 @@ Input:focus, .confirmButton:focus {
     cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
+/**
+ * @author Dany
+ * Dropdown button on hover & focus
+ */
 .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
 }
 
-/* The container <div> - needed to position the dropdown content */
+/**
+  * @author Dany
+  * The container <div> - needed to position the dropdown content
+  */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/**
+  * @author Dany
+  * Dropdown Content (Hidden by Default)
+  */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -153,7 +160,10 @@ Input:focus, .confirmButton:focus {
     z-index: 1; /* to place in front of other Element*/
 }
 
-/* Links inside the dropdown */
+/**
+  * @author Dany
+  * Links inside the dropdown
+  */
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -161,10 +171,16 @@ Input:focus, .confirmButton:focus {
     display: block;
 }
 
-/* Change color of dropdown links on hover */
+/**
+  * @author Dany
+  * Change color of dropdown links on hover
+  */
 .dropdown-content a:hover {background-color: #ddd}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/**
+  * @author Dany
+  * Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button)
+  */
 .show {display:block;}
 
 /**

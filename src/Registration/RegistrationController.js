@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import RegistrationView from "./RegistrationView";
+import * as EmailValidator from 'email-validator';
 
 import DatenschutzerklaerungView from "../Datenschutzerklaerung/DatenschutzerklaerungView";
+import RegistrationDataController from "./RegistrationDataController";
 /**
- * @author Dany
+ * @author Dany Chuissi
  *
+ * Controller für die Registration Seite
  * @visibleName RegistrationController
  */
 class RegistrationController extends Component {
@@ -18,15 +21,21 @@ class RegistrationController extends Component {
             nutzungbedingungen_akzeptiert: false,
             nutzungbedingungen_lesen: false,
             showAlert: false,
+            registrationOK: false,
         }
         this.showMessage = this.showMessage.bind(this);
         this.submitData = this.submitData.bind(this);
     }
 
-    /* Wenn alle angegeben Informationen nicht conform sind soll einen entsprechenden Nachticht eingezeigt werden*/
+    /** Wenn alle angegeben Informationen nicht conform sind soll einen entsprechenden Nachticht eingezeigt werden*/
     setShowAlert() {
         this.setState({
             showAlert: true,
+        });
+    }
+    setRegistrationOk() {
+        this.setState({
+            registrationOK: true,
         });
     }
     setNutzunbedingungen_lesen= (e) => {
@@ -44,6 +53,16 @@ class RegistrationController extends Component {
     setEmail = (e) => {
         this.setState({email: e.target.value})
     };
+
+    /**
+     *  Die Methode prüft die eingegeben Email, folgende Kriterien werden in Reihenfolge geprüft: (Email nicht leer?, Email guultig?,
+     *  Password nicht leer? Passwörte gleich?
+     *
+     *  falls alle Eingabe richtig sind, werden die Daten zum Server geschcikt und die Methode setRegistrationOK wird aufgerufen
+     *
+     *  in Allen Fälle wird die Variable showAlert auf true gesetzt (mit der Aufruf der Methode setShowAlert)
+     * @returns {string} Nachricht Entsprechend dir Ergebnisse der Überprüfung
+     */
     showMessage() {
 
         let erg;
@@ -53,35 +72,37 @@ class RegistrationController extends Component {
            return erg;
        }
        if(this.state.email.length !== 0){
-       /*    let emailOk = EmailValidator.validate(this.state.email);
+           let emailOk = EmailValidator.validate(this.state.email);
            if(emailOk !== true){
                this.setShowAlert();
                erg = "Bitte gültige Email eingeben";
                return erg;
-           }*/
+           }
        }
+        if(this.state.password !== '' || this.state.password_2 !== ''){
+            if(this.state.password !== this.state.password_2){
+                this.setShowAlert();
+                erg = "Passwörter müssen gleich sein!";
+                return erg;
+            }
+        }
+        else{
+            return "Bitte Passwörte eingeben!"
+        }
        if(!this.state.nutzungbedingungen_akzeptiert){
            this.setShowAlert();
            erg = "Bitte Nutzer Bedingungen akzeptieren!";
            return erg;
        }
-       if(this.state.password !== '' && this.state.password_2 !== ''){
-           if(this.state.password !== this.state.password_2){
-               this.setShowAlert();
-               erg = "Passwörter müssen gleich sein!";
-               return erg;
-           }
-       }
-       else{
-           this.setShowAlert();
-           erg = "Passwörter dürfen nicht leer sein!";
-           return erg;
-       }
 
+        this.setRegistrationOk();
        return "Nutzer wurde registiert";
 
     }
 
+    /**
+     *  Falls showAlert true ist wird ein Alert angezeigt
+     */
     submitData = () => {
         let erg = this.showMessage();
         if(this.state.showAlert){
@@ -94,8 +115,12 @@ class RegistrationController extends Component {
     }
 
     render() {
-        return (
-         <RegistrationView
+        /**
+         * return RegistrationDAtaController falls registrationOk true ist sonst registrationView
+         */
+        return (this.state.registrationOK?
+                <RegistrationDataController/>:
+                <RegistrationView
                               email={this.state.email}
                               setEmail={this.setEmail}
                               password={this.state.password}
@@ -109,6 +134,7 @@ class RegistrationController extends Component {
                               nutzungbedingungen_akzeptiert = {this.state.nutzungbedingungen_akzeptiert}
                               setNutzungbedingungen_akzeptiert = {this.setNutzunbedingungen_akzeptiert}
                               showAlert={this.state.showAlert}
+                              registrationOK={this.state.registrationOK}
             />
         );
 

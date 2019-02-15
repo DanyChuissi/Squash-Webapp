@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import Testbaterie from './Testbaterie';
 
-
+/**
+ * @author Dany Chuissi
+ *
+ * Controller Klasse für die testBaterie
+ *
+ * @visibleName TestBaterieController
+ */
 
 
 class TestBaterieController extends Component {
@@ -77,11 +83,16 @@ class TestBaterieController extends Component {
         this.setState({contenEditable: e})
     }
 
+    /**
+     * Die Daten der TestBaterie werden damit als Editable gesetzt
+     */
     onEdit = () => {
         this.setContentEditable(true);
         this.setHideButton();
     }
-
+    /**
+     * Die Content in der Tabelle werden mit der Methode auf nicht etitable gesetzt
+     */
     onSave = () => {
         this.setContentEditable(false);
         this.setHideButton();
@@ -104,16 +115,43 @@ class TestBaterieController extends Component {
             triggerInfo: false,
         })
     }
-    postTestBaterie = (pruefe_felder, kommentar) => {
-        if(pruefe_felder){
+
+    /**
+     * Die Neue Daten der TestBaterie werden mit der Methode zum server geschickt und gespeichert
+     * @param daten
+     */
+    postTestBaterie = (daten) => {
+        console.log(daten)
+        if(daten.pruefe_felder){
+            fetch('https://172.22.24.243:50593/LD', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email:'jens@testemail3.de',
+                    date: daten.date,
+                    beweglichtkeit: daten.beweglichtkeit,
+                    reaction: daten.reaction,
+                    koordination: daten.koordination,
+                    sprint: daten.sprint,
+                    JandR: daten.JandR,
+                    med_ball: daten.med_ball,
+                    stws: daten.stws,
+                    agilitaet: daten.agilitaet,
+                    borg: daten.borg,
+                    beep_test: daten.borg,
+            })
+        })
             alert("Testbatterie gespeichert");
             this.closePopup();
         }
         else{
-            if(!pruefe_felder && kommentar.length === 0) {
+            if(!daten.pruefe_felder && daten.kommentar.length === 0) {
                 alert("Nicht alle Felder wurden ausgefüllt. Bitte Kommentar mit Begründung schreiben");
             }
-            else if (!pruefe_felder && kommentar.length > 0) {
+            else if (!daten.pruefe_felder && daten.kommentar.length > 0) {
                 alert("Testbatterie gespeichert");
                 this.closePopup();
                 //alert("Bitte prueden sie die Richtikeit der Eingabe, Nur nuemerische Werte sind erlaubt!")

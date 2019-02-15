@@ -5,7 +5,7 @@ import LoginView from "./Login/LoginView";
 import RegistrationController from "./Registration/RegistrationController";
 import PlayerProfileView from "./PlayerProfile/PlayerProfileView";
 import DatenschutzerklaerungController from "./Datenschutzerklaerung/DatenschutzerklaerungController";
-import EditRightsView from "./EditRights/EditRightsView";
+import EditRightsView from "./EditRights/EditRights";
 import InviteUserView from "./InviteUser/InviteUserView";
 import JTPCalendarView from "./JTP/JTPCalendarView";
 import LeistungsdiagnostikView from "./Leistungsdiagnostik/LeistungsdiagnostikView";
@@ -18,10 +18,13 @@ import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtControll
 import PlayerListView from "./PlayerList/PlayerListView";
 import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
 import VergleichDaten from "./Leistungsdiagnostik/AthletVergleichen/VergleichDaten";
-import CreateWorkout from "./JTP/CreateWorkout";
-import MAZView from "./JTP/MAZView";
-import MAZListView from "./JTP/MAZListView";
 import axios from 'axios';
+
+let email;
+export function setEmailNavigateor(myEmail) {
+    email = myEmail;
+    alert(email)
+}
 
 /**
  * @author Daniela
@@ -30,13 +33,17 @@ import axios from 'axios';
  */
 
 function Navigator() {
+
+
     return (
         <Router>
             <div>
                 <Route exact path="/login" component={LoginRoute}/>
                 <Route path="/playerList" component={PlayerListRoute}/>
                 <Route path="/registration" component={RegistrationRoute}/>
-                <Route path={"/playerprofile"} component={PlayerprofileRoute}/>
+                <Route path={"/playerprofile"} component={ () => <PlayerProfileView mail={email}
+                                                                                    />}
+                        />
                 <Route path={"/dataPrivacyStatement"} component={dataPrivacyStatementRoute}/>
                 <Route path={"/editRights"} component={EditRightsRoute}/>
                 <Route path={"/inviteUser"} component={InviteUserRoute}/>
@@ -49,21 +56,21 @@ function Navigator() {
                 <Route path={"/trainingsdiary"} component={trainingsdiaryRoute}/>
                 <Route path={"/trainingsdiarydetail"} component={trainingsdiaryDetailRoute}/>
                 <Route path={"/athletVergleich"} component={VergleichRoute}/>
-                <Route path={"/createWorkout"} component={CreateWorkoutRoute}/>
+                {/*<Route path={"/createWorkout"} component={CreateWorkoutRoute}/>
                 <Route path={"/mAZDetail"} component={MAZViewRoute}/>
-                <Route path={"/mAZList"} component={MAZListRoute}/>
+                <Route path={"/mAZList"} component={MAZListRoute}/>*/}
             </div>
         </Router>
     );
 }
 
-function MAZListRoute() {
+/*function MAZListRoute() {
     return (
         <div>
             <MAZListView/>
         </div>
     );
-}
+}*/
 
 function LoginRoute() {
     return (
@@ -73,23 +80,23 @@ function LoginRoute() {
     );
 }
 
-function MAZViewRoute() {
+/*function MAZViewRoute() {
     return (
         <div>
-            <MAZView/>
+            <MAZ/>
         </div>
     );
-}
+}*/
 
-function CreateWorkoutRoute() {
+/*function CreateWorkoutRoute() {
     return (
         <div>
             <CreateWorkout/>
         </div>
     );
-}
+}*/
 
-function PlayerprofileRoute() {
+function PlayerprofileRoute(email) {
     document.title = "PlayerProfil | Squirrel";
     return (
         <div>

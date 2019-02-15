@@ -6,13 +6,46 @@ import ResponsiveContainer from "recharts/es6/component/ResponsiveContainer";
 import ReactTable from "react-table";
 
 /**
- * @author Dany
- *  Die Klasse definiert die Tabelle für mit alle details über Trainingsdaten des Spieler
- *  sowie eien Kurve Diagramm mit der Änderung der Herzfrequenz
+ * @author Dany Chuissi
+ *
+ *  Die Klasse definiert die Tabelle mit alle details (Trainingsdaten) des Spielers
+ *  sowie eien Kurve Diagramm, welche die Änderung der Herzfrequenz zeigt
  * @visibleName DetailsAnsichtView
  */
 
 class DetailsAnsichtView extends React.Component {
+
+    postDaten = () => {
+        fetch(
+            'http://172.22.24.243:50596/trainingsdaten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    datum: "2018-12-04 00:00:00",
+                    dauer: 185,
+                    intensitaet: 1,
+                    uebungen: "Gewichtheben",
+                    mentale_erschoepfung: 1,
+                    bemerkung: "Keine",
+                    koerperliche_erschoepfung: 3,
+                    muskelkater: 4,
+                    aenderungswuensche: "Keine",
+                    schlafdauer: 460,
+                    gewicht: 75,
+                    max_herzfrequenz: 180,
+                    min_herzfrequenz: 60,
+                    durch_herzfrequenz: 120,
+                    spieler_email: "jens@testemail3.de",
+                    schwerpunkt_NR: 5,
+                    release: true,
+                    pulskurve: [{"pulswert": 60, "pulsindex": 1}]
+                })
+            }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+        }
 
     render() {
         const {
@@ -37,8 +70,10 @@ class DetailsAnsichtView extends React.Component {
             geaendert_am,
 
 
+
         } = this.props;
 
+        /** Daten für die Kurve Diagramm*/
         const graph_data = [
             {name: 'Zp 1',  Herzfrequenz: 90},
             {name: 'Zp 2',  Herzfrequenz: 91},
@@ -59,9 +94,11 @@ class DetailsAnsichtView extends React.Component {
         return (
 
             <div style={{backgroundColor: 'white', paddingBottom:'50px', paddingTop:'15px'}}>
+            {    /** Titel des Popups Fenster*/}
                 <div className="navD">
                     Trainingstagesbuch (Detail Ansicht)
                 </div>
+             {   /** Tabelle mit Trainingsdaten*/}
                 <div className="detail_main">
                     <table className="detail_daten">
                         <tbody>
@@ -159,6 +196,8 @@ class DetailsAnsichtView extends React.Component {
 
                         </tbody>
                     </table>
+                 {   /** Responsive Kurve Diagramm*/}
+                 <button onClick={this.postDaten}> post</button>
                     <div className="diagramm">
                         <ResponsiveContainer>
                             <LineChart width={500} height={500} data={graph_data}
@@ -181,5 +220,4 @@ class DetailsAnsichtView extends React.Component {
     }
 
 }
-
 export default DetailsAnsichtView;

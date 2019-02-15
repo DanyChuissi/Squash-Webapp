@@ -194,7 +194,7 @@ class Controller extends Component {
     submitLogin = () => {
         if (this.state.userMail === "u" && this.state.password === "3") {
             this.setState({showComponent: this.state.spielerListCase})
-            fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + this.state.trainer)
+            fetch("https://172.22.24.243:50594/player/trainernr?trainer=" + this.state.trainer)
                 .then(res => res.json())
                 .then(
                     (result) => {

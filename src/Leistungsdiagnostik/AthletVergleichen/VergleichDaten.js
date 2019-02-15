@@ -1,11 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import HeaderProfilView from "../../UI/HeaderProfilView";
-import {myFunction} from "../../UI/HeaderProfilController";
+import {showDropdown_Header} from "../../UI/HeaderProfilController";
 import HeaderProfileView from "../../UI/HeaderProfilView";
 import Confirmbutton from "../../UI/Confirmbutton";
 import PhisisDatenKurve from "./PhisisDatenKurve";
 import KurvenDiagramm from "../KurvenDiagramm";
 import SpineDiagramm from "../SpineDiagramm";
+import BalkenDiagramm from "../BalkenDiagramm";
+import PhisisDatenBalken from "./PhisisDatenBalken";
 
 
 
@@ -30,6 +32,14 @@ var av = {
     email: "",
 };
 
+/**
+ * @author Dany Chuissi
+ *
+ * Klasse für die VergleichDaten Seite
+ * Damit können bis zu 5 Athleten (TestBaterie-Daten und Physis-Daten) vergleichen werden
+ *
+ * @visibleName VergleichDaten
+ */
 class VergleichDaten extends Component{
     constructor() {
         super();
@@ -55,6 +65,11 @@ class VergleichDaten extends Component{
         this.setState({trigger: false})
     }
 
+    /**
+     * Die Methode prüft ob der User mindestens 2 Athleten gewählt hat
+     * @param evnt
+     * @param SyntheticEvent
+     */
     displayEvent = (evnt, SyntheticEvent) => {
         if(this.state.physisDaten_zu_vergleichen.length > 1 ){
             this.setState({trigger: true})
@@ -64,6 +79,11 @@ class VergleichDaten extends Component{
         }
 
     }
+    /**
+     * Die Methode prüft ob der gewählte Athlet schon in der Liste der Athleten zu vergleichen schon ist
+     * @param email
+     * @returns {boolean} gibt true züruck falls ja
+     */
     pruefeVorhanden = (email) =>{
         let erg = false;
         this.state.athlet_zu_vergl.map( (player) => {
@@ -73,6 +93,11 @@ class VergleichDaten extends Component{
         });
         return erg;
     }
+    /**
+     * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
+     * @param email
+     * @returns {number}
+     */
     getIndex_Athlet_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.athlet_zu_vergl.map( (player) => {
@@ -83,6 +108,11 @@ class VergleichDaten extends Component{
         return erg;
     }
 
+    /**
+     * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
+     * @param email
+     * @returns {number}
+     */
     getIndex_PhysisDaten_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.physisDaten_zu_vergleichen.map( (player) => {
@@ -92,6 +122,12 @@ class VergleichDaten extends Component{
         });
         return erg;
     }
+
+    /**
+     * die Methode gibt alle test daten vom selected Athleten züruck
+     * @param email
+     * @returns {*}
+     */
     getTestdatenvonSelectetAthlet = (email) => {
         let erg = null;
         this.state.testArrayDatum.map( (daten) => {
@@ -101,6 +137,10 @@ class VergleichDaten extends Component{
         });
         return erg;
     }
+    /**
+     * ein Athlet der schon selektiert wurde wird mit dieser Methose markiert
+     * @param e
+     */
     setSelected = (e) =>{
         if( e.target.selectedIndex !== 0)
         {
@@ -115,6 +155,10 @@ class VergleichDaten extends Component{
     closePopup = () =>{
         this.setState({trigger: false})
     }
+    /**
+     * löscht der Ahtlet im Parameter von Der Liste (Athlet zu vergleichen)
+     * @param email
+     */
     onclicked = (email) => {
         this.removeAthlet_zu_vergl(email);
         this.setState({trigger: false})
@@ -128,6 +172,10 @@ class VergleichDaten extends Component{
         });
         return erg;
     }
+
+    /**
+     * Add Athlet in der Liste (Athlet zu vergleichen)
+     */
     addAthlet_zu_vergl (){
         if(this.state.index !== 0) {
             let pname = this.state.players[this.state.index].name;
@@ -153,6 +201,11 @@ class VergleichDaten extends Component{
             alert("Bitte Athlet wählen");
         }
     };
+
+    /**
+     * remove Athlet von der Liste (Athlet zu vergleichen)
+     * @param e
+     */
     removeAthlet_zu_vergl(e){
 
         if(typeof e !== "undefined") {
@@ -176,11 +229,11 @@ class VergleichDaten extends Component{
         let kurve = [];
            let testKurve =  <div style={{paddingBottom: '20px'}}>
                                    <div className="head_athletvergleich">Physis Daten </div>
-                                   <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
+                                   <PhisisDatenBalken attribute={this.state.physisDaten_zu_vergleichen}/>
                             </div> ;
-        let physiskurve = <div>
+        let physiskurve = <div style={{marginTop: '30px'}}>
                                 <div className="head_athletvergleich">TestBaterie Daten</div>
-                                <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
+                                <BalkenDiagramm attribute={this.state.athlet_zu_vergl}/>
                           </div> ;
 
 
@@ -201,7 +254,7 @@ class VergleichDaten extends Component{
 
         return (
            <div>
-                <HeaderProfileView email = {"test"}  myFunction={myFunction} >
+                <HeaderProfileView email = {"test"}  myFunction={showDropdown_Header} >
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div>

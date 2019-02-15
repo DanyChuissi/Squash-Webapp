@@ -1,37 +1,14 @@
 import React from 'react'
 import HeaderProfilView from "./HeaderProfilView";
-//import NotificationsView from "../Notifications/NotificationsView";
-import LoginView from "../Login/LoginView";
-import PlayerListView from "../PlayerList/PlayerListView";
+
 
 /**
- * @author Dany
+ * @author Dany Chuissi
  *
- * @visibleName HeaderProfilControll
+ * Controller Klasse für das HeaderprofilView
+ * @visibleName HeaderProfilController
  */
-/*export function onLogoCenter() {
-        return (
-            0
-            //<NotificationsView/>
-        );
-}*/
-/*export const onLogoMenuClick = () => {
-    alert("On MenuLogomenu gecklick ");
-    return(
 
-        <div>{this.state.Children.setStaten()}</div>
-    );
-}*/
-
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-export function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-/*export const onLogoCenterClick = () => {
-    alert("test Click");
-}*/
 class HeaderProfilController extends React.Component{
 
     constructor(){
@@ -52,11 +29,18 @@ class HeaderProfilController extends React.Component{
             <HeaderProfilView   className = "View"
                                 email = {this.state.email}
                                 setEmail = {this.setEmail()}
-                                myFunction={myFunction()}
+                                myFunction={showDropdown_Header()}
 
             />
         );
     }
+}
+
+/**
+ * Wechseln zwischen Anzeigen und Ausblenden. wenn der Benutzer auf dem Dropdown klickt
+ */
+export function showDropdown_Header() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 export default HeaderProfilController;

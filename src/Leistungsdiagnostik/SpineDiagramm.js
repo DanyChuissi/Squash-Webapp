@@ -4,6 +4,13 @@ import './Testbaterie/Testbaterie.css';
 import Confirmbutton from "../UI/Confirmbutton";
 import ResponsiveContainer from "recharts/es6/component/ResponsiveContainer";
 
+/**
+ * @author Dany Chuissi
+ *
+ *
+ * Standart Maximal Werte für die SpineDiagramm
+ * @type {{med_ball: number, beweglichtkeit: number, koordination: number, agilitaet: number, reaction: number, JandR: number, sprint: number, stws: number, borg: number, beep_test: number}}
+ */
 const standard = {
     beweglichtkeit: 30,
     reaction: 10,
@@ -17,6 +24,11 @@ const standard = {
     beep_test: 30,
 };
 
+/**
+ * Die Klasse zeit das SpineDiagramm an
+ *
+ * @visibleName SpineDiagramm
+ */
 class SpineDiagramm extends Component {
     render() {
         const {
@@ -92,15 +104,3 @@ class SpineDiagramm extends Component {
 }
 export default SpineDiagramm;
 
-/*
-{subject: 'Beweglichkeit', A: {beweglichtkeit}, fullMark: 150},
-            {subject: 'Reaktion', A: {reaction}, fullMark: 150},
-            {subject: 'Koordination', A: {koordination}, fullMark: 150},
-            {subject: 'Sprint', A: {sprint}, fullMark: 150},
-            {subject: 'J & R', A: {JandR}, fullMark: 150},
-            {subject: 'Med Ball', A: {med_ball}, fullMark: 150},
-            {subject: 'Agilität', A: {agilitaet}, fullMark: 150},
-            {subject: 'Stws', A: {stws}, fullMark: 150},
-            {subject: 'BORG', A: {borg}, fullMark: 150},
-            {subject: 'Beep Test', A: {beep_test}, fullMark: 150},
-* */

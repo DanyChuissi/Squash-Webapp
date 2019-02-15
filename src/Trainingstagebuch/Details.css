@@ -1,10 +1,13 @@
 /**
-* @author Dany
-*  Die Klasse definiert den Stzle für die DetailAnsichtView Seite
+* @author Dany Chuissi
+*  Die Klasse definiert den Style für die DetailAnsichtView Seite
 * @visibleName Details.css
 */
 
 
+/**
+ * Merkmale der gesamten Seite
+ */
 .detail_main {
     display: flex;;
     flex-direction: row;
@@ -16,34 +19,36 @@
     padding-bottom: 50px;
     color: black;
 }
+
+/** Merkmale für die Tabelle mit trainingsdaten*/
 .detail_daten {
-    /*display: flex;
-    flex-direction: row;
-    height: calc(100vh - 118px);
-    width: calc(100vh - 80px);*/
     width: 50%;
     height: 100%;
     margin-right: 10px;
 }
 
+/**Merkmale für einzelne Zeile in der Tabelle*/
 .detail_row{
     display: flex;
     height: 20px;
     width: 200px;
 }
+
+/** Eigenschaften des Quadrats für die Kurve*/
 .diagramm {
     border: 2px solid black;
     width: 50%;
 
 }
+/*
 .detail_grig{
     display: grid;
-    /* Zwei Spalten mit folgenden Breiten definieren:
-    Erste Spalte: 100px, Zweite Spalte: Automatische Breite */
+    !* Zwei Spalten mit folgenden Breiten definieren:
+    Erste Spalte: 100px, Zweite Spalte: Automatische Breite *!
     grid-template-columns: 100px auto;
-    /* Drei Zeilen mit folgenden Höhen definieren:
+    !* Drei Zeilen mit folgenden Höhen definieren:
     Erste Zeile: Automatische Höhe, Zweite Zeile: 50%,
-    Dritte Zeile: 30px */
+    Dritte Zeile: 30px *!
     grid-template-rows: auto 50% 30px;
     background-color: darkorange;
     padding: 10px;
@@ -54,8 +59,9 @@
     border: 2px solid;
     background-color: orange;
 }
+*/
 
-.detail_main > tr {
+/*.detail_main > tr {
     border-right: #7ae7bf;
 }
 
@@ -67,17 +73,19 @@
 
 }
 .th {
-    /* width: 40%;
+    !* width: 40%;
      max-width: fit-content;
      min-width: 200px;
-    padding: calc(100vh - 623px);*/
-}
+    padding: calc(100vh - 623px);*!
+}*/
 .tr {
     /* height: calc(100vh - 750px);*/
     /* max-height: fit-content;*/
     /* min-height:calc(100vh - 50px);*/
     padding: 10px;
 }
+
+
 .td{
     min-width: 150px;
 
@@ -87,7 +95,7 @@
 .td2 {
     /* max-width: calc(100vh - 500px) ;*/
 }
-
+/** Merkmale des Seitentitels*/
 .navD  {
     background-color: white;
     color: #282c34;
@@ -95,3 +103,51 @@
     font-size: 30px;
     padding-top: 20px;
 }
+
+/** Anfang css für die trainingdaten Auswertun*/
+
+.table_css {
+
+}
+.evaluationClass {
+    font-weight: bold;
+}
+
+.table_Auswertung_css {
+    justify-content: center;
+    margin: 20px;
+}
+
+.tbody_leistung_Auswertun {
+    color: black;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.tbody_leistung_Auswertun > tr {
+    min-height: 10px;
+    height: auto;
+    width: 100%;
+}
+.tbody_leistung_Auswertun > tr > th {
+    /* width: 120px;*/
+
+    justify-content: space-between;
+}
+.tbody_leistung_Auswertun > tr > td {
+    width: 16%;
+    /* width: 250px;*/
+}
+
+.testName_auswertung{
+    display: flex;
+    width: 240px;
+    justify-content: space-around;
+    height: 30px;
+}
+.testName_auswertung > h3 {
+    margin-left: 30px;
+
+}
+
+/** Ende css für die trainingdaten Auswertun*/

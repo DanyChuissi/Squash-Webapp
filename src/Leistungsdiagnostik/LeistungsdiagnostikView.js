@@ -8,7 +8,7 @@ import './Leistungdiagnostik.css';
 import PhysisDatenController from "./PhysisDaten/PhysisDatenController";
 import TestBaterieController from "./Testbaterie/TestBaterieController";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction} from "../UI/HeaderProfilController";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
 import "react-tabs/style/react-tabs.css";
 import Popup from "reactjs-popup";
 import Kommentar from './Kommentare/Komemntar';
@@ -18,9 +18,31 @@ import { GoTriangleDown } from "react-icons/go";
 import { GoTriangleUp } from "react-icons/go";
 import Input from "../UI/Input";
 import AlteTestBaterieView from "./Testbaterie/AlteTestBaterieView";
+import BalkenDiagramm from "./BalkenDiagramm";
 
 
-class LeistungsdiagnostikView extends React.Component{
+/**
+ * @author Dany Chuissi
+ *
+ *
+ * Definiert die Seite der LEistungdiagnostik des Spieler
+ *
+ *
+ * Benutzte Componenete:
+ * @see KurvenDiagramm
+ * @see PhysisDatenController
+ * @see TestBaterieController
+ * @see Athlet_Vergleich
+ * @see SpineDiagramm
+ * @see Kommentar
+ * @see BalkenDiagramm
+ *
+ * @visibleName LeistungsdiagnostikView
+ */
+class LeistungsdiagnostikView extends Component{
+    /**
+     * @type {{datum2Checkbox: boolean, datum1Checkbox: boolean, datum4Checkbox: boolean, index: number, spine: number, trigger: boolean, kurve: number, kurvehidden: boolean, datum3Checkbox: boolean, testArrayDatum: *[], diagramm: string, spineHidden: boolean, arraykurve: *[], hidde_alte_TestBaterie: boolean, checkboxArray: *[]}}
+     */
     state={
         kurve: 2,
         spine: 1,
@@ -31,12 +53,16 @@ class LeistungsdiagnostikView extends React.Component{
         datum2Checkbox: true,
         datum3Checkbox: true,
         datum4Checkbox: false,
-        testArrayDatum: [datum1, datum2, datum3],
-        checkboxArray: [datum1, datum2, datum3],
-        arraykurve: [datum1,datum2, datum3],
+        testArrayDatum: [datum1, datum2 ],
+        checkboxArray: [datum1, datum2],
+        arraykurve: [datum1,datum2],
         index: 0,
         trigger : false,
         hidde_alte_TestBaterie: true,
+        index0: -1,
+        index1: -1,
+        index2: -1,
+        index3: -1,
     }
 
     displayEvent = (evnt, SyntheticEvent) => {
@@ -59,6 +85,12 @@ class LeistungsdiagnostikView extends React.Component{
         })
     }
 
+    /**
+     * die Methode wird ausgelöst beim clickt aud einen Checkbox, ändert die Statut der Kurve anzeigen und nicht anzeigen
+     *
+     * @param event Checkbok Klickt auf dem Checkbox
+     * @param index Checkboxnummer Checkbonnummer entspricht der Arrayindex der Textbaterie
+     */
     habdelchekbox = (event, index) =>{
 
         let array = [...this.state.checkboxArray];
@@ -73,6 +105,10 @@ class LeistungsdiagnostikView extends React.Component{
         });
         this.setArraykurve();
     }
+
+    /**
+     * die Methode erzeugt ein Anrray mit alle Daten wo "show" = true
+     */
     setArraykurve = () => {
        var array = [] ;//[...this.state.checkboxArray];
        this.state.checkboxArray.map( (daten) => {
@@ -86,7 +122,9 @@ class LeistungsdiagnostikView extends React.Component{
     }
 
 
-
+    /**
+     * Swicht zwichen Spine und Kurvediagramm bzw Balkendiagramm
+     */
     setDiagramm = () => {
         if(this.state.diagramm === this.state.kurve) {
             this.setState({ kurvehidden: true});
@@ -122,6 +160,54 @@ class LeistungsdiagnostikView extends React.Component{
         })
     }
 
+    /*componentWillMount(): void {
+        fetch("http://172.22.24.243:50593/LD/email?email=jens@testemail3.de")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        testArrayDatum: result,
+                        checkboxArray: result,
+                        arraykurve: result,
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            );
+        /!*let arrayLength = this.state.testArrayDatum.length;
+        switch (arrayLength) {
+            case 0: {
+                this.setState({index0: 0})
+            }
+            case 1: {
+                this.setState({
+                    index0: 0,
+                    index1: 1})
+            }
+            case 2: {
+                this.setState({
+                    index0: 0,
+                    index1: 1,
+                     index2: 2,})
+            }
+            case 3: {
+                this.setState({
+                    index0: 0,
+                    index1: 1,
+                    index2: 2,
+                    index3: 3,})
+            }
+        }*!/
+    }
+*/
 
     render () {
         const {
@@ -157,14 +243,320 @@ class LeistungsdiagnostikView extends React.Component{
                 </div>
 
             </Popup>
-        )
+        );
+
+        let tabs;
+        let tabPanels;
+        let checkbox;
+
+
+        console.log(this.state.testArrayDatum.length)
+        switch (this.state.testArrayDatum.length) {
+            case 0:{
+              tabs =  [<Tab disabled >{}</Tab>,
+                      <Tab disabled >{}</Tab>,
+                     <Tab disabled>{}</Tab>,
+                     <Tab disabled>{}</Tab>]
+            }
+            case 1:{
+                tabs =  [<Tab  >{this.state.testArrayDatum[0].name}</Tab>,
+                    <Tab disabled >{}</Tab>,
+                    <Tab disabled>{}</Tab>,
+                    <Tab disabled>{}</Tab>]
+
+                tabPanels =
+                    [<TabPanel>
+                        {e => this.setIndex(e, 0)}
+                        <TestBaterieController
+                            beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
+                            reaction={this.state.testArrayDatum[0].reaction}
+                            koordination={this.state.testArrayDatum[0].koordination}
+                            sprint={this.state.testArrayDatum[0].sprint}
+                            JandR={this.state.testArrayDatum[0].JandR}
+                            med_ball={this.state.testArrayDatum[0].med_ball}
+                            stws={this.state.testArrayDatum[0].stws}
+                            agilitaet={this.state.testArrayDatum[0].agilitaet}
+                            borg={this.state.testArrayDatum[0].borg}
+                            beep_test={this.state.testArrayDatum[0].beep_test}
+                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                            onEdit={this.onEdit}/>
+
+                    </TabPanel>]
+
+                checkbox = [<input className="input_chekbox"
+                                   name="datum1"
+                                   type="checkbox"
+                                   defaultChecked={this.state.datum1Checkbox}
+                                   onChange={e =>this.habdelchekbox(e, 0)}
+                />, <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>]
+
+                break;
+            }
+            case 2:{
+                tabs =  [<Tab  >{this.state.testArrayDatum[0].name}</Tab>,
+                    <Tab >{this.state.testArrayDatum[1].name}</Tab>,
+                    <Tab disabled>{}</Tab>,
+                    <Tab disabled>{}</Tab>]
+
+                tabPanels =
+                    [<TabPanel>
+                        {e => this.setIndex(e, 0)}
+                        <TestBaterieController
+                            beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
+                            reaction={this.state.testArrayDatum[0].reaction}
+                            koordination={this.state.testArrayDatum[0].koordination}
+                            sprint={this.state.testArrayDatum[0].sprint}
+                            JandR={this.state.testArrayDatum[0].JandR}
+                            med_ball={this.state.testArrayDatum[0].med_ball}
+                            stws={this.state.testArrayDatum[0].stws}
+                            agilitaet={this.state.testArrayDatum[0].agilitaet}
+                            borg={this.state.testArrayDatum[0].borg}
+                            beep_test={this.state.testArrayDatum[0].beep_test}
+                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                            onEdit={this.onEdit}/>
+
+                    </TabPanel>,
+                        <TabPanel>
+                            {e =>this.setIndex(e, 1)}
+                            <TestBaterieController
+                                beweglichtkeit={this.state.testArrayDatum[1].beweglichtkeit}
+                                reaction={this.state.testArrayDatum[1].reaction}
+                                koordination={this.state.testArrayDatum[1].koordination}
+                                sprint={this.state.testArrayDatum[1].sprint}
+                                JandR={this.state.testArrayDatum[1].JandR}
+                                med_ball={this.state.testArrayDatum[1].med_ball}
+                                stws={this.state.testArrayDatum[1].stws}
+                                agilitaet={this.state.testArrayDatum[1].agilitaet}
+                                borg={this.state.testArrayDatum[1].borg}
+                                beep_test={this.state.testArrayDatum[1].beep_test}
+                                hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                                onEdit={this.onEdit}/>
+
+                        </TabPanel>]
+
+                checkbox = [<input className="input_chekbox"
+                                   name="datum1"
+                                   type="checkbox"
+                                   defaultChecked={this.state.datum1Checkbox}
+                                   onChange={e =>this.habdelchekbox(e, 0)}
+                />, <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>,
+                    <input className="input_chekbox"
+                           name="datum2"
+                           type="checkbox"
+                           defaultChecked={this.state.datum2Checkbox}
+                           onChange={e =>this.habdelchekbox(e, 1)}
+                    />, <div style={{color:'#ff0000'}}>{this.state.testArrayDatum[1].name}</div>]
+
+                break;
+            }
+            case 3:{
+                tabs =  [<Tab>{this.state.testArrayDatum[0].name}</Tab>,
+                    <Tab  >{this.state.testArrayDatum[1].name}</Tab>,
+                    <Tab >{this.state.testArrayDatum[2].name}</Tab>,
+                    <Tab disabled>{}</Tab>]
+
+
+
+
+                tabPanels =
+                    [<TabPanel>
+                        {e => this.setIndex(e, 0)}
+                        <TestBaterieController
+                            beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
+                            reaction={this.state.testArrayDatum[0].reaction}
+                            koordination={this.state.testArrayDatum[0].koordination}
+                            sprint={this.state.testArrayDatum[0].sprint}
+                            JandR={this.state.testArrayDatum[0].JandR}
+                            med_ball={this.state.testArrayDatum[0].med_ball}
+                            stws={this.state.testArrayDatum[0].stws}
+                            agilitaet={this.state.testArrayDatum[0].agilitaet}
+                            borg={this.state.testArrayDatum[0].borg}
+                            beep_test={this.state.testArrayDatum[0].beep_test}
+                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                            onEdit={this.onEdit}/>
+
+                    </TabPanel>,
+                        <TabPanel>
+                            {e =>this.setIndex(e, 1)}
+                            <TestBaterieController
+                                beweglichtkeit={this.state.testArrayDatum[1].beweglichtkeit}
+                                reaction={this.state.testArrayDatum[1].reaction}
+                                koordination={this.state.testArrayDatum[1].koordination}
+                                sprint={this.state.testArrayDatum[1].sprint}
+                                JandR={this.state.testArrayDatum[1].JandR}
+                                med_ball={this.state.testArrayDatum[1].med_ball}
+                                stws={this.state.testArrayDatum[1].stws}
+                                agilitaet={this.state.testArrayDatum[1].agilitaet}
+                                borg={this.state.testArrayDatum[1].borg}
+                                beep_test={this.state.testArrayDatum[1].beep_test}
+                                hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                                onEdit={this.onEdit}/>
+
+                        </TabPanel>,
+                        <TabPanel >
+                            {e => this.setIndex(e, 2)}
+                            <TestBaterieController
+                                beweglichtkeit={this.state.testArrayDatum[2].beweglichtkeit}
+                                reaction={this.state.testArrayDatum[2].reaction}
+                                koordination={this.state.testArrayDatum[2].koordination}
+                                sprint={this.state.testArrayDatum[2].sprint}
+                                JandR={this.state.testArrayDatum[2].JandR}
+                                med_ball={this.state.testArrayDatum[2].med_ball}
+                                stws={this.state.testArrayDatum[2].stws}
+                                agilitaet={this.state.testArrayDatum[2].agilitaet}
+                                borg={this.state.testArrayDatum[2].borg}
+                                beep_test={this.state.testArrayDatum[2].beep_test}
+                                hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                                setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                                onEdit={this.onEdit}/>
+                        </TabPanel>]
+                checkbox = [<input className="input_chekbox"
+                                   name="datum1"
+                                   type="checkbox"
+                                   defaultChecked={this.state.datum1Checkbox}
+                                   onChange={e =>this.habdelchekbox(e, 0)}
+                />, <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>,
+                    <input className="input_chekbox"
+                           name="datum2"
+                           type="checkbox"
+                           defaultChecked={this.state.datum2Checkbox}
+                           onChange={e =>this.habdelchekbox(e, 1)}
+                    />, <div style={{color:'#ff0000'}}>{this.state.testArrayDatum[1].name}</div>,
+                    <input className="input_chekbox"
+                           name="datum3"
+                           type="checkbox"
+                           defaultChecked={this.state.datum3Checkbox}
+                           onChange={e =>this.habdelchekbox(e, 2)}
+                    />, <div style={{color:'#2980B9'}}>{this.state.testArrayDatum[2].name}</div>,
+                    <input className="input_chekbox"
+                           name="datum4"
+                           type="checkbox"
+                    />]
+
+
+                break;
+            }
+            default: {
+                tabs =  [<Tab>{this.state.testArrayDatum[0].name}</Tab>,
+                    <Tab  >{this.state.testArrayDatum[1].name}</Tab>,
+                    <Tab >{this.state.testArrayDatum[2].name}</Tab>,
+                    <Tab >{this.state.testArrayDatum[3].name}</Tab>]
+
+                tabPanels =
+                    [<TabPanel>
+                        {e => this.setIndex(e, 0)}
+                        <TestBaterieController
+                            beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
+                            reaction={this.state.testArrayDatum[0].reaction}
+                            koordination={this.state.testArrayDatum[0].koordination}
+                            sprint={this.state.testArrayDatum[0].sprint}
+                            JandR={this.state.testArrayDatum[0].JandR}
+                            med_ball={this.state.testArrayDatum[0].med_ball}
+                            stws={this.state.testArrayDatum[0].stws}
+                            agilitaet={this.state.testArrayDatum[0].agilitaet}
+                            borg={this.state.testArrayDatum[0].borg}
+                            beep_test={this.state.testArrayDatum[0].beep_test}
+                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                            onEdit={this.onEdit}/>
+
+                    </TabPanel>,
+                    <TabPanel>
+                    {e =>this.setIndex(e, 1)}
+                <TestBaterieController
+                    beweglichtkeit={this.state.testArrayDatum[1].beweglichtkeit}
+                    reaction={this.state.testArrayDatum[1].reaction}
+                    koordination={this.state.testArrayDatum[1].koordination}
+                    sprint={this.state.testArrayDatum[1].sprint}
+                    JandR={this.state.testArrayDatum[1].JandR}
+                    med_ball={this.state.testArrayDatum[1].med_ball}
+                    stws={this.state.testArrayDatum[1].stws}
+                    agilitaet={this.state.testArrayDatum[1].agilitaet}
+                    borg={this.state.testArrayDatum[1].borg}
+                    beep_test={this.state.testArrayDatum[1].beep_test}
+                    hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                    setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                    onEdit={this.onEdit}/>
+
+                </TabPanel>,
+                <TabPanel >
+                    {e => this.setIndex(e, 2)}
+                    <TestBaterieController
+                        beweglichtkeit={this.state.testArrayDatum[2].beweglichtkeit}
+                        reaction={this.state.testArrayDatum[2].reaction}
+                        koordination={this.state.testArrayDatum[2].koordination}
+                        sprint={this.state.testArrayDatum[2].sprint}
+                        JandR={this.state.testArrayDatum[2].JandR}
+                        med_ball={this.state.testArrayDatum[2].med_ball}
+                        stws={this.state.testArrayDatum[2].stws}
+                        agilitaet={this.state.testArrayDatum[2].agilitaet}
+                        borg={this.state.testArrayDatum[2].borg}
+                        beep_test={this.state.testArrayDatum[2].beep_test}
+                        hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                        setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                        onEdit={this.onEdit}/>
+                </TabPanel>,
+                <TabPanel>
+                    {e => this.setIndex(e, 3)}
+                    <TestBaterieController
+                        beweglichtkeit={this.state.testArrayDatum[3].beweglichtkeit}
+                        reaction={this.state.testArrayDatum[3].reaction}
+                        koordination={this.state.testArrayDatum[3].koordination}
+                        sprint={this.state.testArrayDatum[3].sprint}
+                        JandR={this.state.testArrayDatum[3].JandR}
+                        med_ball={this.state.testArrayDatum[3].med_ball}
+                        stws={this.state.testArrayDatum[3].stws}
+                        agilitaet={this.state.testArrayDatum[3].agilitaet}
+                        borg={this.state.testArrayDatum[3].borg}
+                        beep_test={this.state.testArrayDatum[3].beep_test}
+                        hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
+                        setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
+                        onEdit={this.onEdit}/>
+                </TabPanel>,]
+
+                checkbox = [<input className="input_chekbox"
+                                   name="datum1"
+                                   type="checkbox"
+                                   defaultChecked={this.state.datum1Checkbox}
+                                   onChange={e =>this.habdelchekbox(e, 0)}
+                />, <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>,
+                <input className="input_chekbox"
+                name="datum2"
+                type="checkbox"
+                defaultChecked={this.state.datum2Checkbox}
+                onChange={e =>this.habdelchekbox(e, 1)}
+                />, <div style={{color:'#ff0000'}}>{this.state.testArrayDatum[1].name}</div>,
+                <input className="input_chekbox"
+                name="datum3"
+                type="checkbox"
+                defaultChecked={this.state.datum3Checkbox}
+                onChange={e =>this.habdelchekbox(e, 2)}
+                />, <div style={{color:'#2980B9'}}>{this.state.testArrayDatum[2].name}</div>,
+                <input className="input_chekbox"
+                name="datum4"
+                type="checkbox"
+                    />,
+                <input className="input_chekbox"
+                    name="datum4"
+                    type="checkbox"
+                    defaultChecked={this.state.datum4Checkbox}
+                    onChange={e =>this.habdelchekbox(e, 3)}
+                />, <div style={{color:'#f19a29'}}>{this.state.testArrayDatum[3].name}</div>,]
+
+            }
+        }
 
 
         return (
             <Fragment>
                 <div className="gesamteleistung">
 
-                <HeaderProfileView email = {"test"}  myFunction={myFunction}>
+                <HeaderProfileView email = {"test"}  myFunction={showDropdown_Header}>
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div className="leistung_main">
@@ -192,95 +584,16 @@ class LeistungsdiagnostikView extends React.Component{
 
                                 <Tabs onSelect={this.setIndex}>
                                 <TabList className="tabss">
-                                    <Tab >{this.state.testArrayDatum[0].name}</Tab>
-                                    <Tab >{this.state.testArrayDatum[1].name}</Tab>
-                                    <Tab>{this.state.testArrayDatum[2].name}</Tab>
-                                    <Tab disabled>{this.state.testArrayDatum[2].name}</Tab>
+                                    {tabs}
                                 </TabList>
-                                    <TabPanel>
-                                        {e => this.setIndex(e, 0)}
-                                        <TestBaterieController
-                                            beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
-                                            reaction={this.state.testArrayDatum[0].reaction}
-                                            koordination={this.state.testArrayDatum[0].koordination}
-                                            sprint={this.state.testArrayDatum[0].sprint}
-                                            JandR={this.state.testArrayDatum[0].JandR}
-                                            med_ball={this.state.testArrayDatum[0].med_ball}
-                                            stws={this.state.testArrayDatum[0].stws}
-                                            agilitaet={this.state.testArrayDatum[0].agilitaet}
-                                            borg={this.state.testArrayDatum[0].borg}
-                                            beep_test={this.state.testArrayDatum[0].beep_test}
-                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
-                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
-                                            onEdit={this.onEdit}/>
-
-                                    </TabPanel>
-                                    <TabPanel>
-                                        {e =>this.setIndex(e, 1)}
-                                        <TestBaterieController
-                                            beweglichtkeit={this.state.testArrayDatum[1].beweglichtkeit}
-                                            reaction={this.state.testArrayDatum[1].reaction}
-                                            koordination={this.state.testArrayDatum[1].koordination}
-                                            sprint={this.state.testArrayDatum[1].sprint}
-                                            JandR={this.state.testArrayDatum[1].JandR}
-                                            med_ball={this.state.testArrayDatum[1].med_ball}
-                                            stws={this.state.testArrayDatum[1].stws}
-                                            agilitaet={this.state.testArrayDatum[1].agilitaet}
-                                            borg={this.state.testArrayDatum[1].borg}
-                                            beep_test={this.state.testArrayDatum[1].beep_test}
-                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
-                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
-                                            onEdit={this.onEdit}/>
-
-                                    </TabPanel>
-                                    <TabPanel >
-                                        {e => this.setIndex(e, 2)}
-                                       <TestBaterieController
-                                            beweglichtkeit={this.state.testArrayDatum[2].beweglichtkeit}
-                                            reaction={this.state.testArrayDatum[2].reaction}
-                                            koordination={this.state.testArrayDatum[2].koordination}
-                                            sprint={this.state.testArrayDatum[2].sprint}
-                                            JandR={this.state.testArrayDatum[2].JandR}
-                                            med_ball={this.state.testArrayDatum[2].med_ball}
-                                            stws={this.state.testArrayDatum[2].stws}
-                                            agilitaet={this.state.testArrayDatum[2].agilitaet}
-                                            borg={this.state.testArrayDatum[2].borg}
-                                            beep_test={this.state.testArrayDatum[2].beep_test}
-                                            hidde_alte_TestBaterie={this.state.hidde_alte_TestBaterie}
-                                            setHidde_Alte_Testbaterie={this.setHidde_alte_Testbaterie}
-                                            onEdit={this.onEdit}/>
-                                    </TabPanel>
-                                    <TabPanel>
-
-                                    </TabPanel>
+                                    {tabPanels}
                                 </Tabs>
 
                             </div>
                             <div className="diagramm_leistung">
                                 <div>
                                     <div className="kurveCheckbox"  hidden={this.state.kurvehidden}>
-                                        <input className="input_chekbox"
-                                               name="datum1"
-                                               type="checkbox"
-                                               defaultChecked={this.state.datum1Checkbox}
-                                               onChange={e =>this.habdelchekbox(e, 0)}
-                                        /> <div style={{color:'#008000'}}> {this.state.testArrayDatum[0].name}</div>
-                                        <input className="input_chekbox"
-                                               name="datum2"
-                                               type="checkbox"
-                                               defaultChecked={this.state.datum2Checkbox}
-                                               onChange={e =>this.habdelchekbox(e, 1)}
-                                           /> <div style={{color:'#ff0000'}}>{this.state.testArrayDatum[1].name}</div>
-                                        <input className="input_chekbox"
-                                               name="datum3"
-                                               type="checkbox"
-                                               defaultChecked={this.state.datum3Checkbox}
-                                               onChange={e =>this.habdelchekbox(e, 2)}
-                                           /> <div style={{color:'#2980B9'}}>{this.state.testArrayDatum[2].name}</div>
-                                         <input className="input_chekbox"
-                                               name="datum4"
-                                               type="checkbox"
-                                         />
+                                        {checkbox}
                                     <Confirmbutton onClick={this.setDiagramm}  myStyle= {{padding: '2px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}}>
                                     Zum SpinnenDiagramm
                                     </Confirmbutton>
@@ -289,7 +602,7 @@ class LeistungsdiagnostikView extends React.Component{
                                     Zum Kurvendiagramm
                                     </Confirmbutton>
                                 </div >
-                                    {this.state.diagramm === this.state.kurve? <KurvenDiagramm attribute={this.state.arraykurve}/> :
+                                    {this.state.diagramm === this.state.kurve? <BalkenDiagramm attribute={this.state.arraykurve}/> :
                                         <SpineDiagramm  beweglichtkeit={this.state.testArrayDatum[index].beweglichtkeit}
                                                         reaction={this.state.testArrayDatum[index].reaction}
                                                         koordination={this.state.testArrayDatum[index].koordination}
@@ -310,16 +623,16 @@ class LeistungsdiagnostikView extends React.Component{
                                     <Input type="date"/>
                                 </div>
                                     <AlteTestBaterieView
-                                        beweglichtkeit={this.state.testArrayDatum[2].beweglichtkeit}
-                                        reaction={this.state.testArrayDatum[2].reaction}
-                                        koordination={this.state.testArrayDatum[2].koordination}
-                                        sprint={this.state.testArrayDatum[2].sprint}
-                                        JandR={this.state.testArrayDatum[2].JandR}
-                                        med_ball={this.state.testArrayDatum[2].med_ball}
-                                        stws={this.state.testArrayDatum[2].stws}
-                                        agilitaet={this.state.testArrayDatum[2].agilitaet}
-                                        borg={this.state.testArrayDatum[2].borg}
-                                        beep_test={this.state.testArrayDatum[2].beep_test}/>
+                                        beweglichtkeit={this.state.testArrayDatum[0].beweglichtkeit}
+                                        reaction={this.state.testArrayDatum[0].reaction}
+                                        koordination={this.state.testArrayDatum[0].koordination}
+                                        sprint={this.state.testArrayDatum[0].sprint}
+                                        JandR={this.state.testArrayDatum[0].JandR}
+                                        med_ball={this.state.testArrayDatum[0].med_ball}
+                                        stws={this.state.testArrayDatum[0].stws}
+                                        agilitaet={this.state.testArrayDatum[0].agilitaet}
+                                        borg={this.state.testArrayDatum[0].borg}
+                                        beep_test={this.state.testArrayDatum[0].beep_test}/>
                             </div>
 
                             <div className='alte_Test_kurve'>
@@ -399,6 +712,8 @@ var datum3 = {
     name: '20-11-2018',
     show: true,
 }
+
+/**  @components */
 export default LeistungsdiagnostikView;
 
 /*

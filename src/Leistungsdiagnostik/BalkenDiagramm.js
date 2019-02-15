@@ -1,18 +1,18 @@
 import React, {Component, Fragment} from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import ResponsiveContainer from "recharts/es6/component/ResponsiveContainer";
 import Confirmbutton from "../UI/Confirmbutton";
 import './Leistungdiagnostik.css';
 
-
 /**
  * @author Dany Chuissi
  *
- * Die Klasse zeigt das Kurvediagramm an
+ * Die Klasse zeigt ein Balkendiagramm an
  *
- * @visibleName KurveDiagramm
+ * @visibleName BalkenDiagramm
  */
-class KurvenDiagramm extends Component {
+
+class BalkenDiagramm extends Component {
     state = {
         athlet1: '',
         athlet2: '',
@@ -23,6 +23,9 @@ class KurvenDiagramm extends Component {
     getAthletDaten (email) {
         //TODO fetch leistungdiagnostik from Athlket
     }
+
+
+
 
     render() {
         const {
@@ -39,7 +42,7 @@ class KurvenDiagramm extends Component {
         switch (length) {
             case 1:
                 name1 = attribute[0].name;
-               data = [
+                data = [
                     {name: 'Beweglichkeit', a1: attribute[0].beweglichtkeit},
                     {name: 'Reaktion', a1: attribute[0].reaction},
                     {name: 'Koordination', a1: attribute[0].koordination},
@@ -56,7 +59,7 @@ class KurvenDiagramm extends Component {
             case 2:
                 name1 = attribute[0].name;
                 name2 = attribute[1].name;
-              data = [
+                data = [
                     {name: 'Beweglichkeit', a1: attribute[0].beweglichtkeit, a2: attribute[1].beweglichtkeit},
                     {name: 'Reaktion', a1: attribute[0].reaction, a2: attribute[1].reaction},
                     {name: 'Koordination', a1: attribute[0].koordination, a2: attribute[1].koordination},
@@ -93,50 +96,50 @@ class KurvenDiagramm extends Component {
 
 
 
-        let lines = [];
-        let l;
-        let l2;
-        let l3;
+        let bars = [];
+        let b;
+        let b2;
+        let b3;
 
         if(attribute.length === 1){
-          l = <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
-            lines = [...lines, l];
+            b = <Bar name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
+            bars = [...bars, b];
         }
         else if(attribute.length === 2){
-                l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
-                l2 =    <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>;
-            lines = [...lines, l];
-            lines = [...lines, l2];
+            b =  <Bar name={name1}  dataKey="a1" fill="#008000" />;
+            b2 =    <Bar name={name2} dataKey="a2" fill="#b8860b" />;
+            bars = [...bars, b];
+           bars = [...bars, b2];
         }
         else if(attribute.length === 3){
-                 l =  <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
-            l2 =  <Line name={name2} type="monotone" dataKey="a2" stroke="#ff0000" activeDot={{r: 8}}/>;
-             l3 =  <Line name={name3} type="monotone" dataKey="a3" stroke="#2980B9" activeDot={{r: 8}}/>;
-            lines = [...lines, l];
-            lines = [...lines, l2];
-            lines = [...lines, l3];
-            }
+           b =  <Bar name={name1}  dataKey="a1" fill="#008000"/>;
+            b2 =  <Bar name={name2} dataKey="a2" fill="#b8860b" />;
+            b3 =  <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
+            bars  = [...bars , b];
+            bars  = [...bars , b2];
+            bars  = [...bars , b3];
+        }
 
 
         return (
             <Fragment>
                 <ResponsiveContainer>
-                    <LineChart width={500} height={500} data={data}
-                               margin={{top: 5, right: 5, left: 8, bottom: 35}}>
+                    <BarChart width={600} height={300} data={data}
+                              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                        <CartesianGrid strokeDasharray="3 3"/>
                         <XAxis dataKey="name"/>
                         <YAxis/>
-                        <CartesianGrid strokeDasharray="3 3"/>
                         <Tooltip/>
-                        <Legend/>
-                        {lines}
-                    </LineChart>
+                        <Legend />
+                        {bars}
+                    </BarChart>
                 </ResponsiveContainer>
             </Fragment>
         );
 
     }
 }
-export default KurvenDiagramm;
+export default BalkenDiagramm;
 
 /*
 <Line  type="monotone" dataKey="a4" stroke="#ff0000" activeDot={{r: 8}}/>
@@ -156,4 +159,17 @@ export default KurvenDiagramm;
                     {name: 'BORG Test', a1: this.state.athlet1.borgtest, a2: this.state.athlet1.borgtest, a3: this.state.athlet1.borgtest},
                     {name: 'Beep test', a1: this.state.athlet1.beeptest, a2: this.state.athlet1.beeptest, a3: this.state.athlet1.beeptest},
                 ];
+* */
+
+
+/*
+*  <LineChart width={500} height={500} data={data}
+                               margin={{top: 5, right: 5, left: 8, bottom: 35}}>
+                        <XAxis dataKey="name"/>
+                        <YAxis/>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <Tooltip/>
+                        <Legend/>
+                        {lines}
+                    </LineChart>
 * */

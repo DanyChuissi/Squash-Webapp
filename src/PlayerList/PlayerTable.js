@@ -5,12 +5,11 @@ import Label from '../UI/Label';
 import Input from "../UI/Input";
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import {myFunction} from '../UI/HeaderProfilController';
-import {onLogoCenterClick} from '../UI/HeaderProfilController';
- import {onLogoMenuClick} from '../UI/HeaderProfilController';
+import {showDropdown_Header} from '../UI/HeaderProfilController';
+
 
 /**
- * @author Dany
+ * @author Dany Chuissi
  *
  * @visibleName PlayerProfilView
  */
@@ -27,7 +26,7 @@ class PlayerTable extends Component{
             const defaultOption = options[0];
         return <React.Fragment>
             <div>
-                <HeaderProfilView email = {email} myFunction={myFunction} onLogoCenterClick={ onLogoCenterClick} onLogoMenuClick={onLogoMenuClick} >
+                <HeaderProfilView email = {email} myFunction={showDropdown_Header} >
                     <HeaderProfilView/>
                 </HeaderProfilView>
                 <div className="nav" style={{color: 'black', fontFamily: 'Arial Rounded MT Bold', fontSize: 30}}>

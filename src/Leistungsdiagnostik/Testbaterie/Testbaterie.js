@@ -28,6 +28,14 @@ import { GoTriangleUp } from "react-icons/go";
 * 10 = Beep test
 * */
 
+
+/**
+ * @author Dany Chuissi
+ *
+ * Klasse für die TestBaterie Seite
+ *
+ * @visibleName TestBaterieView
+ */
 class Testbaterie extends Component {
     render() {
         const {
@@ -204,12 +212,15 @@ class Testbaterie extends Component {
                         <Confirmbutton onClick={displayEvent} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
                             Neuer Test
                         </Confirmbutton>
-                        <IconContext.Provider value={{ size: '1.7em' }}>
-                            <h3 hidden={hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie} style={{paddingLeft: '10%', paddingTop: '2%'}}><GoTriangleDown/></h3>
-                        </IconContext.Provider>
-                        <IconContext.Provider value={{ size: '1.7em' }}>
-                            <h3  hidden={!hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie}  style={{paddingLeft: '10%', paddingTop: '2%'}}><GoTriangleUp/></h3>
-                        </IconContext.Provider>
+                        <div className='myhover'>
+                            <label> Alte TestBaterie</label>
+                            <IconContext.Provider value={{ size: '1.7em'}}>
+                                   <h3  hidden={hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie} ><GoTriangleDown/></h3>
+                            </IconContext.Provider>
+                            <IconContext.Provider value={{ size: '1.7em' }}>
+                                   <h3  hidden={!hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie}><GoTriangleUp/></h3>
+                            </IconContext.Provider>
+                       </div>
                     </div>
 
                 </div>
@@ -220,6 +231,7 @@ class Testbaterie extends Component {
     }
 }
 
+// style={{paddingLeft: '10%', paddingTop: '2%'}
 const bearbeitbarStyle = {
     color: '#2980B9',
     opacity: '0.9'

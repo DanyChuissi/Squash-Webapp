@@ -3,7 +3,13 @@ import "./PhysisDaten.css"
 import Confirmbutton from "../../UI/Confirmbutton";
 import '../../EditPlayerProfile/EditPlayerProfile.css';
 
-
+/**
+ * @author Dany Chuissi
+ *
+ * die Klasse definiert wie die PhysisDaten angezeigt werden
+ *
+ * @visibleName PhysisDatenView
+ */
 class PhysisDatenView extends React.Component{
     render () {
         const {

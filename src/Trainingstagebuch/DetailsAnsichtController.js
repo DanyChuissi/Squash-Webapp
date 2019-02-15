@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import DetailsAnsichtView from './DetailsAnsichtView';
 
 /**
-* @author Dany
+* @author Dany Chuissi
+ *
 *  Controller Klasse für die DetailAnsichtView
 * @visibleName DetailsAnsichtController
 */
@@ -35,10 +36,41 @@ class DetailsAnsichtController extends React.Component{
         };
         this.toggleModal = this.toggleModal.bind(this);
     }
-    toggleModal() {
+
+
+
+   /* toggleModal() {
         this.setState(prevState => ({ modalOpened: !prevState.modalOpened }));
-    }
+    }*/
     render(){
+        const {
+            email,
+        } = this.props;
+
+        let daten ={
+            datum: '',
+            schwerpunkt: '',
+            dauer: '',
+            intensitaet: '',
+            uebungen: '',
+            mentale_Ersch: '',
+            bemerkung: '',
+            koerperliche_Ersch: '',
+            muskelkarter: '',
+            puls: '',
+            aenderungswuensche: '',
+            schlafdauer: '',
+            gewicht: '',
+            maximale_herzf: '',
+            minimale_herzf: '',
+            durschnittliche_herzf: '',
+            wegstrecke: '',
+            geschwindigkeit: '',
+        }
+
+
+
+
 
         return(
             <DetailsAnsichtView datum={this.state.datum}
@@ -61,7 +93,7 @@ class DetailsAnsichtController extends React.Component{
                                 geschwindigkeit={this.state.geschwindigkeit}
                                 geaendert_am={this.state.geaendert_am}
                                 modalOpened={this.state.modalOpened}
-                                toggleModal={this.toggleModal()}
+                               /* toggleModal={this.toggleModal()}*/
             />
         );
     }

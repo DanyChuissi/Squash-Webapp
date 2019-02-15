@@ -5,6 +5,9 @@ import Popup from "reactjs-popup";
 import KurvenDiagramm from "../KurvenDiagramm";
 import PhisisDatenKurve from "./PhisisDatenKurve";
 import Input from "../../UI/Input";
+import PhisisDatenBalken from "./PhisisDatenBalken";
+import BalkenDiagramm from "../BalkenDiagramm";
+import Label from "../../UI/Label";
 
 
 var a1 = {
@@ -27,7 +30,14 @@ var av = {
     name: "Athlet wählen",
     email: "",
 };
-
+/**
+ * @author Dany Chuissi
+ *
+ * Klasse für die VergleichDaten, die im LeistungsDiagnostik benutzt wird
+ * Damit können bis zu 5 Athleten (TestBaterie-Daten und Physis-Daten) vergleichen werden
+ *
+ * @visibleName Athlet_Vergleich
+ */
 class Athlet_Vergleich extends Component{
     constructor() {
         super();
@@ -61,25 +71,11 @@ class Athlet_Vergleich extends Component{
             }
         })
     }
-   /* componentDidMount = () => {
-        fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + 1)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        players: result,
-                    });
-                },
-
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    };*/
+    /**
+     * Die Methode prüft ob der User mindestens 2 Athleten gewählt hat
+     * @param evnt
+     * @param SyntheticEvent
+     */
     displayEvent = (evnt, SyntheticEvent) => {
         if(this.state.physisDaten_zu_vergleichen.length > 1){
             this.setState({trigger: true})
@@ -89,6 +85,13 @@ class Athlet_Vergleich extends Component{
         }
 
     }
+
+
+    /**
+     * Die Methode prüft ob der gewählte Athlet schon in der Liste der Athleten zu vergleichen schon ist
+     * @param email
+     * @returns {boolean} gibt true züruck falls ja
+     */
    pruefeVorhanden = (email) =>{
        let erg = false;
       this.state.athlet_zu_vergl.map( (player) => {
@@ -98,6 +101,11 @@ class Athlet_Vergleich extends Component{
        });
        return erg;
    }
+    /**
+     * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
+     * @param email
+     * @returns {number}
+     */
     getIndex_Athlet_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.athlet_zu_vergl.map( (player) => {
@@ -108,6 +116,12 @@ class Athlet_Vergleich extends Component{
         return erg;
     }
 
+
+    /**
+     * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
+     * @param email
+     * @returns {number}
+     */
     getIndex_PhysisDaten_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.physisDaten_zu_vergleichen.map( (player) => {
@@ -117,6 +131,12 @@ class Athlet_Vergleich extends Component{
         });
         return erg;
     }
+
+    /**
+     * die Methode gibt alle test daten vom selected Athleten züruck
+     * @param email
+     * @returns {*}
+     */
     getTestdatenvonSelectetAthlet = (email) => {
         let erg = null;
         this.state.testArrayDatum.map( (daten) => {
@@ -126,6 +146,11 @@ class Athlet_Vergleich extends Component{
         });
         return erg;
     }
+
+    /**
+     * ein Athlet der schon selektiert wurde wird mit dieser Methose markiert
+     * @param e
+     */
    setSelected = (e) =>{
        if( e.target.selectedIndex !== 0)
        {
@@ -137,6 +162,10 @@ class Athlet_Vergleich extends Component{
    closePopup = () =>{
        this.setState({trigger: false})
    }
+    /**
+     * löscht der Ahtlet im Parameter von Der Liste (Athlet zu vergleichen)
+     * @param email
+     */
     onclicked = (email) => {
        this.removeAthlet_zu_vergl(email);
         this.setState({trigger: false})
@@ -150,6 +179,9 @@ class Athlet_Vergleich extends Component{
         });
         return erg;
     }
+    /**
+     * Add Athlet in der Liste (Athlet zu vergleichen)
+     */
     addAthlet_zu_vergl (){
        if(this.state.index !== 0) {
            let pname = this.state.players[this.state.index].name;
@@ -174,6 +206,10 @@ class Athlet_Vergleich extends Component{
            alert("Bitte Athlet wählen");
        }
     };
+    /**
+     * remove Athlet von der Liste (Athlet zu vergleichen)
+     * @param e
+     */
     removeAthlet_zu_vergl(e){
 
         if(typeof e !== "undefined") {
@@ -195,16 +231,13 @@ class Athlet_Vergleich extends Component{
     render() {
         const Modal = () => (
             <Popup onClose={this.closePopup} closeOnEscape={true} open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
-                <div>
-                    <label>Testbaterie Daten</label>
-                    <label> Physis Daten</label>
-                </div>
+
 
                 <div style={modalStyle1}>
-
-                        <PhisisDatenKurve attribute={this.state.physisDaten_zu_vergleichen}/>
-
-                        <KurvenDiagramm attribute={this.state.athlet_zu_vergl}/>
+                    <Label>Testbaterie Daten</Label>
+                        <PhisisDatenBalken attribute={this.state.physisDaten_zu_vergleichen}/>
+                    <Label> Physis Daten</Label>
+                        <BalkenDiagramm attribute={this.state.athlet_zu_vergl}/>
 
 
                 </div>
@@ -265,7 +298,7 @@ const modalStyle1 = {
     color: 'black',
     padding: 30,
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
 };
 var datum1 = {
     beweglichtkeit: 13,

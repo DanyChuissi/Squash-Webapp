@@ -2,6 +2,15 @@ import React, {Component, Fragment} from 'react';
 import Confirmbutton from "../../UI/Confirmbutton";
 import './Kommentar.css';
 
+
+/**
+ *@author Dany Chuissi
+ *
+ * Klasse für die Kommentar, die im Leistungdiagnostik benutzt wurde
+ *
+ *
+ * @visibleName Kommentar
+ */
 class Komemntar extends Component{
     state={
         kommentare: [],
@@ -9,6 +18,9 @@ class Komemntar extends Component{
         id_kommentar: 0,
         kommentar: '',
     }
+    /**
+     * neue Kommentare sollen mit der Methode gepostet. zurzeit werden diese nur in einem feld hinzugefügt
+     */
     kommentar_posten = () => {
         let date= new Date().toLocaleString();
         let  k =
@@ -32,6 +44,10 @@ class Komemntar extends Component{
         }
 
     }
+    /**
+     * Die Methode sucht den Kommentar, der zu den eingegebenen Id passt
+     * @param id
+     */
     zeigeKommentar = (id) => {
         let erg : '';
         this.state.kommentare.map( (komment) => {

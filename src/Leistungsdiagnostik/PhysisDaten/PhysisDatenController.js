@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 import PhysisDatenView from './PhysisDatenView';
 
 
-
+/**
+ * @author Dany Chuissi
+ *
+ * Controller Klasse für die PhysisDatenView
+ *
+ * @visibleName PhysisDatenController
+ */
 class PhysisDatenController extends Component{
     state = {
         groesse: '',

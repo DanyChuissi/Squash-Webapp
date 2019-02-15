@@ -1,7 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import NewTestBaterieView from "./NewTestBaterieView";
 
-
+/**
+ * @author Dany Chuissi
+ *
+ *Controller Klasse für die NewTestBaterie Seite
+ *
+ * @visibleName NewTestBaterieController
+ */
 class NewTestBaterieController extends Component {
 
     constructor(props){

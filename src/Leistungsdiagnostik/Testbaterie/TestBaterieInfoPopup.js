@@ -16,6 +16,14 @@ import './Testbaterie.css';
 * 10 = Beep test
 * */
 
+/**
+ * @author Dany Chuissi
+ *
+ * Klasse für die ^^fos über die Testbaterie
+ *
+ * @visibleName TestBaterieInfoPopup
+ */
+
 class TestBaterieInfoPopup extends Component{
 
    render(){

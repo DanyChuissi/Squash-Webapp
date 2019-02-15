@@ -8,7 +8,8 @@ import LoginView from "../Login/LoginView";
 
 
 /**
- * @author Dany
+ * @author Dany Chuissi
+ *
  * this component gives the possibility to the user to reset his passwort.
  * the user must enter an existing Email and by clicking on "Email Senden" he will receive an Email with the procedure to reset his Passwort
  * clicking on "Abbrechen" he will return to the Login
@@ -27,13 +28,21 @@ class ResetLoginDataView extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.publish = this.publish.bind(this);
     }
+    /**das Login fenster wird angezeigt, fall der User auf "Abbrechen" klickt*/
     _onAbbrechenClick() {
         this.setState({
             showLogin: true,
         });
     }
 
-// Hier sollte die Email geprüft werden und abhängig von der Server Antwort einen Nachricht für die Alert zurüchgegeben werden
+    /**
+     *   hier wird die Email geprüft
+     *   in reihenfolge werden folgende kriterien geprüft (Email nicht Leer? , Email Format richtig?)
+     *   wenn beide richtig sind, wird die eingegeben Email an dem Server geschickt,
+     *   und abhängig von der Server Antwort einen Nachricht für die Alert zurüchgegeben werden
+     *
+     * @returns {string}
+     */
     showMessage(){
         const yourEmail = this.state.email;
         let erg;
@@ -64,7 +73,7 @@ class ResetLoginDataView extends Component{
         });
 
     }
-    /*zeigt die Alert mit dem Nachricht ob das Reset erfolgreich war oder nicht*/
+    /**zeigt das Alert mit dem Nachricht ob das Reset erfolgreich war oder nicht*/
     publish() {
         alert(this.showMessage());
     }
@@ -74,12 +83,16 @@ class ResetLoginDataView extends Component{
 
             <div>
                 <div className = "header">
+                   { /**Header mit Name*/}
                     <div style={ {color: 'white', fontFamily:'Perpetua Titling MT', fontSize:30}}>
                         Squirrel
                     </div>
                 </div>
+               { /**Container beinhaltet die Seite zwichen Header und Footer*/}
                 <div id="container">
+                  {  /** Box mit Label und Eingabeferlder*/}
                         <div className= "box">
+                          {  /** Logo oben in dem Box*/}
                             <div>
                                 <img src={logo} className="logo" alt="logo" />
                             </div>

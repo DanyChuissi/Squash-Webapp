@@ -13,7 +13,13 @@ import { GoTriangleDown } from "react-icons/go";
 import { GoTriangleUp } from "react-icons/go";
 
 
-
+/**
+ * @author Dany Chuissi
+ *
+ * Klasse für die AlteTestbaterie
+ *
+ * @visibleName AlteTestBaterieView
+ */
 
 class AlteTestBaterieView extends Component {
     render() {

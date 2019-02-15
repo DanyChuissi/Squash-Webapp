@@ -5,7 +5,7 @@
 */
 
 
-
+/** Merkmalde des Headers*/
 .header{
     border: 1px white;
     background-color: #f19a29;
@@ -13,7 +13,7 @@
     text-align: center;
 
 }
-/* Box mit Text Eingabefeld udn Button*/
+/** Box mit Text Eingabefeld udn Button*/
 .box{
     flex-direction: column;
     justify-content: center;
@@ -33,20 +33,23 @@
     padding-bottom: 13%;
 
 }
+/** Logo oben im Box*/
 .logo{
     height: 40vmin;
     width: 40vmin;
     justify-content: center;
 
 }
+
+/** Merkmale für den Checkbox zum akzeptieren der Nutzungbedingungen*/
 .input_chekbox{
     height: 15px;
     width: 15px;
     background-color: blue;
-
+    margin-right: 4px;
 }
 
-
+/** imput im Box*/
 .input {
     display: flex;
     flex-direction: column;
@@ -54,6 +57,7 @@
     margin-bottom: 20px;
 }
 
+/** Berreich fuur den Footer*/
 .myFooter {
     height: 6%;
     padding-bottom: 5px;

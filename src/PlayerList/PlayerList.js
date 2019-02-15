@@ -4,6 +4,7 @@ import "react-table/react-table.css";
 /**
  * @author Dany
  *
+ * Die Klasse lädt alle Spieler die zu einem eingegebenen Trainer gehöhren
  * @visibleName PlayerList
  */
 
@@ -18,6 +19,10 @@ class PlayerList extends Component {
             rowInfos: [],
         }
     }
+
+    /**
+     * Die Spielern werden mit der Methode direkt beim Aufruf der Seite aufgeladen
+     */
     componentDidMount() {
         fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + this.state.trainer)
             .then(res => res.json())
@@ -40,6 +45,14 @@ class PlayerList extends Component {
             )
     }
 
+    /**
+     * Die Methode nihmmt Info von dem Element auf dem es gecklickt wurde
+     * @param state
+     * @param rowInfo
+     * @param column
+     * @param instance
+     * @returns {{onDoubleClick: onDoubleClick}}
+     */
     onRowClick = (state, rowInfo, column, instance) => {
         return {
             onDoubleClick: e => {
@@ -54,27 +67,7 @@ class PlayerList extends Component {
             }
         }
     }
-    regionById(id){
-        fetch("http://172.22.24.243:8080/region/" + this.state.trainer)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        players: result
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
+
     render(){
         const {trainer,name,players,onRowClick} = this.props;
 

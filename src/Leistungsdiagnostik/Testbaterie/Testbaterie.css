@@ -62,3 +62,28 @@
     background-color: #ff792a;
 }
 
+.myhover {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-left: 20px;
+
+}
+
+.myhover .hovertext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.myhover:hover  .hovertext {
+    visibility: visible;
+}
