@@ -60,17 +60,10 @@ class HeaderProfilView extends React.Component {
                         <a href="playerList" onClick={this.handleClick.bind(this, "Athleten")}>Athleten</a>
                         <a href="editRights">Nutzerverwaltung</a>
                         <a href="inviteUser">Nutzer Einladen</a>
-                        <a href="dataPrivacyStatement">Datenschutzerklärung</a>
-                        <a href="jTP">Jahrestrainingsplan</a>
                         <a href="tourneyList">Turniere</a>
-                        <a href="playerprofile">Spielerprofil</a>
-                        <a href="leistungsdiagnostik">Leistungsdiagnostik</a>
                         <a href="athletVergleich">Athleten Vergleich</a>
-                        <a href="trainingsdiary">Training Diary</a>
                         <a href="resetLoginData">Logindaten zurücksetzen</a>
-                        <a href="registration">Registrierung</a>
-
-
+                        <a href="dataPrivacyStatement">Datenschutzerklärung</a>
                         <a style={{borderTop: '2px solid grey'}} href="login" >Logout</a>
 
                     </div>

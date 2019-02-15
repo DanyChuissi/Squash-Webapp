@@ -3,12 +3,13 @@ import EditProfileView from "./EditProfileView";
 import '../App.css';
 /**
  * @author Daniela
- * This file holds the foldlogic of the editable Profile Data Table. It sends Data to the Microservice, if it was changed. It also manages, which cells are editable, based on the user role.
+ * This file holds the foldlogic of the editable Profile Data Table. It sends Data to the Microservice, if changed.
  * @visibleName EditPlayerProfileController
  */
 class EditPlayerProfileController extends Component {
 //TODO EditProfileView importieren, alle Properties übertragen und Methoden für den Formularübergabe an Microservice schreiben
 
+    /**Attributes of an Athlete**/
     state = {
         name: '',
         surname: '',
@@ -25,13 +26,6 @@ class EditPlayerProfileController extends Component {
         nationalAssosiation:'',
     }
 
-    getData = () => {
-        //TODO JSON Data ziehen
-    }
-
-    postData = () => {
-        //TODO JSON Data übermitteln
-    }
 
     setName = (e) => {
         this.setState({name: e.target.value})
@@ -83,9 +77,6 @@ class EditPlayerProfileController extends Component {
     }
 
 
-    confirmChanges = () => {
-        this.postData();
-    }
 
     render() {
         return (
@@ -104,7 +95,6 @@ class EditPlayerProfileController extends Component {
                 setLandlaneNumber={this.setLandlaneNumber}
                 setMobileNumber={this.setMobileNumber}
                 setNationalAssosiation={this.setNationalAssosiation}
-                onConfirm={this.confirmChanges}
             />
 
 

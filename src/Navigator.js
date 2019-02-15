@@ -1,17 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import LoginView from "./Login/LoginView";
-import PlayerList from "./PlayerList/PlayerList";
-import RegistrationView from "./Registration/RegistrationView";
+
 import RegistrationController from "./Registration/RegistrationController";
 import PlayerProfileView from "./PlayerProfile/PlayerProfileView";
 import DatenschutzerklaerungController from "./Datenschutzerklaerung/DatenschutzerklaerungController";
-import EditRightsView from "./EditRights/EditRights";
+import EditRightsView from "./EditRights/EditRightsView";
 import InviteUserView from "./InviteUser/InviteUserView";
 import JTPCalendarView from "./JTP/JTPCalendarView";
 import LeistungsdiagnostikView from "./Leistungsdiagnostik/LeistungsdiagnostikView";
 import NotificationsController from "./Notifications/NotificationsController";
-import ResetLoginDataController from "./ResetLoginData/ResetLoginDataController";
+
 import TourneyListView from "./Tourney/TourneyListView";
 import TrainerProfileView from "./TrainerProfile/TrainerProfileView";
 import KalendarView from "./Trainingdiary/KalendarView";
@@ -19,15 +18,53 @@ import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtControll
 import PlayerListView from "./PlayerList/PlayerListView";
 import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
 import VergleichDaten from "./Leistungsdiagnostik/AthletVergleichen/VergleichDaten";
+import CreateWorkout from "./JTP/CreateWorkout";
+import MAZView from "./JTP/MAZView";
+import MAZListView from "./JTP/MAZListView";
+import axios from 'axios';
 
+
+function loadPlayerDataView() {
+    axios.get(`http://172.22.24.243:50594/player/email?email=jens@testmail3.de`)
+        .then(res => {
+            const person = res.data;
+            console.log("Test" + person.dateofbirth);
+        })
+}
+
+function pushPlayer() {
+    fetch('http://172.22.24.243:50594/player', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        data: "{\n    \"name\": \"Bielefeld\",\n " +
+            "   \"surname\": \"Jens\",\n  " +
+            "\"dateofbirth\": \"1995-05-05\",\n  " +
+            "  \"email\": \"jens@testmail3.de\",\n " +
+            " \"mobilenumber\": \"\",\n  " +
+            "  \"landlinenumber\": \"\",\n   " +
+            " \"streetname\": \"\",\n " +
+            "  \"housenumber\": \"\",\n " +
+            "   \"postalcode\": \"\",\n " +
+            "   \"place\": \"\",\n  " +
+            "\"spin\": 0,\n  " +
+            "  \"squad\": \"\",\n  " +
+            "  \"active\": true,\n  " +
+            "  \"regonid\": 1\n}"
+    }).then(res => res.json())
+        .then((result) => {
+            console.log(result)
+        })
+}
 
 function Navigator() {
+    loadPlayerDataView()
+     pushPlayer()
     return (
         <Router>
             <div>
-                <Route exact path="/login" component={LoginRoute} />
-                <Route path="/playerList" component={PlayerListRoute} />
-                <Route path="/registration" component={RegistrationRoute} />
+                <Route exact path="/login" component={LoginRoute}/>
+                <Route path="/playerList" component={PlayerListRoute}/>
+                <Route path="/registration" component={RegistrationRoute}/>
                 <Route path={"/playerprofile"} component={PlayerprofileRoute}/>
                 <Route path={"/dataPrivacyStatement"} component={dataPrivacyStatementRoute}/>
                 <Route path={"/editRights"} component={EditRightsRoute}/>
@@ -41,8 +78,19 @@ function Navigator() {
                 <Route path={"/trainingsdiary"} component={trainingsdiaryRoute}/>
                 <Route path={"/trainingsdiarydetail"} component={trainingsdiaryDetailRoute}/>
                 <Route path={"/athletVergleich"} component={VergleichRoute}/>
+                <Route path={"/createWorkout"} component={CreateWorkoutRoute}/>
+                <Route path={"/mAZDetail"} component={MAZViewRoute}/>
+                <Route path={"/mAZList"} component={MAZListRoute}/>
             </div>
         </Router>
+    );
+}
+
+function MAZListRoute() {
+    return (
+        <div>
+            <MAZListView/>
+        </div>
     );
 }
 
@@ -54,25 +102,40 @@ function LoginRoute() {
     );
 }
 
-function PlayerprofileRoute() {
-    document.title = "PlayerProfil | Squirel";
+function MAZViewRoute() {
     return (
         <div>
+            <MAZView/>
+        </div>
+    );
+}
 
+function CreateWorkoutRoute() {
+    return (
+        <div>
+            <CreateWorkout/>
+        </div>
+    );
+}
+
+function PlayerprofileRoute() {
+    document.title = "PlayerProfil | Squirrel";
+    return (
+        <div>
             <PlayerProfileView/>
         </div>
     );
 }
 
 function VergleichRoute() {
-    document.title = "Vergleich | Squirel";
+    document.title = "Spielervergleich | Squirrel";
     return (
         <div>
-
             <VergleichDaten/>
         </div>
     );
 }
+
 function PlayerListRoute() {
     return (
         <div>
@@ -89,7 +152,7 @@ function RegistrationRoute() {
     );
 }
 
-function dataPrivacyStatementRoute(){
+function dataPrivacyStatementRoute() {
     return (
         <div>
             <DatenschutzerklaerungController/>
@@ -97,14 +160,15 @@ function dataPrivacyStatementRoute(){
     );
 }
 
-function EditRightsRoute(){
+function EditRightsRoute() {
     return (
         <div>
             <EditRightsView/>
         </div>
     );
 }
-function InviteUserRoute(){
+
+function InviteUserRoute() {
     return (
         <div>
             <InviteUserView/>
@@ -112,7 +176,7 @@ function InviteUserRoute(){
     );
 }
 
-function JTPRoute(){
+function JTPRoute() {
     return (
         <div>
             <JTPCalendarView/>
@@ -120,7 +184,7 @@ function JTPRoute(){
     );
 }
 
-function performanceDiagnosticsRoute(){
+function performanceDiagnosticsRoute() {
     document.title = "Leistungsdiagnostik | Squirel";
     return (
         <div>
@@ -129,7 +193,7 @@ function performanceDiagnosticsRoute(){
     );
 }
 
-function notificationRoute(){
+function notificationRoute() {
     return (
         <div>
             <NotificationsController/>
@@ -137,7 +201,7 @@ function notificationRoute(){
     );
 }
 
-function resetLoginDataRoute(){
+function resetLoginDataRoute() {
     return (
         <div>
             <ResetLoginDataView/>
@@ -145,7 +209,7 @@ function resetLoginDataRoute(){
     );
 }
 
-function tourneyListRoute(){
+function tourneyListRoute() {
     return (
         <div>
             <TourneyListView/>
@@ -153,14 +217,15 @@ function tourneyListRoute(){
     );
 }
 
-function trainerProfileRoute(){
+function trainerProfileRoute() {
     return (
         <div>
             <TrainerProfileView/>
         </div>
     );
 }
-function trainingsdiaryRoute(){
+
+function trainingsdiaryRoute() {
     return (
         <div>
             <KalendarView/>
@@ -168,7 +233,7 @@ function trainingsdiaryRoute(){
     );
 }
 
-function trainingsdiaryDetailRoute(){
+function trainingsdiaryDetailRoute() {
     return (
         <div>
             <DetailsAnsichtController/>
