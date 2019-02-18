@@ -1,10 +1,25 @@
 import React, {Component} from 'react';
 import '../App.css';
 import PlayerProfileView from "./PlayerProfileView";
+import axios from "axios";
 
+/**
+ * @author Daniela
+ * This View contains the foldlogic of the personal Informations of an Athlete. They can be updatet and send to the server.
+ * @visibleName PlayerProfileController
+ */
 class PlayerProfileController extends Component {
 
+    constructor({mail}) {
+        super();
+        this.state = {
+            mail
+        };
+    }
+
+
     state = {
+        email: '',
         name: '',
         surname: '',
         mail: '',
@@ -17,23 +32,27 @@ class PlayerProfileController extends Component {
         sPin: '',
         mobileNumber: '',
         landlaneNumber: '',
-        nationalAssosiation: '',
+        nationalAssosiation: 0,
+        active: '',
+
+        edithidden: false,
+        savehidden: true,
     }
 
     getData = () => {
         //TODO JSON Data ziehen
     }
 
-    postData = () => {
-        //TODO JSON Data übermitteln
-    }
 
     setName = (e) => {
         this.setState({name: e.target.value})
+        console.log(this.state.name);
     }
 
     setSurname = (e) => {
         this.setState({surname: e.target.value})
+        console.log(this.state.surname);
+
     }
 
     setMail = (e) => {
@@ -41,14 +60,20 @@ class PlayerProfileController extends Component {
     }
     setBirthdate = (e) => {
         this.setState({birthdate: e.target.value})
+        console.log(this.state.birthdate);
+
     }
 
 
     setZip = (e) => {
         this.setState({zip: e.target.value})
+        console.log(this.state.zip);
+
     }
     setCity = (e) => {
         this.setState({city: e.target.value})
+        console.log(this.state.city);
+
     }
 
 
@@ -70,33 +95,86 @@ class PlayerProfileController extends Component {
     setLandlaneNumber = (e) => {
         this.setState({landlaneNumber: e.target.value})
     }
+
     setMobileNumber = (e) => {
         this.setState({mobileNumber: e.target.value})
     }
+
+
     setNationalAssosiation = (e) => {
         this.setState({nationalAssosiation: e.target.value})
+        console.log(this.state.nationalAssosiation)
+    }
+
+    componentDidMount() {
+        console.log(this.props.match.params.mail)
+        axios.get(`http://172.22.24.243:50594/player/email?email=`+this.props.match.params.mail)
+            .then(res => {
+                const person = res.data;
+                this.setState({
+                    email: person.email,
+                    name: person.name,
+                    surname: person.surname,
+                    birthdate: person.dateofbirth,
+                    city: person.place,
+                    zip: person.postalcode,
+                    street: person.streetname,
+                    houseNbr: person.housenumber,
+                    squad: person.squad,
+                    sPin: person.spin,
+                    mobileNumber: person.mobilenumber,
+                    landlaneNumber: person.landlinenumber,
+                    nationalAssosiation: person.regonid,
+                    active: person.active,
+
+                    edithidden: false,
+                    savehidden: true,
+                })
+
+            })
     }
 
 
-    confirmChanges = () => {
-        this.postData();
+    confirmChanges = (name, surname, dateofbirth, email, mobilenum, landlinenum, street, houseNr, zip, city, spin, squad, active, regionid) => {
+        console.log(dateofbirth)
+        fetch('http://172.22.24.243:50594/player?email=jens@testmail3.de', {
+            method: 'PUT', // or 'PUT'
+            body: JSON.stringify(
+                {
+                    name: name,
+                    surname: surname,
+                    dateofbirth: dateofbirth,
+                    email: "jens@testmail3.de",
+                    mobilenumber: mobilenum,
+                    landlinenumber: landlinenum,
+                    streetname: street,
+                    housenumber: houseNr,
+                    postalcode: zip,
+                    place: city,
+                    spin: spin,
+                    squad: squad,
+                    active: active,
+                    regonid: regionid
+                }
+            ), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+
+        this.setState({
+            edithidden: false,
+            savehidden: true
+        })
     }
 
     onEdit = () => {
-        var editable_elements = document.querySelectorAll("[contentEditable=false]");
-        editable_elements[0].setAttribute("contentEditable", true);
-        editable_elements[1].setAttribute("contentEditable", true);
-        editable_elements[2].setAttribute("contentEditable", true);
-        editable_elements[3].setAttribute("contentEditable", true);
-        editable_elements[4].setAttribute("contentEditable", true);
-        editable_elements[5].setAttribute("contentEditable", true);
-        editable_elements[6].setAttribute("contentEditable", true);
-        editable_elements[7].setAttribute("contentEditable", true);
-        editable_elements[8].setAttribute("contentEditable", true);
-        editable_elements[9].setAttribute("contentEditable", true);
-        editable_elements[10].setAttribute("contentEditable", true);
-        editable_elements[11].setAttribute("contentEditable", true);
-        editable_elements[12].setAttribute("contentEditable", true);
+        this.setState({
+            edithidden: true,
+            savehidden: false
+        })
 
     }
 
@@ -104,7 +182,7 @@ class PlayerProfileController extends Component {
         //TODO Benutzer löschen
     }
 
-    onCompare=()=>{
+    onCompare = () => {
         //TODO Athleten löschen
     }
 
@@ -113,10 +191,30 @@ class PlayerProfileController extends Component {
     render() {
         return (
             <PlayerProfileView
+                name={this.state.name}
+                surname={this.state.surname}
+                mail={this.state.mail}
+                birthdate={this.state.birthdate}
+                city={this.state.city}
+                zip={this.state.zip}
+                street={this.state.street}
+                houseNbr={this.state.houseNbr}
+                squad={this.state.squad}
+                sPin={this.state.sPin}
+                status={this.state.status}
+                mobileNumber={this.state.mobileNumber}
+                landlaneNumber={this.state.landlaneNumber}
+                nationalAssosiation={this.state.nationalAssosiation}
+                active={this.state.active}
+
+                savehidden={this.state.savehidden}
+                edithidden={this.state.edithidden}
+
+                emailUser={this.state.name}
                 setName={this.setName}
                 setSurName={this.setSurname}
                 setMail={this.setMail}
-                setBrithdate={this.setBirthdate}
+                setBirthdate={this.setBirthdate}
                 setCity={this.setCity}
                 setZIP={this.setZip}
                 setStreet={this.setStreet}
@@ -127,6 +225,8 @@ class PlayerProfileController extends Component {
                 setLandlaneNumber={this.setLandlaneNumber}
                 setMobileNumber={this.setMobileNumber}
                 setNationalAssosiation={this.setNationalAssosiation}
+
+                onSave={() => this.confirmChanges(this.state.name, this.state.surname, this.state.birthdate, this.state.email, this.state.mobileNumber, this.state.landlaneNumber, this.state.street, this.state.houseNr, this.state.zip, this.state.city, this.state.spin, this.state.squad, this.state.active, this.state.nationalAssosiation)}
                 onDelete={this.onDelete}
                 onEdit={this.onEdit}
                 onCompare={this.onCompare}

@@ -17,7 +17,15 @@ import 'react-day-picker/lib/style.css';
 import AddVacationView from "./AddVacationView";
 import AddTourneyView from "../Tourney/AddTourneyView";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction} from "../UI/HeaderProfilController";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
+import CreateWorkout from "./CreateWorkout";
+
+/**
+ * @author Daniela
+ * This is a View for the JTPCalendar View. It shows the Vacations, the MAZ, the Periodisation, the Tourneys and the days of training. It is possible add MAZ or look at old JTPs.
+ * @visibleName JTPCalendarView
+ **/
+
 
 const modalStyle = {
     position: 'fixed',
@@ -32,7 +40,18 @@ const modalStyle = {
     paddingBottom:'auto',
 
 };
-
+const modalStyleWorkout={
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    paddingLeft: '15%',
+    paddingRight:'15%',
+    paddingTop:'10%',
+    paddingBottom:'auto',
+}
 const modalStyleTourney = {
     position: 'fixed',
     top: 0,
@@ -58,7 +77,26 @@ class JTPCalendarView extends Component {
         triggerCreateMAZ: false,
         triggerCreateVacations: false,
         triggerCreateTourney:false,
+        triggerCreateWorkout:false,
     }
+
+    addWorkout=(e)=>{
+        this.setState({
+            triggerCreateWorkout:true,
+        })
+    }
+    cancelWorkout=(e)=>{
+        this.setState({
+            triggerCreateWorkout:false,
+        })
+    }
+    createWorkout=(e)=>{
+        alert("Trainingseinheit hinzugefügt")
+        this.setState({
+            triggerCreateWorkout:false,
+        })
+    }
+
     addTourney=(e)=>{
         this.setState({
             triggerCreateTourney:true,
@@ -363,10 +401,16 @@ class JTPCalendarView extends Component {
                 </div>
             </Popup>
         )
-
+        const ModalCreateWorkout = () => (
+            <Popup open={this.state.triggerCreateWorkout} position={"top left"} closeOnDocumentClick={true}>
+                <div style={modalStyleWorkout}>
+                    <CreateWorkout  createWorkout={this.createWorkout} cancelWorkout={this.cancelWorkout}/>
+                </div>
+            </Popup>
+        )
         return (
             <div id={"jTPView"}>
-                <HeaderProfileView email = {"test"}  myFunction={myFunction}>
+                <HeaderProfileView email = {"test"}  myFunction={showDropdown_Header}>
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div id={"jTPTop"}>
@@ -381,6 +425,7 @@ class JTPCalendarView extends Component {
                         <Checkbox/> Trainingstage
                         <Checkbox/> Turniertage
                         <Checkbox/> Ziele
+                        <Checkbox/> Periodisierung
                     </div>
                 </div>
                 <DayPicker showWeekNumbers numberOfMonths={12} modifiers={modifiers}
@@ -497,7 +542,7 @@ class JTPCalendarView extends Component {
                                     rowsText={'Zeilen'}
                                 />
                                 <div id={"jTPMAZButtonsBottom"}>
-                                    <Confirmbutton>Trainingseinheit hinzufügen</Confirmbutton>
+                                    <Confirmbutton onClick={this.addWorkout}>Trainingseinheit hinzufügen</Confirmbutton>
                                     <Confirmbutton>Bearbeiten</Confirmbutton>
                                     <Confirmbutton>Löschen</Confirmbutton>
                                 </div>
@@ -591,6 +636,7 @@ class JTPCalendarView extends Component {
                 <ModalCreateMAZ/>
                 <ModalCreateVacations/>
                 <ModalCreateTourney/>
+                <ModalCreateWorkout/>
             </div>
 
         );

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Input from "../UI/Input";
 import Confirmbutton from "../UI/Confirmbutton";
 
-
-
+/**
+ * @author Daniela
+ * This View contains a Form for adding a Tourney.
+ * @visibleName AddTourneyView
+ */
 class AddTourneyView extends Component {
     render() {
         const{

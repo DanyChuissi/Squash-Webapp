@@ -3,6 +3,12 @@ import Confirmbutton from "../UI/Confirmbutton";
 import ReactTable from "react-table";
 import 'react-table/react-table.css';
 
+/**
+ * @author Daniela
+ * This View contains a Form for adding an Vacation to the JTP of an Athlete.
+ * @visibleName AddVacationView
+ */
+
 function makeData() {
     return [
         {

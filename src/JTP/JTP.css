@@ -1,4 +1,9 @@
-/**Css for JTP **/
+/**
+ * @author Daniela
+ * This File contains the Styles for the JTP Views
+ * @visibleName JTP CSS
+ **/
+
 
 /**Css JTPMainView**/
 #JTPCalendar {
@@ -361,94 +366,102 @@ width: 30%;
 }
 /**End Add Vacation View**/
 
-/**Create MAZ Phase **/
-#createMAZView {
+/** Start Create Workout View **/
+#createWorkoutView{
     background-color: #f19a29;
-}
-
-#mAZPhase {
     display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-    margin-left: 5%;
-
+    align-items: center;
+    flex-direction: column;
 }
 
-#createMAZView {
-    font-size: large;
-    font-weight: bold;
+#createWorkoutView h2{
+    margin-bottom: 2%;
+}
+#createWorkoutForm{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
-#mAZTime {
-    margin-top: 1%;
-    margin-left: 5%;
-    display: flex;
-    flex-direction: row;
+#bottomCreateWorkoutView{
+    margin-bottom: 2%;
+    margin-top: 2%;
+   display: grid;
+    grid-template-columns: 50% 50%;
 }
+/** End Create Workout View **/
 
-#emphasis {
-    margin-top: 0.5%;
-    margin-left: 5%;
-    display: flex;
-    flex-direction: row;
-}
+/**Start Workout View **/
 
-#emphasisCheckBoxLeft {
-    margin-left: 15%;
-    margin-right: 10%;
-}
-
-#descriptionFormCreateMAZ {
-    margin-top: 2.5%;
-    margin-left: 5%;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-#MAZDescription {
-    margin-left: 5%;
-    width: 50%;
-}
-
-#bottomCreateMAZView {
+#workoutInfos{
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    padding-bottom: 2.5%;
     display: grid;
     grid-template-columns: 50% 50%;
 }
-
-#startMAZ {
-    margin-right: 2.5%;
-    margin-left: 2.5%;
-    width: 30%;
+#detailWorkoutView h2{
+    padding-top: 1%;
+    margin-bottom: 2.5%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#endMAZ {
-    margin-right: 2.5%;
-    margin-left: 2.5%;
-    width: 30%;
+#bottomWorkoutView{
+    background-color: whitesmoke;
+    padding-bottom: 2.5%;
+    display: flex;
+    align-items: center;
+    padding-left: 30%;
+
 }
 
-#mAZDescription {
-    margin-right: 2.5%;
-    margin-left: 2.5%;
+/**End Workout View**/
+
+/** Start Copy Workout View **/
+#copyWorkoutView{
+    background-color: #f19a29;
 }
 
-#MaZPhaseLabel {
-    margin-right: 2.5%;
+#copyWorkoutForm{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 15pt;
 }
-#mAZPhase select{
+#copyWorkoutForm *{
+    margin-top: 1%;
+}
+#bottomCopyWorkoutView{
+    display: flex;
     width: 40%;
-    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 2.5%;
 }
-#MAZDescription{
-    width: 60%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
+
+/** End Copy Workout View **/
+/** Start Add Exercise View **/
+#createExerciseView{
+    background-color: #f19a29;
 }
-/**End Create MAZ Phase **/
+#createExcerciseForm{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 15pt;
+}
+#bottomCreateExcerciseView{
+    display: flex;
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 2.5%;
+}
+
+/** End Add Exercise View **/

@@ -77,6 +77,7 @@ class PlayerList extends Component {
                 this.setState({rowInfos: rowInfo})
                 console.log('Index Row', rowInfo.index)
                 console.log('Index email', rowInfo.original.email)
+                window.location='/playerprofile/'+rowInfo.original.email
             }
         }
     }
@@ -129,7 +130,7 @@ class PlayerList extends Component {
                         },
 
                     ]}
-                    getTdProps={onRowClick}
+                    getTdProps={this.onRowClick}
                     defaultPageSize={5}
                     style={{
                         height: "calc(100vh - 250px)" // This will force the table body to overflow and scroll, since there is not enough room

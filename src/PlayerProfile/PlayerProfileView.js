@@ -1,13 +1,17 @@
 /* eslint-disable no-restricted-globals */
 import React, {Component, Fragment} from 'react';
 import Checkbox from "../UI/Checkbox";
-import "./PlayerList.css";
+import "./PlayerProfile.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/480px-PICA.jpg";
 import EditProfileView from "../EditPlayerProfile/EditProfileView";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction} from "../UI/HeaderProfilController";
-
+import {showDropdown_Header} from "../UI/HeaderProfilController";
+/**
+ * @author Daniela
+ * This View contains the personal Informations of an Athlete. They can be updatet and send to the server.
+ * @visibleName PlayerProfileView
+ */
 class PlayerProfileView extends Component {
 
     render() {
@@ -64,7 +68,7 @@ class PlayerProfileView extends Component {
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
 
-                <HeaderProfileView email={emailUser} myFunction={myFunction}>
+                <HeaderProfileView email={emailUser} myFunction={showDropdown_Header}>
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <main id={"mainPP"}>
@@ -118,12 +122,15 @@ class PlayerProfileView extends Component {
                                     <Confirmbutton id={"save"} onClick={onSave}
                                                    hidden={savehidden}>Speichern</Confirmbutton>
 
-
-                                    <Confirmbutton id="edit" onClick={onEdit}
-                                                   hidden={edithidden}>Jahrestrainingsplan</Confirmbutton>
-                                    <Confirmbutton id={"save"} onClick={onSave}
-                                                   hidden={savehidden}>Trainingstagebuch</Confirmbutton>
-
+                                    <form action="/jTP">
+                                        <Confirmbutton id="edit" type={"submit"}>Jahrestrainingsplan</Confirmbutton>
+                                    </form>
+                                    <form action="/trainingsdiary">
+                                    <Confirmbutton id={"save"}>Trainingstagebuch</Confirmbutton>
+                                    </form>
+                                    <form action="/leistungsdiagnostik">
+                                        <Confirmbutton id={"save"} >Leistungsdiagnostik</Confirmbutton>
+                                    </form>
                                 </div>
 
                     </div>

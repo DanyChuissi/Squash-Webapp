@@ -6,7 +6,7 @@
     background-color: whitesmoke;
     margin-right: auto;
     margin-left: auto;
-    width: 70%;
+    width: 80%;
     margin-bottom: 2%;
     border: 1px solid #282c34;
 }
@@ -14,6 +14,9 @@
     box-sizing: border-box;
 }
 
+#editProfileTable{
+    width: 427px;
+}
 header Label {
     text-decoration: underline black;
     text-align: center;

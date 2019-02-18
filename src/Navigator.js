@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import LoginView from "./Login/LoginView";
 
 import RegistrationController from "./Registration/RegistrationController";
 import PlayerProfileView from "./PlayerProfile/PlayerProfileView";
 import DatenschutzerklaerungController from "./Datenschutzerklaerung/DatenschutzerklaerungController";
-import EditRightsView from "./EditRights/EditRights";
+import EditRightsView from "./EditRights/EditRightsView";
 import InviteUserView from "./InviteUser/InviteUserView";
 import JTPCalendarView from "./JTP/JTPCalendarView";
 import LeistungsdiagnostikView from "./Leistungsdiagnostik/LeistungsdiagnostikView";
@@ -18,13 +18,12 @@ import DetailsAnsichtController from "./Trainingstagebuch/DetailsAnsichtControll
 import PlayerListView from "./PlayerList/PlayerListView";
 import ResetLoginDataView from "./ResetLoginData/ResetLoginDataView";
 import VergleichDaten from "./Leistungsdiagnostik/AthletVergleichen/VergleichDaten";
-import axios from 'axios';
+import CreateWorkout from "./JTP/CreateWorkout";
+import MAZView from "./JTP/MAZView";
+import MAZListView from "./JTP/MAZListView";
+import axios from "axios";
+import PlayerProfileController from "./PlayerProfile/PlayerProfileController";
 
-let email;
-export function setEmailNavigateor(myEmail) {
-    email = myEmail;
-    alert(email)
-}
 
 /**
  * @author Daniela
@@ -32,191 +31,221 @@ export function setEmailNavigateor(myEmail) {
  * @visibleName Navigator
  */
 
-function Navigator() {
+class Navigator extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mazId: 0
+        };
+        this.myCallback = this.myCallback.bind(this);
+    }
 
 
-    return (
-        <Router>
+    myCallback = (dataFromChild) => {
+        this.setState({mazId: dataFromChild});
+        console.log(this.state.mazId);
+        axios.get(`http://172.22.24.243:50600/makrozyklus/getMacrocyclesById?id=` + this.state.mazId)
+            .then(res => {
+                const maz = res.data;
+                this.setState({maZName: maz.name});
+                this.setState({mazAthletName: maz.email});
+                this.setState({mazDescription: maz.beschreibung});
+                this.setState({mazPhase: maz.phase});
+                this.setState({mazEnd: maz.enddatum});
+                this.setState({mazStart: maz.startdatum});
+                this.setState({mazNote: maz.hinweis});
+                this.setState({trainingsdata: maz.trainingseinheiten});
+                this.setState({mazidView: this.props.mazId});
+                /**  this.setState({mazEmphasis: maz.schwerpunkte});**/
+            }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+    }
+
+    LoginRoute() {
+        return (
             <div>
-                <Route exact path="/login" component={LoginRoute}/>
-                <Route path="/playerList" component={PlayerListRoute}/>
-                <Route path="/registration" component={RegistrationRoute}/>
-                <Route path={"/playerprofile"} component={ () => <PlayerProfileView mail={email}
-                                                                                    />}
-                        />
-                <Route path={"/dataPrivacyStatement"} component={dataPrivacyStatementRoute}/>
-                <Route path={"/editRights"} component={EditRightsRoute}/>
-                <Route path={"/inviteUser"} component={InviteUserRoute}/>
-                <Route path={"/jTP"} component={JTPRoute}/>
-                <Route path={"/leistungsdiagnostik"} component={performanceDiagnosticsRoute}/>
-                <Route path={"/benachrichtigungen"} component={notificationRoute}/>
-                <Route path={"/resetLoginData"} component={resetLoginDataRoute}/>
-                <Route path={"/tourneyList"} component={tourneyListRoute}/>
-                <Route path={"/trainerProfile"} component={trainerProfileRoute}/>
-                <Route path={"/trainingsdiary"} component={trainingsdiaryRoute}/>
-                <Route path={"/trainingsdiarydetail"} component={trainingsdiaryDetailRoute}/>
-                <Route path={"/athletVergleich"} component={VergleichRoute}/>
-                {/*<Route path={"/createWorkout"} component={CreateWorkoutRoute}/>
-                <Route path={"/mAZDetail"} component={MAZViewRoute}/>
-                <Route path={"/mAZList"} component={MAZListRoute}/>*/}
+                <LoginView/>
             </div>
-        </Router>
-    );
-}
+        );
+    }
 
-/*function MAZListRoute() {
-    return (
-        <div>
-            <MAZListView/>
-        </div>
-    );
-}*/
+    MAZViewRoute() {
+        return (
+            <div>
+                <MAZView/>
+            </div>
+        );
+    }
 
-function LoginRoute() {
-    return (
-        <div>
-            <LoginView/>
-        </div>
-    );
-}
+    CreateWorkoutRoute() {
+        return (
+            <div>
+                <CreateWorkout/>
+            </div>
+        );
+    }
 
-/*function MAZViewRoute() {
-    return (
-        <div>
-            <MAZ/>
-        </div>
-    );
-}*/
+    PlayerprofileRoute() {
+        document.title = "PlayerProfil | Squirrel";
+        return (
+            <div>
+                <PlayerProfileController/>
+            </div>
+        );
+    }
 
-/*function CreateWorkoutRoute() {
-    return (
-        <div>
-            <CreateWorkout/>
-        </div>
-    );
-}*/
+    VergleichRoute() {
+        document.title = "Spielervergleich | Squirrel";
+        return (
+            <div>
+                <VergleichDaten/>
+            </div>
+        );
+    }
 
-function PlayerprofileRoute(email) {
-    document.title = "PlayerProfil | Squirrel";
-    return (
-        <div>
-            <PlayerProfileView/>
-        </div>
-    );
-}
+    PlayerListRoute() {
+        return (
+            <div>
+                <PlayerListView/>
+            </div>
+        );
+    }
 
-function VergleichRoute() {
-    document.title = "Spielervergleich | Squirrel";
-    return (
-        <div>
-            <VergleichDaten/>
-        </div>
-    );
-}
+    RegistrationRoute() {
+        return (
+            <div>
+                <RegistrationController/>
+            </div>
+        );
+    }
 
-function PlayerListRoute() {
-    return (
-        <div>
-            <PlayerListView/>
-        </div>
-    );
-}
+    dataPrivacyStatementRoute() {
+        return (
+            <div>
+                <DatenschutzerklaerungController/>
+            </div>
+        );
+    }
 
-function RegistrationRoute() {
-    return (
-        <div>
-            <RegistrationController/>
-        </div>
-    );
-}
+    EditRightsRoute() {
+        return (
+            <div>
+                <EditRightsView/>
+            </div>
+        );
+    }
 
-function dataPrivacyStatementRoute() {
-    return (
-        <div>
-            <DatenschutzerklaerungController/>
-        </div>
-    );
-}
+    InviteUserRoute() {
+        return (
+            <div>
+                <InviteUserView/>
+            </div>
+        );
+    }
 
-function EditRightsRoute() {
-    return (
-        <div>
-            <EditRightsView/>
-        </div>
-    );
-}
+    JTPRoute() {
+        return (
+            <div>
+                <JTPCalendarView/>
+            </div>
+        );
+    }
 
-function InviteUserRoute() {
-    return (
-        <div>
-            <InviteUserView/>
-        </div>
-    );
-}
+    performanceDiagnosticsRoute() {
+        document.title = "Leistungsdiagnostik | Squirel";
+        return (
+            <div>
+                <LeistungsdiagnostikView/>
+            </div>
+        );
+    }
 
-function JTPRoute() {
-    return (
-        <div>
-            <JTPCalendarView/>
-        </div>
-    );
-}
+    notificationRoute() {
+        return (
+            <div>
+                <NotificationsController/>
+            </div>
+        );
+    }
 
-function performanceDiagnosticsRoute() {
-    document.title = "Leistungsdiagnostik | Squirel";
-    return (
-        <div>
-            <LeistungsdiagnostikView/>
-        </div>
-    );
-}
+    resetLoginDataRoute() {
+        return (
+            <div>
+                <ResetLoginDataView/>
+            </div>
+        );
+    }
 
-function notificationRoute() {
-    return (
-        <div>
-            <NotificationsController/>
-        </div>
-    );
-}
+    tourneyListRoute() {
+        return (
+            <div>
+                <TourneyListView/>
+            </div>
+        );
+    }
 
-function resetLoginDataRoute() {
-    return (
-        <div>
-            <ResetLoginDataView/>
-        </div>
-    );
-}
+    trainerProfileRoute() {
+        return (
+            <div>
+                <TrainerProfileView/>
+            </div>
+        );
+    }
 
-function tourneyListRoute() {
-    return (
-        <div>
-            <TourneyListView/>
-        </div>
-    );
-}
+    trainingsdiaryRoute() {
+        return (
+            <div>
+                <KalendarView/>
+            </div>
+        );
+    }
 
-function trainerProfileRoute() {
-    return (
-        <div>
-            <TrainerProfileView/>
-        </div>
-    );
-}
+    trainingsdiaryDetailRoute() {
+        return (
+            <div>
+                <DetailsAnsichtController/>
+            </div>
+        );
+    }
 
-function trainingsdiaryRoute() {
-    return (
-        <div>
-            <KalendarView/>
-        </div>
-    );
-}
+    render() {
 
-function trainingsdiaryDetailRoute() {
-    return (
-        <div>
-            <DetailsAnsichtController/>
-        </div>
-    );
+        return (
+
+            <div>
+                <Router>
+                    <div>
+
+                        <Route exact path="/login" component={this.LoginRoute}/>
+                        <Route path="/playerList" component={this.PlayerListRoute}/>
+                        <Route path="/registration" component={this.RegistrationRoute}/>
+                        <Route exact path={'/playerprofile/:mail'} render={props=> <PlayerProfileController {...props}/>}/>
+                        <Route path={"/dataPrivacyStatement"} component={this.dataPrivacyStatementRoute}/>
+                        <Route path={"/editRights"} component={this.EditRightsRoute}/>
+                        <Route path={"/inviteUser"} component={this.InviteUserRoute}/>
+                        <Route path={"/jTP"} component={this.JTPRoute}/>
+                        <Route path={"/leistungsdiagnostik"} component={this.performanceDiagnosticsRoute}/>
+                        <Route path={"/benachrichtigungen"} component={this.notificationRoute}/>
+                        <Route path={"/resetLoginData"} component={this.resetLoginDataRoute}/>
+                        <Route path={"/tourneyList"} component={this.tourneyListRoute}/>
+                        <Route path={"/trainerProfile"} component={this.trainerProfileRoute}/>
+                        <Route path={"/trainingsdiary"} component={this.trainingsdiaryRoute}/>
+                        <Route path={"/trainingsdiarydetail"} component={this.trainingsdiaryDetailRoute}/>
+                        <Route path={"/athletVergleich"} component={this.VergleichRoute}/>
+                        <Route path={"/createWorkout"} component={this.CreateWorkoutRoute}/>
+                        <Route path={"/mAZList"} render={routeProps => <div>
+                            <MAZListView callbackFromParent={this.myCallback}/></div>}/>
+                        <Route exact path={'/mazDetail/:id'} render={props=> <MAZView {...props}  />} />
+
+                    </div>
+                </Router>
+            </div>
+
+
+        );
+    }
+
 }
 
 export default Navigator;

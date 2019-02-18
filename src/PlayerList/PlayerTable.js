@@ -38,7 +38,7 @@ class PlayerTable extends Component{
 
                         <div className="box1">
                             <div className="box11">
-                                <div><Label style={{color: 'white'}}>Einträge pro zeite: </Label></div>
+                                <div><Label style={{color: 'white'}}>Einträge pro Seite: </Label></div>
                                 <div><Dropdown placeholderClassName={""} className="auswahl" options={options}
                                                onChange={this._onSelect} value={defaultOption} placeholder=""/></div>
                             </div>

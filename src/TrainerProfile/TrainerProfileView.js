@@ -4,13 +4,16 @@ import "./TrainerProfile.css";
 import Confirmbutton from "../UI/Confirmbutton";
 import logo from "../Graphics/480px-PICA.jpg";
 import HeaderProfileView from "../UI/HeaderProfilView";
-import {myFunction} from "../UI/HeaderProfilController";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
 import EditTrainerProfileView from "./EditTrainerProfileView";
 import Popup from "reactjs-popup";
-import AddTourneyView from "../Tourney/AddTourneyView";
 import EditPasswordModalView from "./EditPasswordModalView";
 
-
+/**
+ * @author Daniela
+ * This is a table, which holds the Data of a trainer. If a authorized Person clicks on the edit Button, this View displays. Most of the cells are editable. The cell for the Birthdate is an date Input. The cell for the national Assosiation is an dropdown Input.
+ * @visibleName TrainerprofileView
+ */
 const modalStylePassword = {
     position: 'fixed',
     top: 0,
@@ -19,26 +22,53 @@ const modalStylePassword = {
     right: 0,
     backgroundColor: 'rgba(0,0,0,0.3)',
     paddingLeft: '15%',
-    paddingRight:'15%',
-    paddingTop:'10%',
-    paddingBottom:'auto',
+    paddingRight: '15%',
+    paddingTop: '10%',
+    paddingBottom: 'auto',
 
 };
+
 class TrainerProfileView extends Component {
 
     state = {
         triggerChangePassword: false,
+        saveButtonhidden: true,
+        editButtonhidden:false,
     }
-    changePassword=(e)=>{
+
+    onEdit = (e)=>{
         this.setState({
-            triggerChangePassword:true,
+            editButtonhidden: true,
+            saveButtonhidden: false,
         })
     }
-    cancelPassword=(e)=>{
+
+    onSave = (e)=>{
         this.setState({
-            triggerChangePassword:false,
+            editButtonhidden: false,
+            saveButtonhidden: true,
         })
     }
+
+    openChangePasswordView = (e) => {
+        this.setState({
+            triggerChangePassword: true,
+        })
+    }
+
+    cancelPassword = (e) => {
+        this.setState({
+            triggerChangePassword: false,
+        })
+    }
+
+    changePassword = (e)=>{
+        alert("Password wurde geändert");
+        this.setState({
+            triggerChangePassword: false,
+        })
+    }
+
     render() {
 
         const {
@@ -83,10 +113,10 @@ class TrainerProfileView extends Component {
 
         } = this.props
 
-        const ModalCreateTourney = () => (
+        const ModalCreatePassword = () => (
             <Popup open={this.state.triggerChangePassword} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStylePassword}>
-                    <EditPasswordModalView createEditPassword={this.confirmEditPassword} cancelEditPassword={this.cancelEditPassword}/>
+                    <EditPasswordModalView cancelEditPassword={this.cancelPassword} createEditPassword={this.changePassword}/>
                 </div>
             </Popup>
         )
@@ -97,57 +127,59 @@ class TrainerProfileView extends Component {
                       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
                       crossOrigin="anonymous"/>
 
-                <HeaderProfileView email = {emailUser}  myFunction={myFunction} >
+                <HeaderProfileView email={emailUser} myFunction={showDropdown_Header}>
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <main id={"mainTP"}>
-                        <div id="leftTP">
-                            <div id="leftTopLeftTP">
-                                <img src={logo} className="Trainer-Profil-pic" alt="ProfilBild Von Ahmad - Eigenes Werk, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=28947701" />
-                                <div id={"checkbox"}>
-                                    Aktiv: <Checkbox active={active} style={{width: '40px'}}onChange={setStatus}/>
-                                </div>
-                            </div>
-                            <div id={"ButtonsTrainer"}>
-                                <Confirmbutton className={"editTP"} onClick={onEdit} hidden={edithidden}>Bearbeiten</Confirmbutton>
-                                <Confirmbutton id={"saveTP"} onClick={onSave} hidden={savehidden}>Speichern</Confirmbutton>
-                                <Confirmbutton id={"changePW"} onClick={setPassword}>Passwort ändern</Confirmbutton>
+                    <div id="leftTP">
+                        <div id="leftTopLeftTP">
+                            <img src={logo} className="Trainer-Profil-pic"
+                                 alt="ProfilBild Von Ahmad - Eigenes Werk, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=28947701"/>
+                            <div id={"checkbox"}>
+                                Aktiv: <Checkbox active={active} style={{width: '40px'}} onChange={setStatus}/>
                             </div>
                         </div>
-                        <div id="rightTP">
-                            <div id={"profileDataTitle"}>Profildaten</div>
-                            <EditTrainerProfileView id={"TrainerProfileDataTable"}
-                                             setName={setName}
-                                             setSurName={setSurName}
-                                             setMail={setMail}
-                                             setBrithdate={setBirthdate}
-                                             setCity={setCity}
-                                             setZIP={setZIP}
-                                             setStreet={setStreet}
-                                             setHouseNbr={setHouseNbr}
-                                             setSquad={setSquad}
-                                             setSPin={setSPin}
-                                             setLandlaneNumber={setLandlaneNumber}
-                                             setMobileNumber={setMobileNumber}
-                                             setNationalAssosiation={setNationalAssosiation}
+                        <div id={"ButtonsTrainer"}>
+                            <Confirmbutton className={"editTP"} myStyle={{width:'200px'}} onClick={this.onEdit}
+                                           hidden={this.state.editButtonhidden}>Bearbeiten</Confirmbutton>
+                            <Confirmbutton id={"saveTP"} myStyle={{width:'200px'}}onClick={this.onSave} hidden={this.state.saveButtonhidden}>Speichern</Confirmbutton>
+                            <Confirmbutton id={"changePW"}myStyle={{width:'200px'}} onClick={this.openChangePasswordView}>Passwort ändern</Confirmbutton>
+                        </div>
+                    </div>
+                    <div id="rightTP">
+                        <div id={"profileDataTitle"}>Profildaten</div>
+                        <EditTrainerProfileView id={"TrainerProfileDataTable"}
+                                                setName={setName}
+                                                setSurName={setSurName}
+                                                setMail={setMail}
+                                                setBrithdate={setBirthdate}
+                                                setCity={setCity}
+                                                setZIP={setZIP}
+                                                setStreet={setStreet}
+                                                setHouseNbr={setHouseNbr}
+                                                setSquad={setSquad}
+                                                setSPin={setSPin}
+                                                setLandlaneNumber={setLandlaneNumber}
+                                                setMobileNumber={setMobileNumber}
+                                                setNationalAssosiation={setNationalAssosiation}
 
-                                             name={name}
-                                             surname={surname}
-                                             mail={mail}
-                                             birthdate={birthdate}
-                                             city={city}
-                                             zip={zip}
-                                             street={street}
-                                             houseNbr={houseNbr}
-                                             mobileNumber={mobileNumber}
-                                             landlaneNumber={landlaneNumber}
-                                             nationalAssosiation={nationalAssosiation}
-                                             nationalAssosiationhidden={edithidden}
-                                             nationalAssosiationdropdownhidden={savehidden}
-                            />
+                                                name={name}
+                                                surname={surname}
+                                                mail={mail}
+                                                birthdate={birthdate}
+                                                city={city}
+                                                zip={zip}
+                                                street={street}
+                                                houseNbr={houseNbr}
+                                                mobileNumber={mobileNumber}
+                                                landlaneNumber={landlaneNumber}
+                                                nationalAssosiation={nationalAssosiation}
+                                                nationalAssosiationhidden={edithidden}
+                                                nationalAssosiationdropdownhidden={this.state.saveButtonhidden}
+                        />
                     </div>
                 </main>
-
+                <ModalCreatePassword/>
             </Fragment>
         );
     }

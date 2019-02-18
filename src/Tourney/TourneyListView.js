@@ -8,6 +8,12 @@ import Popup from "reactjs-popup";
 import AddVacationView from "../JTP/AddVacationView";
 import AddTourneyView from "./AddTourneyView";
 
+/**
+ * @author Daniela
+ * This View contains a List of all Tourneys. A specific period can be choosen.
+ * @visibleName TourneyListView
+ */
+
 function makeData() {
     return [
         {

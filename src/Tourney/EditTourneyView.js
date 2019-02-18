@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import Input from "../UI/Input";
 import Confirmbutton from "../UI/Confirmbutton";
 
-
-
-class AddTourneyView extends Component {
+/**
+ * @author Daniela
+ * This View contains a Form for editing a Tourney.
+ * @visibleName EditTourneyView
+ */
+class EditTourneyView extends Component {
     render() {
         const{
             createTourney,
@@ -53,4 +56,4 @@ class AddTourneyView extends Component {
     }
 }
 
-export default AddTourneyView;
+export default EditTourneyView;
