@@ -1,0 +1,91 @@
+/**
+ * @author Daniela
+ * This File contains the Styles for the PlayerProfile View
+ * @visibleName Player Profile CSS
+ **/
+#mainPP {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    padding-bottom: 10%;
+    font-family: Arial;
+}
+
+#Trainerprofile{
+    height: 100%;
+}
+
+#pPleft,#pPmiddle,#pPright {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 0.5%;
+    margin-bottom: 2%;
+    background-color: #f19a29;
+    border: 2px solid black;
+    justify-content: space-between;
+}
+#pPleft{
+    width: 30%;
+}
+
+#pPmiddle{
+    width: 40%;
+}
+
+#pPright{
+    width: 20%;
+}
+.Profil-pic{
+    width: 150px;
+    height: 150px;
+    margin:auto;
+}
+#checkbox{
+    font-size: 15pt;
+    margin-bottom: 2%;
+}
+#AthlethInput{
+    width: 20px;
+    height: 10px;
+}
+
+#profileDataTitle {
+    font-size: 14pt;
+    margin-left: 3%;
+    margin-bottom: 2%;
+}
+
+#profileDataTable {
+    margin-left: auto;
+    width: 80%;
+    margin-right: auto;
+}
+
+#pPright  button{
+    width: 100%;
+    margin-bottom: 3%;
+}
+#pPright > div{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+#edit {
+    width: 30px;
+}
+
+@media screen and (max-width: 480px) {
+    #right {
+        height: calc(100vh + 20px);
+    }
+
+    #profileDataTitle {
+        font-size: 20pt;
+    }
+
+    #leftBottom {
+        align-items: center;
+    }
+}
