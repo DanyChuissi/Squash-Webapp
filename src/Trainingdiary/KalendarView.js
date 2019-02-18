@@ -17,46 +17,122 @@ const modalStyle = {
     backgroundColor: 'rgba(0,0,0,0.3)',
     padding: 30,
     justifyContent: 'fitcontent',
+    overflow: 'scroll',
 };
+
+/*
+* 1 Technik
+* 2 Ausdauer
+* 3 Beweglichkeit
+* 4 Kraft
+* 5 Schnelligkeit
+* 6 Taktik
+* */
 
 class KalendarView extends Component {
 
     state = {culture: 'de',
         trigger:false,
+        isLoaded: false,
+        trainingsdaten: [],
+        id_event: 1,
+        index: 0,
+        myList: [],
+        isLoaded2: false
+    }
+    componentDidMount(): void {
+        fetch("http://172.22.24.243:50596/trainingsdaten?email=jens@testemail3.de")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        trainingsdaten: result,
+                    });
+                    console.log(this.state.trainingsdaten)
+
+                    let myEventsList = [];
+                    if(this.state.trainingsdaten.length > 0 && this.state.isLoaded ) {
+                        while (this.state.index < this.state.trainingsdaten.length) {
+                            var event = {
+                                id: this.state.index,
+                                title: this.findTitelName(this.state.trainingsdaten[this.state.index].schwerpunkt_NR),
+                                start: new Date(this.state.trainingsdaten[this.state.index].datum),
+                                end: new Date(this.state.trainingsdaten[this.state.index].datum),
+                            }
+                            myEventsList = [...myEventsList, event];
+                            this.setIndex();
+                        }
+                        this.setState({myList: myEventsList, istLoaded2: true})
+                        console.log(myEventsList)
+                    }
+
+                },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+            this.setState({
+                isLoaded:true,
+                error
+            });
+            console.log(error)
+        }
+            )
+
+    }
+    findTitelName =(Schwerpunklt_Nr)=> {
+        var erg = "keine Angabe";
+        switch (Schwerpunklt_Nr) {
+            case 1 :{erg = "Technik";  break}
+            case 2 :{ erg = "Ausdauer"; break}
+            case 3 :{ erg =  "Beweglichkeit"; break}
+            case 4 :{erg =  "Kraft"; break}
+            case 5 :{erg =  "Schnelligkeit"; break}
+            case 6 :{ erg = "Taktik"; break}
+            default: {erg =  "Keine Angabe"}
+        }
+        return erg;
     }
 
-    displayEvent = (evnt, SyntheticEvent) => {
-        this.setState({trigger: true})
+
+    displayEvent = (evnt) => {
+
+        this.setState({
+            id_event: evnt,
+            trigger: true})
+    }
+    setIndex = () =>{
+        this.setState({index: this.state.index+1});
     }
 
     render() {
-const Modal =()=>(
+        const Modal =()=>(
     <Popup open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
         <div style={modalStyle}>
-            <DetailsAnsichtView datum={"12-02-2018"}
-                                 schwerpunkt={"Technik(Ausdauer)"}
-                                 dauer={"120"}
-                                 intensitaet={"4"}
-                                 uebungen={"A B C D"}
-                                 mentale_Ersch={"4"}
-                                 bemerkung={"Alles gut"}
-                                 koerperliche_Ersch={"5"}
-                                 muskelkarter={"2"}
-                                 puls={"rechts als Diagramm"}
-                                 aenderungswuensche={"keine"}
-                                 schlafdauer={"7 Stunden"}
-                                 gewicht={"70"}
-                                 maximale_herzf={"180"}
-                                 minimale_herzf={"70"}
-                                 durschnittliche_herzf={"100"}
-                                 wegstrecke={"(Ausdauer-Outdoor"}
-                                 geschwindigkeit={"Ausdauer-Outdoor"}
-                                 geaendert_am={"geändert am 26.11.2018"}/>
+            {this.state.trainingsdaten.length>0 ?<DetailsAnsichtView  datum={this.state.trainingsdaten[this.state.id_event].datum}
+                                 schwerpunkt={this.state.trainingsdaten[this.state.id_event].schwerpunkt_NR}
+                                 dauer={this.state.trainingsdaten[this.state.id_event].dauer}
+                                 intensitaet={this.state.trainingsdaten[this.state.id_event].intensitaet}
+                                 uebungen={this.state.trainingsdaten[this.state.id_event].uebungen}
+                                 mentale_Ersch={this.state.trainingsdaten[this.state.id_event].mentale_erschoepfung}
+                                 bemerkung={this.state.trainingsdaten[this.state.id_event].bemerkumg}
+                                 koerperliche_Ersch={this.state.trainingsdaten[this.state.id_event].koerperliche_erschoepfung}
+                                 muskelkarter={this.state.trainingsdaten[this.state.id_event].muskelkater}
+                                 puls={this.state.trainingsdaten[this.state.id_event].pulskurve}
+                                 aenderungswuensche={this.state.trainingsdaten[this.state.id_event].aenderungswuensche}
+                                 schlafdauer={this.state.trainingsdaten[this.state.id_event].schlafdauer}
+                                 gewicht={this.state.trainingsdaten[this.state.id_event].gewicht}
+                                 maximale_herzf={this.state.trainingsdaten[this.state.id_event].max_herzfrequenz}
+                                 minimale_herzf={this.state.trainingsdaten[this.state.id_event].min_herzfrequenz}
+                                 durschnittliche_herzf={this.state.trainingsdaten[this.state.id_event].durch_herzfrequenz}
+                                  pulskurve={this.state.trainingsdaten[this.state.id_event].pulskurve}/>: null}
         </div>
     </Popup>
     )
 
-        const myEventsList = [
+        console.log(this.state.myList);
+        const myEventsListe = [
             {
                 id: 0,
                 title: 'All Day Event very long title',
@@ -179,25 +255,27 @@ const Modal =()=>(
             showMore: total => `+ total (${total})`
         };
 
-        return (
-            <div className="App">
+            return (
+                <div className="App">
 
 
-                <div id={"cal"}>
-                    <BigCalendar messages={messages}
-                                 localizer={localizer}
-                                 selectable={true}
-                                 popup={true}
-                                 onSelectEvent={this.displayEvent}
-                                 events={myEventsList}
-                                 startAccessor="start"
-                                 endAccessor="end"
-                                 culture={this.state.culture}
-                    />
+                    <div id={"cal"}>
+                        <BigCalendar messages={messages}
+                                     localizer={localizer}
+                                     selectable={true}
+                                     popup={true}
+                                     onSelectEvent={(event) => this.displayEvent(event.id)}
+                                     events={this.state.myList}
+                                     startAccessor="start"
+                                     endAccessor="end"
+                                     culture={this.state.culture}
+                        />
+                    </div>
+
+                    <Modal/>
                 </div>
-                <Modal/>
-            </div>
-        );
+            );
+      //  }
     }
 }
 

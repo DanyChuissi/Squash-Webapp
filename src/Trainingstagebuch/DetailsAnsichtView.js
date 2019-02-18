@@ -15,7 +15,7 @@ import ReactTable from "react-table";
 
 class DetailsAnsichtView extends React.Component {
 
-    postDaten = () => {
+    /*postDaten = () => {
         fetch(
             'http://172.22.24.243:50596/trainingsdaten', {
                 method: 'POST',
@@ -45,7 +45,7 @@ class DetailsAnsichtView extends React.Component {
             }).then(res => res.json())
             .then(response => console.log('Success:', JSON.stringify(response)))
             .catch(error => console.error('Error:', error));
-        }
+        }*/
 
     render() {
         const {
@@ -68,13 +68,15 @@ class DetailsAnsichtView extends React.Component {
             wegstrecke,
             geschwindigkeit,
             geaendert_am,
+            pulskurve,
 
 
 
         } = this.props;
 
+
         /** Daten für die Kurve Diagramm*/
-        const graph_data = [
+        const graph_data1 = [
             {name: 'Zp 1',  Herzfrequenz: 90},
             {name: 'Zp 2',  Herzfrequenz: 91},
             {name: 'Zp 3',  Herzfrequenz: 93},
@@ -90,6 +92,13 @@ class DetailsAnsichtView extends React.Component {
             {name: 'Zp 12', Herzfrequenz: 90},
             {name: 'Zp 13', Herzfrequenz:100},
         ];
+        let graph_data = [];
+        let pulskurveLength = pulskurve.length;
+        if(pulskurveLength > 0){
+            for(var i =0; i < pulskurveLength;i++){
+                graph_data = [...graph_data, {name: 'Zp '+pulskurve[0].pulsindex, Herzfrequenz: pulskurve[i].pulswert}]
+            }
+        }
 
         return (
 
@@ -149,7 +158,7 @@ class DetailsAnsichtView extends React.Component {
                         </tr>
                         <tr id={"table_css"}>
                             <th className="th">Puls</th>
-                            <td >{puls}</td>
+                            <td >{}</td>
                             <td>{}</td>
                         </tr>
                         <tr id={"table_css"}>
@@ -197,7 +206,7 @@ class DetailsAnsichtView extends React.Component {
                         </tbody>
                     </table>
                  {   /** Responsive Kurve Diagramm*/}
-                 <button onClick={this.postDaten}> post</button>
+                {/* <button onClick={this.postDaten}> post</button>*/}
                     <div className="diagramm">
                         <ResponsiveContainer>
                             <LineChart width={500} height={500} data={graph_data}
