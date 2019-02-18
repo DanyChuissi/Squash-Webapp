@@ -1,0 +1,181 @@
+/**
+ * @author Daniela
+ * This File contains the Styles for the MAZ Views
+ * @visibleName MAZ CSS
+ **/
+
+/** Start MAZ List View **/
+#mAZListView h2 {
+    padding-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+#mAZListView {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+/** End MAZ List View **/
+/** Start Create MAZ Phase **/
+#createMAZView {
+    background-color: #f19a29;
+}
+
+#createMAZView h2 {
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+}
+
+#mAZPhase {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 16pt;
+}
+
+#mAZPhase * {
+    margin-top: 1%;
+}
+
+#mAZPhase input {
+    width: 60%;
+}
+
+#mAZPhaseSelect {
+    width: 300px;
+}
+
+#descriptionFormCreateMAZ {
+    margin-top: 2.5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#MAZDescription {
+    width: 50%;
+}
+
+#multiselectEmphasis {
+    width: 300px;
+}
+
+#bottomCreateMAZView {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-bottom: 2.5%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#startMAZ {
+    width: 300px;
+}
+
+#endMAZ {
+    width: 300px;
+}
+
+#mAZDescription {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+}
+
+#MaZPhaseLabel {
+    margin-right: 2.5%;
+}
+
+#mAZPhase select {
+    border-radius: 20px;
+}
+
+#MAZDescription {
+    width: 60%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+/**End Create MAZ Phase **/
+/**Start MAZ Detail View **/
+
+#detailMAZView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mAZDetailInfos {
+    display: flex;
+    justify-content: center;
+    background-color: #f19a29;
+    border-radius: 25px;
+    width: 90%;
+    margin-bottom: 2.5%;
+}
+
+#mAZDetailInfos label {
+    font-weight: bold;
+}
+
+#mAZDetailInfosLeft, #mAZDetailInfosRight {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+#mAZDetailInfosLeft {
+    margin-right: 10%;
+}
+
+#mAZWorkoutList,#mAZExcerciseLists {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f19a29;
+    border-radius: 25px;
+    width: 90%;
+    margin-bottom: 2.5%;
+}
+
+#mAZWorkoutList h2{
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#mAZWorkoutListButtons{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    padding-bottom: 1.5%;
+}
+
+#mAZExcerciseLists h2{
+    width: 55%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#mAZExcerciseListsButton{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**End MAZ Detail View**/
