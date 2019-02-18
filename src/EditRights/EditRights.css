@@ -1,4 +1,8 @@
-/**EditRights**/
+/**
+ * @author Daniela
+ * This Stylesheed contains the Styles of the Edit Rights View.
+ * @visibleName EditRights
+ */
 .EditRights {
     display: grid;
     grid-template-columns: 60% auto;

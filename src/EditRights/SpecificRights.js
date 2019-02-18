@@ -5,8 +5,12 @@ import './EditRights.css'
 import 'react-table/react-table.css';
 import ReactTable from "react-table";
 import deleteIcon from "../Graphics/trash_bin_icon-icons.com_67981.png"
-import {TabPanel} from "react-tabs";
 
+/**
+ * @author Daniela
+ * View that displays a table where the rights for a specific Athlete can be set.
+ * @visibleName SpecificRights
+ */
 class SpecificRights extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +25,7 @@ class SpecificRights extends Component {
             onDeleteAthletRights,
 
         }=this.props
+        /**Columns that show the Athletname and the types of Rights**/
         const columns = [
             {
                 Header: "Athlet",
@@ -107,8 +112,6 @@ class SpecificRights extends Component {
                 sortable: false,
                 width: 30
             },
-
-
         ];
 
         return (
@@ -121,7 +124,7 @@ class SpecificRights extends Component {
                     previousText={'Zurück'}
                     nextText={'Nächste'}
                     loadingText={'Laden...'}
-                    noDataText={'Keine Athlete gefunden'}
+                    noDataText={'Kein Athlet gefunden'}
                     pageText={'Seite'}
                     ofText={'von'}
                     rowsText={'Zeilen'}
