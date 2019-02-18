@@ -11,6 +11,7 @@ import {showDropdown_Header} from '../UI/HeaderProfilController';
 /**
  * @author Dany Chuissi
  *
+ * Nicht benutzt
  * @visibleName PlayerProfilView
  */
 class PlayerTable extends Component{

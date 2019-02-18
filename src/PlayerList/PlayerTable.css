@@ -85,7 +85,7 @@
 .box11  {
     display: grid;
     background-color: #f19a29;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-rows: auto;
     justify-content: center;
 }

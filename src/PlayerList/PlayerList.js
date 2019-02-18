@@ -9,22 +9,27 @@ import "react-table/react-table.css";
  */
 
 class PlayerList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(this.props)
         this.state = {
-            players:[],
-            trainer: '1',
-            suchen: false,
-            name: '',
-            rowInfos: [],
+            players: [],
         }
     }
 
     /**
      * Die Spielern werden mit der Methode direkt beim Aufruf der Seite aufgeladen
      */
-    componentDidMount() {
-        fetch("http://172.22.24.243:8080/player/trainernr?trainer=" + this.state.trainer)
+    componentWillMount() {
+
+
+        var url = '';
+        if(!this.props.suchen || this.props.suchBegriff === ''){
+            url = "http://172.22.24.243:50594/player/trainernr?trainer=" + this.props.trainer;
+        }else{
+            url = 'http://172.22.24.243:50594/player/name?name='+ this.props.suchBegriff
+        }
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -43,7 +48,15 @@ class PlayerList extends Component {
                     });
                 }
             )
+        console.log(url)
     }
+/*
+    componenetDidMount(): void {
+        this.setState({
+            players: [],
+        })
+
+    }*/
 
     /**
      * Die Methode nihmmt Info von dem Element auf dem es gecklickt wurde
@@ -69,17 +82,18 @@ class PlayerList extends Component {
     }
 
     render(){
-        const {trainer,name,players,onRowClick} = this.props;
+        const {trainer,onRowClick,players, suchen, suchBegriff} = this.props;
 
-       // this.setState({trainer: trainer});
-
-        //const {data} = this.state.players;
+        let data = this.state.players;
+        if(suchen) {
+            data = players;
+        }
 
 
             return (
 
                 <div><ReactTable
-                    data = {players}
+                    data = {data}
                     columns={[
                         {
                             Header: "Vorname",
