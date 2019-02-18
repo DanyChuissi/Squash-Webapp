@@ -42,8 +42,8 @@ class Athlet_Vergleich extends Component{
     constructor() {
         super();
         this.state = {
-            players: [ av,a1, a2, a3],
-            physisDaten: [PDaten1, PDaten2, PDaten3],
+            players: [ ],
+            physisDaten: [],
             physisDaten_zu_vergleichen: [],
             athlet_zu_vergl: [],
             hideliste: true,
@@ -115,7 +115,25 @@ class Athlet_Vergleich extends Component{
         });
         return erg;
     }
-
+    componentDidMount(): void {
+        fetch("http://172.22.24.243:50594/player/trainernr?trainer=" + 1)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        players: result
+                    });
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        error
+                    });
+                }
+            )
+    }
 
     /**
      * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
@@ -141,7 +159,26 @@ class Athlet_Vergleich extends Component{
         let erg = null;
         this.state.testArrayDatum.map( (daten) => {
             if(daten.email === email){
-                erg = daten
+                fetch("http://172.22.24.243:50593/LD/email?email="+ daten.email)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            this.setState({
+
+                                erg: result,
+
+                            });
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            this.setState({
+                                isLoaded: true,
+                                error
+                            });
+                        }
+                    );
             }
         });
         return erg;
@@ -184,23 +221,27 @@ class Athlet_Vergleich extends Component{
      */
     addAthlet_zu_vergl (){
        if(this.state.index !== 0) {
+
            let pname = this.state.players[this.state.index].name;
            let pvorname = this.state.players[this.state.index].vorname + '  ';
            let pemail = this.state.players[this.state.index].email;
            let daten = this.getTestdatenvonSelectetAthlet(pemail)
-           daten.name = pvorname +' '+ pname;
+           if(!typeof daten === 'undefined') {
+               daten.name = pvorname + ' ' + pname;
 
-           if (this.pruefeVorhanden(pemail) !== true) {
-               let PhysisDaten = this.getPlayerPhysisDaten(pemail);
-               PhysisDaten.name = pvorname + ' ' + pname;
-               this.setState({
-                   athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
-                   physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
-                   hideliste: false,
-               })
-           }
-           else {
-               alert("Athlet schon hinzufügt");
+               if (this.pruefeVorhanden(pemail) !== true) {
+                   let PhysisDaten = this.getPlayerPhysisDaten(pemail);
+                   PhysisDaten.name = pvorname + ' ' + pname;
+                   this.setState({
+                       athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
+                       physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
+                       hideliste: false,
+                   })
+               } else {
+                   alert("Athlet schon hinzufügt");
+               }
+           }else{
+               alert('Athlet hat noch keine TestBaterie gespeichert')
            }
        }else{
            alert("Bitte Athlet wählen");

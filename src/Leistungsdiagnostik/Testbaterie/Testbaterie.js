@@ -75,6 +75,9 @@ class Testbaterie extends Component {
             closePopUpInfo,
             postTestBaterie,
             Infonummer,
+            setTestbaterie,
+            testBaterie,
+            initDaten,
         } = this.props;
 
         let Style = {};
@@ -119,7 +122,10 @@ class Testbaterie extends Component {
                                 </IconContext.Provider>
 
                             </th>
-                            <td style={Style}   placeholder={"No Data Found"} onChange={setBeweglichtkeit} contentEditable={contentEditable} >{beweglichtkeit}</td>
+                            <td  id={"testbaterie"} onChange={setBeweglichtkeit}>
+                                <Input type="number"  hidden={!contentEditable} style={Style}   placeholder={beweglichtkeit} onChange={setBeweglichtkeit} required/>
+                                <div hidden={contentEditable}>{beweglichtkeit}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">
@@ -128,7 +134,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(2)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setReaktion} contentEditable={contentEditable} >{reaction}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable} >
+                                <Input type="number" hidden={!contentEditable} style={Style} placeholder={reaction} onChange={setReaktion} />
+                                <div hidden={contentEditable}>{reaction}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">
@@ -137,7 +146,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(3)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setKoordination} contentEditable={contentEditable} >{koordination}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable} >
+                                <Input type="number" hidden={!contentEditable} style={Style} placeholder={koordination} onChange={setKoordination} />
+                                <div hidden={contentEditable}>{koordination}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">Sprint[sec]
@@ -145,7 +157,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(4)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setSprint} contentEditable={contentEditable} >{sprint}</td>
+                            <td id={"testbaterie"} contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={sprint} onChange={setSprint} />
+                                <div hidden={contentEditable}>{sprint}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">J & R
@@ -153,7 +168,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(5)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setJandR} contentEditable={contentEditable} >{JandR}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={JandR} onChange={setJandR}/>
+                                <div hidden={contentEditable}>{JandR}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">Med Ball
@@ -161,7 +179,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(6)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setMedBall} contentEditable={contentEditable} >{med_ball}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={med_ball} onChange={setMedBall}/>
+                                <div hidden={contentEditable}>{med_ball}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">StWS
@@ -169,7 +190,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(7)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setStWS} contentEditable={contentEditable} >{stws}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={stws} onChange={setStWS}/>
+                                <div hidden={contentEditable}>{stws}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">Agilität
@@ -177,7 +201,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(8)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setAgilitaet} contentEditable={contentEditable} >{agilitaet}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={agilitaet}  onChange={setAgilitaet}/>
+                                <div hidden={contentEditable}>{agilitaet}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">BORG Test
@@ -185,7 +212,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(9)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setBorg} contentEditable={contentEditable} >{borg}</td>
+                            <td id={"testbaterie"}  contentEditable={contentEditable}>
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={borg}  onChange={setBorg}/>
+                                <div hidden={contentEditable}>{borg}</div>
+                            </td>
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName">Beep Test
@@ -193,7 +223,10 @@ class Testbaterie extends Component {
                                     <h3 onClick={e =>displayEventInfo(10)}><GoInfo/></h3>
                                 </IconContext.Provider>
                             </th>
-                            <td style={Style}  placeholder={"No Data Found"} onChange={setBeepTest} contentEditable={contentEditable} >{beep_test}</td>
+                            <td  id={"testbaterie"}  contentEditable={contentEditable} >
+                                <Input type="number" hidden={!contentEditable} style={Style}  placeholder={beep_test} onChange={setBeepTest}/>
+                                <div hidden={contentEditable}>{beep_test}</div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

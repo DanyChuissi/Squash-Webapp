@@ -89,6 +89,21 @@ class KurvenDiagramm extends Component {
                     {name: 'Beep test', a1: attribute[0].beep_test, a2: attribute[1].beep_test, a3: attribute[2].beep_test},
                 ];
                 break;
+            default: {
+                name1 = attribute.date;
+                data = [
+                    {name: 'Beweglichkeit', a1: attribute.bew},
+                    {name: 'Reaktion', a1: attribute.react},
+                    {name: 'Koordination', a1: attribute.koord},
+                    {name: 'Sprint', a1: attribute.sprint},
+                    {name: 'J & R', a1: attribute.JnR},
+                    {name: 'StWs', a1: attribute.StWS},
+                    {name: 'Med.Ball', a1: attribute.medBall},
+                    {name: 'Agilität', a1: attribute.agil},
+                    {name: 'BORG Test', a1: attribute.BORG},
+                    {name: 'Beep test', a1: attribute.Bleep},
+                ];
+            }
         }
 
 
@@ -116,6 +131,25 @@ class KurvenDiagramm extends Component {
             lines = [...lines, l2];
             lines = [...lines, l3];
             }
+
+        /* Für ein Element*/
+        name1 = attribute.date;
+        data = [
+            {name: 'Beweglichkeit', a1: attribute.bew},
+            {name: 'Reaktion', a1: attribute.react},
+            {name: 'Koordination', a1: attribute.koord},
+            {name: 'Sprint', a1: attribute.sprint},
+            {name: 'J & R', a1: attribute.JnR},
+            {name: 'StWs', a1: attribute.StWS},
+            {name: 'Med.Ball', a1: attribute.medBall},
+            {name: 'Agilität', a1: attribute.agil},
+            {name: 'BORG Test', a1: attribute.BORG},
+            {name: 'Beep test', a1: attribute.Bleep}
+            ];
+        l = <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
+        lines = [...lines, l];
+        console.log(data)
+        console.log(l)
 
 
         return (

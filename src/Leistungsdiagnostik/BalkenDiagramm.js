@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Line} from 'recharts';
 import ResponsiveContainer from "recharts/es6/component/ResponsiveContainer";
 import Confirmbutton from "../UI/Confirmbutton";
 import './Leistungdiagnostik.css';
@@ -120,6 +120,31 @@ class BalkenDiagramm extends Component {
             bars  = [...bars , b3];
         }
 
+        /* Für ein Element*/
+        if(!attribute.isArray) {
+            name1 = attribute.date;
+            data = [
+                {name: 'Beweglichkeit', a1: attribute.bew},
+                {name: 'Reaktion', a1: attribute.react},
+                {name: 'Koordination', a1: attribute.koord},
+                {name: 'Sprint', a1: attribute.sprint},
+                {name: 'J & R', a1: attribute.JnR},
+                {name: 'StWs', a1: attribute.StWS},
+                {name: 'Med.Ball', a1: attribute.medBall},
+                {name: 'Agilität', a1: attribute.agil},
+                {name: 'BORG Test', a1: attribute.BORG},
+                {name: 'Beep test', a1: attribute.Bleep}
+            ];
+
+            b = <Bar name={name1} type="monotone" dataKey="a1" fill="#2980B9"/>;
+            bars = [...bars, b];
+
+            console.log(("longeur: " + data.length))
+            if (data.length === 0) {
+                data = {label: 'No data available', a1: 'No data available'}
+// OR data = undefined;
+            }
+        }
 
         return (
             <Fragment>

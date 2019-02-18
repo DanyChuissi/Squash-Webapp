@@ -17,6 +17,8 @@ class Komemntar extends Component{
         kommentarPlaceholder: 'Neuer Kommentar eingeben',
         id_kommentar: 0,
         kommentar: '',
+        id_kommentarToChange: -1,
+        hiddeChangeButton: true,
     }
     /**
      * neue Kommentare sollen mit der Methode gepostet. zurzeit werden diese nur in einem feld hinzugefügt
@@ -58,6 +60,8 @@ class Komemntar extends Component{
 
         this.setState({
             kommentar: erg.text,
+            id_kommentarToChange: id,
+            hiddeChangeButton: !this.state.hiddeChangeButton,
         })
 
     }
@@ -65,6 +69,21 @@ class Komemntar extends Component{
     this.setState({
         kommentar: e.target.value,
     })
+   }
+    /**
+     * Change Kommentar ändern ein existierenden Kommentar
+     */
+   changeKommentar = () => {
+        //let komment = this.state.kommentare[this.state.id_kommentarToChange];
+            let kommentare2 = this.state.kommentare;
+            if(this.state.id_kommentarToChange !== -1) {
+                kommentare2[this.state.id_kommentarToChange].text = this.state.kommentar;
+                this.setState({
+                    kommentare: kommentare2,
+                    hiddeChangeButton: !this.state.hiddeChangeButton,
+                    kommentar: '',
+                })
+            }
    }
 
    render () {
@@ -105,12 +124,15 @@ class Komemntar extends Component{
                        {komments}
                    </div>
                  {/*  {myTextArea}*/}
-                   <textarea placeholder={this.state.kommentarPlaceholder} onChange={this.setKommentar}>
+                   <textarea value={this.state.kommentar} placeholder="Neuer Kommentar eingeben" onChange={this.setKommentar}>
 
-                          </textarea>
+                   </textarea>
 
-                   <Confirmbutton onClick={this.kommentar_posten} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
+                   <Confirmbutton hidden={!this.state.hiddeChangeButton} onClick={this.kommentar_posten} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
                        Kommentar senden
+                   </Confirmbutton>
+                   <Confirmbutton hidden={this.state.hiddeChangeButton} onClick={this.changeKommentar} myStyle= {{padding: '9px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}}>
+                       Änderung senden
                    </Confirmbutton>
                </div>
            </Fragment>

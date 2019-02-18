@@ -11,23 +11,27 @@ import Testbaterie from './Testbaterie';
 
 
 class TestBaterieController extends Component {
-    state={
-        beweglichtkeit: '',
-        reaction: '',
-        koordination: '',
-        sprint: '',
-        JandR: '',
-        med_ball: '',
-        stws: '',
-        agilitaet: '',
-        borg: '',
-        beep_test: '',
-        hideBearbeiten: false,
-        hideSpeichern: true,
-        contenEditable: false,
-        trigger : false,
-        triggerInfo: false,
-        Infonummer: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            beweglichtkeit: this.props.beweglichtkeit,
+            reaction: this.props.reaction,
+            koordination: this.props.koordination,
+            sprint: this.props.sprint,
+            JandR: this.props.JandR,
+            med_ball: this.props.med_ball,
+            stws: this.props.stws,
+            agilitaet: this.props.agilitaet,
+            borg: this.props.borg,
+            beep_test: this.props.beep_test,
+            hideBearbeiten: false,
+            hideSpeichern: true,
+            contenEditable: false,
+            trigger: false,
+            triggerInfo: false,
+            Infonummer: '',
+            testBaterie: this.props.testBaterie,
+        }
     }
 
     componentdidMount = () => {
@@ -37,6 +41,9 @@ class TestBaterieController extends Component {
     postData = () => {
         //TODO Daten zum Server schicken
     }
+  /*  setTestbaterie = (e) => {
+        this.setState({TestBaterie: e.target.value})
+    }*/
     setBeweglichtkeit = (e) => {
         this.setState({beweglichtkeit: e.target.value})
     }
@@ -56,6 +63,7 @@ class TestBaterieController extends Component {
     }
 
     setMedBall = (e) => {
+        console.log(e.target.value)
         this.setState({med_ball: e.target.value})
     }
     setStWS = (e) => {
@@ -67,6 +75,7 @@ class TestBaterieController extends Component {
     }
     setBorg = (e) => {
         this.setState({borg: e.target.value})
+        console.log((this.state.borg))
     }
 
     setBeepTest = (e) => {
@@ -90,14 +99,59 @@ class TestBaterieController extends Component {
         this.setContentEditable(true);
         this.setHideButton();
     }
+    /*initDaten = (alteDaten) => {
+        console.log(this.state)
+        this.setState({
+            beweglichtkeit: alteDaten.bew,
+            reaction: alteDaten.react,
+            koordination: alteDaten.koord,
+            sprint: alteDaten.sprint,
+            JandR: alteDaten.JnR,
+            med_ball: alteDaten.medBall,
+            stws: alteDaten.StWS,
+            agilitaet: alteDaten.agil,
+            borg: alteDaten.BORG,
+            beep_test: 12232,
+        })
+        console.log(this.state)
+    }*/
     /**
      * Die Content in der Tabelle werden mit der Methode auf nicht etitable gesetzt
      */
     onSave = () => {
+        console.log(this.state.testBaterie)
+            fetch("http://172.22.24.243:50593/LD?email="+this.state.testBaterie.email+"&date="+this.state.testBaterie.date, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: this.state.testBaterie.email,
+                    date: this.state.testBaterie.date,
+                    bew: this.state.beweglichtkeit,
+                    react: this.state.reaction,
+                    koord: this.state.koordination,
+                    sprint: this.state.sprint,
+                    JnR: this.state.JandR,
+                    medBall: this.state.med_ball,
+                    StWS: this.state.stws,
+                    agil: this.state.agilitaet,
+                    BORG: this.state.borg,
+                    Bleep: this.state.borg,
+                    height:  this.state.testBaterie.height,
+                    weight: this.state.testBaterie.weight,
+                    bodyfat: this.state.testBaterie.bodyfat,
+                    leglength: this.state.testBaterie.leglength,
+                    angle: this.state.testBaterie.angle
+                })
+            }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
+            alert("Testbatterie gespeichert");
         this.setContentEditable(false);
         this.setHideButton();
-        alert("Neue Werte gespeichert");
-    }
+        }
+
     displayEvent = (evnt, SyntheticEvent) => {
         this.setState({trigger: true})
     }
@@ -121,29 +175,35 @@ class TestBaterieController extends Component {
      * @param daten
      */
     postTestBaterie = (daten) => {
-        console.log(daten)
-        if(daten.pruefe_felder){
-            fetch('https://172.22.24.243:50593/LD', {
+        console.log(daten);
+        if(daten.pruefe_Felder){
+            fetch('http://172.22.24.243:50593/LD', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     email:'jens@testemail3.de',
                     date: daten.date,
-                    beweglichtkeit: daten.beweglichtkeit,
-                    reaction: daten.reaction,
-                    koordination: daten.koordination,
+                    bew: daten.beweglichtkeit,
+                    react: daten.reaction,
+                    koord: daten.koordination,
                     sprint: daten.sprint,
-                    JandR: daten.JandR,
-                    med_ball: daten.med_ball,
-                    stws: daten.stws,
-                    agilitaet: daten.agilitaet,
-                    borg: daten.borg,
-                    beep_test: daten.borg,
+                    JnR: daten.JandR,
+                    medBall: daten.med_ball,
+                    StWS: daten.stws,
+                    agil: daten.agilitaet,
+                    BORG: daten.borg,
+                    Bleep: daten.borg,
+                    height: "",
+                    weight: "",
+                    bodyfat: "",
+                    leglength: "",
+                    angle: ""
             })
-        })
+        }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
             alert("Testbatterie gespeichert");
             this.closePopup();
         }
@@ -152,6 +212,34 @@ class TestBaterieController extends Component {
                 alert("Nicht alle Felder wurden ausgefüllt. Bitte Kommentar mit Begründung schreiben");
             }
             else if (!daten.pruefe_felder && daten.kommentar.length > 0) {
+
+                fetch('http://172.22.24.243:50593/LD', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email:'jens@testemail3.de',
+                        date: daten.date,
+                        bew: daten.beweglichtkeit,
+                        react: daten.reaction,
+                        koord: daten.koordination,
+                        sprint: daten.sprint,
+                        JnR: daten.JandR,
+                        medBall: daten.med_ball,
+                        StWS: daten.stws,
+                        agil: daten.agilitaet,
+                        BORG: daten.borg,
+                        Bleep: daten.borg,
+                        height: "",
+                        weight: "",
+                        bodyfat: "",
+                        leglength: "",
+                        angle: ""
+                    })
+                }).then(res => res.json())
+                    .then(response => console.log('Success:', JSON.stringify(response)))
+                    .catch(error => console.error('Error:', error));
                 alert("Testbatterie gespeichert");
                 this.closePopup();
                 //alert("Bitte prueden sie die Richtikeit der Eingabe, Nur nuemerische Werte sind erlaubt!")
@@ -175,21 +263,24 @@ class TestBaterieController extends Component {
           beep_test,
           hidde_alte_TestBaterie,
           setHidde_Alte_Testbaterie,
+          onEdit,
+          onSave,
+          testBaterie,
       } = this.props;
 
 
 
         return (
-            <Testbaterie beweglichtkeit={beweglichtkeit}
-                        reaction={reaction}
-                        koordination={koordination}
-                        sprint={sprint}
-                        JandR={JandR}
-                        med_ball={med_ball}
-                        stws={stws}
-                        agilitaet={agilitaet}
-                        borg={borg}
-                        beep_test={beep_test}
+            <Testbaterie beweglichtkeit={this.state.beweglichtkeit}
+                        reaction={this.state.reaction}
+                        koordination={this.state.koordination}
+                        sprint={this.state.sprint}
+                        JandR={this.state.JandR}
+                        med_ball={this.state.med_ball}
+                        stws={this.state.stws}
+                        agilitaet={this.state.agilitaet}
+                        borg={this.state.borg}
+                        beep_test={this.state.beep_test}
                          trigger={this.state.trigger}
                          triggerInfo={this.state.triggerInfo}
                             Infonummer={ this.state.Infonummer}
@@ -215,7 +306,7 @@ class TestBaterieController extends Component {
                          onSave={this.onSave}
                          hidde_alte_TestBaterie={hidde_alte_TestBaterie}
                         setHidde_Alte_Testbaterie={setHidde_Alte_Testbaterie}
-
+                         testBaterie={testBaterie}
     />
 
         );

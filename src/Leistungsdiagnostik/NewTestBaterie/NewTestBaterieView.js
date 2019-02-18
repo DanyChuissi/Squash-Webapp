@@ -147,7 +147,7 @@ class NewTestBaterieView extends Component {
             this.setState({
                 pruefe_Felder: true,
             })
-
+            console.log(this.state.pruefe_Felder)
 
         }
 
