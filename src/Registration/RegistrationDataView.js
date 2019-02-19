@@ -80,7 +80,7 @@ class RegistrationDataView extends Component{
                                 <input type="text" placeholder={"Handynummer"} value={handyNummer} onChange={setHandynummer}/>
                             </div>
 
-                            <div><Confirmbutton myStyle= {{padding: '13px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}} onClick={submitData}>
+                            <div><Confirmbutton myStyle= {{padding: '13px', marginTop: '8px', paddingRight: '15px', paddingLeft: '15px'}} onClick={()=>window.location = '/login'}>
                                 Bestätigen
                             </Confirmbutton></div>
                         </div>

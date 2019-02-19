@@ -177,7 +177,7 @@ class NewTestBaterieView extends Component {
 
                             <div className="box_newtestbaterie">
                                 <Label>Beweglichtkeit: </Label>
-                                <Input type='number' placeholder={"Beweglichkeit"} value={"this.state.beweglichtkeit"}
+                                <Input type='number' placeholder={"Beweglichkeit"} value={this.state.beweglichtkeit}
                                        onChange={this.setBeweglichtkeit}/>
                                 <Label>Reaction: </Label>
                                 <Input type='number' placeholder={"Reaktion"} value={this.state.reaction}

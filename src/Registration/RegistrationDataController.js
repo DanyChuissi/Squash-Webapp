@@ -9,7 +9,7 @@ import RegistrationDataView from "./RegistrationDataView";
  * @visibleName ResetLoginDataController
  */
 
-class RegistrationDataController extends Component{
+class RegistrationDataController extends Component {
     constructor() {
         super();
         this.state = {
@@ -26,19 +26,19 @@ class RegistrationDataController extends Component{
         }
     }
 
-    setVorname= (e) => {
+    setVorname = (e) => {
         this.setState({vorname: e.target.value})
     };
-    setNachname= (e) => {
+    setNachname = (e) => {
         this.setState({nachname: e.target.value})
     };
     setGDatum = (e) => {
         this.setState({gDatum: e.target.value})
     };
-    setStrasse= (e) => {
+    setStrasse = (e) => {
         this.setState({strasse: e.target.value})
     };
-    setHnummer= (e) => {
+    setHnummer = (e) => {
         this.setState({Hnummer: e.target.value})
     };
     setPlz = (e) => {
@@ -57,28 +57,29 @@ class RegistrationDataController extends Component{
     /**
      * Die Methose zeigt ein Alert falls nötig
      */
-   /* submitData = () => {
-        let erg = this.showMessage();
-        if(this.state.showAlert){
-            alert(erg);
-        }*/
-   // };
-   // dd
+    /* submitData = () => {
+         let erg = this.showMessage();
+         if(this.state.showAlert){
+             alert(erg);
+         }*/
+    // };
+    // dd
 
     showMessage() {
-        var erg = 'Registirung sind registiert';
-        if(this.state.vorname === '' || this.state.name === '' || this.state.gDatum === ''){
+        var erg = 'Sie sind registiert';
+        if (this.state.vorname === '' || this.state.name === '' || this.state.gDatum === '') {
             erg = 'Name , Vorname oder Gebursdatum ist leer'
         }
 
         return erg;
     }
 
-    showalert =()=>{
+    showalert = () => {
         alert(this.showMessage())
     }
-       submitData = () => {
-        if(this.showMessage() === 'Registirung sind registiert' ) {
+
+    submitData = () => {
+        if (this.showMessage() === 'Sie sind registiert') {
             fetch('http://172.22.24.243:50594/player', {
                 method: 'POST', // or 'PUT'
                 headers: {
@@ -112,41 +113,38 @@ class RegistrationDataController extends Component{
                 .catch(error => console.error('Error:', error));
 
             window.location = '/login'
-        }this.showalert()
+        }
+        this.showalert()
 
     }
 
     render() {
         return (
             <RegistrationDataView
-                                vorname={this.state.vorname}
-                                nachname={this.state.nachname}
-                                gDatum={this.state.gDatum}
-                                strasse={this.state.strasse}
-                                Hnummer={this.state.Hnummer}
-                                plz={this.state.plz}
-                                ort={this.state.ort}
-                                festnetzNummer={this.state.festnetzNummer}
-                                handyNummer={this.state.handyNummer}
+                vorname={this.state.vorname}
+                nachname={this.state.nachname}
+                gDatum={this.state.gDatum}
+                strasse={this.state.strasse}
+                Hnummer={this.state.Hnummer}
+                plz={this.state.plz}
+                ort={this.state.ort}
+                festnetzNummer={this.state.festnetzNummer}
+                handyNummer={this.state.handyNummer}
 
-                                setVorname={this.setVorname}
-                                setNachname={this.setNachname}
-                                setGdatum={this.setGDatum}
-                                setStrasse={this.setStrasse}
-                                setHnummer={this.setHnummer}
-                                setPlz={this.setPlz}
-                                setOrt={this.setOrt}
-                                setFestnummer={this.setFestnetznummer}
-                                setHandynummer={this.setHandynummer}
-                                submitData={this.submitData}
-                                postDaten={this.postData}
+                setVorname={this.setVorname}
+                setNachname={this.setNachname}
+                setGdatum={this.setGDatum}
+                setStrasse={this.setStrasse}
+                setHnummer={this.setHnummer}
+                setPlz={this.setPlz}
+                setOrt={this.setOrt}
+                setFestnummer={this.setFestnetznummer}
+                setHandynummer={this.setHandynummer}
+                submitData={this.submitData}
+                postDaten={this.postData}
             />
         );
     }
-
-
-
-
 
 
 }

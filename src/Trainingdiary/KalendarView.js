@@ -43,7 +43,7 @@ class KalendarView extends Component {
         isLoaded2: false
     }
     componentDidMount(): void {
-        fetch("http://172.22.24.243:50596/trainingsdaten?email="+ this.props.match.params.mail)
+        fetch("http://172.22.24.243:50596/trainingsdaten?email=julia@test.de")
             .then(res => res.json())
             .then(
                 (result) => {
