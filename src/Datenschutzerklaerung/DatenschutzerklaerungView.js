@@ -6,6 +6,11 @@ import datenS2 from './Datenschutz2.png'
 import datenS3 from './Datenschutz3.png'
 //window.PDFJS.workerSrc  = process.env.PUBLIC_URL + '/pdf.worker.js'
 
+/**
+ * @author Dany Chuissi
+ *
+ * Definiert die Datenschutzerklärung Seite
+ */
 class DatenschutzerklaerungView extends Component{
 
     state = {
