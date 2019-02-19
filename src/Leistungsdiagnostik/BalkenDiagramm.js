@@ -36,168 +36,312 @@ class BalkenDiagramm extends Component {
         let b4;
         let b5;
 
-        switch (length) {
-            case 1:
-                name1 = attribute[0].email;
-                b = <Bar name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
-                bars = [...bars, b];
+        b = <Bar name={name1} type="monotone" dataKey="a1" fill="#2980B9"/>;
+        bars = [...bars, b];
 
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute[0].bew},
-                    {name: 'Reaktion', a1: attribute[0].react},
-                    {name: 'Koordination', a1: attribute[0].koord},
-                    {name: 'Sprint', a1: attribute[0].sprint},
-                    {name: 'J & R', a1: attribute[0].JnR},
-                    {name: 'StWs', a1: attribute[0].StWS},
-                    {name: 'Med.Ball', a1: attribute[0].medBall},
-                    {name: 'Agilität', a1: attribute[0].agil},
-                    {name: 'BORG Test', a1: attribute[0].BORG},
-                    {name: 'Beep test', a1: attribute[0].Bleep},
-                ];
-                break;
+            data = {label: 'No data available', a1: 'No data available'}
+            data = [
+                {name: 'Beweglichkeit', a1: attribute.bew},
+                {name: 'Reaktion', a1: attribute.react},
+                {name: 'Koordination', a1: attribute.koord},
+                {name: 'Sprint', a1: attribute.sprint},
+                {name: 'J & R', a1: attribute.JnR},
+                {name: 'StWs', a1: attribute.StWS},
+                {name: 'Med.Ball', a1: attribute.medBall},
+                {name: 'Agilität', a1: attribute.agil},
+                {name: 'BORG Test', a1: attribute.BORG},
+                {name: 'Beep test', a1: attribute.Bleep}
+            ];
 
-            case 2:
-                name1 = attribute[0].email;
-                name2 = attribute[1].email;
 
-                b =  <Bar name={name1}  dataKey="a1" fill="#008000" />;
-                b2 =    <Bar name={name2} dataKey="a2" fill="#b8860b" />;
-                bars = [...bars, b];
-                bars = [...bars, b2];
+            switch (length) {
+                case 1:
+                    name1 = attribute[0].email;
+                    b = <Bar name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
+                    bars = [...bars, b];
 
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew},
-                    {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react},
-                    {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord},
-                    {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint},
-                    {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR},
-                    {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS},
-                    {name: 'Med.Ball', a1: attribute[0].medBall, a2: attribute[1].medBall},
-                    {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil},
-                    {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG},
-                    {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep},
-                ];
-                break;
-            case 3:
-                /*this.setState( {athlet1: this.getAthletDaten(attribute[0].email)} );
-                this.setState( {athlet2: this.getAthletDaten(attribute[1].email)} );
-                this.setState( {athlet3: this.getAthletDaten(attribute[2].email)} );*/
-                name1 = attribute[0].email;
-                name2 = attribute[1].email;
-                name3 = attribute[2].email;
-
-                b =  <Bar name={name1}  dataKey="a1" fill="#008000"/>;
-                b2 =  <Bar name={name2} dataKey="a2" fill="#b8860b" />;
-                b3 =  <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
-                bars  = [...bars , b];
-                bars  = [...bars , b2];
-                bars  = [...bars , b3];
-
-                console.log(name3)
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew, a3: attribute[2].bew},
-                    {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react, a3: attribute[2].react},
-                    {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord, a3: attribute[2].koord},
-                    {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint, a3: attribute[2].sprint},
-                    {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR, a3: attribute[2].JnR},
-                    {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS, a3: attribute[2].StWS},
-                    {name: 'Med.Ball', a1: attribute[0].medBall, a2: attribute[1].medBall, a3: attribute[2].medBall},
-                    {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil, a3: attribute[2].agil},
-                    {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG, a3: attribute[2].BORG},
-                    {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep, a3: attribute[2].Bleep},
-                ];
-                break;
-            case 4:
-                name1 = attribute[0].email;
-                name2 = attribute[1].email;
-                name3 = attribute[2].email;
-                name4 = attribute[3].email;
-
-                b =  <Bar name={name1}  dataKey="a1" fill="#008000"/>;
-                b2 =  <Bar name={name2} dataKey="a2" fill="#b8860b" />;
-                b3 =  <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
-                b4 =  <Bar name={name4} dataKey="a4" fill="#2980B9"/>
-                bars  = [...bars , b];
-                bars  = [...bars , b2];
-                bars  = [...bars , b3];
-                bars  = [...bars , b4];
-
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew, a3: attribute[2].bew,  a4: attribute[3].bew},
-                    {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react, a3: attribute[2].react , a4: attribute[3].react},
-                    {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord, a3: attribute[2].koord , a4: attribute[3].koord},
-                    {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint, a3: attribute[2].sprint , a4: attribute[3].sprint},
-                    {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR, a3: attribute[2].JnR , a4: attribute[3].JnR},
-                    {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS, a3: attribute[2].StWS , a4: attribute[3].StWS},
-                    {name: 'Med.Ball', a1: attribute[0].medBall, a2: attribute[1].medBall, a3: attribute[2].medBall , a4: attribute[3].medBall},
-                    {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil, a3: attribute[2].agil , a4: attribute[3].agil},
-                    {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG, a3: attribute[2].BORG , a4: attribute[3].BORG},
-                    {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep, a3: attribute[2].Bleep , a4: attribute[3].Bleep},
+                    data = [
+                        {name: 'Beweglichkeit', a1: attribute[0].bew},
+                        {name: 'Reaktion', a1: attribute[0].react},
+                        {name: 'Koordination', a1: attribute[0].koord},
+                        {name: 'Sprint', a1: attribute[0].sprint},
+                        {name: 'J & R', a1: attribute[0].JnR},
+                        {name: 'StWs', a1: attribute[0].StWS},
+                        {name: 'Med.Ball', a1: attribute[0].medBall},
+                        {name: 'Agilität', a1: attribute[0].agil},
+                        {name: 'BORG Test', a1: attribute[0].BORG},
+                        {name: 'Beep test', a1: attribute[0].Bleep},
                     ];
-                break;
-            case 5:
-                name1 = attribute[0].name;
-                name2 = attribute[1].name;
-                name3 = attribute[2].name;
-                name4 = attribute[3].name;
-                name5 = attribute[4].name;
+                    break;
 
-                b =  <Bar name={name1}  dataKey="a1" fill="#008000"/>;
-                b2 =  <Bar name={name2} dataKey="a2" fill="#b8860b" />;
-                b3 =  <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
-                b4 =  <Bar name={name4} dataKey="a4" fill="#2980B9"/>;
-                b5 =  <Bar name={name5} dataKey="a5" fill="#2980B9"/>;
-                bars  = [...bars , b];
-                bars  = [...bars , b2];
-                bars  = [...bars , b3];
-                bars  = [...bars , b4];
-                bars  = [...bars , b5];
+                case 2:
+                    name1 = attribute[0].email;
+                    name2 = attribute[1].email;
 
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew, a3: attribute[2].bew,  a4: attribute[3].bew ,  a5: attribute[4].bew},
-                    {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react, a3: attribute[2].react , a4: attribute[3].react , a5: attribute[4].react},
-                    {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord, a3: attribute[2].koord , a4: attribute[3].koord , a5: attribute[4].koord},
-                    {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint, a3: attribute[2].sprint , a4: attribute[3].sprint , a5: attribute[4].sprint},
-                    {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR, a3: attribute[2].JnR , a4: attribute[3].JnR , a5: attribute[4].JnR},
-                    {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS, a3: attribute[2].StWS , a4: attribute[3].StWS , a5: attribute[4].StWS},
-                    {name: 'Med.Ball', a1: attribute[0].medBall, a2: attribute[1].medBall, a3: attribute[2].medBall , a4: attribute[3].medBall , a5: attribute[4].medBall},
-                    {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil, a3: attribute[2].agil  , a4: attribute[3].agil , a5: attribute[4].agil},
-                    {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG, a3: attribute[2].BORG , a4: attribute[3].BORG , a5: attribute[4].BORG},
-                    {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep, a3: attribute[2].Bleep , a4: attribute[3].Bleep , a5: attribute[4].Bleep},
+                    b = <Bar name={name1} dataKey="a1" fill="#008000"/>;
+                    b2 = <Bar name={name2} dataKey="a2" fill="#b8860b"/>;
+                    bars = [...bars, b];
+                    bars = [...bars, b2];
 
-                ];
-                break;
-            case 0:
-                name1 = "default";
+                    data = [
+                        {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew},
+                        {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react},
+                        {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord},
+                        {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint},
+                        {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR},
+                        {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS},
+                        {name: 'Med.Ball', a1: attribute[0].medBall, a2: attribute[1].medBall},
+                        {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil},
+                        {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG},
+                        {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep},
+                    ];
+                    break;
+                case 3:
+                    /*this.setState( {athlet1: this.getAthletDaten(attribute[0].email)} );
+                    this.setState( {athlet2: this.getAthletDaten(attribute[1].email)} );
+                    this.setState( {athlet3: this.getAthletDaten(attribute[2].email)} );*/
+                    name1 = attribute[0].email;
+                    name2 = attribute[1].email;
+                    name3 = attribute[2].email;
 
-                b = <Bar name={name1} type="monotone" dataKey="a1" fill="#2980B9"/>;
-                bars = [...bars, b];
-                if (data.length === 0) {
-                    data = {label: 'No data available', a1: 'No data available'}
-                data = [
-                    {name: 'Beweglichkeit', a1: attribute.bew},
-                    {name: 'Reaktion', a1: attribute.react},
-                    {name: 'Koordination', a1: attribute.koord},
-                    {name: 'Sprint', a1: attribute.sprint},
-                    {name: 'J & R', a1: attribute.JnR},
-                    {name: 'StWs', a1: attribute.StWS},
-                    {name: 'Med.Ball', a1: attribute.medBall},
-                    {name: 'Agilität', a1: attribute.agil},
-                    {name: 'BORG Test', a1: attribute.BORG},
-                    {name: 'Beep test', a1: attribute.Bleep}
-                ];
+                    b = <Bar name={name1} dataKey="a1" fill="#008000"/>;
+                    b2 = <Bar name={name2} dataKey="a2" fill="#b8860b"/>;
+                    b3 = <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
+                    bars = [...bars, b];
+                    bars = [...bars, b2];
+                    bars = [...bars, b3];
+
+                    console.log(name3)
+                    data = [
+                        {name: 'Beweglichkeit', a1: attribute[0].bew, a2: attribute[1].bew, a3: attribute[2].bew},
+                        {name: 'Reaktion', a1: attribute[0].react, a2: attribute[1].react, a3: attribute[2].react},
+                        {name: 'Koordination', a1: attribute[0].koord, a2: attribute[1].koord, a3: attribute[2].koord},
+                        {name: 'Sprint', a1: attribute[0].sprint, a2: attribute[1].sprint, a3: attribute[2].sprint},
+                        {name: 'J & R', a1: attribute[0].JnR, a2: attribute[1].JnR, a3: attribute[2].JnR},
+                        {name: 'StWs', a1: attribute[0].StWS, a2: attribute[1].StWS, a3: attribute[2].StWS},
+                        {
+                            name: 'Med.Ball',
+                            a1: attribute[0].medBall,
+                            a2: attribute[1].medBall,
+                            a3: attribute[2].medBall
+                        },
+                        {name: 'Agilität', a1: attribute[0].agil, a2: attribute[1].agil, a3: attribute[2].agil},
+                        {name: 'BORG Test', a1: attribute[0].BORG, a2: attribute[1].BORG, a3: attribute[2].BORG},
+                        {name: 'Beep test', a1: attribute[0].Bleep, a2: attribute[1].Bleep, a3: attribute[2].Bleep},
+                    ];
+                    break;
+                case 4:
+                    name1 = attribute[0].email;
+                    name2 = attribute[1].email;
+                    name3 = attribute[2].email;
+                    name4 = attribute[3].email;
+
+                    b = <Bar name={name1} dataKey="a1" fill="#008000"/>;
+                    b2 = <Bar name={name2} dataKey="a2" fill="#b8860b"/>;
+                    b3 = <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
+                    b4 = <Bar name={name4} dataKey="a4" fill="#2980B9"/>
+                    bars = [...bars, b];
+                    bars = [...bars, b2];
+                    bars = [...bars, b3];
+                    bars = [...bars, b4];
+
+                    data = [
+                        {
+                            name: 'Beweglichkeit',
+                            a1: attribute[0].bew,
+                            a2: attribute[1].bew,
+                            a3: attribute[2].bew,
+                            a4: attribute[3].bew
+                        },
+                        {
+                            name: 'Reaktion',
+                            a1: attribute[0].react,
+                            a2: attribute[1].react,
+                            a3: attribute[2].react,
+                            a4: attribute[3].react
+                        },
+                        {
+                            name: 'Koordination',
+                            a1: attribute[0].koord,
+                            a2: attribute[1].koord,
+                            a3: attribute[2].koord,
+                            a4: attribute[3].koord
+                        },
+                        {
+                            name: 'Sprint',
+                            a1: attribute[0].sprint,
+                            a2: attribute[1].sprint,
+                            a3: attribute[2].sprint,
+                            a4: attribute[3].sprint
+                        },
+                        {
+                            name: 'J & R',
+                            a1: attribute[0].JnR,
+                            a2: attribute[1].JnR,
+                            a3: attribute[2].JnR,
+                            a4: attribute[3].JnR
+                        },
+                        {
+                            name: 'StWs',
+                            a1: attribute[0].StWS,
+                            a2: attribute[1].StWS,
+                            a3: attribute[2].StWS,
+                            a4: attribute[3].StWS
+                        },
+                        {
+                            name: 'Med.Ball',
+                            a1: attribute[0].medBall,
+                            a2: attribute[1].medBall,
+                            a3: attribute[2].medBall,
+                            a4: attribute[3].medBall
+                        },
+                        {
+                            name: 'Agilität',
+                            a1: attribute[0].agil,
+                            a2: attribute[1].agil,
+                            a3: attribute[2].agil,
+                            a4: attribute[3].agil
+                        },
+                        {
+                            name: 'BORG Test',
+                            a1: attribute[0].BORG,
+                            a2: attribute[1].BORG,
+                            a3: attribute[2].BORG,
+                            a4: attribute[3].BORG
+                        },
+                        {
+                            name: 'Beep test',
+                            a1: attribute[0].Bleep,
+                            a2: attribute[1].Bleep,
+                            a3: attribute[2].Bleep,
+                            a4: attribute[3].Bleep
+                        },
+                    ];
+                    break;
+                case 5:
+                    name1 = attribute[0].name;
+                    name2 = attribute[1].name;
+                    name3 = attribute[2].name;
+                    name4 = attribute[3].name;
+                    name5 = attribute[4].name;
+
+                    b = <Bar name={name1} dataKey="a1" fill="#008000"/>;
+                    b2 = <Bar name={name2} dataKey="a2" fill="#b8860b"/>;
+                    b3 = <Bar name={name3} dataKey="a3" fill="#2980B9"/>;
+                    b4 = <Bar name={name4} dataKey="a4" fill="#2980B9"/>;
+                    b5 = <Bar name={name5} dataKey="a5" fill="#2980B9"/>;
+                    bars = [...bars, b];
+                    bars = [...bars, b2];
+                    bars = [...bars, b3];
+                    bars = [...bars, b4];
+                    bars = [...bars, b5];
+
+                    data = [
+                        {
+                            name: 'Beweglichkeit',
+                            a1: attribute[0].bew,
+                            a2: attribute[1].bew,
+                            a3: attribute[2].bew,
+                            a4: attribute[3].bew,
+                            a5: attribute[4].bew
+                        },
+                        {
+                            name: 'Reaktion',
+                            a1: attribute[0].react,
+                            a2: attribute[1].react,
+                            a3: attribute[2].react,
+                            a4: attribute[3].react,
+                            a5: attribute[4].react
+                        },
+                        {
+                            name: 'Koordination',
+                            a1: attribute[0].koord,
+                            a2: attribute[1].koord,
+                            a3: attribute[2].koord,
+                            a4: attribute[3].koord,
+                            a5: attribute[4].koord
+                        },
+                        {
+                            name: 'Sprint',
+                            a1: attribute[0].sprint,
+                            a2: attribute[1].sprint,
+                            a3: attribute[2].sprint,
+                            a4: attribute[3].sprint,
+                            a5: attribute[4].sprint
+                        },
+                        {
+                            name: 'J & R',
+                            a1: attribute[0].JnR,
+                            a2: attribute[1].JnR,
+                            a3: attribute[2].JnR,
+                            a4: attribute[3].JnR,
+                            a5: attribute[4].JnR
+                        },
+                        {
+                            name: 'StWs',
+                            a1: attribute[0].StWS,
+                            a2: attribute[1].StWS,
+                            a3: attribute[2].StWS,
+                            a4: attribute[3].StWS,
+                            a5: attribute[4].StWS
+                        },
+                        {
+                            name: 'Med.Ball',
+                            a1: attribute[0].medBall,
+                            a2: attribute[1].medBall,
+                            a3: attribute[2].medBall,
+                            a4: attribute[3].medBall,
+                            a5: attribute[4].medBall
+                        },
+                        {
+                            name: 'Agilität',
+                            a1: attribute[0].agil,
+                            a2: attribute[1].agil,
+                            a3: attribute[2].agil,
+                            a4: attribute[3].agil,
+                            a5: attribute[4].agil
+                        },
+                        {
+                            name: 'BORG Test',
+                            a1: attribute[0].BORG,
+                            a2: attribute[1].BORG,
+                            a3: attribute[2].BORG,
+                            a4: attribute[3].BORG,
+                            a5: attribute[4].BORG
+                        },
+                        {
+                            name: 'Beep test',
+                            a1: attribute[0].Bleep,
+                            a2: attribute[1].Bleep,
+                            a3: attribute[2].Bleep,
+                            a4: attribute[3].Bleep,
+                            a5: attribute[4].Bleep
+                        },
+
+                    ];
+                    break;
+                case 0:
+                    name1 = "default";
+
+                    b = <Bar name={name1} type="monotone" dataKey="a1" fill="#2980B9"/>;
+                    bars = [...bars, b];
+                    if (data.length === 0) {
+                        data = {label: 'No data available', a1: 'No data available'}
+                        data = [
+                            {name: 'Beweglichkeit', a1: attribute.bew},
+                            {name: 'Reaktion', a1: attribute.react},
+                            {name: 'Koordination', a1: attribute.koord},
+                            {name: 'Sprint', a1: attribute.sprint},
+                            {name: 'J & R', a1: attribute.JnR},
+                            {name: 'StWs', a1: attribute.StWS},
+                            {name: 'Med.Ball', a1: attribute.medBall},
+                            {name: 'Agilität', a1: attribute.agil},
+                            {name: 'BORG Test', a1: attribute.BORG},
+                            {name: 'Beep test', a1: attribute.Bleep}
+                        ];
 
 
-
-
-
-
-
-
-        }
-
-
-
+                    }
         }
 
         console.log("data")
