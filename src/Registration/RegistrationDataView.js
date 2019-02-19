@@ -33,6 +33,7 @@ class RegistrationDataView extends Component{
             setFestnummer,
             setHandynummer,
             submitData,
+            postData,
         }=this.props;
 
         return (
@@ -54,28 +55,28 @@ class RegistrationDataView extends Component{
                                 <input type="text"  placeholder={"Nachname"} value={nachname} onChange={setNachname}/>
                                 <Label>*Geburtsdatum: </Label>
                                 <input type="date" placeholder={"Geburtsdatum"} value={gDatum} onChange={setGdatum}/>
-                                <Label>*Strasse: </Label>
+                                <Label>Strasse: </Label>
                                 <div className= "adresse_Data">
 
                                     <input type="text"  placeholder={"Strasse"}  value={strasse} onChange={setStrasse}/>
                                     <div className= "adresse_Data">
-                                        <Label>*Hausnummer: </Label>
+                                        <Label>Hausnummer: </Label>
                                         <input type="text"  placeholder={"Hausnummer"}  value={Hnummer} onChange={setHnummer}/>
                                    </div>
                                 </div>
-                                <Label>*Plz: </Label>
+                                <Label>Plz: </Label>
                                 <div  className= "adresse_Data">
                                         <div>
                                         <input type="text"  placeholder={"Postleizahl"} value={plz} onChange={setPlz}/>
                                       </div>
                                     <div >
-                                        <Label>*Ort: </Label>
+                                        <Label>Ort: </Label>
                                         <input className="ort_css" type="text"  placeholder={"Ort"}  value={ort} onChange={setOrt}/>
                                    </div>
                                 </div>
-                                <Label>*Festnetznummer: </Label>
+                                <Label>Festnetznummer: </Label>
                                 <input type="text" placeholder={"Festnetznummer"} value={festnetzNummer} onChange={setFestnummer}/>
-                                <Label>*Handynummer: </Label>
+                                <Label>Handynummer: </Label>
                                 <input type="text" placeholder={"Handynummer"} value={handyNummer} onChange={setHandynummer}/>
                             </div>
 

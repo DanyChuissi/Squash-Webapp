@@ -57,20 +57,62 @@ class RegistrationDataController extends Component{
     /**
      * Die Methose zeigt ein Alert falls nötig
      */
-    submitData = () => {
+   /* submitData = () => {
         let erg = this.showMessage();
         if(this.state.showAlert){
             alert(erg);
-        }
-    };
+        }*/
+   // };
 
     showMessage() {
+        var erg = 'Registirung sind registiert';
+        if(this.state.vorname === '' || this.state.name === '' || this.state.gDatum === ''){
+            erg = 'Name , Vorname oder Gebursdatum ist leer'
+        }
 
+        return erg;
     }
 
+    showalert =()=>{
+        alert(this.showMessage())
+    }
+       submitData = () => {
+        if(this.showMessage() === 'Registirung sind registiert' ) {
+            fetch('http://172.22.24.243:50594/player', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
 
-    componentDidMount(){
-        this.submitData();
+                        name: this.state.vorname,
+                        surname: this.state.nachname,
+                        dateofbirth: this.state.gDatum,
+                        email: "spielertest1@email.de",
+                        mobilenumber: this.state.festnetzNummer,
+                        landlinenumber: this.state.festnetzNummer,
+                        streetname: this.state.strasse,
+                        housenumber: this.state.Hnummer,
+                        postalcode: this.state.plz,
+                        place: this.state.ort,
+                        spin: 9,
+                        squad: "testSquad",
+                        active: true,
+                        regonid: 1,
+                        trainer_nr: 1,
+                        geschlecht: "m"
+
+                    }
+                ),
+
+            }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
+
+            window.location = '/login'
+        }this.showalert()
+
     }
 
     render() {
@@ -96,6 +138,7 @@ class RegistrationDataController extends Component{
                                 setFestnummer={this.setFestnetznummer}
                                 setHandynummer={this.setHandynummer}
                                 submitData={this.submitData}
+                                postDaten={this.postData}
             />
         );
     }
