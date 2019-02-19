@@ -24,6 +24,7 @@ import MAZListView from "./JTP/MAZListView";
 import axios from "axios";
 import PlayerProfileController from "./PlayerProfile/PlayerProfileController";
 import DatenschutzerklaerungView from "./Datenschutzerklaerung/DatenschutzerklaerungView";
+import RegistrationDataView from "./Registration/RegistrationDataView";
 
 
 /**
@@ -204,6 +205,14 @@ class Navigator extends Component {
         );
     }
 
+    register02(){
+        return(
+            <div>
+                <RegistrationDataView/>
+            </div>
+        )
+    }
+
     render() {
 
         return (
@@ -232,6 +241,7 @@ class Navigator extends Component {
                         <Route path={"/trainerProfile"} component={this.trainerProfileRoute}/>
                         <Route path={"/trainingsdiarydetail"} component={this.trainingsdiaryDetailRoute}/>
                         <Route path={"/athletVergleich"} component={this.VergleichRoute}/>
+                         <Route path={"/registration02"} component={this.register02}/>
                         <Route path={"/createWorkout"} component={this.CreateWorkoutRoute}/>
                         <Route exact path={"/mAZList/:mail"} render={props => <div><MAZListView {...props}/></div>}/>
                         <Route exact path={'/mazDetail/:id'} render={props => <MAZView {...props}  />}/>

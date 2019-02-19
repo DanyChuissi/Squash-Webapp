@@ -83,24 +83,28 @@ class RegistrationController extends Component {
     }
 
     submitData = (email, password) => {
-
-        fetch('http://172.22.24.243:50601/register/setInitialPassword', {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(
-                {
-                    email: email,
-                    newPassword:password
+        if (this.showMessage() === "Nutzer wurde registiert") {
+            fetch('http://172.22.24.243:50601/register/setInitialPassword', {
+                method: 'POST', // or 'PUT'
+                body: JSON.stringify(
+                    {
+                        email: email,
+                        newPassword: password
+                    }
+                ),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            ),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-            .then(response => console.log('Success:', JSON.stringify(response)))
-            .catch(error => console.error('Error:', error));
+            }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
 
-        window.location ='/login'
-    };
+            window.location = '/registration02'
+        }
+        ;
+       alert( this.showMessage());
+    }
+
 
     componentDidMount(){
 
