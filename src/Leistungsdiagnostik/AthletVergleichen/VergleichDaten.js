@@ -10,7 +10,6 @@ import BalkenDiagramm from "../BalkenDiagramm";
 import PhisisDatenBalken from "./PhisisDatenBalken";
 import { Multiselect } from 'react-widgets';
 import TrainingdatenEvaluation from "../../Trainingstagebuch/TrainingdatenEvaluation";
-import SelectSearch from 'react-select-search';
 
 
 var a1 = {
@@ -457,7 +456,7 @@ class VergleichDaten extends Component{
                                    <div className="head_athletvergleic">.</div>
                             </div> ;
         let testkurve = <div style={{marginTop: '20px'}}>
-                                <div className="head_athletvergleich">TestBaterie Daten</div>
+                                <div className="head_athletvergleich">Test Batterie Daten</div>
                                 <BalkenDiagramm attribute={this.state.athlet_zu_vergl}/>
                                 <div className="head_athletvergleic"></div>
                           </div> ;
@@ -476,7 +475,7 @@ class VergleichDaten extends Component{
                     <TrainingdatenEvaluation/>
                     <div>
                         <div className="head_athletvergleich">
-                            <label>Athlet-Vergleich</label>
+                            <label>Athleten Vergleich</label>
                         </div>
 
                         <div className="athlet_vergleich_box">
@@ -491,10 +490,10 @@ class VergleichDaten extends Component{
                             />
 
                             <Confirmbutton hidden={true} myStyle= {{heigth: '20px', padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
-                                add
+                                hi
                             </Confirmbutton>
                             <Confirmbutton onClick={this.submitDaten}  myStyle= {{heigth: '20px',padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
-                                Athlete vergleichen
+                                Athleten vergleichen
                             </Confirmbutton>
                         </div>
                        {/* <div className="selected_item">*/}

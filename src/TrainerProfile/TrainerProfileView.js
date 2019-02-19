@@ -164,17 +164,17 @@ class TrainerProfileView extends Component {
                                                 setMobileNumber={setMobileNumber}
                                                 setNationalAssosiation={setNationalAssosiation}
 
-                                                name={name}
-                                                surname={surname}
-                                                mail={mail}
-                                                birthdate={birthdate}
-                                                city={city}
-                                                zip={zip}
-                                                street={street}
-                                                houseNbr={houseNbr}
-                                                mobileNumber={mobileNumber}
-                                                landlaneNumber={landlaneNumber}
-                                                nationalAssosiation={nationalAssosiation}
+                                                name={"Dani"}
+                                                surname={"Test"}
+                                                mail={"dani@test.de"}
+                                                birthdate={"06.06.1998"}
+                                                city={"Dortmund"}
+                                                zip={"44319"}
+                                                street={"Emil Figge Straße"}
+                                                houseNbr={"5"}
+                                                mobileNumber={"015789933"}
+                                                landlaneNumber={"0157899543343"}
+                                                nationalAssosiation={"Squashverbund Rheinland-Pfalz-Saar"}
                                                 nationalAssosiationhidden={edithidden}
                                                 nationalAssosiationdropdownhidden={this.state.saveButtonhidden}
                         />

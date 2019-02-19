@@ -246,9 +246,9 @@ class PlayerProfileController extends Component {
                 onEdit={this.onEdit}
                 onCompare={this.onCompare}
 
-                goToJTP={()=> this.goToJTP(this.state.email)}
-                goToTrainingsdiary={() => this.goToTrainingsdiary(this.state.email)}
-                goToLeistungsdiagnostik={()=>this.goToLeistungsdiagnostik(this.state.email)}
+                goToJTP={()=> this.goToJTP(this.props.match.params.mail)}
+                goToTrainingsdiary={() => this.goToTrainingsdiary(this.props.match.params.mail)}
+                goToLeistungsdiagnostik={()=>this.goToLeistungsdiagnostik(this.props.match.params.mail)}
             />
         );
     }

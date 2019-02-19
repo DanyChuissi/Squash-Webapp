@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {pdfjs, Document, Page } from 'react-pdf';
 import logomenuMitte from "../Graphics/Menueleiste_Logo_Name.png";
 import "./Datenschutzerklaerung.css";
 import datenS1 from './Datenschutz1.png'

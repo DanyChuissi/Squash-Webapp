@@ -68,7 +68,7 @@ class CreateMAZ extends Component {
                 {
                     email: email,
                     name: name,
-                    bezeichnung: "bezeichnung",
+                    bezeichnung: "BEZ",
                     phase: phase,
                    schwerpunkte: [
                         {
@@ -99,9 +99,9 @@ class CreateMAZ extends Component {
                             trainingshinweise: "keine"
                         }
                     ],
-                    "startdatum": startdatum,
-                    "enddatum": enddatum,
-                    "hinweis": hinweis
+                    startdatum: startdatum,
+                    enddatum: enddatum,
+                    hinweis: hinweis
                 }
             ),
             headers: {

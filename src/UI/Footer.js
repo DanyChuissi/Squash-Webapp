@@ -12,7 +12,7 @@ class Footer extends React.Component {
             <div className={"footer"}>
                 <a href={"https://www.fh-dortmund.de"}>Impressum </a>
                  ||
-                <a href={"https://www.fh-dortmund.de"}> Datenschutz</a>
+                <a href={"./dataPrivacyStatement"}> Datenschutz</a>
             </div>
         )
     }

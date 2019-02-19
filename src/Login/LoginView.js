@@ -16,6 +16,9 @@ class LoginView extends Component {
     submitLogin(){
         window.location='../benachrichtigungen';
     }
+    resetPW(){
+        window.location='/resetLoginData';
+    }
     render() {
         const {
 
@@ -43,7 +46,7 @@ class LoginView extends Component {
                         <input type="password" name="password" className={"i2"} placeholder={"Passwort eintragen"}
                                value={passwort} onChange={setPasswort}/>
 
-                        <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
+                        <button className={"i3"} onClick={this.resetPW}>Benutzerdaten vergessen?</button>
                         <div className={"i4"}><ConfirmButton onClick={this.submitLogin}>Anmelden</ConfirmButton></div>
 
                     </div>

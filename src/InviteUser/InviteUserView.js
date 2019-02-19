@@ -65,7 +65,7 @@ class InviteUserView extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .then(response => alert(JSON.stringify(response)))
+            .then(response => console.log(JSON.stringify(response)))
             .catch(error => console.error('Error:', error.message));
 
     }

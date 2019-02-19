@@ -23,6 +23,7 @@ import MAZView from "./JTP/MAZView";
 import MAZListView from "./JTP/MAZListView";
 import axios from "axios";
 import PlayerProfileController from "./PlayerProfile/PlayerProfileController";
+import DatenschutzerklaerungView from "./Datenschutzerklaerung/DatenschutzerklaerungView";
 
 
 /**
@@ -117,7 +118,7 @@ class Navigator extends Component {
     dataPrivacyStatementRoute() {
         return (
             <div>
-                <DatenschutzerklaerungController/>
+                <DatenschutzerklaerungView/>
             </div>
         );
     }

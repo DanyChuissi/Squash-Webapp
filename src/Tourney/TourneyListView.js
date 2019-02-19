@@ -7,6 +7,8 @@ import "./Tourney.css"
 import Popup from "reactjs-popup";
 import AddVacationView from "../JTP/AddVacationView";
 import AddTourneyView from "./AddTourneyView";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
 
 /**
  * @author Daniela
@@ -329,6 +331,9 @@ class TourneyListView extends Component {
         ]
         return (
             <div>
+                <HeaderProfileView email={"dani@test.de"} myFunction={showDropdown_Header}>
+                    <HeaderProfileView/>
+                </HeaderProfileView>
                 <div id={"tourneyListView"}>
                     <div id={"tourneyListViewTop"}>
                         <div id={"tourneyListViewTopLeft"}>

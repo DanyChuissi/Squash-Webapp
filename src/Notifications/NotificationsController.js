@@ -69,7 +69,7 @@ class NotificationsController extends React.Component{
                         </div>
                         <div>
                             {notif.notification_art === 1?
-                                <a href="playerprofile">
+                                <a href="/playerprofile/spieler@email.de">
                                     <Confirmbutton onClick={() => this.setStatutNotification(notif.id)}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
                                         Spieler Profil
                                     </Confirmbutton>

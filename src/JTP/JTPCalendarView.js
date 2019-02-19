@@ -185,7 +185,7 @@ class JTPCalendarView extends Component {
                 }
 
                 this.setState({dataMAZ: mazList, load: true});
-                console.log(this.state.dataMAZ[0].startdatum);
+                //console.log(this.state.dataMAZ[0].startdatum);
 
             })
     }
@@ -196,11 +196,8 @@ class JTPCalendarView extends Component {
 
 
     render() {
-        var modifiers;
-        var modifiers02;
-        if (this.state.load === true) {
 
-            modifiers = {
+        const  modifiers = {
                 coordination: {
                     after: new Date(2019, 1, 1),
                     before: new Date(2019, 2, 7),
@@ -242,8 +239,7 @@ class JTPCalendarView extends Component {
                     before: new Date(2019, 12, 1),
                 }
             }
-        }
-        ;
+
 
 
         const

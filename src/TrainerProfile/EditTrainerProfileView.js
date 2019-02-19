@@ -158,7 +158,7 @@ class EditTrainerProfileView extends Component {
                         </tr>
                         <tr id={"editProfiletr"}>
                             <th>Trainerart:</th>
-                            <td value={trainertype}onChange={setTrainertype} contentEditable={"false"} required>{trainertype}</td>
+                            <td value={"Bundestrainer"}onChange={setTrainertype} contentEditable={"false"} required>Bundestrainer</td>
                         </tr>
                         <tr id={"editProfiletr"}>
                             <th>Landesverband:</th>

@@ -62,7 +62,7 @@ class TrainingdatenEvaluation extends Component{
                         </tr>
                         <tr id={"table_css"}>
                             <th className="testName_auswertung">
-                                durchschnittliche Dauer
+                                Durchschnittliche Dauer
                             </th>
                             <td  placeholder={"No Data Found"} >{this.state.overall_Evaluation.dursch_dauer_U15}</td>
                             <td  placeholder={"No Data Found"} >{this.state.overall_Evaluation.dursch_dauer_U17}</td>
@@ -86,7 +86,7 @@ class TrainingdatenEvaluation extends Component{
 
                         <tr id={"table_css"}>
                             <th className="testName_auswertung">
-                                durchschnittliche Herzfrequenz
+                                Durchschnittliche Herzfrequenz
                             </th>
                             <td  placeholder={"No Data Found"} >{this.state.overall_Evaluation.dursch_Hz_U15}</td>
                             <td  placeholder={"No Data Found"} >{this.state.overall_Evaluation.dursch_Hz_U17}</td>

@@ -246,7 +246,7 @@ class Testbaterie extends Component {
                             Neuer Test
                         </Confirmbutton>
                         <div className='myhover'>
-                            <label> Alte TestBaterie</label>
+                            <label> Alte Test Batterie</label>
                             <IconContext.Provider value={{ size: '1.7em'}}>
                                    <h3  hidden={hidde_alte_TestBaterie} onClick={setHidde_Alte_Testbaterie} ><GoTriangleDown/></h3>
                             </IconContext.Provider>

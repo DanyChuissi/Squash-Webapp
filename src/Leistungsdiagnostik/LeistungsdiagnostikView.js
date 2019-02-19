@@ -163,7 +163,7 @@ class LeistungsdiagnostikView extends Component{
     }
 
     componentDidMount(): void {
-        fetch("http://172.22.24.243:50593/LD/email?email=jens@testemail3.de")
+        fetch("http://172.22.24.243:50593/LD/email?email="+this.props.match.params.mail)
             .then(res => res.json())
             .then(
                 (result) => {
