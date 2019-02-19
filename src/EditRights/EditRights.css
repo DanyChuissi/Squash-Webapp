@@ -36,7 +36,12 @@
     padding: 1%;
     margin-bottom: 2.5%;
 }
-
+#groupRightsButton{
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    margin-top: 1%;
+}
 #roleList {
     margin: 2.5%;
 }
@@ -46,6 +51,7 @@
     height: 80px;
     width: 100%;
     background-color: #f19a29;
+    text-align: center;
 }
 
 #CoachListBottom {

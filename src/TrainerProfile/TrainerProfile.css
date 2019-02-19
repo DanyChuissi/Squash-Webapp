@@ -6,8 +6,11 @@
 /**Style for TrainerProfile View**/
 
 #Trainerprofile{
-    height: calc(100vh + 100px);
+    height: calc(100vh + 0px);
+    padding-right: 0%;
+    margin-right: 0;
 }
+
 #mainTP {
 display: flex;
 flex-direction: row;
@@ -24,11 +27,11 @@ width: 300px;
 margin-bottom: 2%;
 }
 .Trainer-Profil-pic {
-margin-left:20%;
-margin-right: 20%;
+margin-left:auto;
+margin-right: auto;
 margin-top: 5%;
-width: 50%;
-height: 100%;
+width: 150px;
+height: 150px;
 }
 
 #leftTP {
@@ -79,22 +82,34 @@ margin-right: 10%;
 }
 
 /** Every second row, the head and editable data is displayed in a different color. **/
-#rightTP > tr:nth-child(even) td {
+#editProfiletr:nth-child(even) td {
     background-color: #ffd533;
 }
 
-#rightTP > tr:nth-child(even) th {
+#editProfiletr:nth-child(even) th {
     background-color: #f19a29;
 }
 
-#rightTP > tr:nth-child(odd) td {
+#editProfiletr:nth-child(odd) td {
     background-color: #ffa436;
 }
 
-#rightTP > tr:nth-child(odd) th {
+#editProfiletr:nth-child(odd) th {
     background-color: #ff792a;
 }
 
+/** The font is set to Calibri 12pt **/
+#editProfileth, #editProfiletd {
+    font-size: 12pt;
+    font-family: Calibri;
+    border-collapse: collapse;
+}
+#editProfiletr > #editProfilethCity{
+    background-color: #f19a29;
+}
+#editProfiletr > #editProfiletdCity{
+    background-color: #ffd533;
+}
 /** The font is set to Calibri 12pt **/
 #rightTP > table, th, td {
     font-size: 12pt;

@@ -37,7 +37,7 @@ class CoachList extends Component {
         return (
             <div className="CoachList">
                 <div id={"CoachListTop"}>
-
+                    <h2>Trainer oder Experten wählen</h2>
                 </div>
                 <ReactTable
                     filterable

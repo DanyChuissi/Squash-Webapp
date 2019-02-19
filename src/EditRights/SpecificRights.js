@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
 import './EditRights.css'
-
 import 'react-table/react-table.css';
 import ReactTable from "react-table";
 import deleteIcon from "../Graphics/trash_bin_icon-icons.com_67981.png"
@@ -16,7 +15,6 @@ class SpecificRights extends Component {
         super(props);
 
         this.state = {selected: {}, selectAll: 0, data: makeData()};
-
 
     }
 
@@ -72,7 +70,7 @@ class SpecificRights extends Component {
                     );
                 },
                 sortable: false,
-                width: 130
+                width: 100
             },
             {
                 id: "Leistungsdaten",
@@ -110,7 +108,7 @@ class SpecificRights extends Component {
                 },
                 Header: '',
                 sortable: false,
-                width: 30
+                width: 50
             },
         ];
 

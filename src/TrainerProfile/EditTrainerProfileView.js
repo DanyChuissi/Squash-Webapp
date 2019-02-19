@@ -100,17 +100,17 @@ class EditTrainerProfileView extends Component {
                 <div className={"editTrainerProfile"}>
                     <table>
                         <tbody>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Name:</th>
                             <td placeholder={"Namen eintragen"} onChange={setName} contentEditable="false"
                                 required>{name}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Nachname:</th>
                             <td placeholder={"Nachnamen eintragen"} id={"surnameL"}
                                 onChange={setSurName} contentEditable="false" required>{surname}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Geburtsdatum:</th>
                             <td><input type='date' input="date" placeholder={"Geburtsdatum eintragen"} id={"birthdateL"}
                                        value={birthdate}
@@ -120,47 +120,47 @@ class EditTrainerProfileView extends Component {
                                 <div hidden={nationalAssosiationhidden}>{birthdate}</div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Email:</th>
                             <td placeholder={"Email eintragen"} id={"mailL"} value={mail}
                                 onChange={setMail} contentEditable="false" required>{mail} </td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Stadt:</th>
                             <td placeholder={"Stadt eintragen"} id={"cityL"} value={city}
                                 onChange={setCity} contentEditable="false" required>{city} </td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Postleitzahl:</th>
                             <td placeholder={"Postleitzahl eintragen"} contentEditable="false" id={"zipL"}
                                 onChange={setZIP} required>{zip}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Straße:</th>
                             <td placeholder={"Straße eintragen"} contentEditable="false" id={"streetL"}
                                 onChange={setStreet} required>{street} </td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Hausnummer:</th>
                             <td placeholder={"Hausnummer eintragen"} contentEditable="false" id={"housenmbr"}
                                 value={houseNbr}
                                 onChange={setHouseNbr} required>{houseNbr} </td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Festnetznummer:</th>
                             <td value={landlaneNumber}
                                 onChange={setLandlaneNumber} contentEditable="false" required>{landlaneNumber}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Mobilfunknummer:</th>
                             <td value={mobileNumber}
                                 onChange={setMobileNumber} contentEditable="false" required>{mobileNumber}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Trainerart:</th>
                             <td value={trainertype}onChange={setTrainertype} contentEditable={"false"} required>{trainertype}</td>
                         </tr>
-                        <tr>
+                        <tr id={"editProfiletr"}>
                             <th>Landesverband:</th>
                             <td>
 

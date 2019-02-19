@@ -1,7 +1,7 @@
 import React from 'react'
 import './UIStylesheet.css'
 /**
- * @author Daniela
+ *
  * This File represents the standard Input.
  * @visibleName Checkbox
  */

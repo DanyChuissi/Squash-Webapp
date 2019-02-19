@@ -1,10 +1,18 @@
+#notificationView{
+    height: calc(100vh);
+}
 .notif  {
     border: 2px solid black;
     /*min-height: 333px;*/
     height: auto;
-    margin: 100px;
-}
+    margin-top: 5%;
+    margin-left: 100px;
+    margin-right: 100px;
 
+}
+#notification_outerbox{
+    height: 565px;
+}
 .notif_1 {
     display: grid;
     grid-template-columns: 20% 80%  ;

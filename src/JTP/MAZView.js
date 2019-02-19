@@ -7,6 +7,7 @@ import Popup from "reactjs-popup";
 import AddExerciseView from "./AddExerciseView";
 import CopyWorkout from "./CopyWorkout";
 import axios from 'axios';
+import CreateWorkout from "./CreateWorkout";
 
 /**
  * @author Daniela
@@ -37,6 +38,7 @@ class MAZView extends Component {
             dataExercise: makeDataExercise(),
             triggerCreateExercise: false,
             triggerCopyWorkout: false,
+            triggerCreateWorkout: false,
             id
         };
     }
@@ -52,8 +54,14 @@ class MAZView extends Component {
         mazNote: '',
         mazEmphasis: [],
         trainingsdata: [],
-        excercises:[],
+        excercises: [],
         mazEmphasisDescription: '',
+
+
+        weekval: '',
+        bezeichnung: '',
+        hinweis: '',
+        dauer: '',
     }
 
 
@@ -91,6 +99,61 @@ class MAZView extends Component {
         })
     }
 
+    openCreateWorkout = (e) => {
+        this.setState({
+            triggerCreateWorkout: true,
+        })
+    }
+    cancelCreateWorkout = (e) => {
+        this.setState({
+            triggerCreateWorkout: false,
+        })
+    }
+
+    setWeekVal = (e) => {
+        this.setState({
+            weekval: [...e.target.value]
+        });
+    }
+    setBezeichnung = (e) => {
+        this.setState({bezeichnung: e.target.value})
+    }
+    setHinweise = (e) => {
+        this.setState({hinweis: e.target.value})
+    }
+    setDauer = (e) => {
+        this.setState({dauer: e.target.value})
+    }
+
+    createCreateWorkout = (bezeichung, wochentag, dauer, hinweise) => {
+        fetch('http://172.22.24.243:50600/makrozyklus/addTrainingseinheit?mid='+ this.props.match.params.id, {
+            method: 'POST',
+            body: JSON.stringify(
+                {
+                    trainingsbezeichnung: bezeichung,
+                    wochentage: [
+                        {
+                            bezeichnung: wochentag
+                        }
+                    ],
+                    uebungen: [
+                    ],
+                    dauerInMin: dauer,
+                    trainingshinweise: hinweise
+                }
+            ),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+
+        this.setState({
+            triggerCreateWorkout: false,
+        })
+    }
+
     parseDaysOfWeek(workout) {
         var x = " ";
         for (let i = 0; i < workout.wochentage.length; i++) {
@@ -106,6 +169,7 @@ class MAZView extends Component {
         }
         this.setState({mazEmphasisDescription: x})
     }
+
     onRowClick = (state, rowInfo, column, instance) => {
         return {
             onDoubleClick: e => {
@@ -119,6 +183,7 @@ class MAZView extends Component {
             }
         }
     }
+
     componentDidMount() {
 
         axios.get(`http://172.22.24.243:50600/makrozyklus/getMacrocyclesById?id=` + this.props.match.params.id)
@@ -211,6 +276,7 @@ class MAZView extends Component {
             },
         ];
 
+
         const ModalCreateExercise = () => (
             <Popup open={this.state.triggerCreateExercise} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle}>
@@ -227,6 +293,27 @@ class MAZView extends Component {
                 </div>
             </Popup>
         )
+
+        const ModalCreateWorkout = () => (
+            <Popup open={this.state.triggerCreateWorkout} position={"top left"} closeOnDocumentClick={true}>
+                <div style={modalStyle}>
+                    <CreateWorkout createWorkout={()=>this.createCreateWorkout(this.state.bezeichnung,this.state.weekVal,this.state.hinweise,this.state.dauer)}
+                                   cancelWorkout={this.cancelCreateWorkout}
+
+                                   weekVal={this.state.weekval}
+                                   bezeichnung={this.state.bezeichnung}
+                                   hinweise={this.state.hinweis}
+                                   dauer={this.state.dauer}
+
+                                   setWeekVal={this.setWeekVal}
+                                   setBezeichnung={this.setBezeichnung}
+                                   setHinweise={this.setHinweise}
+                                   setDauer={this.setDauer}
+
+                />
+            </div>
+    </Popup>
+    )
 
 
         return (
@@ -272,7 +359,7 @@ class MAZView extends Component {
                         rowsText={'Zeile'}
                     />
                     <div id={"mAZWorkoutListButtons"}>
-                        <Confirmbutton>Trainingseinheit hinzufügen</Confirmbutton>
+                        <Confirmbutton onClick={this.openCreateWorkout}>Trainingseinheit hinzufügen</Confirmbutton>
                         <Confirmbutton id={"copyWorkoutButton"} onClick={this.openCopyWorkout}>Trainingseinheit
                             kopieren</Confirmbutton>
                     </div>
@@ -310,6 +397,7 @@ class MAZView extends Component {
 
                 <ModalCreateExercise/>
                 <ModalCopyWorkout/>
+                <ModalCreateWorkout/>
             </div>
 
         );

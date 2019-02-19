@@ -14,7 +14,7 @@ class HeaderProfilController extends React.Component{
     constructor(){
         super();
         this.state = {
-            email: ''}
+            email: 'dani@test.de'}
     }
 
     setEmail =(e)=>{
