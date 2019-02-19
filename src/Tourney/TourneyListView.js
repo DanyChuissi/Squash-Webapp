@@ -234,6 +234,7 @@ class TourneyListView extends Component {
     onRowClick = (state, rowInfo, column, instance) => {
         return {
             onDoubleClick: e => {
+                if( typeof rowInfo !== "undefined") {
                 console.log('A Td Element was clicked!')
                 console.log('it produced this event:', e)
                 console.log('It was in this column:', column)
@@ -243,18 +244,20 @@ class TourneyListView extends Component {
                 console.log('Index Row', rowInfo.index)
                 console.log('Index email', rowInfo.original.id)
                 var tournier = this.getTurniereFromId(rowInfo.original.id)
-                this.setState({
-                    titel: tournier.tournamentName,
-                    ort: tournier.tournamentVenues,
-                    link: tournier.link,
-                    startDate: tournier.vonDate,
-                    endDate: tournier.bisDate,
-                    id: tournier.id,
-                    search: true,
-                    triggerCreateTourney: true,
+
+                    this.setState({
+                        titel: tournier.tournamentName,
+                        ort: tournier.tournamentVenues,
+                        link: tournier.link,
+                        startDate: tournier.vonDate,
+                        endDate: tournier.bisDate,
+                        id: tournier.id,
+                        search: true,
+                        triggerCreateTourney: true,
 
 
-                })
+                    })
+                }
             }
         }
     }

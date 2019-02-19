@@ -68,7 +68,9 @@ class PlayerList extends Component {
      */
     onRowClick = (state, rowInfo, column, instance) => {
         return {
+
             onDoubleClick: e => {
+                if( typeof rowInfo !== "undefined"){
                 console.log('A Td Element was clicked!')
                 console.log('it produced this event:', e)
                 console.log('It was in this column:', column)
@@ -77,8 +79,9 @@ class PlayerList extends Component {
                 this.setState({rowInfos: rowInfo})
                 console.log('Index Row', rowInfo.index)
                 console.log('Index email', rowInfo.original.email)
-                window.location='/playerprofile/'+rowInfo.original.email
+                window.location = '/playerprofile/' + rowInfo.original.email
             }
+        }
         }
     }
 
