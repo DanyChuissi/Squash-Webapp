@@ -11,15 +11,11 @@
     font-family: Arial;
 }
 
-#Trainerprofile{
-    height: 100%;
-}
-
 #pPleft,#pPmiddle,#pPright {
     display: flex;
     flex-direction: column;
     margin-left: 2%;
-    margin-right: 0.5%;
+    margin-right: 0;
     margin-bottom: 2%;
     background-color: #f19a29;
     border: 2px solid black;

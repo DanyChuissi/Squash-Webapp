@@ -57,6 +57,7 @@ class EditPlayerProfileController extends Component {
 
     setHouseNbr = (e) => {
         this.setState({houseNbr: e.target.value})
+        console.log(this.state.houseNbr)
     }
 
     setSquad = (e) => {

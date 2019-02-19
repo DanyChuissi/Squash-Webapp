@@ -12,6 +12,8 @@ import "./MAZ.css"
 import axios from "axios";
 import {Route} from "react-router-dom";
 import MAZView from "./MAZView";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
 
 /**
  * @author Daniela
@@ -53,7 +55,6 @@ class MAZListView extends Component {
                 console.log('It was in this row:', rowInfo)
                 console.log('It was in this table instance:', instance)
                 this.setState({rowInfos: rowInfo})
-                this.props.callbackFromParent(rowInfo.original.mazId);
                 console.log('Index Row', rowInfo.index)
                 console.log('Index email', rowInfo.original.email)
                 window.location='/mazDetail/'+rowInfo.original.mazId
@@ -111,10 +112,24 @@ class MAZListView extends Component {
         })
     }
     createCreateMAZ = (e) => {
-        alert("MAZ hinzugefügt")
+        alert("MAZ hinzugefügt");
+        var mazList;
+        axios.get(`http://172.22.24.243:50600/makrozyklus/getMacrocyclesOfUser?email=`+this.props.match.params.mail)
+            .then(res => {
+                mazList = res.data;
+                console.log(mazList);
+                for (let i = 0; i < mazList.length; i++) {
+                    console.log(mazList[i].mazId);
+                }
+                this.setState({dataMAZ: mazList});
+            })
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error))
+
         this.setState({
             triggerCreateMAZ: false,
         })
+
     }
 
     MAZViewRoute() {
@@ -129,7 +144,7 @@ class MAZListView extends Component {
         const ModalCreateMAZ = () => (
             <Popup open={this.state.triggerCreateMAZ} position={"top left"} closeOnDocumentClick={true}>
                 <div style={modalStyle}>
-                    <CreateMAZ createMAZ={this.createCreateMAZ} cancelMAZ={this.cancelCreateMAZ}/>
+                    <CreateMAZ createMAZ={this.createCreateMAZ} cancelMAZ={this.cancelCreateMAZ} email={this.props.match.params.mail}/>
                 </div>
             </Popup>
         )
@@ -143,7 +158,13 @@ class MAZListView extends Component {
             </Popup>
         )
         return (
+            <div>
+                <HeaderProfileView email = {"test"}  myFunction={showDropdown_Header}>
+                    <HeaderProfileView/>
+                </HeaderProfileView>
+
             <div id={"mAZListView"}>
+
                 <h2>Macrozyklenübersicht</h2>
 
                 <ReactTable
@@ -190,7 +211,7 @@ class MAZListView extends Component {
                 <ModalCreateMAZ/>
                 <Route path={"/mAZList/detail"} component={this.MAZViewRoute}/>
             </div>
-
+            </div>
         );
     }
 

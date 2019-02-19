@@ -7,6 +7,8 @@ import 'moment/locale/de';
 import './Kalendar.css';
 import DetailsAnsichtView from "../Trainingstagebuch/DetailsAnsichtView";
 import Popup from "reactjs-popup";
+import HeaderProfileView from "../UI/HeaderProfilView";
+import {showDropdown_Header} from "../UI/HeaderProfilController";
 
 const modalStyle = {
     position: 'fixed',
@@ -41,7 +43,7 @@ class KalendarView extends Component {
         isLoaded2: false
     }
     componentDidMount(): void {
-        fetch("http://172.22.24.243:50596/trainingsdaten?email=jens@testemail3.de")
+        fetch("http://172.22.24.243:50596/trainingsdaten?email="+ this.props.match.params.mail)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -107,6 +109,9 @@ class KalendarView extends Component {
     }
 
     render() {
+        const{
+            emailUser
+        }=this.props
         const Modal =()=>(
     <Popup open={this.state.trigger} position={"top left"} closeOnDocumentClick={true}>
         <div style={modalStyle}>
@@ -257,7 +262,9 @@ class KalendarView extends Component {
 
             return (
                 <div className="App">
-
+                    <HeaderProfileView email={emailUser} myFunction={showDropdown_Header}>
+                        <HeaderProfileView/>
+                    </HeaderProfileView>
 
                     <div id={"cal"}>
                         <BigCalendar messages={messages}

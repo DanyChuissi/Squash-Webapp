@@ -34,33 +34,27 @@ import PlayerProfileController from "./PlayerProfile/PlayerProfileController";
 class Navigator extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            mazId: 0
-        };
-        this.myCallback = this.myCallback.bind(this);
+        this.state = {};
     }
 
-
-    myCallback = (dataFromChild) => {
-        this.setState({mazId: dataFromChild});
-        console.log(this.state.mazId);
-        axios.get(`http://172.22.24.243:50600/makrozyklus/getMacrocyclesById?id=` + this.state.mazId)
-            .then(res => {
-                const maz = res.data;
-                this.setState({maZName: maz.name});
-                this.setState({mazAthletName: maz.email});
-                this.setState({mazDescription: maz.beschreibung});
-                this.setState({mazPhase: maz.phase});
-                this.setState({mazEnd: maz.enddatum});
-                this.setState({mazStart: maz.startdatum});
-                this.setState({mazNote: maz.hinweis});
-                this.setState({trainingsdata: maz.trainingseinheiten});
-                this.setState({mazidView: this.props.mazId});
-                /**  this.setState({mazEmphasis: maz.schwerpunkte});**/
-            }).then(res => res.json())
-            .then(response => console.log('Success:', JSON.stringify(response)))
-            .catch(error => console.error('Error:', error));
+    state = {
+        userEmail: '',
+        password:'',
     }
+
+    setUsermail = (e) => {
+        this.setState({userEmail: e.target.value})
+        console.log(this.state.userEmail)
+    }
+
+    submitLogin = () => {
+      window.location='../benachrichtigungen'
+    }
+
+   /* setPassword = (e) => {
+        this.setState({password: e.target.value})
+        console.log(this.state.password)
+    }*/
 
     LoginRoute() {
         return (
@@ -216,27 +210,31 @@ class Navigator extends Component {
             <div>
                 <Router>
                     <div>
-
-                        <Route exact path="/login" component={this.LoginRoute}/>
+                        <Route exact path="/login" render={props => <LoginView setName={this.setUsermail}
+                                                                               setPasswort={this.setPassword}
+                                                                               name={this.state.userEmail}
+                                                                               passwort={this.state.password}
+                                                                               submitLogin={this.submitLogin}/>}/>
                         <Route path="/playerList" component={this.PlayerListRoute}/>
                         <Route path="/registration" component={this.RegistrationRoute}/>
-                        <Route exact path={'/playerprofile/:mail'} render={props=> <PlayerProfileController {...props}/>}/>
+                        <Route exact path={'/playerprofile/:mail'}
+                               render={props => <PlayerProfileController {...props}/>}/>
                         <Route path={"/dataPrivacyStatement"} component={this.dataPrivacyStatementRoute}/>
-                        <Route path={"/editRights"} component={this.EditRightsRoute}/>
+                        <Route path={"/editRights"} render={props => <EditRightsView email={this.state.userEmail}{...props}/>}/>
                         <Route path={"/inviteUser"} component={this.InviteUserRoute}/>
-                        <Route path={"/jTP"} component={this.JTPRoute}/>
-                        <Route path={"/leistungsdiagnostik"} component={this.performanceDiagnosticsRoute}/>
+                        <Route path={"/jTP/:mail"} render={props => <JTPCalendarView {...props}/>}/>
+                        <Route path={"/leistungsdiagnostik/:mail"}
+                               render={props => <LeistungsdiagnostikView {...props}/>}/>
                         <Route path={"/benachrichtigungen"} component={this.notificationRoute}/>
                         <Route path={"/resetLoginData"} component={this.resetLoginDataRoute}/>
                         <Route path={"/tourneyList"} component={this.tourneyListRoute}/>
                         <Route path={"/trainerProfile"} component={this.trainerProfileRoute}/>
-                        <Route path={"/trainingsdiary"} component={this.trainingsdiaryRoute}/>
                         <Route path={"/trainingsdiarydetail"} component={this.trainingsdiaryDetailRoute}/>
                         <Route path={"/athletVergleich"} component={this.VergleichRoute}/>
                         <Route path={"/createWorkout"} component={this.CreateWorkoutRoute}/>
-                        <Route path={"/mAZList"} render={routeProps => <div>
-                            <MAZListView callbackFromParent={this.myCallback}/></div>}/>
-                        <Route exact path={'/mazDetail/:id'} render={props=> <MAZView {...props}  />} />
+                        <Route exact path={"/mAZList/:mail"} render={props => <div><MAZListView {...props}/></div>}/>
+                        <Route exact path={'/mazDetail/:id'} render={props => <MAZView {...props}  />}/>
+                        <Route exact path={'/trainingsdiary/:mail'} render={props => <KalendarView {...props}  />}/>
 
                     </div>
                 </Router>

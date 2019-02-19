@@ -15,15 +15,25 @@ import {Multiselect} from "react-widgets";
 const emphasis = ["Kraft", "Schnelligkeit", "Beweglichkeit", "Koordination", "Technik/Taktik", "Mentaler Bereich", "Leistungsdiagnostik"];
 
 class CreateMAZ extends Component {
+    constructor(...args) {
+        super(...args)
+        this.state = { value: ['Kraft'] }
+    }
     state = {
         mazPhase: '',
         mazName: '',
         mazStartdate: '',
         mazEnddate: '',
         mazDescription: '',
-        mazEmphasis: [],
+        mazHinweis:'',
 
     }
+
+    setHinweis = (e) => {
+        this.setState({mazHinweis: e.target.value})
+        console.log(this.state.mazHinweis);
+    }
+
     setPhase = (e) => {
         this.setState({mazPhase: e.target.value})
         console.log(this.state.mazPhase);
@@ -38,8 +48,8 @@ class CreateMAZ extends Component {
     }
 
     setEmphasis = (e) => {
-        this.setState({mazEmphasis: e.target.value})
-        console.log(this.state.mazEmphasis);
+        this.state.mazEmphasis.push(e);
+        console.log(this.state.mazEmphasis[0]);
     }
 
     setDescription = (e) => {
@@ -49,30 +59,63 @@ class CreateMAZ extends Component {
     setEnddate = (e) => {
         this.setState({mazEnddate: e.target.value})
     }
-    createMAZ(){
+
+    createMAZ(email, name, phase, startdatum, enddatum, hinweis,schwerpunkt) {
+        console.log(phase)
         fetch('http://172.22.24.243:50600/makrozyklus/addMacrocycle', {
             method: 'POST',
             body: JSON.stringify(
                 {
-                    name: "Testname",
-                    email: "dani@test.de",
-                    bezeichnung: "Tollster MAZ",
-                    phase: "Einführungsphase",
-                    schwerpunkte: [{id: 2, bezeichnung: "SchwererSchwerpunkt"}],
-                    startdatum: "12.02.1999",
-                    enddatum: "12.02.2000",
-                    hinweis: "Bla"
+                    email: email,
+                    name: name,
+                    bezeichnung: "bezeichnung",
+                    phase: phase,
+                   schwerpunkte: [
+                        {
+                            bezeichnung: schwerpunkt
+                        }
+                    ],
+                   trainingseinheiten: [
+                        {
+                            trainingsbezeichnung: "Testtraining",
+                            wochentage: [
+                                {
+                                    bezeichnung: "Sonntag"
+                                }
+                            ],
+                            uebungen: [
+                                {
+                                    uebungsbezeichnung: "Beweg dich!",
+                                    dauerInMinuten: 166,
+                                    uebungshinweise: "Du schaffst das"
+                                },
+                                {
+                                    uebungsbezeichnung: "wirklich!",
+                                    dauerInMinuten: 2,
+                                    uebungshinweise: "Hauptsache du hast Spaß"
+                                }
+                            ],
+                            dauerInMin: 13,
+                            trainingshinweise: "keine"
+                        }
+                    ],
+                    "startdatum": startdatum,
+                    "enddatum": enddatum,
+                    "hinweis": hinweis
                 }
             ),
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
             .then(response => console.log('Success:', JSON.stringify(response)))
             .catch(error => console.error('Error:', error));
     }
+
     render() {
         const {
+            email,
+
             createMAZ,
             cancelMAZ,
         } = this.props
@@ -84,9 +127,9 @@ class CreateMAZ extends Component {
                 <h2>MAZ erstellen</h2>
                 <div id={"mAZPhase"}>
                     Bezeichnung:
-                    <Input placeholder={"Bezeichnung einfügen"} onChange={this.setDescription}/>
+                    <Input placeholder={"Bezeichnung einfügen"} onChange={this.setMAZName}/>
                     <Label id={"MaZPhaseLabel"}>Phase:</Label>
-                    <select id={"mAZPhaseSelect"} onChange={this.setPhase}>
+                    <select id={"mAZPhaseSelect"} onChange={this.setPhase} value={this.state.mazPhase}>
                         <option value="preparationPhase">Vorbereitungsphase</option>
                         <option value="immediatelyCompetition">Unmittelbare Wettkampfvorbereitung</option>
                         <option value="competition">Wettkampfphase</option>
@@ -95,22 +138,24 @@ class CreateMAZ extends Component {
                     </select>
                     <Label>Startdatum: </Label>
                     <input type="date" id="startMAZ" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31" onChange={this.setStartdate}/>
+
+                           min="2019-01-01" max="2031-12-31" onChange={this.setStartdate}/>
                     <Label>Enddatum: </Label>
                     <input type="date" id="endMAZ" name="trip-start"
-                           value="2018-07-22"
-                           min="2018-01-01" max="2018-12-31" onChange={this.setEnddate}/>
+
+                           min="2019-01-01" max="2031-12-31" onChange={this.setEnddate}/>
 
                     <Label>Schwerpunkte</Label>
 
                     <Multiselect id={"multiselectEmphasis"}
+                                value={this.state.value}
+                                 onChange={value => this.setState({ value })}
                                  data={emphasis}
                                  defaultValue={emphasis[0]}
                                  textField='Schwerpunkte'
                                  caseSensitive={false}
                                  minLength={1}
-                                 filter='contains' onChange={this.setEmphasis}
+                                 filter='contains'
                     />
 
 
@@ -120,7 +165,11 @@ class CreateMAZ extends Component {
 
                 </div>
                 <div id={"bottomCreateMAZView"}>
-                    <Confirmbutton id={"addMAZButton"} onClick={(event)=>{this.createMAZ(); createMAZ();}}>Erstellen</Confirmbutton>
+                    <Confirmbutton id={"addMAZButton"} onClick={(event) => {
+
+                        this.createMAZ(email, this.state.mazName, this.state.mazPhase, this.state.mazStartdate, this.state.mazEnddate, this.state.hinweis,this.state.value[0]);
+                        createMAZ();
+                    }}>Erstellen</Confirmbutton>
                     <Confirmbutton id={"closeAddMAZView"} onClick={cancelMAZ}>Abbrechen</Confirmbutton>
                 </div>
 

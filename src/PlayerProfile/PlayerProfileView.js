@@ -7,6 +7,7 @@ import logo from "../Graphics/480px-PICA.jpg";
 import EditProfileView from "../EditPlayerProfile/EditProfileView";
 import HeaderProfileView from "../UI/HeaderProfilView";
 import {showDropdown_Header} from "../UI/HeaderProfilController";
+
 /**
  * @author Daniela
  * This View contains the personal Informations of an Athlete. They can be updatet and send to the server.
@@ -53,12 +54,14 @@ class PlayerProfileView extends Component {
             emailUser,
             edithidden,
             savehidden,
+
             onDelete,
             onEdit,
             onSave,
             onCompare,
-
-
+            goToTrainingsdiary,
+            goToJTP,
+            goToLeistungsdiagnostik
         } = this.props;
 
         return (
@@ -116,25 +119,23 @@ class PlayerProfileView extends Component {
                         />
                     </div>
                     <div id={"pPright"}>
-                                <div>
-                                    <Confirmbutton id="edit" onClick={onEdit}
-                                                   hidden={edithidden}>Bearbeiten</Confirmbutton>
-                                    <Confirmbutton id={"save"} onClick={onSave}
-                                                   hidden={savehidden}>Speichern</Confirmbutton>
+                        <div>
+                            <Confirmbutton id="edit" onClick={onEdit}
+                                           hidden={edithidden}>Bearbeiten</Confirmbutton>
+                            <Confirmbutton id={"save"} onClick={onSave}
+                                           hidden={savehidden}>Speichern</Confirmbutton>
 
-                                    <form action="/jTP">
-                                        <Confirmbutton id="edit" type={"submit"}>Jahrestrainingsplan</Confirmbutton>
-                                    </form>
-                                    <form action="/trainingsdiary">
-                                    <Confirmbutton id={"save"}>Trainingstagebuch</Confirmbutton>
-                                    </form>
-                                    <form action="/leistungsdiagnostik">
-                                        <Confirmbutton id={"save"} >Leistungsdiagnostik</Confirmbutton>
-                                    </form>
-                                </div>
+
+                            <Confirmbutton id="edit" onClick={goToJTP}>Jahrestrainingsplan</Confirmbutton>
+
+                            <Confirmbutton onClick={goToTrainingsdiary}>Trainingstagebuch</Confirmbutton>
+
+                            <Confirmbutton onClick={goToLeistungsdiagnostik}>Leistungsdiagnostik</Confirmbutton>
+
+                        </div>
 
                     </div>
-            </main>
+                </main>
             </Fragment>
         );
     }

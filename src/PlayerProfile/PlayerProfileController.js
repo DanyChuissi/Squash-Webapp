@@ -83,6 +83,7 @@ class PlayerProfileController extends Component {
 
     setHouseNbr = (e) => {
         this.setState({houseNbr: e.target.value})
+        console.log(this.state.houseNbr)
     }
 
     setSquad = (e) => {
@@ -108,11 +109,11 @@ class PlayerProfileController extends Component {
 
     componentDidMount() {
         console.log(this.props.match.params.mail)
-        axios.get(`http://172.22.24.243:50594/player/email?email=`+this.props.match.params.mail)
+        axios.get(`http://172.22.24.243:50594/player/email?email=` + this.props.match.params.mail)
             .then(res => {
                 const person = res.data;
                 this.setState({
-                    email: person.email,
+                    mail: person.email,
                     name: person.name,
                     surname: person.surname,
                     birthdate: person.dateofbirth,
@@ -131,20 +132,22 @@ class PlayerProfileController extends Component {
                     savehidden: true,
                 })
 
+
             })
     }
 
 
     confirmChanges = (name, surname, dateofbirth, email, mobilenum, landlinenum, street, houseNr, zip, city, spin, squad, active, regionid) => {
-        console.log(dateofbirth)
-        fetch('http://172.22.24.243:50594/player?email=jens@testmail3.de', {
+        console.log(houseNr)
+        console.log(this.props.match.params.mail)
+        fetch('http://172.22.24.243:50594/player?email=' + this.props.match.params.mail, {
             method: 'PUT', // or 'PUT'
             body: JSON.stringify(
                 {
                     name: name,
                     surname: surname,
                     dateofbirth: dateofbirth,
-                    email: "jens@testmail3.de",
+                    email: this.props.match.params.mail,
                     mobilenumber: mobilenum,
                     landlinenumber: landlinenum,
                     streetname: street,
@@ -186,8 +189,20 @@ class PlayerProfileController extends Component {
         //TODO Athleten löschen
     }
 
+    goToTrainingsdiary(email) {
+        console.log(email)
+        window.location='/trainingsdiary/'+email
+    }
+    goToJTP(email){
+        console.log(email)
+        window.location='/jTP/'+email
+    }
 
-//TODO PlayerProfileView importieren, alle Properties übertragen und Methoden für Bearbeiten des Profils schreiben
+    goToLeistungsdiagnostik(email){
+        console.log(email)
+        window.location='/leistungsdiagnostik/'+email
+    }
+
     render() {
         return (
             <PlayerProfileView
@@ -226,10 +241,14 @@ class PlayerProfileController extends Component {
                 setMobileNumber={this.setMobileNumber}
                 setNationalAssosiation={this.setNationalAssosiation}
 
-                onSave={() => this.confirmChanges(this.state.name, this.state.surname, this.state.birthdate, this.state.email, this.state.mobileNumber, this.state.landlaneNumber, this.state.street, this.state.houseNr, this.state.zip, this.state.city, this.state.spin, this.state.squad, this.state.active, this.state.nationalAssosiation)}
+                onSave={() => this.confirmChanges(this.state.name, this.state.surname, this.state.birthdate, this.state.email, this.state.mobileNumber, this.state.landlaneNumber, this.state.street, this.state.houseNbr, this.state.zip, this.state.city, this.state.spin, this.state.squad, this.state.active, this.state.nationalAssosiation)}
                 onDelete={this.onDelete}
                 onEdit={this.onEdit}
                 onCompare={this.onCompare}
+
+                goToJTP={()=> this.goToJTP(this.state.email)}
+                goToTrainingsdiary={() => this.goToTrainingsdiary(this.state.email)}
+                goToLeistungsdiagnostik={()=>this.goToLeistungsdiagnostik(this.state.email)}
             />
         );
     }

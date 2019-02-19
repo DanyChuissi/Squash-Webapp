@@ -3,15 +3,7 @@ import './Notifications.css';
 import {showDropdown_Header} from "../UI/HeaderProfilController";
 import HeaderProfilView from "../UI/HeaderProfilView";
 import Confirmbutton from "../UI/Confirmbutton";
-import EditRightsView from "../EditRights/EditRights";
-import PlayerProfileView from "../PlayerProfile/PlayerProfileView";
-import setEmailNavigator from './../Navigator';
-/**
- * @author Dany Chuissi
- *
- * Controller Klasse für die Notification Seite
- * @visibleName NotificationsController
- */
+import EditRightsView from "../EditRights/EditRightsView";
 
 class NotificationsController extends React.Component{
 
@@ -32,10 +24,6 @@ class NotificationsController extends React.Component{
     remoneNotification = (notif) => {
         //TODO gelesenen Notificvation werden als "gelesen markiert" und nicht mehr angezeigt
     }
-    /**
-     *
-     * Die Methode lädt ungelesenen notification (zurzeit nur lokal) auf dem Server
-     */
     componentWillMount(): void {
         this.state.notifications.map( (notif) => {
                 if (notif.statut_gelesen === false) {
@@ -47,10 +35,6 @@ class NotificationsController extends React.Component{
         )
     }
 
-    /**
-     *
-     * Die Methode setzt die Statut eine Notification auf gelesen
-     */
     setStatutNotification = (index) => {
         let array = this.state.ungeleseneNotifications;
         array[index].statut_gelesen = true;
@@ -58,12 +42,8 @@ class NotificationsController extends React.Component{
         this.setState({
             ungeleseneNotifications: array,
         })
-        setEmailNavigator('email@test.de');
     }
-    /**
-     *
-     * Die Methode setzt den Atributte zuriff auf true, damit wird die Seite für die Zugriff rechte angezeigt
-     */
+
     onZugrifrechtgechlickt =  () => {
         this.setState({
             zugrif: true,
@@ -88,10 +68,6 @@ class NotificationsController extends React.Component{
                             {notif.text}
                         </div>
                         <div>
-                            {/*<Route
-                                path='/Playerprofil/' {notif.person}
-                                render={(props) => <PlayerProfileView {...props} name={Mueller} />}
-                            />*/}
                             {notif.notification_art === 1?
                                 <a href="playerprofile">
                                     <Confirmbutton onClick={() => this.setStatutNotification(notif.id)}  myStyle= {{padding: '5px', marginTop: '5px', paddingRight: '15px', paddingLeft: '15px'}} >
@@ -110,18 +86,21 @@ class NotificationsController extends React.Component{
             </div>);
 
         return (
-            <Fragment>
+            <Fragment id={"notificationView"}>
                 <HeaderProfilView email = {"test"}  myFunction={showDropdown_Header}  >
                     <HeaderProfilView/>
                 </HeaderProfilView>
-                <div className="head_Notif">
-                    <label>Benachrichtigung</label>
-                </div>
-                <div className="notif">
-                    <div >
-                        {notifications}
+                <div id={"notification_outerbox"}>
+                    <div className="head_Notif">
+                        <label>Benachrichtigung</label>
+                    </div>
+                    <div className="notif">
+                        <div >
+                            {notifications}
+                        </div>
                     </div>
                 </div>
+
                 {this.state.zugrif? <a href="editRights"></a>: null}
             </Fragment>
         );

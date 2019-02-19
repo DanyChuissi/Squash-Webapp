@@ -30,9 +30,7 @@ class ResetLoginDataView extends Component{
     }
     /**das Login fenster wird angezeigt, fall der User auf "Abbrechen" klickt*/
     _onAbbrechenClick() {
-        this.setState({
-            showLogin: true,
-        });
+        window.location='/login'
     }
 
     /**
@@ -58,12 +56,12 @@ class ResetLoginDataView extends Component{
             }*/
         }
 
-        if(yourEmail === "chuissidany@yahoo.fr") {
+      /*  if(yourEmail === "chuissidany@yahoo.fr") {
             erg = "Email wurde gesendet an \"" + yourEmail + "\", offne deine Email Adresse, um dein Passwort zurückzusetzten"
             return erg;
 
-        }
-        erg =   "Email nicht gefunden!"
+        }*/
+        erg =   "Email wurde gesendet an \"" + yourEmail + "\". Öffne deine Emails, um dein Passwort zurückzusetzten";
         return erg;
     }
 
@@ -71,11 +69,27 @@ class ResetLoginDataView extends Component{
         this.setState({
             [target.name]: target.value,
         });
+        console.log(this.state.email)
 
     }
-    /**zeigt das Alert mit dem Nachricht ob das Reset erfolgreich war oder nicht*/
-    publish() {
+    /**zeigt das Alert mit dem Nachricht ob das Reset erfolgreich war oder nicht. Außerdem wird die Mail an den Server versendet*/
+    publish(email) {
         alert(this.showMessage());
+        fetch('http://172.22.24.243:50601/register/passwordReset', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(
+                {
+                    email: email,
+                }
+            ),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+
+      //  window.location ='/login'
     }
     render() {
         return (
@@ -98,7 +112,7 @@ class ResetLoginDataView extends Component{
                             </div>
 
                             <label style={{marginBottom: '10px'}}>
-                                Bitte geben sie Ihre E-Mail-Adresse oder den Benutzernamen ein,
+                                Bitte geben Sie Ihre E-Mail-Adresse ein,
                                 um das Passwort zurückzusetzen
                             </label>
                             <div>
@@ -112,7 +126,7 @@ class ResetLoginDataView extends Component{
                             <div style={{marginTop: '10px', justifyContent: 'space-between'}} >
                                 <Confirmbutton style={{marginRight: '40px'}}
                                         type= "button"
-                                        onClick={this.publish}>
+                                        onClick={()=>this.publish(this.state.email)}>
                                     Email Senden
                                 </Confirmbutton>
 

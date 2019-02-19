@@ -27,7 +27,7 @@ class InviteUserView extends Component {
         email: "dummi3@test.de",
         name: "Test",
         surname: "test2",
-        role: "Trainer",
+        role: 'Trainer',
         childName: 'undefined',
     }
 
@@ -43,6 +43,7 @@ class InviteUserView extends Component {
     }
     setRole = (e) => {
         this.setState({role: e.target.value})
+        console.log(this.state.role)
     }
     setChildName = (e) => {
         this.setState({childName: e.target.value})
@@ -64,8 +65,9 @@ class InviteUserView extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .then(response => console.log('Success:', JSON.stringify(response)))
-            .catch(error => console.error('Error:', error));
+            .then(response => alert(JSON.stringify(response)))
+            .catch(error => console.error('Error:', error.message));
+
     }
 
     render() {
@@ -94,8 +96,15 @@ class InviteUserView extends Component {
                         </div>
 
                         <div id={"role"}>
-                            <Dropdown options={options} onChange={this.setRole} value={defaultOption}
-                                      placeholder="Select an option"/></div>
+
+                            <select id={"inviteUserSelectRole"} onChange={this.setRole}>
+                               <option value="Athlet">Athlet</option>
+                                <option value={"Eltern"}>Eltern</option>
+                                <option value={"Experte"}>Experte</option>
+                                <option value={"Trainer"}>Trainer</option>
+                            </select>
+                          </div>
+
                         <label>Name des Kindes (falls Eltern ausgewählt)</label>
                         <Multiselect onChange={this.setChildName} id={"multiselectChildren"}
                                      data={athletList}

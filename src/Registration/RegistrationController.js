@@ -83,6 +83,7 @@ class RegistrationController extends Component {
     }
 
     submitData = (email, password) => {
+
         fetch('http://172.22.24.243:50601/register/setInitialPassword', {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(
@@ -98,10 +99,11 @@ class RegistrationController extends Component {
             .then(response => console.log('Success:', JSON.stringify(response)))
             .catch(error => console.error('Error:', error));
 
+        window.location ='/login'
     };
 
     componentDidMount(){
-        this.submitData();
+
     }
 
     render() {

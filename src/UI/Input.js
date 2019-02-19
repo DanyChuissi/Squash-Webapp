@@ -7,7 +7,7 @@ import './UIStylesheet.css'
  */
 class Input extends React.Component {
     render() {
-        const { placeholder, value, onChange, classname,width,heigth ,style, type} = this.props
+        const { placeholder, value, onChange, classname,width,heigth ,style, type,hidden} = this.props
          let inputTyp = 'text';
             inputTyp = type;
         return (
@@ -19,7 +19,8 @@ class Input extends React.Component {
                 onChange={onChange}
             width={width}
             height={heigth}
-            style={style}/>
+            style={style}
+            hidden={hidden}/>
         )
     }
 }

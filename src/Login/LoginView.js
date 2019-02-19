@@ -12,6 +12,10 @@ import Footer from "../UI/Footer";
  */
 class LoginView extends Component {
 
+
+    submitLogin(){
+        window.location='../benachrichtigungen';
+    }
     render() {
         const {
 
@@ -32,7 +36,7 @@ class LoginView extends Component {
                     <div id={"headLogin"}>
                         <img src={logo} id="App-logo" alt="Logo der Web Applikation Squirrel"/>
                     </div>
-                    <form className={"loginForm"}>
+                    <div className={"loginForm"}>
 
                         <Input className={"i1"} placeholder={"Benutzernamen eintragen"} value={name}
                                onChange={setName}/>
@@ -40,9 +44,9 @@ class LoginView extends Component {
                                value={passwort} onChange={setPasswort}/>
 
                         <button className={"i3"} onClick={changePW}>Benutzerdaten vergessen?</button>
-                        <div className={"i4"}><ConfirmButton onClick={submitLogin}>Anmelden</ConfirmButton></div>
+                        <div className={"i4"}><ConfirmButton onClick={this.submitLogin}>Anmelden</ConfirmButton></div>
 
-                    </form>
+                    </div>
 
                     <footer>
                         <Footer/>

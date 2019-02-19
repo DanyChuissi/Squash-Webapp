@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Confirmbutton from "../UI/Confirmbutton";
 import 'react-table/react-table.css';
-import Input from "../UI/Input";
 import Label from "react-bootstrap/es/Label";
-import { Multiselect } from 'react-widgets';
+import {Multiselect} from 'react-widgets';
 import 'react-widgets/dist/css/react-widgets.css';
+import Input from "../UI/Input";
 
 /**
  * @author Daniela
@@ -22,9 +22,20 @@ class CreateWorkout extends Component {
             weekValue: [...event.target.value]
         });
     }
+
     render() {
 
         const {
+            weekVal,
+            bezeichnung,
+            hinweise,
+            dauer,
+
+            setWeekVal,
+            setBezeichnung,
+            setHinweise,
+            setDauer,
+
             createWorkout,
             cancelWorkout,
         } = this.props
@@ -36,31 +47,30 @@ class CreateWorkout extends Component {
 
                 <div id={"createWorkoutForm"}>
 
-
                     <Label> Bezeichnung:</Label>
-                    <Input placeholder={"Bezeichnung einfügen"}/>
-
-
+                    <input type="text" title="Three letter country code" value={bezeichnung} onChange={setBezeichnung}/>
                     <Label id={"workoutDaysOfWeek"}>Wochentage:</Label>
                     <Multiselect
+                        value={weekVal}
                         data={daysOfWeek}
                         defaultValue={daysOfWeek[0]}
                         textField='Wochentage'
                         caseSensitive={false}
                         minLength={1}
+                        onChange={setWeekVal}
                         filter='contains'
                     />
 
                     <Label>Hinweise:</Label>
-                    <textarea cols="40" rows="5" placeholder={"Hinweise einfügen"}></textarea>
+                    <textarea cols="40" rows="5" placeholder={"Hinweise einfügen"} value={hinweise} onChange={setHinweise}></textarea>
 
                     <Label>Gesamtdauer (in Minuten):</Label>
-                    <Input inputTyp={"number"}/>
+                    <Input inputTyp={"number"} value={dauer} onChange={setDauer}/>
                 </div>
-                    <div id={"bottomCreateWorkoutView"}>
-                        <Confirmbutton id={"addWorkoutButton"} onClick={createWorkout}>Erstellen</Confirmbutton>
-                        <Confirmbutton id={"closeAddWorkoutView"} onClick={cancelWorkout}>Abbrechen</Confirmbutton>
-            </div>
+                <div id={"bottomCreateWorkoutView"}>
+                    <Confirmbutton id={"addWorkoutButton"} onClick={createWorkout}>Erstellen</Confirmbutton>
+                    <Confirmbutton id={"closeAddWorkoutView"} onClick={cancelWorkout}>Abbrechen</Confirmbutton>
+                </div>
             </div>
         );
     }
