@@ -63,6 +63,7 @@ class RegistrationDataController extends Component{
             alert(erg);
         }*/
    // };
+   // dd
 
     showMessage() {
         var erg = 'Registirung sind registiert';

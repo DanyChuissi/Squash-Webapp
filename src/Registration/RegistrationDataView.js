@@ -35,7 +35,7 @@ class RegistrationDataView extends Component{
             submitData,
             postData,
         }=this.props;
-
+//jjj
         return (
             <Fragment>
                 <div style={{height: '100vh', width: '100vw'}}>
