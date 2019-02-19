@@ -1,6 +1,9 @@
 .athlet_vergleich_box {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
 }
 .athlet_vergleich_box > select {
     width: 220px;
@@ -12,13 +15,17 @@
 }
 
 #athletVergleichMultiselect{
-   width: 250px;
+   width: 650px;
+    justify-content: center;
+    align-content: center;
 }
 
 .head_athletvergleich {
-    font-size: 23px;
-    padding: 15px;
+
     text-align: center;
+}
+.head_athletvergleic {
+    padding-bottom: 80px;
 }
 .close_icon {
     width: 10px;
@@ -42,10 +49,9 @@
 }
 
 .vergleich {
-    min-height: 100px;
-    height: auto;
+
     background-color: whitesmoke;
-    max-height: fit-content;
+
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 250px 250px;

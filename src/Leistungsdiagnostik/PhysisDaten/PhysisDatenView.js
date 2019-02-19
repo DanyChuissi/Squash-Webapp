@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import "./PhysisDaten.css"
 import Confirmbutton from "../../UI/Confirmbutton";
 import '../../EditPlayerProfile/EditPlayerProfile.css';
+import Input from "../../UI/Input";
+
 
 /**
  * @author Dany Chuissi
@@ -47,23 +49,38 @@ class PhysisDatenView extends React.Component{
                     <tbody className= "tbody_leistung">
                     <tr id={"table_css"}>
                          <th >Größe</th>
-                         <td style={Style} placeholder={"No Data Found"} onChange={setGroesse} contentEditable={contentEditable} required>{groesse}</td>
+                         <td id={"physisDaten"} onChange={setGroesse} >
+                             <Input type="number" hidden={!contentEditable} style={Style} placeholder={groesse} onChange={setGroesse} />
+                             <div hidden={contentEditable}>{groesse}</div>
+                         </td>
                     </tr>
                     <tr  id={"table_css"}>
                         <th>Gewicht</th>
-                        <td style={Style} placeholder={"No Data Found"} onChange={setGewicht} contentEditable={contentEditable} required>{gewicht}</td>
+                        <td id={"physisDaten"} onChange={setGewicht}>
+                            <Input type="number" hidden={!contentEditable} style={Style} placeholder={gewicht} onChange={setGewicht} />
+                            <div hidden={contentEditable}>{gewicht}</div>
+                        </td>
                     </tr>
                     <tr  id={"table_css"}>
                         <th>Körperfett</th>
-                        <td style={Style} placeholder={"No Data Found"} onChange={setKoerperfett} contentEditable={contentEditable} required>{koeperfett}</td>
+                        <td id={"physisDaten"} onChange={setKoerperfett} >
+                            <Input type="number" hidden={!contentEditable} style={Style} placeholder={koeperfett} onChange={setKoerperfett} />
+                            <div hidden={contentEditable}>{koeperfett}</div>
+                        </td>
                     </tr>
                     <tr  id={"table_css"}>
                         <th>Beinlänge</th>
-                        <td style={Style} placeholder={"No Data Found"} onChange={setBeinlaenge} contentEditable={contentEditable} required>{beinlaenge}</td>
+                        <td id={"physisDaten"} onChange={setBeinlaenge} >
+                            <Input type="number" hidden={!contentEditable} style={Style} placeholder={beinlaenge} onChange={setBeinlaenge} />
+                            <div hidden={contentEditable}>{beinlaenge}</div>
+                        </td>
                     </tr>
                     <tr id={"table_css"}>
                         <th >Beinwinkel</th>
-                        <td style={Style} placeholder={"No Data Found"}  onChange={setBeinwinkel} contentEditable={contentEditable} required>{beinwinkel}</td>
+                        <td id={"physisDaten"} onChange={setBeinwinkel} >
+                            <Input type="number" hidden={!contentEditable} style={Style} placeholder={beinwinkel} onChange={setBeinwinkel} />
+                            <div hidden={contentEditable}>{beinwinkel}</div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

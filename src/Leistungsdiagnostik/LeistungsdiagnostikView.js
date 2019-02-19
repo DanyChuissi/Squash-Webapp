@@ -64,6 +64,7 @@ class LeistungsdiagnostikView extends Component{
         index2: -1,
         index3: -1,
         isLoaded: false,
+        spieler_email: 'hmax.mustermann@gmail.com',
     }
 
     displayEvent = (evnt, SyntheticEvent) => {
@@ -151,7 +152,7 @@ class LeistungsdiagnostikView extends Component{
     setKommentar = (e) => {
         let  k =
         {
-            name: 'trainer',
+            name: this.state.spieler_email?'trainer': null,
             text: e.target.value,
             datum:  new Date(),
         }
@@ -174,7 +175,6 @@ class LeistungsdiagnostikView extends Component{
                         isLoaded: true,
                         index : 0,
                     });
-                    console.log(this.state.arraykurve)
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -560,11 +560,7 @@ class LeistungsdiagnostikView extends Component{
                         <div className="leistung_main">
                             <div className="orangeConta">
                                 <div className="container1">
-                                    <PhysisDatenController groesse={1.80}
-                                                           gewicht={80}
-                                                           koeperfett={18}
-                                                           beinlaenge={80}
-                                                           beinwinkel={30}
+                                    <PhysisDatenController email={this.state.spieler_email}
                                     />
                                 </div>
                                 <div className="container2">

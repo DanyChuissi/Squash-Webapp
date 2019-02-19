@@ -10,20 +10,54 @@ import PhysisDatenView from './PhysisDatenView';
  * @visibleName PhysisDatenController
  */
 class PhysisDatenController extends Component{
-    state = {
-        groesse: '',
-        gewicht: '',
-        koeperfett: '',
-        beinlaenge: '',
-        beinwinkel: '',
-        player: '',
-        hideBearbeiten: false,
-        hideSpeichern: true,
-        contenEditable: false,
+    constructor(props){
+    super(props);
+        this.state = {
+            groesse: '',
+            gewicht: '',
+            koeperfett: '',
+            beinlaenge: '',
+            beinwinkel: '',
+            player: '',
+            hideBearbeiten: false,
+            hideSpeichern: true,
+            contenEditable: false,
+            physisDaten: '',
+        }
     }
 
-    componentdidMount = () => {
-        //TODO daten vom Server holen
+    componentDidMount(): void {
+        console.log(this.props.email)
+        var url = "http://172.22.24.243:50608/physisdata/getData?email="+this.props.email
+        fetch(url)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        physisDaten: result
+                    });
+                    console.log(this.state.physisDaten)
+                    console.log(url)
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                    console.log(error)
+                }
+            ).then((responseJson) => {
+               this.setState({
+                   groesse: this.state.physisDaten.groesse,
+                   gewicht: this.state.physisDaten.gewicht,
+                   koeperfett: this.state.physisDaten.kfa,
+                   beinlaenge: this.state.physisDaten.beinlaenge,
+                   beinwinkel: this.state.physisDaten.beinwinkel,
+               })
+        })
     }
 
     postData = () => {
@@ -67,6 +101,24 @@ class PhysisDatenController extends Component{
     }
 
     onSave = () => {
+            fetch('http://172.22.24.243:50608/physisdata/setData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+
+                email: this.props.email,
+                groesse: this.state.groesse,
+                gewicht: this.state.gewicht,
+                beinwinkel: this.state.beinwinkel,
+                kfa: this.state.koeperfett,
+                beinlaenge: this.state.beinlaenge
+
+                })
+            }).then(res => res.json())
+                .then(response => console.log('Success:', JSON.stringify(response)))
+                .catch(error => console.error('Error:', error));
        this.setContentEditable(false);
         this.setHideButton();
         alert("Neue Werte Gespeichert");
@@ -74,18 +126,14 @@ class PhysisDatenController extends Component{
 
     render () {
         const {
-            groesse,
-            gewicht,
-            koeperfett,
-            beinlaenge,
-            beinwinkel,
+            email,
         }=this.props;
         return (
-            <PhysisDatenView groesse={groesse}
-                             gewicht={gewicht}
-                             koeperfett={koeperfett}
-                             beinlaenge={beinlaenge}
-                             beinwinkel={beinwinkel}
+            <PhysisDatenView groesse={this.state.groesse}
+                             gewicht={this.state.gewicht}
+                             koeperfett={this.state.koeperfett}
+                             beinlaenge={this.state.beinlaenge}
+                             beinwinkel={this.state.beinwinkel}
                              player ={this.state.player}
                              hideBearbeiten={this.state.hideBearbeiten}
                              hideSpeichern={this.state.hideSpeichern}

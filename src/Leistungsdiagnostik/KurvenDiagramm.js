@@ -148,8 +148,7 @@ class KurvenDiagramm extends Component {
             ];
         l = <Line name={name1} type="monotone" dataKey="a1" stroke="#008000" activeDot={{r: 8}}/>;
         lines = [...lines, l];
-        console.log(data)
-        console.log(l)
+
 
 
         return (

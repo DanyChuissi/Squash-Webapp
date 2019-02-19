@@ -46,23 +46,30 @@ class VergleichDaten extends Component{
     constructor() {
         super();
         this.state = {
-            players: [ ],
-            physisDaten: [],
+            /*players: [],*/
+            /*  physisDaten: [],*/
             physisDaten_zu_vergleichen: [],
             athlet_zu_vergl: [],
             hideliste: true,
-            index: 0,
-            trigger : false,
-            testArrayDatum: [],
+            /* index: 0,*/
+            trigger: false,
+            /*  testArrayDatum: [],*/
             query: '',
-            result:[],
+            result: [],
             trainer: 1,
-            option : [],
-
+            option: [],
+            testBaterieDaten: [],
+             datenzuvergleichen: [],
+            isloaded: false,
+            aktueletest: '',
+            physisDaten: [],
+            aktuelePhysisDaten: '',
         };
-        this.removeAthlet_zu_vergl = this.removeAthlet_zu_vergl.bind(this);
+        this.submitDaten = this.submitDaten.bind(this);
         this.addAthlet_zu_vergl = this.addAthlet_zu_vergl.bind(this);
     }
+
+
 
     displayKurve = () => {
         this.setState({trigger: true})
@@ -77,11 +84,12 @@ class VergleichDaten extends Component{
      * @param SyntheticEvent
      */
     displayEvent = (evnt, SyntheticEvent) => {
-        if(this.state.physisDaten_zu_vergleichen.length > 1 ){
+        console.log(this.state.athlet_zu_vergl)
+        if(this.state.athlet_zu_vergl.length >= 2 ){
             this.setState({trigger: true})
         }
         else{
-            alert("mindestens 2 Althleten wählen")
+            alert("mindestens 2 Althleten wählenhhhhh")
         }
     }
     getInfo = () => {
@@ -114,7 +122,6 @@ class VergleichDaten extends Component{
             .then(
                 (result) => {
                     this.setState({
-                        isLoaded: true,
                         result: result
                     });
 
@@ -138,16 +145,125 @@ class VergleichDaten extends Component{
                         error
                     });
                 }
-            )
+            ).then((reponse) => {
+                console.log(this.state.result)
+                for(var i = 0 ; i< this.state.result.length ; i++) {
+                    var url = "http://172.22.24.243:50593/LD/email?email=" + this.state.result[i].email;
+                    fetch(url)
+                        .then(res => res.json())
+                        .then(
+                            (result) => {
+                                console.log(result)
+                                    this.setState({
+                                        aktueletest: result,
+                                    })
+                            },
+                            // Note: it's important to handle errors here
+                            // instead of a catch() block so that we don't swallow
+                            // exceptions from actual bugs in components.
+                            (error) => {
+                                this.setState({
+                                    error
+                                });
+                                console.log(error)
+                            }
+                        ).then(()=> {
+                            if(typeof this.state.aktueletest.code === 'undefined') {
+                                this.setState({
+                                    testBaterieDaten: [...this.state.testBaterieDaten, this.state.aktueletest]
+                                })
+                            }
+                            console.log(this.state.testBaterieDaten)
+                        })
+                }
+            }).then((response) =>{
+            for(var i = 0 ; i< this.state.result.length ; i++) {
+                var url = "http://172.22.24.243:50608/physisdata/getData?email=" + this.state.result[i].email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            this.setState({
+                                aktuelePhysisDaten: result
+                            });
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            this.setState({
+                                error
+                            });
+                            console.log(error)
+                        }
+                    ).then((responseJson) => {
+
+                }).then(()=> {
+                    if(typeof this.state.aktuelePhysisDaten.code === 'undefined') {
+                        this.setState({
+                            physisDaten: [...this.state.physisDaten, this.state.aktuelePhysisDaten]
+                        })
+                    }
+                    console.log(this.state.physisDaten)
+                })
+            }
+        })
+
 
     }
 
     handleInputChange = (e) => {
-        console.log(e)
+
+        let array = [];
         this.setState({
-            query: e
+            query: e,
+            trigger: false,
+            athlet_zu_vergl: array,
+            physisDaten_zu_vergleichen: array,
         })
-        //this.addAthlet_zu_vergl(e)
+
+        console.log(e)
+        //console.log(this.state.athlet_zu_vergl)
+       // console.log(this.state.physisDaten_zu_vergleichen)
+        if(e.length > 0) {
+            this.setState({
+                athlet_zu_vergl: [],
+                physisDaten_zu_vergleichen: [],
+            })
+            console.log(this.state.athlet_zu_vergl)
+            console.log(this.state.physisDaten_zu_vergleichen)
+            for (var i = 0; i < e.length; i++) {
+                var daten = this.getDatenfromAthletTest(e[i].email)
+                var Pdaten = this.getDatenfromAthletPhysis(e[i].email)
+                if (typeof daten !== "undefined" && daten !== null) {
+                    this.addAthlet_zu_vergl(daten)
+                } else {
+                    alert("Athlet " + e[i].name + " hat keine test Baterie")
+                }
+                if (typeof Pdaten !== 'undefined' && Pdaten !== null) {
+                    this.addAthlet_zu_verglPhysis(Pdaten)
+                }
+            }
+        }
+    };
+
+    getDatenfromAthletTest = (email) => {
+        let erg = null;
+        this.state.testBaterieDaten.map( (daten) => {
+            if(daten.email === email){
+                erg = daten
+            }
+        });
+        return erg;
+    }
+    getDatenfromAthletPhysis = (email) => {
+        let erg = null;
+        this.state.physisDaten.map( (daten) => {
+            if(daten.email === email){
+                erg = daten
+            }
+        });
+        return erg;
     }
 
     /**
@@ -155,7 +271,7 @@ class VergleichDaten extends Component{
      * @param email
      * @returns {boolean} gibt true züruck falls ja
      */
-    pruefeVorhanden = (email) =>{
+  /*  pruefeVorhanden = (email) =>{
         let erg = false;
         this.state.athlet_zu_vergl.map( (player) => {
             if(player.email === email){
@@ -163,13 +279,13 @@ class VergleichDaten extends Component{
             }
         });
         return erg;
-    }
+    }*/
     /**
      * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
      * @param email
      * @returns {number}
      */
-    getIndex_Athlet_zu_remove_testbaterie = email => {
+   /* getIndex_Athlet_zu_remove_testbaterie = email => {
         let erg = -1;
         this.state.athlet_zu_vergl.map( (player) => {
             if(player.email === email){
@@ -177,7 +293,7 @@ class VergleichDaten extends Component{
             }
         });
         return erg;
-    }
+    }*/
 
     /**
      * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
@@ -200,12 +316,18 @@ class VergleichDaten extends Component{
      * @returns {*}
      */
     getTestdatenvonSelectetAthlet = (email) => {
-        var erg;
-        fetch("http://172.22.24.243:50593/LD/email?email="+email)
+        var url = "http://172.22.24.243:50593/LD/email?email="+email;
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
-                    erg = result
+                    if(typeof result !== 'undefined') {
+                        this.setState({
+                            testBaterieDaten: result,
+                            athlet_zu_vergl: [...this.state.athlet_zu_vergl, result],
+                            isloaded: true
+                        })
+                    }
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -217,9 +339,12 @@ class VergleichDaten extends Component{
                     });
                     console.log(error)
                 }
-            );
+            ).then((response)=>{
+            this.setState({
+                isloaded: true,
+            })
+        })
 
-        return erg;
     }
     /**
      * ein Athlet der schon selektiert wurde wird mit dieser Methose markiert
@@ -243,10 +368,10 @@ class VergleichDaten extends Component{
      * löscht der Ahtlet im Parameter von Der Liste (Athlet zu vergleichen)
      * @param email
      */
-    onclicked = (email) => {
+   /* onclicked = (email) => {
         this.removeAthlet_zu_vergl(email);
         this.setState({trigger: false})
-    }
+    }*/
     getPlayerPhysisDaten = (email) => {
         let erg = null;
         this.state.physisDaten.map( (daten) => {
@@ -257,30 +382,56 @@ class VergleichDaten extends Component{
         return erg;
     }
 
+    submitDaten () {
+
+                this.displayEvent()
+
+    }
     /**
      * Add Athlet in der Liste (Athlet zu vergleichen)
      */
-    addAthlet_zu_vergl (athlet){
-        if(typeof athlet !== 'undefined') {
-            let daten = this.getTestdatenvonSelectetAthlet(athlet.email)
-            if (daten != null) {
-                let PhysisDaten = this.getPlayerPhysisDaten(athlet.email);
+    addAthlet_zu_vergl(Tdaten){
+            //let daten = this.state.testBaterieDaten;
+           // if (daten != null) {
+           //     console.log(daten)
+              //  let PhysisDaten = this.getPlayerPhysisDaten(email);
+               // var daten1 = this.state.athlet_zu_vergl;
+
+              //  daten1 = [...daten1, Tdaten ]
                 this.setState({
-                    athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
-                    physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
+                    athlet_zu_vergl: [...this.state.athlet_zu_vergl, Tdaten],
                     hideliste: false,
                 })
-            }
-        }else{
-            alert("Bitte Athlet wählen");
-        }
+           //     console.log(this.state.athlet_zu_vergl)
+         //   }
+       //  return this.state.athlet_zu_vergl;
+        //console.log(this.state.athlet_zu_vergl)
+    };
+
+    addAthlet_zu_verglPhysis( Pdaten){
+        //let daten = this.state.testBaterieDaten;
+        // if (daten != null) {
+        //     console.log(daten)
+        //  let PhysisDaten = this.getPlayerPhysisDaten(email);
+      /*  var daten1 = this.state.athlet_zu_vergl;
+        var daten2 = this.state.physisDaten_zu_vergleichen,
+            daten2 = [...daten2, Pdaten]*/
+
+        this.setState({
+            physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, Pdaten],
+            hideliste: false,
+        })
+        //     console.log(this.state.athlet_zu_vergl)
+        //   }
+        //  return this.state.athlet_zu_vergl;
+        //console.log(this.state.athlet_zu_vergl)
     };
 
     /**
      * remove Athlet von der Liste (Athlet zu vergleichen)
      * @param e
      */
-    removeAthlet_zu_vergl(e){
+    /*removeAthlet_zu_vergl(e){
         if(typeof e !== "undefined") {
             var array = [...this.state.athlet_zu_vergl];
             var array_PhysisDaten = [... this.state.physisDaten_zu_vergleichen];
@@ -296,42 +447,25 @@ class VergleichDaten extends Component{
             }
 
         }
-    };
+    };*/
        render(){
 
         let kurve = [];
-           let testKurve =  <div style={{paddingBottom: '20px'}}>
+           let physiskurve =  <div style={{paddingBottom: '40px', marginBottom: '20px'}}>
                                    <div className="head_athletvergleich">Physis Daten </div>
                                    <PhisisDatenBalken attribute={this.state.physisDaten_zu_vergleichen}/>
+                                   <div className="head_athletvergleic">.</div>
                             </div> ;
-        let physiskurve = <div style={{marginTop: '30px'}}>
+        let testkurve = <div style={{marginTop: '20px'}}>
                                 <div className="head_athletvergleich">TestBaterie Daten</div>
                                 <BalkenDiagramm attribute={this.state.athlet_zu_vergl}/>
+                                <div className="head_athletvergleic"></div>
                           </div> ;
 
 
-        kurve = [... kurve, testKurve];
-        kurve = [... kurve, physiskurve];
+        kurve = [...kurve, testkurve];
+        kurve = [...kurve, physiskurve];
 
-
-
-
-           const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
-               <li onClick={this.onclicked.bind(this, d.email)} key={d.email} value={d.name}>
-                   {d.name }{ '      '}
-                   <label style={{color: 'red'}}> X</label>
-               </li>);
-          /* let options =[];
-           this.state.result.map((player) => {
-                   player.name = player.name + " " + player.surname
-                   options = [...options, player]
-               }
-           );*/
-
-          /* let optionss =[];
-           this.state.result.map((player) =>
-             options = [...options, player.name +" "+ player.surname]
-           );*/
 
            return (
            <div>
@@ -339,6 +473,7 @@ class VergleichDaten extends Component{
                     <HeaderProfileView/>
                 </HeaderProfileView>
                 <div>
+                    <TrainingdatenEvaluation/>
                     <div>
                         <div className="head_athletvergleich">
                             <label>Athlet-Vergleich</label>
@@ -348,7 +483,6 @@ class VergleichDaten extends Component{
                             <Multiselect
                                 id={'athletVergleichMultiselect'}
                                 data={this.state.options}
-
                                 textField='name'
 
                                 minLength={5}
@@ -356,27 +490,27 @@ class VergleichDaten extends Component{
                                 onChange={(e)=>this.handleInputChange(e)}
                             />
 
-                            <Confirmbutton onClick={this.addAthlet_zu_vergl} myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
+                            <Confirmbutton hidden={true} myStyle= {{heigth: '20px', padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
                                 add
                             </Confirmbutton>
-                            <Confirmbutton onClick={this.displayEvent}  myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
+                            <Confirmbutton onClick={this.submitDaten}  myStyle= {{heigth: '20px',padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
                                 Athlete vergleichen
                             </Confirmbutton>
                         </div>
-                        <div className="selected_item">
+                       {/* <div className="selected_item">*/}
                             <div>
                                 <div  style={{fontSize: '15px'}}  hidden={this.state.hideliste} id='selectedItem'>
-                                    {selectedListItems}
+                                  {/*  {selectedListItems}*/}
                                 </div>
                             </div>
-                        </div>
+                    {/*    </div>*/}
                     </div>
 
                     <div className="vergleich">
                         {this.state.trigger?
                                 kurve: "Bitte 2 bis 5 Athleten auswählen"}
                     </div>
-                    <TrainingdatenEvaluation/>
+
                 </div>
            </div>
 

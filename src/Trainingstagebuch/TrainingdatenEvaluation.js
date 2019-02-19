@@ -34,6 +34,7 @@ class TrainingdatenEvaluation extends Component{
         return (
             <Fragment>
                 <div  className="table_Auswertung_css">
+                    <h2 style={{textAlign: 'center'}}>Gesamtauswertung</h2>
                     <table>
                         <tbody className= "tbody_leistung_Auswertun">
                         <tr id={"table_css"}>

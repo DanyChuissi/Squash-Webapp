@@ -8,6 +8,7 @@ import Input from "../../UI/Input";
 import PhisisDatenBalken from "./PhisisDatenBalken";
 import BalkenDiagramm from "../BalkenDiagramm";
 import Label from "../../UI/Label";
+import {Multiselect} from "react-widgets";
 
 
 var a1 = {
@@ -50,8 +51,16 @@ class Athlet_Vergleich extends Component{
             selectet: '',
             index: 0,
             trigger : false,
-            testArrayDatum: [datum1, datum2, datum3],
+            testArrayDatum: [],
             input: '',
+            aktueletest: '',
+            aktuelePhysisDaten: '',
+            query: '',
+            result: [],
+            option: [],
+            testBaterieDaten: [],
+            datenzuvergleichen: [],
+            trainer: 1,
         };
         this.removeAthlet_zu_vergl = this.removeAthlet_zu_vergl.bind(this);
         this.addAthlet_zu_vergl = this.addAthlet_zu_vergl.bind(this);
@@ -60,16 +69,59 @@ class Athlet_Vergleich extends Component{
 
     }
 
-    handleInputChange = () => {
+    handleInputChange = (e) => {
+        let array = [];
         this.setState({
-            query: this.search.value
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 2 === 0) {
+            query: e,
+            trigger: false,
+            athlet_zu_vergl: array,
+            physisDaten_zu_vergleichen: array,
+        })
 
+        console.log(e)
+        //console.log(this.state.athlet_zu_vergl)
+        // console.log(this.state.physisDaten_zu_vergleichen)
+        if(e.length > 0) {
+            this.setState({
+                athlet_zu_vergl: [],
+                physisDaten_zu_vergleichen: [],
+            })
+            console.log(this.state.athlet_zu_vergl)
+            console.log(this.state.physisDaten_zu_vergleichen)
+            for (var i = 0; i < e.length; i++) {
+                var daten = this.getDatenfromAthletTest(e[i].email)
+                var Pdaten = this.getDatenfromAthletPhysis(e[i].email)
+                if (typeof daten !== "undefined" && daten !== null) {
+                    daten.email = e[i].name;
+                    this.addAthlet_zu_vergl(daten)
+                } else {
+                    alert("Athlet " + e[i].name + " hat keine test Baterie")
+                }
+                if (typeof Pdaten !== 'undefined' && Pdaten !== null) {
+                    Pdaten.email = e[i];
+                    this.addAthlet_zu_verglPhysis(Pdaten)
                 }
             }
-        })
+        }
+    }
+
+    getDatenfromAthletTest = (email) => {
+        let erg = null;
+        this.state.testBaterieDaten.map( (daten) => {
+            if(daten.email === email){
+                erg = daten
+            }
+        });
+        return erg;
+    }
+    getDatenfromAthletPhysis = (email) => {
+        let erg = null;
+        this.state.physisDaten.map( (daten) => {
+            if(daten.email === email){
+                erg = daten
+            }
+        });
+        return erg;
     }
     /**
      * Die Methode prüft ob der User mindestens 2 Athleten gewählt hat
@@ -86,6 +138,11 @@ class Athlet_Vergleich extends Component{
 
     }
 
+    submitDaten () {
+
+        this.displayEvent()
+
+    }
 
     /**
      * Die Methode prüft ob der gewählte Athlet schon in der Liste der Athleten zu vergleichen schon ist
@@ -115,7 +172,7 @@ class Athlet_Vergleich extends Component{
         });
         return erg;
     }
-    componentDidMount(): void {
+ /*   componentDidMount(): void {
         fetch("http://172.22.24.243:50594/player/trainernr?trainer=" + 1)
             .then(res => res.json())
             .then(
@@ -133,8 +190,104 @@ class Athlet_Vergleich extends Component{
                     });
                 }
             )
-    }
+    }*/
 
+    componentDidMount(): void {
+        var url = "http://172.22.24.243:50594/player/trainernr?trainer=" + this.state.trainer
+        fetch(url)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        result: result
+                    });
+
+                    let options =[];
+                    this.state.result.map((player) => {
+                            player.name = player.name + " " + player.surname
+                            options = [...options, player]
+                        }
+                    );
+                    this.setState({
+                        options: options,
+                    })
+                },
+
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            ).then((reponse) => {
+            console.log(this.state.result)
+            for(var i = 0 ; i< this.state.result.length ; i++) {
+                var url = "http://172.22.24.243:50593/LD/email?email=" + this.state.result[i].email;
+                fetch(url)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            console.log(result)
+                            this.setState({
+                                aktueletest: result,
+                            })
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            this.setState({
+                                error
+                            });
+                            console.log(error)
+                        }
+                    ).then(()=> {
+                    if(typeof this.state.aktueletest.code === 'undefined') {
+                        this.setState({
+                            testBaterieDaten: [...this.state.testBaterieDaten, this.state.aktueletest]
+                        })
+                    }
+                    console.log(this.state.testBaterieDaten)
+                })
+            }
+        }).then((response) =>{
+            for(var i = 0 ; i< this.state.result.length ; i++) {
+                var url = "http://172.22.24.243:50608/physisdata/getData?email=" + this.state.result[i].email
+                fetch(url)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            this.setState({
+                                aktuelePhysisDaten: result
+                            });
+                        },
+                        // Note: it's important to handle errors here
+                        // instead of a catch() block so that we don't swallow
+                        // exceptions from actual bugs in components.
+                        (error) => {
+                            this.setState({
+                                error
+                            });
+                            console.log(error)
+                        }
+                    ).then((responseJson) => {
+
+                }).then(()=> {
+                    if(typeof this.state.aktuelePhysisDaten.code === 'undefined') {
+                        this.setState({
+                            physisDaten: [...this.state.physisDaten, this.state.aktuelePhysisDaten]
+                        })
+                    }
+                    console.log(this.state.physisDaten)
+                })
+            }
+        })
+
+
+    }
     /**
      * Die Methode gibt den Index der Athlet der von der Liste (Athlet zu vergleichen ) gelöcht werden muss
      * @param email
@@ -219,33 +372,42 @@ class Athlet_Vergleich extends Component{
     /**
      * Add Athlet in der Liste (Athlet zu vergleichen)
      */
-    addAthlet_zu_vergl (){
-       if(this.state.index !== 0) {
+    addAthlet_zu_vergl(Tdaten){
+        //let daten = this.state.testBaterieDaten;
+        // if (daten != null) {
+        //     console.log(daten)
+        //  let PhysisDaten = this.getPlayerPhysisDaten(email);
+        // var daten1 = this.state.athlet_zu_vergl;
 
-           let pname = this.state.players[this.state.index].name;
-           let pvorname = this.state.players[this.state.index].vorname + '  ';
-           let pemail = this.state.players[this.state.index].email;
-           let daten = this.getTestdatenvonSelectetAthlet(pemail)
-           if(!typeof daten === 'undefined') {
-               daten.name = pvorname + ' ' + pname;
+        //  daten1 = [...daten1, Tdaten ]
+        this.setState({
+            athlet_zu_vergl: [...this.state.athlet_zu_vergl, Tdaten],
+            hideliste: false,
+        })
+        //     console.log(this.state.athlet_zu_vergl)
+        //   }
+        //  return this.state.athlet_zu_vergl;
+        //console.log(this.state.athlet_zu_vergl)
+    };
 
-               if (this.pruefeVorhanden(pemail) !== true) {
-                   let PhysisDaten = this.getPlayerPhysisDaten(pemail);
-                   PhysisDaten.name = pvorname + ' ' + pname;
-                   this.setState({
-                       athlet_zu_vergl: [...this.state.athlet_zu_vergl, daten],
-                       physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, PhysisDaten],
-                       hideliste: false,
-                   })
-               } else {
-                   alert("Athlet schon hinzufügt");
-               }
-           }else{
-               alert('Athlet hat noch keine TestBaterie gespeichert')
-           }
-       }else{
-           alert("Bitte Athlet wählen");
-       }
+    addAthlet_zu_verglPhysis( Pdaten){
+        //let daten = this.state.testBaterieDaten;
+        // if (daten != null) {
+        //     console.log(daten)
+        //  let PhysisDaten = this.getPlayerPhysisDaten(email);
+        /*  var daten1 = this.state.athlet_zu_vergl;
+          var daten2 = this.state.physisDaten_zu_vergleichen,
+              daten2 = [...daten2, Pdaten]*/
+
+        this.setState({
+            physisDaten_zu_vergleichen: [...this.state.physisDaten_zu_vergleichen, Pdaten],
+            hideliste: false,
+        })
+        //     console.log(this.state.athlet_zu_vergl)
+        //   }
+        //  return this.state.athlet_zu_vergl;
+        //console.log(this.state.athlet_zu_vergl)
+
     };
     /**
      * remove Athlet von der Liste (Athlet zu vergleichen)
@@ -286,14 +448,14 @@ class Athlet_Vergleich extends Component{
             </Popup>
         )
 
-        const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
+        /*const selectedListItems = this.state.athlet_zu_vergl.map((d) =>
             <li onClick={this.onclicked.bind(this, d.email)} key={d.email} value={d.email}>
                     {d.name }{ '      '}
                     <label style={{color: 'red'}}> X</label>
             </li>);
         let options =this.state.players.map((player) =>
             <option key={player.email} data-key={player.mail} value={player.email}>{player.name} {player.vorname} </option>
-        );
+        );*/
 
 
         return (
@@ -303,21 +465,28 @@ class Athlet_Vergleich extends Component{
                 </div>
 
                 <div className="athlet_vergleich_box">
-
-                     <select onChange={this.setSelected} >
-                         {options}
-                     </select>
-                    <Confirmbutton onClick={this.addAthlet_zu_vergl} myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
-                        add
-                    </Confirmbutton>
-                    <Confirmbutton onClick={this.displayEvent}  myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
+                    <Confirmbutton onClick={this.displayEvent}  myStyle= {{marginBottom: '5px',padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
                         Athlete vergleichen
                     </Confirmbutton>
+
+                    <Multiselect
+                        id={'athletVergleichMultiselect'}
+                        data={this.state.options}
+                        textField='name'
+
+                        minLength={5}
+                        filter='contains'
+                        onChange={(e)=>this.handleInputChange(e)}
+                    />
+                    <Confirmbutton hidden={true} onClick={this.addAthlet_zu_vergl} myStyle= {{padding: '5px', marginTop: '2px', paddingRight: '15px', paddingLeft: '15px'}} >
+                        add
+                    </Confirmbutton>
+
                 </div>
                 <div className="selected_item">
                     <div>
                         <div  style={{fontSize: '15px'}}  hidden={this.state.hideliste} id='selectedItem'>
-                            {selectedListItems}
+                           {/* {selectedListItems}*/}
                         </div>
                     </div>
                 </div>

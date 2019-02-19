@@ -27,3 +27,12 @@
     /*width: 60%;*/
    /* width: 250px;*/
 }
+
+#physisDaten > input {
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    border: none;
+    font-family: Calibri;
+    font-size: 12pt;
+}
